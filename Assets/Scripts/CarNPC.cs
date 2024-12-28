@@ -26,7 +26,7 @@ public class CarNPC : MonoBehaviour
 
     public void Spawn()
     {
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         rb.linearVelocity = new Vector2(0, 5f);
         StartCoroutine(ZeroVelocity());
     }
@@ -35,7 +35,7 @@ public class CarNPC : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         rb.linearVelocity = Vector2.zero;
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         StartCoroutine(Move(3f));
         
     }

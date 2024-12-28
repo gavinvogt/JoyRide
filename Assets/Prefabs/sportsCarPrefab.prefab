@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1226368088767282357}
   - component: {fileID: 916415067041337753}
   - component: {fileID: 3969541985665354660}
+  - component: {fileID: -3541015740689095205}
   m_Layer: 0
   m_Name: sportsCarPrefab
   m_TagString: Car
@@ -231,6 +232,18 @@ MonoBehaviour:
   playerProjectilePrefab: {fileID: 4956113471225737414, guid: 99f4dc9fd09ef55409f0a0b9ff5d49d4, type: 3}
   leftJumpPoint: {fileID: 1108212976764705719}
   rightJumpPoint: {fileID: 1300199227220953563}
+--- !u!114 &-3541015740689095205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249512639550302531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc945fc74895d140bcc647f5702491d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4481793660760228137
 GameObject:
   m_ObjectHideFlags: 0
