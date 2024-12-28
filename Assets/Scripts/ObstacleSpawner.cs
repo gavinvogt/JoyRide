@@ -9,14 +9,20 @@ public class ObstacleSpawner : MonoBehaviour
     private float spawnTimer;
     [SerializeField] private List<GameObject> obstacleSpawners;
     [SerializeField] private List<GameObject> obstaclePrefabs;
-    [SerializeField] private List<GameObject> EnemyPrefabs;
+    [SerializeField] private GameObject PolicePrefab;
     private int currentRandomFlag = 3;
+    private int policeRandomFlag = 3;
+    private int numPoliceCars;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
+    private void Awake()
+    {
+        numPoliceCars = 0;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -24,20 +30,34 @@ public class ObstacleSpawner : MonoBehaviour
         {
             bool obsSpawned = false;
             int obsCounter = 0;
+            bool policeSpawned = false;
             foreach (GameObject spawner in obstacleSpawners)
             {
-                if (Random.Range(0, 10) <  currentRandomFlag && obsCounter < obstacleSpawners.Count -1)
+                if (Random.Range(0, 10) < currentRandomFlag && obsCounter < obstacleSpawners.Count - 1)
                 {
                     StartCoroutine(BlinkWarning(spawner, 0));
-                    StartCoroutine(SpawnObstacle(spawner));
+                    StartCoroutine(SpawnObstacle(spawner, obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)]));
                     obsSpawned = true;
                     obsCounter++;
                     currentRandomFlag = 3;
                 }
+                if (Random.Range(0, 10) < policeRandomFlag && numPoliceCars < 1)
+                {
+                    //StartCoroutine(BlinkWarning(spawner, 0));
+                    StartCoroutine(SpawnObstacle(spawner, PolicePrefab));
+                    numPoliceCars++;
+                    policeSpawned = true;
+                    policeRandomFlag = 3;
+                }
             }
-            if(obsSpawned == false)
+
+            if (obsSpawned == false)
             {
                 currentRandomFlag++;
+            }
+            if (policeSpawned == false)
+            {
+                policeRandomFlag++;
             }
             spawnTimer = maxSpawnTimer;
         }
@@ -59,14 +79,25 @@ public class ObstacleSpawner : MonoBehaviour
             StartCoroutine(BlinkWarning(spawner,numBlinks));
         }
     }
-    IEnumerator SpawnObstacle(GameObject spawner)
+    IEnumerator SpawnObstacle(GameObject spawner, GameObject obstacle)
     {
         yield return new WaitForSeconds(3f);
-        GameObject tempOb = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)], spawner.transform);
-        tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
-        /*if(tempOb.name.Contains("Police Car"))
+        GameObject tempOb = Instantiate(obstacle, spawner.transform);
+        if(tempOb.name.Contains("Mine"))
         {
+            tempOb.GetComponent<Mine>().Spawn();
+        } else if (tempOb.name.Contains("Booster"))
+        {
+            tempOb.GetComponent<Booster>().Spawn();
+        } else if(tempOb.name.Contains("Police Car"))
+        {
+            yield return new WaitForSeconds(Random.Range(0f,1f));
             tempOb.GetComponent<PoliceCar>().Spawn();
-        }*/
+        }
+    }
+
+    public int GetSpeed()
+    {
+        return speed;
     }
 }

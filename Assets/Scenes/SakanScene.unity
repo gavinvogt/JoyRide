@@ -195,8 +195,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 2345255607838637255, guid: 4fb79a1291134894c8cb025db835043c, type: 3}
   - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
-  EnemyPrefabs:
-  - {fileID: 403856411473894058, guid: 49212f010f4dd934ba26987485eeb0ac, type: 3}
+  PolicePrefab: {fileID: 403856411473894058, guid: 49212f010f4dd934ba26987485eeb0ac, type: 3}
 --- !u!1 &153268391
 GameObject:
   m_ObjectHideFlags: 0
