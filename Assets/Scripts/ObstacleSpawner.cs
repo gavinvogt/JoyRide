@@ -9,7 +9,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float spawnTimer;
     [SerializeField] private List<GameObject> obstacleSpawners;
     [SerializeField] private List<GameObject> obstaclePrefabs;
-
+    [SerializeField] private List<GameObject> EnemyPrefabs;
     private int currentRandomFlag = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,10 +63,10 @@ public class ObstacleSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         GameObject tempOb = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)], spawner.transform);
-        //tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
-        if(tempOb.name.Contains("Police Car"))
+        tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
+        /*if(tempOb.name.Contains("Police Car"))
         {
             tempOb.GetComponent<PoliceCar>().Spawn();
-        }
+        }*/
     }
 }
