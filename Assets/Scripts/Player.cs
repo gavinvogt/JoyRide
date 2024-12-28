@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(
             (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0), // left/right
             (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0)  // up/down
-        ) * moveSpeed;
+        ).normalized * moveSpeed;
     }
 
     // Update is called once per frame
