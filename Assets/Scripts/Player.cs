@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = car.GetComponent<Rigidbody2D>();
-        car.GetComponent<Car>().player = this;
+        car.SendMessage("SetPlayer", this);
     }
 
     private void FixedUpdate()

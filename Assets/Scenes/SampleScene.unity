@@ -1101,6 +1101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sportsCarPrefab - Initial
       objectReference: {fileID: 0}
+    - target: {fileID: 2624746852365158529, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

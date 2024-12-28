@@ -9,17 +9,8 @@ public class Car : MonoBehaviour
     [SerializeField] private Transform leftJumpPoint;
     [SerializeField] private Transform rightJumpPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // TODO: implement
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // TODO: implement
-    }
+    // moving the gun
+    [SerializeField] private GameObject gun;
 
     void ShootPlayerProjectile(string direction)
     {
@@ -28,11 +19,18 @@ public class Car : MonoBehaviour
 
         // transfer player to the projectile
         projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
-        player = null;
+        Reset();
     }
 
     void SetPlayer(Player player)
     {
         this.player = player;
+        gun.SendMessage("SetPlayer", player);
+    }
+
+    void Reset()
+    {
+        player = null;
+        gun.SendMessage("Reset");
     }
 }
