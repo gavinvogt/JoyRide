@@ -41,7 +41,7 @@ public class ObstacleSpawner : MonoBehaviour
                     obsCounter++;
                     currentRandomFlag = 3;
                 }
-                if (Random.Range(0, 10) < policeRandomFlag && numPoliceCars < 1)
+                if (Random.Range(0, 10) < policeRandomFlag && numPoliceCars < 2)
                 {
                     //StartCoroutine(BlinkWarning(spawner, 0));
                     StartCoroutine(SpawnObstacle(spawner, PolicePrefab));
@@ -99,5 +99,10 @@ public class ObstacleSpawner : MonoBehaviour
     public int GetSpeed()
     {
         return speed;
+    }
+
+    public void DecreasePoliceCount()
+    {
+        numPoliceCars--;
     }
 }
