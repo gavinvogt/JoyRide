@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 
     // current car controlled by player
     [SerializeField] private GameObject car;
-
     private Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +31,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // TODO: implement
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            // Player jump left
+            car.SendMessage("ShootPlayerProjectile", "left");
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Player jump right
+            car.SendMessage("ShootPlayerProjectile", "right");
+        }
     }
 
     private void UpdateCar(GameObject newCar)
