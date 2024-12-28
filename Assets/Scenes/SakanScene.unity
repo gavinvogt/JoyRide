@@ -1308,8 +1308,8 @@ MonoBehaviour:
   - {fileID: 1757189783}
   - {fileID: 746921620}
   NPCPrefabs:
-  - {fileID: 249512639550302531, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
   - {fileID: 249512639550302531, guid: 7f26409a5e0b9294790c1fe7c7fcba71, type: 3}
+  - {fileID: 249512639550302531, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
   maxNumCars: 2
 --- !u!1 &1686906440
 GameObject:
