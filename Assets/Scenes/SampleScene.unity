@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 10153911}
   - component: {fileID: 10153912}
+  - component: {fileID: 10153913}
   m_Layer: 0
   m_Name: Highway
   m_TagString: Untagged
@@ -172,6 +173,27 @@ MonoBehaviour:
   - {fileID: 1686906440}
   - {fileID: 1489898617}
   dotPrefab: {fileID: 7051401455213930461, guid: 24abc559177272e49960d0f654ae60a1, type: 3}
+--- !u!114 &10153913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10153910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59dc2f464e172a438194ad5f1575e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  maxSpawnTimer: 1
+  obstacleSpawners:
+  - {fileID: 917014222}
+  - {fileID: 328811784}
+  - {fileID: 1843626665}
+  obstaclePrefabs:
+  - {fileID: 2345255607838637255, guid: 4fb79a1291134894c8cb025db835043c, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
 --- !u!1 &153268391
 GameObject:
   m_ObjectHideFlags: 0
