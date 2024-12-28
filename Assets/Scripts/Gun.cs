@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class Gun : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    public float fireCooldown;
 
     public Player player;
     private Camera mainCamera;
@@ -26,9 +28,20 @@ public class Gun : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
-                // Fire gun
-                Instantiate(bulletPrefab, firePoint.position + firePoint.forward, firePoint.rotation);
+                // Start firing gun
+                StartCoroutine(Fire());
             }
+        }
+    }
+
+    private IEnumerator Fire()
+    {
+        Instantiate(bulletPrefab, firePoint.position + firePoint.forward, firePoint.rotation);
+        yield return new WaitForSeconds(fireCooldown);
+        if (Input.GetButton("Fire1"))
+        {
+            // Continue firing
+            StartCoroutine(Fire());
         }
     }
 

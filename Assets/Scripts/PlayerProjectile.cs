@@ -17,7 +17,6 @@ public class PlayerProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        Debug.Log(target.tag);
         if (target.CompareTag("Car") && target.gameObject != parentCar)
         {
             if (!hasSwitched)
