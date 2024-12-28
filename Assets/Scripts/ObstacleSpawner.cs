@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class ObstacleSpawner : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float spawnTimer;
     [SerializeField] private List<GameObject> obstacleSpawners;
     [SerializeField] private List<GameObject> obstaclePrefabs;
-    private int currentRandomFlag = 5;
+    private int currentRandomFlag = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,11 +27,11 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 if (Random.Range(0, 10) <  currentRandomFlag && obsCounter < obstacleSpawners.Count -1)
                 {
-                    GameObject tempOb = Instantiate(obstaclePrefabs[Random.Range(0,obstaclePrefabs.Count)], spawner.transform);
-                    tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
+                    StartCoroutine(BlinkWarning(spawner, 0));
+                    StartCoroutine(SpawnObstacle(spawner));
                     obsSpawned = true;
                     obsCounter++;
-                    currentRandomFlag = 5;
+                    currentRandomFlag = 3;
                 }
             }
             if(obsSpawned == false)
@@ -43,5 +44,24 @@ public class ObstacleSpawner : MonoBehaviour
         {
             spawnTimer -= Time.deltaTime;
         }
+    }
+
+    IEnumerator BlinkWarning(GameObject spawner, int numBlinks)
+    {
+        spawner.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(.5f);
+        spawner.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(.5f);
+        numBlinks++;
+        if (numBlinks < 3)
+        {
+            StartCoroutine(BlinkWarning(spawner,numBlinks));
+        }
+    }
+    IEnumerator SpawnObstacle(GameObject spawner)
+    {
+        yield return new WaitForSeconds(3f);
+        GameObject tempOb = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)], spawner.transform);
+        tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
     }
 }
