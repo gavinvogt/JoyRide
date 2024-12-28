@@ -171,7 +171,6 @@ MonoBehaviour:
   dotSpawners:
   - {fileID: 1686906440}
   - {fileID: 1489898617}
-  - {fileID: 1500628293}
   dotPrefab: {fileID: 7051401455213930461, guid: 24abc559177272e49960d0f654ae60a1, type: 3}
 --- !u!1 &153268391
 GameObject:
@@ -183,6 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 153268392}
   - component: {fileID: 153268393}
+  - component: {fileID: 153268394}
   m_Layer: 0
   m_Name: Obstacle Destroyer
   m_TagString: Untagged
@@ -235,7 +235,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -251,6 +251,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 23.53913, y: 2.53305}
   m_EdgeRadius: 0
+--- !u!114 &153268394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153268391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2568398ae4b07e48bb1f98c582d9cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181403006
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,37 +722,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1648016559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1500628293
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1500628294}
-  m_Layer: 0
-  m_Name: lane 3 spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1500628294
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500628293}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1648016559}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1566092500
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +840,6 @@ Transform:
   m_Children:
   - {fileID: 1686906441}
   - {fileID: 1489898618}
-  - {fileID: 1500628294}
   m_Father: {fileID: 10153911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1686906440
