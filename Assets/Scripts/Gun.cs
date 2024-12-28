@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+
     public Player player;
     private Camera mainCamera;
 
@@ -20,6 +23,12 @@ public class Gun : MonoBehaviour
             var targetAngle = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rot = Mathf.Atan2(targetAngle.y, targetAngle.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(rot - 90, Vector3.forward);
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                // Fire gun
+                Instantiate(bulletPrefab, firePoint.position + firePoint.forward, firePoint.rotation);
+            }
         }
     }
 
