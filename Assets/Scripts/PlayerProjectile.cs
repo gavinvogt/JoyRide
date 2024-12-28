@@ -6,6 +6,7 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     public Player player;
+    private GameObject parentCar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +17,7 @@ public class PlayerProjectile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D target)
     {
         Debug.Log(target.tag);
-        if (target.CompareTag("Car"))
+        if (target.CompareTag("Car") && target.gameObject != parentCar)
         {
             Debug.Log("Jump successful");
             player.UpdateCar(target.gameObject);
@@ -32,5 +33,10 @@ public class PlayerProjectile : MonoBehaviour
     void SetPlayer(Player player)
     {
         this.player = player;
+    }
+
+    void SetParent(GameObject parentCar)
+    {
+        this.parentCar = parentCar;
     }
 }

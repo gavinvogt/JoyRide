@@ -19,6 +19,7 @@ public class Car : MonoBehaviour
 
         // transfer player to the projectile
         projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
+        projectile.SendMessage("SetParent", gameObject);
         Reset();
     }
 
