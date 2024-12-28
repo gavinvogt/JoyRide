@@ -49,14 +49,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateCar(GameObject newCar)
+    public void UpdateCar(GameObject newCar)
     {
-        // clean previous car
-        var previousCar = car.GetComponent<Car>();
-        if (previousCar != null) previousCar.player = null;
-
         // update to new car
         car = newCar;
         rb = newCar.GetComponent<Rigidbody2D>();
+        car.SendMessage("SetPlayer", this);
     }
 }

@@ -23,9 +23,16 @@ public class Car : MonoBehaviour
 
     void ShootPlayerProjectile(string direction)
     {
-        var jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
-        Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
-        // player no longer in the car
+        Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
+        GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
+
+        // transfer player to the projectile
+        projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
         player = null;
+    }
+
+    void SetPlayer(Player player)
+    {
+        this.player = player;
     }
 }
