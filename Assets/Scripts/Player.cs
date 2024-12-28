@@ -56,4 +56,9 @@ public class Player : MonoBehaviour
         rb = newCar.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
     }
+
+    public GameObject GetCar()
+    {
+        return car;
+    }
 }
