@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5098356085566452521}
   - component: {fileID: 5401604875018302639}
   - component: {fileID: 1226368088767282357}
-  - component: {fileID: 1013133094533602508}
+  - component: {fileID: 916415067041337753}
   - component: {fileID: 3969541985665354660}
   m_Layer: 0
   m_Name: sportsCarPrefab
@@ -119,8 +119,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1013133094533602508
-BoxCollider2D:
+--- !u!60 &916415067041337753
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -163,8 +163,25 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.22236007, y: 0.76047575}
+      - {x: -0.5373904, y: 0.4385798}
+      - {x: -0.53552926, y: 0.24255905}
+      - {x: -0.4801771, y: 0.2425166}
+      - {x: -0.47473317, y: -0.30678087}
+      - {x: -0.5313953, y: -0.30761293}
+      - {x: -0.5372901, y: -0.5028085}
+      - {x: -0.40206444, y: -0.6239845}
+      - {x: -0.27764088, y: -0.68470937}
+      - {x: 0.22542542, y: -0.68431497}
+      - {x: 0.34115905, y: -0.62727135}
+      - {x: 0.4014725, y: -0.5429319}
+      - {x: 0.4059446, y: 0.24993163}
+      - {x: 0.47045004, y: 0.25018048}
+      - {x: 0.46821618, y: 0.4243549}
+      - {x: 0.15974036, y: 0.75333774}
+  m_UseDelaunayMesh: 0
 --- !u!114 &3969541985665354660
 MonoBehaviour:
   m_ObjectHideFlags: 0
