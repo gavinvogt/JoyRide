@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;
 
-    // current car controlled by player
+    // current car controlled by player, may be null while jumping
     [SerializeField] private GameObject car;
     private Rigidbody2D rb;
 
@@ -22,24 +22,30 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(
-            (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0), // left/right
-            (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0)  // up/down
-        ).normalized * moveSpeed;
+        if (rb != null)
+        {
+            rb.linearVelocity = new Vector2(
+                (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0), // left/right
+                (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0)  // up/down
+            ).normalized * moveSpeed;
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (car != null)
         {
-            // Player jump left
-            car.SendMessage("ShootPlayerProjectile", "left");
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            // Player jump right
-            car.SendMessage("ShootPlayerProjectile", "right");
+            // actions that require player to have a car
+            bool jumpLeft = Input.GetKeyDown(KeyCode.Q);
+            bool jumpRight = Input.GetKeyDown(KeyCode.E);
+            if (jumpLeft || jumpRight)
+            {
+                // Player jumping out of car
+                car.SendMessage("ShootPlayerProjectile", jumpLeft ? "left" : "right");
+                car = null;
+                rb = null;
+            }
         }
     }
 

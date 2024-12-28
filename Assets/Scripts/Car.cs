@@ -25,5 +25,7 @@ public class Car : MonoBehaviour
     {
         var jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
         Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
+        // player no longer in the car
+        player = null;
     }
 }
