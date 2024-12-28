@@ -195,6 +195,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 2345255607838637255, guid: 4fb79a1291134894c8cb025db835043c, type: 3}
   - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  PolicePrefab: {fileID: 0}
 --- !u!1 &153268391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1034,7 @@ GameObject:
   - component: {fileID: 915921873}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1102,11 +1103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25816047
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2729926
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.z
