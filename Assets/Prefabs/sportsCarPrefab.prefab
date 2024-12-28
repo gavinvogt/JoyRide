@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4943898857722297766}
+  - component: {fileID: 2624746852365158529}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 7242424230411387212}
   m_Father: {fileID: 5098356085566452521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2624746852365158529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207697967664101632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3b9a909454d3e45aac354a4263b562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &249512639550302531
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +246,7 @@ MonoBehaviour:
   playerProjectilePrefab: {fileID: 4956113471225737414, guid: 99f4dc9fd09ef55409f0a0b9ff5d49d4, type: 3}
   leftJumpPoint: {fileID: 1108212976764705719}
   rightJumpPoint: {fileID: 1300199227220953563}
+  gun: {fileID: 207697967664101632}
 --- !u!114 &-3541015740689095205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 7908672285071018119}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0.45, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -387,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 8977859573165492373}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.75, y: 0, z: 0}
+  m_LocalPosition: {x: -0.45, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

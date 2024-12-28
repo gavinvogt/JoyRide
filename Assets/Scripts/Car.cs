@@ -8,6 +8,9 @@ public class Car : MonoBehaviour
     [SerializeField] private GameObject playerProjectilePrefab;
     [SerializeField] private Transform leftJumpPoint;
     [SerializeField] private Transform rightJumpPoint;
+    // moving the gun
+    [SerializeField] private GameObject gun;
+
     private bool isRotating;
     private int rotationSpeed = 60;
     private GameObject rotateTarget;
@@ -47,11 +50,19 @@ public class Car : MonoBehaviour
 
         // transfer player to the projectile
         projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
-        player = null;
+        projectile.SendMessage("SetParent", gameObject);
+        Reset();
     }
 
     void SetPlayer(Player player)
     {
         this.player = player;
+        gun.SendMessage("SetPlayer", player);
+    }
+
+    void Reset()
+    {
+        player = null;
+        gun.SendMessage("Reset");
     }
 }
