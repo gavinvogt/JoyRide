@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
             {
                 // Player jumping out of car
                 car.SendMessage("ShootPlayerProjectile", jumpLeft ? "left" : "right");
+                car.SendMessage("RotateCar", jumpLeft ? "left" : "right");
+                car.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
+                car.GetComponent<PolygonCollider2D>().enabled = false;
                 car = null;
                 rb = null;
             }
@@ -55,6 +58,7 @@ public class Player : MonoBehaviour
         car = newCar;
         rb = newCar.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
+        car.GetComponent<CarNPC>().enabled = false;
     }
 
     public GameObject GetCar()
