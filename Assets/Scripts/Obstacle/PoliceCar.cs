@@ -14,12 +14,7 @@ public class PoliceCar : Obstacle
     private int rotationSpeed;
 
     private int timesMoved;
-    private enum Lane
-    {
-        LEFT,
-        MIDDLE,
-        RIGHT
-    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -41,7 +36,7 @@ public class PoliceCar : Obstacle
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(isMoving == true)
         {
@@ -86,8 +81,13 @@ public class PoliceCar : Obstacle
 
     IEnumerator Move(float seconds)
     {
-        movePoint.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x + Random.Range(-2f,2f),-4f,4f), this.transform.position.y);
-        Debug.Log(movePoint.transform.position);
+        float xOffset = Random.Range(-2f, 2f);
+        while(xOffset > -1f && xOffset < 1f)
+        {
+            xOffset = Random.Range(-2f, 2f);
+        }
+        movePoint.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x + xOffset,-4f,4f), this.transform.position.y);
+        
         isMoving = true;
         timesMoved++;
         yield return new WaitForSeconds(seconds);
@@ -103,6 +103,7 @@ public class PoliceCar : Obstacle
             isRotating = false;
             Destroy(movePoint);
             this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+            os.DecreasePoliceCount();
         }
     }
 
