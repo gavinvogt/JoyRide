@@ -1136,6 +1136,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: sportsCarPrefab - Initial
       objectReference: {fileID: 0}
+    - target: {fileID: 4943898857722297766, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943898857722297766, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943898857722297766, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1176,7 +1188,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2624746852365158529, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
