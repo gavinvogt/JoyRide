@@ -105,4 +105,9 @@ public class ObstacleSpawner : MonoBehaviour
     {
         numPoliceCars--;
     }
+
+    public void SetSpeed(int newSpeed)
+    {
+        speed = newSpeed;
+    }
 }

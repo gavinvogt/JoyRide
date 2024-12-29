@@ -318,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   car: {fileID: 1271896830}
+  maxSpeed: 35
   speed: 0
 --- !u!4 &253886693
 Transform:
