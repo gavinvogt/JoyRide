@@ -110,8 +110,8 @@ public class Car : MonoBehaviour
     }
 
     public void DestroyPivot()
-    {
-        Debug.Log("Bing Bong");
+    {      
         Destroy(rotateTarget);
+        Destroy(this.gameObject);
     }
 }

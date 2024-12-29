@@ -9,6 +9,7 @@ public class RoadDotSpawner : MonoBehaviour
     private float spawnTimer;
     [SerializeField] private List<GameObject> dotSpawners;
     [SerializeField] private GameObject dotPrefab;
+ 
     private void Awake()
     {
         
@@ -22,6 +23,7 @@ public class RoadDotSpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        maxSpawnTimer = (40 - speed) / 80f;
         if(spawnTimer < 0)
         {
             foreach(GameObject spawner in dotSpawners)
@@ -36,5 +38,9 @@ public class RoadDotSpawner : MonoBehaviour
         }
     }
 
+    public void SetSpeed(int newSpeed)
+    {
+        speed = newSpeed;
+    }
 
 }

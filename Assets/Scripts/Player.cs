@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject car;
     private Rigidbody2D rb;
 
+    [SerializeField] private int maxSpeed;
     [SerializeField] private int speed;
-
+    private ObstacleSpawner os;
+    private RoadDotSpawner rds;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -20,6 +23,12 @@ public class Player : MonoBehaviour
     {
         rb = car.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
+        os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
+        rds = GameObject.Find("Highway").GetComponent<RoadDotSpawner>();
+        speed = 5;
+        os.SetSpeed(speed);
+        rds.SetSpeed(speed);
+        StartCoroutine(IncreaseSpeed());
     }
 
     private void FixedUpdate()
@@ -70,5 +79,19 @@ public class Player : MonoBehaviour
     {
         car = null;
         rb = null;
+    }
+
+    public float GetSpeedPercentage()
+    {
+        return speed / maxSpeed;
+    }
+
+    IEnumerator IncreaseSpeed()
+    {
+        yield return new WaitForSeconds(10f);
+        speed++;
+        os.SetSpeed(speed);
+        rds.SetSpeed(speed);
+        StartCoroutine(IncreaseSpeed());
     }
 }
