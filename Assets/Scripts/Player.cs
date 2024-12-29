@@ -16,10 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject UI;
     private UI UIScript;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         UIScript = UI.GetComponent<UI>();
+        updatePlayerUI();
     }
 
     private void Awake()
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 
     public float GetSpeedPercentage()
     {
-        return speed / maxSpeed;
+        return (float) speed / (float) maxSpeed;
     }
 
     IEnumerator IncreaseSpeed()
@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
         speed++;
         os.SetSpeed(speed);
         rds.SetSpeed(speed);
+        updatePlayerUI();
         if (speed < maxSpeed)
         {
             StartCoroutine(IncreaseSpeed());
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
     }
     public void updatePlayerUI()
     {
+        Debug.Log("In updatePlayerUI");
         UIScript.updateUI(this.gameObject);
     }
 }
