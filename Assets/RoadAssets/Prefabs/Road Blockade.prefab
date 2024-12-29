@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 427052071702204068}
   - component: {fileID: 5158067504755907337}
   - component: {fileID: -5802297320912166855}
-  - component: {fileID: -6873975723234121700}
+  - component: {fileID: 4351192858138427296}
   - component: {fileID: 3574938694892938191}
   m_Layer: 0
   m_Name: Road Blockade
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 98f52532328962141b6e4ecbdf74b488, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,8 +117,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &-6873975723234121700
-CircleCollider2D:
+--- !u!60 &4351192858138427296
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,7 +152,22 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.63122356, y: 0.18874717}
+      - {x: -0.63545656, y: 0.19298029}
+      - {x: -0.6230097, y: -0.51293874}
+      - {x: 0.6299646, y: -0.5077224}
+  m_UseDelaunayMesh: 0
 --- !u!114 &3574938694892938191
 MonoBehaviour:
   m_ObjectHideFlags: 0
