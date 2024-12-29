@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject car;
     private Rigidbody2D rb;
 
+    [SerializeField] private int speed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -43,9 +45,7 @@ public class Player : MonoBehaviour
             {
                 // Player jumping out of car
                 car.SendMessage("ShootPlayerProjectile", jumpLeft ? "left" : "right");
-                car.SendMessage("RotateCar", jumpLeft ? "left" : "right");
-                car.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
-                car.GetComponent<PolygonCollider2D>().enabled = false;
+                car.SendMessage("Die");
                 car = null;
                 rb = null;
             }
@@ -64,5 +64,11 @@ public class Player : MonoBehaviour
     public GameObject GetCar()
     {
         return car;
+    }
+
+    public void NullCar()
+    {
+        car = null;
+        rb = null;
     }
 }

@@ -5,7 +5,6 @@ public class CarNPC : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject movePoint;
-    private bool isMoving;
     private int moveSpeed;
 
     private void Awake()
@@ -13,7 +12,6 @@ public class CarNPC : MonoBehaviour
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         movePoint = new GameObject();
         movePoint.transform.parent = transform.parent;
-        isMoving = false;
         moveSpeed = 4;        
     }
 
