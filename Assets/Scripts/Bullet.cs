@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     public float speed;
-
+    [SerializeField] private int damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         } else if (target.CompareTag("Enemy")) {
-            target.gameObject.GetComponent<PoliceCar>().DecreaseHealth();
+            target.gameObject.GetComponent<PoliceCar>().DecreaseHealth(damage);
             Destroy(gameObject);
         }
     }
