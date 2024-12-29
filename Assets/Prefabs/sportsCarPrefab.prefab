@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4943898857722297766}
-  - component: {fileID: 2624746852365158529}
+  - component: {fileID: 8265235647571772289}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207697967664101632}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.03, y: -0.0625, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 8598394433836023114}
   m_Father: {fileID: 5098356085566452521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2624746852365158529
+--- !u!114 &8265235647571772289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,12 +43,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 207697967664101632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3b9a909454d3e45aac354a4263b562, type: 3}
+  m_Script: {fileID: 11500000, guid: d2437b463c3b1914c98b2397c420e986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8264183660406818181, guid: 8503ee883cb3292499cb125f37be7869, type: 3}
   firePoint: {fileID: 8598394433836023114}
-  fireCooldown: 0.05
+  fireCooldown: 0.1
   player: {fileID: 0}
 --- !u!1 &249512639550302531
 GameObject:

@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class Gun : MonoBehaviour
+public abstract class Gun : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] protected Transform firePoint;
     public float fireCooldown;
 
     public Player player;
-    private Camera mainCamera;
-    private Car car;
+    protected Camera mainCamera;
+    protected Car car;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,20 +36,11 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private IEnumerator Fire()
-    {
-        if (car.getCurrentAmmo() > 0) {
-            car.useAmmo();
-            player.GetComponent<Player>().updatePlayerUI();
-            Instantiate(bulletPrefab, firePoint.position + firePoint.forward, firePoint.rotation);
-            yield return new WaitForSeconds(fireCooldown);
-            if (Input.GetButton("Fire1"))
-            {
-                // Continue firing
-                StartCoroutine(Fire());
-            }
-        }
-    }
+    /// <summary>
+    /// Coroutine for firing while the Fire1 button is pressed. Should fire, await the cooldown,
+    /// and recurse if Fire1 is still pressed.
+    /// </summary>
+    abstract public IEnumerator Fire();
 
     void SetPlayer(Player player)
     {
