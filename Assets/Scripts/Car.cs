@@ -60,16 +60,13 @@ public class Car : MonoBehaviour
 
     void ShootPlayerProjectile(string direction)
     {
-        if (currentAmmoCount > 0) {
-            currentAmmoCount--;
-            Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
-            GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
+        Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
+        GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
 
-            // transfer player to the projectile
-            projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
-            projectile.SendMessage("SetParent", gameObject);
-            Reset();
-        }
+        // transfer player to the projectile
+        projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
+        projectile.SendMessage("SetParent", gameObject);
+        Reset();
     }
 
     void SetPlayer(Player player)
