@@ -30,9 +30,13 @@ public class MachineGun : Gun
             else if (blastAudioSource != null)
             {
                 // Stop sound effect
-                Destroy(blastAudioSource.gameObject);
-                blastAudioSource = null;
+                StopShotSound();
             }
+        }
+        else
+        {
+            // out of ammo, stop shooting
+            StopShotSound();
         }
     }
 
@@ -44,12 +48,17 @@ public class MachineGun : Gun
         );
     }
 
-    private void OnDestroy()
+    private void StopShotSound()
     {
         if (blastAudioSource != null)
         {
-            // Stop sound effect if running
             Destroy(blastAudioSource.gameObject);
+            blastAudioSource = null;
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopShotSound();
     }
 }
