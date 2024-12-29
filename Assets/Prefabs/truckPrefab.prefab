@@ -379,12 +379,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8264183660406818181, guid: 8503ee883cb3292499cb125f37be7869, type: 3}
   firePoint: {fileID: 6598871393465486245}
-  fireCooldown: 0.9
+  fireCooldown: 0.8
   player: {fileID: 0}
   bulletSpreadFactorHorizontal: 0.3
   bulletSpreadFactorAngle: 15
   bulletsPerShot: 10
-  bulletLifeSpan: 0.1
+  bulletLifeSpan: 0.125
 --- !u!1 &7908672285071018119
 GameObject:
   m_ObjectHideFlags: 0

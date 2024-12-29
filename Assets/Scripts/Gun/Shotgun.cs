@@ -9,11 +9,13 @@ public class Shotgun : Gun
     [SerializeField] private float bulletSpreadFactorAngle;
     [SerializeField] private int bulletsPerShot;
     [SerializeField] private float bulletLifeSpan;
+    private bool canFire = true;
 
     override public IEnumerator Fire()
     {
-        if (car.getCurrentAmmo() > 0)
+        if (canFire && car.getCurrentAmmo() > 0)
         {
+            canFire = false;
             car.useAmmo();
             player.GetComponent<Player>().updatePlayerUI();
 
@@ -25,11 +27,7 @@ public class Shotgun : Gun
 
             // Continue firing after cooldown
             yield return new WaitForSeconds(fireCooldown);
-            if (Input.GetButton("Fire1"))
-            {
-                // Continue firing
-                StartCoroutine(Fire());
-            }
+            canFire = true;
         }
     }
 
