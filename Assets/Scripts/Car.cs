@@ -14,10 +14,24 @@ public class Car : MonoBehaviour
     private bool isRotating;
     private int rotationSpeed = 60;
     private GameObject rotateTarget;
+
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
+    [SerializeField] private int maxAmmoCount;
+    private int currentAmmoCount;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // TODO: implement
+    }
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+        currentAmmoCount = maxAmmoCount;
+
+        rotateTarget = new GameObject();
     }
 
     // Update is called once per frame
@@ -32,7 +46,6 @@ public class Car : MonoBehaviour
 
     public void RotateCar(string direction)
     {
-        rotateTarget = new GameObject();
         if (direction == "left")
         {
             rotateTarget.transform.eulerAngles = new Vector3(0, 0, Random.Range(-91, -60));
@@ -64,5 +77,41 @@ public class Car : MonoBehaviour
     {
         player = null;
         gun.SendMessage("Reset");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Obstacle")
+        {
+            currentHealth--;
+        }
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        if (player != null)
+        {
+            player.SendMessage("NullCar");
+            player = null;
+        }
+        this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
+        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        if(Random.Range(0,2) < 1)
+        {
+            RotateCar("left");
+        } else
+        {
+            RotateCar("Right");
+        }
+    }
+
+    public void DestroyPivot()
+    {
+        Debug.Log("Bing Bong");
+        Destroy(rotateTarget);
     }
 }

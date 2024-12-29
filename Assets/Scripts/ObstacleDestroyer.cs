@@ -17,6 +17,10 @@ public class ObstacleDestroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Car")
+        {
+            collision.gameObject.GetComponent<Car>().DestroyPivot();
+        }
         Destroy(collision.gameObject);
     }
 }
