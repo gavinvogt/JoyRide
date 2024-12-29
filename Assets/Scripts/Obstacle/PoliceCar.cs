@@ -15,6 +15,8 @@ public class PoliceCar : Obstacle
 
     private int timesMoved;
 
+    private int health;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -28,6 +30,8 @@ public class PoliceCar : Obstacle
         movePoint.transform.parent = transform.parent;
 
         timesMoved = 0;
+
+        health = 40;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -107,4 +111,9 @@ public class PoliceCar : Obstacle
         }
     }
 
+    public void DecreaseHealth()
+    {
+        health--;
+        Debug.LogWarning(health);
+    }
 }
