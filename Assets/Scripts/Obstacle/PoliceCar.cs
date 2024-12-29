@@ -105,11 +105,11 @@ public class PoliceCar : Obstacle
         }
     }
 
-    public void DecreaseHealth()
+    public void DecreaseHealth(int damage)
     {
         if (health > 0)
         {
-            health--;
+            health -= damage;
         } else
         {
             gameObject.tag = "obstacle";
