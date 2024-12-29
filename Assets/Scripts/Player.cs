@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int moveSpeed;
-
     // current car controlled by player, may be null while jumping
     [SerializeField] private GameObject car;
     private Rigidbody2D rb;
 
     [SerializeField] private int speed;
 
+    [SerializeField] private GameObject UI;
+    private UI UIScript;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        // TODO: implement
+        UIScript = UI.GetComponent<UI>();
     }
 
     private void Awake()
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
             rb.linearVelocity = new Vector2(
                 (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0), // left/right
                 (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0)  // up/down
-            ).normalized * moveSpeed;
+            ).normalized * car.GetComponent<Car>().getDrivingSpeed();
         }
     }
 
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
         rb = newCar.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
         car.GetComponent<CarNPC>().enabled = false;
+        updatePlayerUI();
     }
 
     public GameObject GetCar()
@@ -70,5 +72,10 @@ public class Player : MonoBehaviour
     {
         car = null;
         rb = null;
+    }
+
+    public void updatePlayerUI()
+    {
+        UIScript.updateUI(this.gameObject);
     }
 }

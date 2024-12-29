@@ -654,8 +654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b86f61b85091924684c0524e3270fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
   car: {fileID: 1238987277}
+  speed: 0
+  UI: {fileID: 1546838723}
 --- !u!1 &510844637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1250,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1648016559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1546838723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7233858749201975585, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
+  m_PrefabInstance: {fileID: 1182017943308454635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1566092500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1572,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7351545384956149580, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659439647141838037, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659439647141838037, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659439647141838037, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}

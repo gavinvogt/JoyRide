@@ -15,6 +15,8 @@ public class Car : MonoBehaviour
     private int rotationSpeed = 60;
     private GameObject rotateTarget;
 
+    [SerializeField] private int drivingSpeed;
+
     [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] private int maxAmmoCount;
@@ -58,13 +60,16 @@ public class Car : MonoBehaviour
 
     void ShootPlayerProjectile(string direction)
     {
-        Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
-        GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
+        if (currentAmmoCount > 0) {
+            currentAmmoCount--;
+            Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
+            GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
 
-        // transfer player to the projectile
-        projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
-        projectile.SendMessage("SetParent", gameObject);
-        Reset();
+            // transfer player to the projectile
+            projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
+            projectile.SendMessage("SetParent", gameObject);
+            Reset();
+        }
     }
 
     void SetPlayer(Player player)
@@ -113,5 +118,28 @@ public class Car : MonoBehaviour
     {
         Debug.Log("Bing Bong");
         Destroy(rotateTarget);
+    }
+
+    public float getHealthPercentage()
+    {
+        return (float)currentHealth / (float)maxHealth;
+    }
+
+    public float getAmmoPercentage()
+    {
+        return (float)currentAmmoCount / (float)maxAmmoCount;
+    }
+    public int getCurrentAmmo()
+    {
+        return currentAmmoCount;
+    }
+    public void useAmmo()
+    {
+        currentAmmoCount--;
+    }
+
+    public int getDrivingSpeed()
+    {
+        return drivingSpeed;
     }
 }
