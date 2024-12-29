@@ -25,7 +25,7 @@ public class Shotgun : Gun
             ).ToArray();
             StartCoroutine(DestroyBullets(bullets));
 
-            // Continue firing after cooldown
+            // Allow firing after cooldown
             yield return new WaitForSeconds(fireCooldown);
             canFire = true;
         }

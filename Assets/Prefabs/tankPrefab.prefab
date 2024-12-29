@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5170527773187782471}
-  - component: {fileID: 2745194378261225619}
+  - component: {fileID: 3347033588235199204}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2526092823330695908}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.005, y: -0.0625, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 122545559244891761}
   m_Father: {fileID: 4491059216406585812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2745194378261225619
+--- !u!114 &3347033588235199204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,13 +43,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2526092823330695908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3b9a909454d3e45aac354a4263b562, type: 3}
+  m_Script: {fileID: 11500000, guid: 30ba299281761fc4987a18b5dd02d731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8264183660406818181, guid: 8503ee883cb3292499cb125f37be7869, type: 3}
   firePoint: {fileID: 122545559244891761}
-  fireCooldown: 0.05
+  fireCooldown: 1.5
   player: {fileID: 0}
+  rocketSpreadFactorAngle: 8
 --- !u!1 &5123288727304669279
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +374,7 @@ MonoBehaviour:
   leftJumpPoint: {fileID: 224590735937452560}
   rightJumpPoint: {fileID: 2064041238904172204}
   gun: {fileID: 2526092823330695908}
+  cursorTexture: {fileID: 2800000, guid: 864b2112f4f18b34d931aaa0a9f856b1, type: 3}
   drivingSpeed: 4
   maxHealth: 4
   maxAmmoCount: 20

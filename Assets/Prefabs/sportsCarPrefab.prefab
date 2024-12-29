@@ -50,6 +50,7 @@ MonoBehaviour:
   firePoint: {fileID: 8598394433836023114}
   fireCooldown: 0.1
   player: {fileID: 0}
+  bulletSpreadFactorAngle: 10
 --- !u!1 &249512639550302531
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +252,7 @@ MonoBehaviour:
   leftJumpPoint: {fileID: 1108212976764705719}
   rightJumpPoint: {fileID: 1300199227220953563}
   gun: {fileID: 207697967664101632}
+  cursorTexture: {fileID: 2800000, guid: 864b2112f4f18b34d931aaa0a9f856b1, type: 3}
   drivingSpeed: 10
   maxHealth: 2
   maxAmmoCount: 150
