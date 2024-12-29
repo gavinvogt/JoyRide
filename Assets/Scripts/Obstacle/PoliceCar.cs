@@ -16,7 +16,8 @@ public class PoliceCar : Obstacle
     private int timesMoved;
 
     private int health;
-    
+    [SerializeField] private HealthBar healthBar;
+
     protected override void Awake()
     {
         base.Awake();
@@ -32,22 +33,18 @@ public class PoliceCar : Obstacle
         timesMoved = 0;
 
         health = 40;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+        healthBar.SetMaxHealth(health);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isMoving == true && movePoint != null)
+        if (isMoving == true && movePoint != null)
         {
             float step = moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
         }
-        if(isRotating == true && movePoint != null)
+        if (isRotating == true && movePoint != null)
         {
             float step = rotationSpeed * (movePoint.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, movePoint.transform.rotation, step);
@@ -74,10 +71,11 @@ public class PoliceCar : Obstacle
         tempOb.transform.parent = null;
         tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * bulletSpeed);
         numShot++;
-        if(numShot < 3)
+        if (numShot < 3)
         {
             StartCoroutine(Shoot(numShot));
-        } else
+        }
+        else
         {
             StartCoroutine(Move(3f));
         }
@@ -86,12 +84,12 @@ public class PoliceCar : Obstacle
     IEnumerator Move(float seconds)
     {
         float xOffset = Random.Range(-2f, 2f);
-        while(xOffset > -1f && xOffset < 1f)
+        while (xOffset > -1f && xOffset < 1f)
         {
             xOffset = Random.Range(-2f, 2f);
         }
-        movePoint.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x + xOffset,-4f,4f), this.transform.position.y);
-        
+        movePoint.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), this.transform.position.y);
+
         isMoving = true;
         timesMoved++;
         yield return new WaitForSeconds(seconds);
@@ -99,7 +97,8 @@ public class PoliceCar : Obstacle
         if (timesMoved < 3)
         {
             StartCoroutine(Shoot(0));
-        } else
+        }
+        else
         {
             StartCoroutine(Die());
         }
@@ -110,6 +109,7 @@ public class PoliceCar : Obstacle
         if (health > 0)
         {
             health -= damage;
+            healthBar.SetHealth(health);
         }
         if (health <= 0)
         {
