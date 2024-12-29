@@ -120,11 +120,17 @@ public class PoliceCar : Obstacle
 
     IEnumerator Die()
     {
+        // remove health bar
+        Destroy(healthBar.gameObject);
         this.gameObject.tag = "Obstacle";
+
+        // rotate the police car
         isRotating = true;
         movePoint.transform.eulerAngles = new Vector3(0, 0, Random.Range(60, 91));
         yield return new WaitForSeconds(1.5f);
         isRotating = false;
+
+        // send the police car down the screen as an obstacle
         Destroy(movePoint);
         this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         os.DecreasePoliceCount();
