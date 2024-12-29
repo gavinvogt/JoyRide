@@ -198,8 +198,9 @@ MonoBehaviour:
   leftJumpPoint: {fileID: 1108212976764705719}
   rightJumpPoint: {fileID: 1300199227220953563}
   gun: {fileID: 7256193882495360041}
+  drivingSpeed: 8
   maxHealth: 3
-  maxAmmoCount: 0
+  maxAmmoCount: 30
 --- !u!114 &421762710008633274
 MonoBehaviour:
   m_ObjectHideFlags: 0

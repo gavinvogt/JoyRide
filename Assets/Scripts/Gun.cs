@@ -9,10 +9,12 @@ public class Gun : MonoBehaviour
 
     public Player player;
     private Camera mainCamera;
+    private Car car;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        car = this.transform.parent.GetComponent<Car>();
         mainCamera = Camera.main;
     }
 
@@ -36,12 +38,16 @@ public class Gun : MonoBehaviour
 
     private IEnumerator Fire()
     {
-        Instantiate(bulletPrefab, firePoint.position + firePoint.forward, firePoint.rotation);
-        yield return new WaitForSeconds(fireCooldown);
-        if (Input.GetButton("Fire1"))
-        {
-            // Continue firing
-            StartCoroutine(Fire());
+        if (car.getCurrentAmmo() > 0) {
+            car.useAmmo();
+            player.GetComponent<Player>().updatePlayerUI();
+            Instantiate(bulletPrefab, firePoint.position + firePoint.forward, firePoint.rotation);
+            yield return new WaitForSeconds(fireCooldown);
+            if (Input.GetButton("Fire1"))
+            {
+                // Continue firing
+                StartCoroutine(Fire());
+            }
         }
     }
 
