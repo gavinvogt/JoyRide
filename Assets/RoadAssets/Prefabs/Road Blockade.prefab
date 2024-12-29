@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6873975723234121700}
   - component: {fileID: 3574938694892938191}
   m_Layer: 0
-  m_Name: Mine
+  m_Name: Road Blockade
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
