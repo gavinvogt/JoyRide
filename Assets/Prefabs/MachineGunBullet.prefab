@@ -195,4 +195,4 @@ MonoBehaviour:
   rb: {fileID: 5702500132364301535}
   speed: 35
   damage: 1
-  hitSound: {fileID: 8300000, guid: 8734e3d292963004a8fc2fdb1330faf6, type: 3}
+  hitSound: {fileID: 0}

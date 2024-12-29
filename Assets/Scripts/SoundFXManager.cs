@@ -30,4 +30,15 @@ public class SoundFXManager : MonoBehaviour
     {
         PlaySoundFXClip(audioClips[Random.Range(0, audioClips.Length)], spawnTransform, volume);
     }
+
+    public AudioSource LoopSoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        // play the sound on loop
+        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.loop = true;
+        audioSource.Play();
+        return audioSource;
+    }
 }
