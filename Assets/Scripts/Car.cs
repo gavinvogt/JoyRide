@@ -89,6 +89,7 @@ public class Car : MonoBehaviour
         if(collision.gameObject.tag == "Obstacle")
         {
             currentHealth--;
+            player.GetComponent<Player>().updatePlayerUI();
         }
         if(currentHealth <= 0)
         {
