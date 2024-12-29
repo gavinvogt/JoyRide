@@ -11,6 +11,8 @@ public class Car : MonoBehaviour
     [SerializeField] private Transform rightJumpPoint;
     // moving the gun
     [SerializeField] private GameObject gun;
+    // gun cursor
+    [SerializeField] private Texture2D cursorTexture;
 
     private bool isRotating;
     private int rotationSpeed = 60;
@@ -22,11 +24,11 @@ public class Car : MonoBehaviour
     private int currentHealth;
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // TODO: implement
+        if (player != null) OverrideCursor();
     }
 
     private void Awake()
@@ -40,7 +42,7 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isRotating == true)
+        if (isRotating == true)
         {
             float step = rotationSpeed * (rotateTarget.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotateTarget.transform.rotation, step);
@@ -52,7 +54,8 @@ public class Car : MonoBehaviour
         if (direction == "left")
         {
             rotateTarget.transform.eulerAngles = new Vector3(0, 0, Random.Range(-91, -60));
-        } else
+        }
+        else
         {
             rotateTarget.transform.eulerAngles = new Vector3(0, 0, Random.Range(60, 91));
         }
@@ -74,6 +77,7 @@ public class Car : MonoBehaviour
     {
         this.player = player;
         gun.SendMessage("SetPlayer", player);
+        if (player != null) OverrideCursor();
     }
 
     void Reset()
@@ -84,7 +88,7 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Obstacle")
         {
             currentHealth--;
             if (player != null)
@@ -92,7 +96,7 @@ public class Car : MonoBehaviour
                 player.GetComponent<Player>().updatePlayerUI();
             }
         }
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -105,11 +109,12 @@ public class Car : MonoBehaviour
             player.SendMessage("NullCar");
         }
         this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
-        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        if(Random.Range(0,2) < 1)
+        this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
+        if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");
-        } else
+        }
+        else
         {
             RotateCar("Right");
         }
@@ -146,5 +151,11 @@ public class Car : MonoBehaviour
     public int getDrivingSpeed()
     {
         return drivingSpeed;
+    }
+
+    private void OverrideCursor()
+    {
+        var cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
     }
 }

@@ -198,6 +198,7 @@ MonoBehaviour:
   leftJumpPoint: {fileID: 1108212976764705719}
   rightJumpPoint: {fileID: 1300199227220953563}
   gun: {fileID: 7256193882495360041}
+  cursorTexture: {fileID: 2800000, guid: 864b2112f4f18b34d931aaa0a9f856b1, type: 3}
   drivingSpeed: 8
   maxHealth: 3
   maxAmmoCount: 30
@@ -340,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590503991523427857}
-  - component: {fileID: 4791049684702890622}
+  - component: {fileID: 1388724842370352624}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -365,7 +366,7 @@ Transform:
   - {fileID: 6598871393465486245}
   m_Father: {fileID: 5098356085566452521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.3}
---- !u!114 &4791049684702890622
+--- !u!114 &1388724842370352624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,13 +375,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7256193882495360041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3b9a909454d3e45aac354a4263b562, type: 3}
+  m_Script: {fileID: 11500000, guid: 8946c0dda8a0d3e4780d7c00c20b7a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3010426862311063243, guid: 87ebfaaaaf44da74aa2edb33fafaa10c, type: 3}
+  bulletPrefab: {fileID: 4161458187404147121, guid: d79977425adea8549a2c92bea81ac653, type: 3}
   firePoint: {fileID: 6598871393465486245}
-  fireCooldown: 0
+  fireCooldown: 0.8
   player: {fileID: 0}
+  bulletSpreadFactorHorizontal: 0.3
+  bulletSpreadFactorAngle: 15
+  bulletsPerShot: 10
+  bulletLifeSpan: 0.125
 --- !u!1 &7908672285071018119
 GameObject:
   m_ObjectHideFlags: 0

@@ -83,7 +83,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         GameObject tempOb = Instantiate(obstacle, spawner.transform);
-        if(tempOb.name.Contains("Mine"))
+        if(tempOb.name.Contains("Road Blockade"))
         {
             tempOb.GetComponent<Mine>().Spawn();
         } else if (tempOb.name.Contains("Booster"))
