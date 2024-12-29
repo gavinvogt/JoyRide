@@ -5,18 +5,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public float speed;
     [SerializeField] private int damage;
-    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip[] hitSounds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb.linearVelocity = transform.up * speed;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void OnTriggerEnter2D(Collider2D target)
@@ -36,6 +30,6 @@ public class Bullet : MonoBehaviour
 
     void PlaySound()
     {
-        SoundFXManager.instance.PlaySoundFXClip(hitSound, transform, 1f);
+        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.5f);
     }
 }
