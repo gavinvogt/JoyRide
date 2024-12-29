@@ -50,6 +50,7 @@ MonoBehaviour:
   firePoint: {fileID: 8598394433836023114}
   fireCooldown: 0.1
   player: {fileID: 0}
+  bulletSpreadFactorAngle: 10
 --- !u!1 &249512639550302531
 GameObject:
   m_ObjectHideFlags: 0
