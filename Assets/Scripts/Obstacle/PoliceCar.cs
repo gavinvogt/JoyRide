@@ -42,12 +42,12 @@ public class PoliceCar : Obstacle
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isMoving == true)
+        if(isMoving == true && movePoint != null)
         {
             float step = moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
         }
-        if(isRotating == true)
+        if(isRotating == true && movePoint != null)
         {
             float step = rotationSpeed * (movePoint.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, movePoint.transform.rotation, step);
@@ -113,7 +113,6 @@ public class PoliceCar : Obstacle
         }
         if (health <= 0)
         {
-            gameObject.tag = "obstacle";
             StopAllCoroutines();
             StartCoroutine(Die());
         }
@@ -121,6 +120,7 @@ public class PoliceCar : Obstacle
 
     IEnumerator Die()
     {
+        this.gameObject.tag = "Obstacle";
         isRotating = true;
         movePoint.transform.eulerAngles = new Vector3(0, 0, Random.Range(60, 91));
         yield return new WaitForSeconds(1.5f);

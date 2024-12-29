@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Car : MonoBehaviour
 {
@@ -106,10 +107,9 @@ public class Car : MonoBehaviour
         if (player != null)
         {
             player.SendMessage("NullCar");
-            player = null;
         }
         this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
-        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");
@@ -121,7 +121,11 @@ public class Car : MonoBehaviour
     }
 
     public void DestroyPivot()
-    {
+    {   
+        if(player != null)
+        {
+            SceneManager.LoadScene(sceneName: "EndScreen");
+        }
         Destroy(rotateTarget);
         Destroy(this.gameObject);
     }
