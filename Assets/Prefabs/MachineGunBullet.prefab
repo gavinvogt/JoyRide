@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3203165956857606267}
   - component: {fileID: 569128796386496523}
   - component: {fileID: 5702500132364301535}
-  - component: {fileID: 7593155202166594306}
+  - component: {fileID: 5658320525593054268}
   - component: {fileID: 4663316894183861511}
   m_Layer: 0
   m_Name: MachineGunBullet
@@ -117,8 +117,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &7593155202166594306
-BoxCollider2D:
+--- !u!60 &5658320525593054268
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,8 +161,25 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.00024080276, y: 0.09393346}
+      - {x: -0.00045251846, y: 0.07875943}
+      - {x: -0.015925765, y: 0.07830882}
+      - {x: -0.015954375, y: 0.06295025}
+      - {x: -0.03119266, y: 0.06322241}
+      - {x: -0.031515718, y: -0.047089577}
+      - {x: -0.0158993, y: -0.0470016}
+      - {x: -0.01586008, y: -0.0627656}
+      - {x: 0.031243801, y: -0.06276572}
+      - {x: 0.031344414, y: -0.047076344}
+      - {x: 0.04681766, y: -0.047115803}
+      - {x: 0.04681766, y: 0.0625}
+      - {x: 0.031948686, y: 0.06263423}
+      - {x: 0.031739473, y: 0.077773094}
+      - {x: 0.016225457, y: 0.07871711}
+      - {x: 0.015292048, y: 0.09385359}
+  m_UseDelaunayMesh: 0
 --- !u!114 &4663316894183861511
 MonoBehaviour:
   m_ObjectHideFlags: 0

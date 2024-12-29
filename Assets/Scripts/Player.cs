@@ -104,7 +104,6 @@ public class Player : MonoBehaviour
     }
     public void updatePlayerUI()
     {
-        Debug.Log("In updatePlayerUI");
         UIScript.updateUI(this.gameObject);
     }
 }

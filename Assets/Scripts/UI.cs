@@ -22,7 +22,6 @@ public class UI : MonoBehaviour
         updateHealth(playerScript.GetCar().GetComponent<Car>().getHealthPercentage());
         updateAmmo(playerScript.GetCar().GetComponent<Car>().getAmmoPercentage());
         updateSpeed(playerScript.GetSpeedPercentage());
-        Debug.Log("in updateUI with speed: " + playerScript.GetSpeedPercentage());
     }
 
     public void updateHealth(float healthPercentage)
@@ -37,9 +36,7 @@ public class UI : MonoBehaviour
     }
     public void updateSpeed(float speedPercentage)
     {
-        Debug.Log("in updateSpeed with speed: " + speedPercentage);
         float angleOfGauge = 90f + (180 * speedPercentage);
-        Debug.Log("in updateSpeed with angleOfGauge: " + angleOfGauge);
         speedGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
     }
 }
