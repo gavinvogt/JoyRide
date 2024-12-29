@@ -101,19 +101,31 @@ public class PoliceCar : Obstacle
             StartCoroutine(Shoot(0));
         } else
         {
-            isRotating = true;
-            movePoint.transform.eulerAngles = new Vector3(0, 0, Random.Range(60,91));
-            yield return new WaitForSeconds(1.5f);
-            isRotating = false;
-            Destroy(movePoint);
-            this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
-            os.DecreasePoliceCount();
+            StartCoroutine(Die());
         }
     }
 
     public void DecreaseHealth()
     {
-        health--;
-        Debug.LogWarning(health);
+        if (health > 0)
+        {
+            health--;
+        } else
+        {
+            gameObject.tag = "obstacle";
+            StopAllCoroutines();
+            StartCoroutine(Die());
+        }
+    }
+
+    IEnumerator Die()
+    {
+        isRotating = true;
+        movePoint.transform.eulerAngles = new Vector3(0, 0, Random.Range(60, 91));
+        yield return new WaitForSeconds(1.5f);
+        isRotating = false;
+        Destroy(movePoint);
+        this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+        os.DecreasePoliceCount();
     }
 }

@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         } else if (target.CompareTag("Enemy")) {
-            target.GetComponent<PoliceCar>().DecreaseHealth();
+            target.gameObject.GetComponent<PoliceCar>().DecreaseHealth();
             Destroy(gameObject);
         }
     }
