@@ -96,7 +96,10 @@ public class Player : MonoBehaviour
         speed++;
         os.SetSpeed(speed);
         rds.SetSpeed(speed);
-        StartCoroutine(IncreaseSpeed());
+        if (speed < maxSpeed)
+        {
+            StartCoroutine(IncreaseSpeed());
+        }
     }
     public void updatePlayerUI()
     {
