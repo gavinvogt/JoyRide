@@ -15,6 +15,8 @@ public class PoliceCar : Obstacle
 
     private int timesMoved;
 
+    private int health;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -28,6 +30,8 @@ public class PoliceCar : Obstacle
         movePoint.transform.parent = transform.parent;
 
         timesMoved = 0;
+
+        health = 40;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -97,14 +101,31 @@ public class PoliceCar : Obstacle
             StartCoroutine(Shoot(0));
         } else
         {
-            isRotating = true;
-            movePoint.transform.eulerAngles = new Vector3(0, 0, Random.Range(60,91));
-            yield return new WaitForSeconds(1.5f);
-            isRotating = false;
-            Destroy(movePoint);
-            this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
-            os.DecreasePoliceCount();
+            StartCoroutine(Die());
         }
     }
 
+    public void DecreaseHealth()
+    {
+        if (health > 0)
+        {
+            health--;
+        } else
+        {
+            gameObject.tag = "obstacle";
+            StopAllCoroutines();
+            StartCoroutine(Die());
+        }
+    }
+
+    IEnumerator Die()
+    {
+        isRotating = true;
+        movePoint.transform.eulerAngles = new Vector3(0, 0, Random.Range(60, 91));
+        yield return new WaitForSeconds(1.5f);
+        isRotating = false;
+        Destroy(movePoint);
+        this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+        os.DecreasePoliceCount();
+    }
 }

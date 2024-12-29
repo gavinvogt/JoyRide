@@ -22,6 +22,9 @@ public class Bullet : MonoBehaviour
         if (target.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
+        } else if (target.CompareTag("Enemy")) {
+            target.gameObject.GetComponent<PoliceCar>().DecreaseHealth();
+            Destroy(gameObject);
         }
     }
 }
