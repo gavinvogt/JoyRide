@@ -417,6 +417,9 @@ MonoBehaviour:
   maxSpeed: 35
   speed: 0
   UI: {fileID: 1838620055}
+  jumpAudioClips:
+  - {fileID: 8300000, guid: ae5fcd17e7cca63478bc377548852195, type: 3}
+  - {fileID: 8300000, guid: 6d0b97f1a34843346be0a41bedc407ad, type: 3}
 --- !u!4 &253886693
 Transform:
   m_ObjectHideFlags: 0
