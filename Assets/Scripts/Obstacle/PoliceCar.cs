@@ -110,7 +110,8 @@ public class PoliceCar : Obstacle
         if (health > 0)
         {
             health -= damage;
-        } else
+        }
+        if (health <= 0)
         {
             gameObject.tag = "obstacle";
             StopAllCoroutines();
