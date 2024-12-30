@@ -120,7 +120,7 @@ public class PoliceCar : Obstacle, BaseEnemy
     {
         // remove health bar
         Destroy(healthBar.gameObject);
-        this.gameObject.tag = "Obstacle";
+        gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
 
         // rotate the police car
         isRotating = true;
@@ -130,7 +130,7 @@ public class PoliceCar : Obstacle, BaseEnemy
 
         // send the police car down the screen as an obstacle
         Destroy(movePoint);
-        this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+        gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         os.DecreasePoliceCount();
     }
 }

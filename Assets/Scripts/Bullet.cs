@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.CompareTag("Obstacle"))
+        if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
         {
             Destroy(gameObject);
             PlaySound();

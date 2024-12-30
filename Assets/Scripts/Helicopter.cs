@@ -70,7 +70,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     {
         // remove health bar
         Destroy(healthBar.gameObject);
-        gameObject.tag = "Obstacle";
+        gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
         isHovering = false;
 
         // rotate the helicopter
