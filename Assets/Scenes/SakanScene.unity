@@ -865,6 +865,10 @@ PrefabInstance:
       value: sportsCarPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1141,7 +1145,7 @@ MonoBehaviour:
   - {fileID: 653800483}
   helicopterPrefab: {fileID: 2093439155252046095, guid: ec09db91c1f5dfb48ac31ba1ae0697d3, type: 3}
   minSpawnWaitTime: 15
-  spawnMaxTime: 20
+  spawnMaxTime: 10
   spawnRangeY: 4
 --- !u!1 &746921620
 GameObject:
@@ -1953,7 +1957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1646113466
 Transform:
   m_ObjectHideFlags: 0

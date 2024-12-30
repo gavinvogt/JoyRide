@@ -24,11 +24,17 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     private HelicopterSpawner spawner;
     private string helicopterSide;
 
+    [SerializeField] private GameObject spotlightPrefab;
+    [SerializeField] private GameObject spotlight;
+
+    [SerializeField] private GameObject missilePrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthBar.SetMaxHealth(health);
         StartHovering();
+        StartCoroutine(SpawnSpotlight());
     }
 
     private void Update()
@@ -68,6 +74,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         if (health <= 0)
         {
             StopAllCoroutines();
+            spotlight.GetComponent<Spotlight>().Despawn();
             StartCoroutine(Crash());
         }
     }
@@ -107,5 +114,29 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         GameObject marker = Instantiate(damageInidcator, new Vector3(this.transform.position.x + xOffset, this.transform.position.y + yOffset, -1), this.transform.rotation, this.transform);
         yield return new WaitForSeconds(0.25f);
         Destroy(marker);
+    }
+
+    private IEnumerator SpawnSpotlight()
+    {
+        yield return new WaitForSeconds(1f);
+        spotlight = Instantiate(spotlightPrefab, this.gameObject.transform);
+        spotlight.GetComponent<Spotlight>().Spawn(this);
+    }
+
+    public void ShootMissile()
+    {
+        GameObject missile = Instantiate(missilePrefab, this.gameObject.transform);
+        missile.GetComponent<Missile>().SetReferences(spotlight.transform, spotlight.GetComponent<Spotlight>());
+        missile.GetComponent<CircleCollider2D>().enabled = false;
+        Vector3 targ = spotlight.transform.position;
+        targ.z = 0f;
+
+        Vector3 objectPos = transform.position;
+        targ.x = targ.x - objectPos.x;
+        targ.y = targ.y - objectPos.y;
+
+        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+        missile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        missile.GetComponent<Rigidbody2D>().linearVelocity = missile.transform.up * 7.5f;
     }
 }

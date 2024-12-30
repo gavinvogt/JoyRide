@@ -251,6 +251,9 @@ MonoBehaviour:
   health: 30
   healthBar: {fileID: 5117884554967343515}
   damageInidcator: {fileID: 5408450655392742861, guid: ba45f5ec8f179ba40845fc3b17b985a7, type: 3}
+  spotlightPrefab: {fileID: 2780942923195851262, guid: 19eddc3ab0fcf3f409bbb3873c69cf2c, type: 3}
+  spotlight: {fileID: 0}
+  missilePrefab: {fileID: 1504903687239416041, guid: 1c8fbf58ea5991a4d90d3c426fc3b4e2, type: 3}
 --- !u!95 &6633330384817637964
 Animator:
   serializedVersion: 7
