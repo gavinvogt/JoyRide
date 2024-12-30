@@ -48,7 +48,7 @@ public class NPCSpawner : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnNPC(GameObject spawner, GameObject NPC)
+    public IEnumerator SpawnNPC(GameObject spawner, GameObject NPC)
     {
         yield return new WaitForSeconds(Random.Range(0f, 2f));
         GameObject tempNPC = Instantiate(NPC, spawner.transform);
@@ -58,5 +58,15 @@ public class NPCSpawner : MonoBehaviour
     public void DecreaseNPC()
     {
         numCars--;
+    }
+
+    public List<GameObject> GetSpawners()
+    {
+        return NPCSpawners;
+    }
+
+    public List<GameObject> GetPrefabs()
+    {
+        return NPCPrefabs;
     }
 }
