@@ -51,7 +51,7 @@ MonoBehaviour:
   shotSound: {fileID: 8300000, guid: 01dae6ce7c00ff543bebb754fdaac058, type: 3}
   fireCooldown: 1.5
   player: {fileID: 0}
-  rocketSpreadFactorAngle: 8
+  rocketSpreadFactorAngle: 4
 --- !u!1 &5123288727304669279
 GameObject:
   m_ObjectHideFlags: 0
