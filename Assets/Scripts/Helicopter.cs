@@ -19,6 +19,10 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private int health;
     [SerializeField] private HealthBar healthBar;
 
+    // track the spawner
+    private HelicopterSpawner spawner;
+    private string helicopterSide;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -66,6 +70,16 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         }
     }
 
+    public void SetSpawner(HelicopterSpawner spawner)
+    {
+        this.spawner = spawner;
+    }
+
+    public void SetSpawner(string helicopterSide)
+    {
+        this.helicopterSide = helicopterSide;
+    }
+
     private IEnumerator Crash()
     {
         // remove health bar
@@ -79,10 +93,8 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         isRotating = false;
 
         // send the police car down the screen as an obstacle
-        // TODO: uncomment and get speed from obstacle spawner
         yield return new WaitForSeconds(0.5f);
         rb.linearVelocity = crashSpeed * -transform.up;
-        // rb.linearVelocity = new Vector2(0, -1f * os.GetSpeed());
-        // os.DecreaseHelicopterCount();
+        spawner.RemoveHelicopter(helicopterSide);
     }
 }

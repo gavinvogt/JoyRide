@@ -11,7 +11,7 @@ public class NPCSpawner : MonoBehaviour
 
     private int currentRandomFlag;
     private int numCars;
-    
+
     [SerializeField] private int maxNumCars;
 
     private void Awake()
@@ -36,7 +36,7 @@ public class NPCSpawner : MonoBehaviour
                     currentRandomFlag = 3;
                 }
             }
-            if(carSpawned == false)
+            if (carSpawned == false)
             {
                 currentRandomFlag++;
             }
