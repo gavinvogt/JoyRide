@@ -23,10 +23,8 @@ public class HelicopterSpawner : MonoBehaviour
     void Update()
     {
         timeBeforeNextSpawn -= Time.deltaTime;
-        Debug.Log("next spawn in " + timeBeforeNextSpawn);
         if (timeBeforeNextSpawn <= 0)
         {
-            Debug.Log("did spawn");
             SpawnHelicopter();
             ResetSpawnTimer();
         }

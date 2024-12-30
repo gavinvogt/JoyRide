@@ -90,9 +90,10 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
             currentHealth--;
+            Destroy(collision.gameObject);
             if (player != null)
             {
                 player.GetComponent<Player>().updatePlayerUI();
@@ -123,8 +124,8 @@ public class Car : MonoBehaviour
     }
 
     public void DestroyPivot()
-    {   
-        if(player != null)
+    {
+        if (player != null)
         {
             SceneManager.LoadScene(sceneName: "EndScreen");
         }
