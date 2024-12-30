@@ -81,7 +81,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         // send the police car down the screen as an obstacle
         // TODO: uncomment and get speed from obstacle spawner
         yield return new WaitForSeconds(0.5f);
-        rb.linearVelocity = crashSpeed * transform.right;
+        rb.linearVelocity = crashSpeed * -transform.up;
         // rb.linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         // os.DecreaseHelicopterCount();
     }

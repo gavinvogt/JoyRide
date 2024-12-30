@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3859183774528901233}
-  crashAngle: -30
+  crashAngle: 60
   crashSpeed: 15
   hoverRangeY: 0.5
   hoverPeriod: 3
