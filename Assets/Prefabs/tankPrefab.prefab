@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ba299281761fc4987a18b5dd02d731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8264183660406818181, guid: 8503ee883cb3292499cb125f37be7869, type: 3}
+  bulletPrefab: {fileID: 1951216333471817354, guid: 4301c14b7c15ba94d83cb70db29e8554, type: 3}
   firePoint: {fileID: 122545559244891761}
+  shotSound: {fileID: 8300000, guid: 01dae6ce7c00ff543bebb754fdaac058, type: 3}
   fireCooldown: 1.5
   player: {fileID: 0}
   rocketSpreadFactorAngle: 8

@@ -16,6 +16,7 @@ public class RocketGun : Gun
             player.GetComponent<Player>().updatePlayerUI();
 
             // Fire the rocket
+            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 1f);
             Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
 
             // Allow firing after cooldown

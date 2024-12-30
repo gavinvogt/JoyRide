@@ -380,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4161458187404147121, guid: d79977425adea8549a2c92bea81ac653, type: 3}
   firePoint: {fileID: 6598871393465486245}
+  shotSound: {fileID: 8300000, guid: 6c9954d1b14738c4db896f736fc33cb1, type: 3}
   fireCooldown: 0.8
   player: {fileID: 0}
   bulletSpreadFactorHorizontal: 0.3

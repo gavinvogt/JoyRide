@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject UI;
     private UI UIScript;
 
+    [SerializeField] AudioClip[] jumpAudioClips;
+
     private void Start()
     {
         UIScript = UI.GetComponent<UI>();
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
             if (jumpLeft || jumpRight)
             {
                 // Player jumping out of car
+                SoundFXManager.instance.PlayRandomSoundFXClip(jumpAudioClips, transform, 1f);
                 car.SendMessage("ShootPlayerProjectile", jumpLeft ? "left" : "right");
                 car.SendMessage("Die");
                 car = null;
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour
 
     public float GetSpeedPercentage()
     {
-        return (float) speed / (float) maxSpeed;
+        return (float)speed / (float)maxSpeed;
     }
 
     IEnumerator IncreaseSpeed()

@@ -5,6 +5,7 @@ public abstract class Gun : MonoBehaviour
 {
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected Transform firePoint;
+    [SerializeField] protected AudioClip shotSound;
     public float fireCooldown;
 
     public Player player;
