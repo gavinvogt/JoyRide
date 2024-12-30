@@ -11,7 +11,6 @@ public class PoliceCar : Obstacle, BaseEnemy
     private GameObject movePoint;
     private int moveSpeed;
     private bool isRotating;
-    private int rotationSpeed;
 
     private int timesMoved;
 
@@ -24,7 +23,6 @@ public class PoliceCar : Obstacle, BaseEnemy
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         isMoving = false;
         isRotating = false;
-        rotationSpeed = 60;
 
         moveSpeed = 3;
         movePoint = new GameObject();
@@ -46,7 +44,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         }
         if (isRotating == true && movePoint != null)
         {
-            float step = rotationSpeed * (movePoint.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
+            float step = movePoint.transform.eulerAngles.z * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, movePoint.transform.rotation, step);
         }
     }

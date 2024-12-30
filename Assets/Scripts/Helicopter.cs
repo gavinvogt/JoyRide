@@ -6,6 +6,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float crashAngle;
+    [SerializeField] private float crashSpeed;
     [SerializeField] private float hoverRangeY;
 
     // track how the helicopter is moving
@@ -32,6 +33,15 @@ public class Helicopter : MonoBehaviour, BaseEnemy
             transform.position = new Vector3(
                 transform.position.x,
                 initialPosition.y + Mathf.Sin(2 * (float)Math.PI * Time.time / hoverPeriod) * hoverRangeY / 2
+            );
+        }
+        if (isRotating)
+        {
+            float step = crashAngle * Time.deltaTime; // will complete rotation over 1 second
+            transform.rotation = Quaternion.Euler(
+                transform.rotation.eulerAngles.x,
+                transform.rotation.eulerAngles.y,
+                transform.rotation.eulerAngles.z + step
             );
         }
     }
@@ -61,16 +71,17 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         // remove health bar
         Destroy(healthBar.gameObject);
         gameObject.tag = "Obstacle";
+        isHovering = false;
 
         // rotate the helicopter
         isRotating = true;
-        transform.eulerAngles = new Vector3(0, 0, crashAngle);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         isRotating = false;
 
         // send the police car down the screen as an obstacle
         // TODO: uncomment and get speed from obstacle spawner
-        rb.linearVelocity = new Vector2(0, -25);
+        yield return new WaitForSeconds(0.5f);
+        rb.linearVelocity = crashSpeed * transform.right;
         // rb.linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         // os.DecreaseHelicopterCount();
     }

@@ -178,9 +178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3859183774528901233}
   crashAngle: -30
+  crashSpeed: 15
   hoverRangeY: 0.5
   hoverPeriod: 3
-  health: 50
+  health: 30
   healthBar: {fileID: 5117884554967343515}
 --- !u!1001 &2868282814742711694
 PrefabInstance:
