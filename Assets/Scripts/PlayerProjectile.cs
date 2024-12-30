@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (target.CompareTag("Obstacle"))
+        else if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
         {
             Debug.Log("Lost game");
             Destroy(gameObject);

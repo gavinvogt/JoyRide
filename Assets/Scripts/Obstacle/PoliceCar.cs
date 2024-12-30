@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PoliceCar : Obstacle
+public class PoliceCar : Obstacle, BaseEnemy
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject bulletPrefab;
@@ -11,7 +11,6 @@ public class PoliceCar : Obstacle
     private GameObject movePoint;
     private int moveSpeed;
     private bool isRotating;
-    private int rotationSpeed;
 
     private int timesMoved;
 
@@ -24,7 +23,6 @@ public class PoliceCar : Obstacle
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         isMoving = false;
         isRotating = false;
-        rotationSpeed = 60;
 
         moveSpeed = 3;
         movePoint = new GameObject();
@@ -46,7 +44,7 @@ public class PoliceCar : Obstacle
         }
         if (isRotating == true && movePoint != null)
         {
-            float step = rotationSpeed * (movePoint.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
+            float step = movePoint.transform.eulerAngles.z * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, movePoint.transform.rotation, step);
         }
     }
@@ -122,7 +120,7 @@ public class PoliceCar : Obstacle
     {
         // remove health bar
         Destroy(healthBar.gameObject);
-        this.gameObject.tag = "Obstacle";
+        gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
 
         // rotate the police car
         isRotating = true;
@@ -132,7 +130,7 @@ public class PoliceCar : Obstacle
 
         // send the police car down the screen as an obstacle
         Destroy(movePoint);
-        this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+        gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         os.DecreasePoliceCount();
     }
 }

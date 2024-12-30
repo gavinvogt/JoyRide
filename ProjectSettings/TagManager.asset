@@ -4,9 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Obstacle
   - Car
   - Enemy
+  - Boundary
+  - ObstacleBlocking
+  - ObstacleNonBlocking
+  - IndestructableObstacle
   layers:
   - Default
   - TransparentFX

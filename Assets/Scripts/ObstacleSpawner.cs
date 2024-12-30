@@ -13,11 +13,6 @@ public class ObstacleSpawner : MonoBehaviour
     private int currentRandomFlag = 3;
     private int policeRandomFlag = 3;
     private int numPoliceCars;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     private void Awake()
     {
@@ -76,22 +71,25 @@ public class ObstacleSpawner : MonoBehaviour
         numBlinks++;
         if (numBlinks < 3)
         {
-            StartCoroutine(BlinkWarning(spawner,numBlinks));
+            StartCoroutine(BlinkWarning(spawner, numBlinks));
         }
     }
+
     IEnumerator SpawnObstacle(GameObject spawner, GameObject obstacle)
     {
         yield return new WaitForSeconds(3f);
         GameObject tempOb = Instantiate(obstacle, spawner.transform);
-        if(tempOb.name.Contains("Road Blockade"))
+        if (tempOb.name.Contains("Road Blockade"))
         {
             tempOb.GetComponent<Mine>().Spawn();
-        } else if (tempOb.name.Contains("Booster"))
+        }
+        else if (tempOb.name.Contains("Booster"))
         {
             tempOb.GetComponent<Booster>().Spawn();
-        } else if(tempOb.name.Contains("Police Car"))
+        }
+        else if (tempOb.name.Contains("Police Car"))
         {
-            yield return new WaitForSeconds(Random.Range(0f,1f));
+            yield return new WaitForSeconds(Random.Range(0f, 1f));
             tempOb.GetComponent<PoliceCar>().Spawn();
         }
     }

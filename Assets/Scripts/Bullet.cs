@@ -15,14 +15,14 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.CompareTag("Obstacle"))
+        if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
         {
             Destroy(gameObject);
             PlaySound();
         }
         else if (target.CompareTag("Enemy"))
         {
-            target.gameObject.GetComponent<PoliceCar>().DecreaseHealth(damage);
+            target.gameObject.SendMessage("DecreaseHealth", damage);
             PlaySound();
             Destroy(gameObject);
         }
@@ -30,6 +30,6 @@ public class Bullet : MonoBehaviour
 
     void PlaySound()
     {
-        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.5f);
+        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.4f);
     }
 }

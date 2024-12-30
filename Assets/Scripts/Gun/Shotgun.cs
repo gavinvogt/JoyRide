@@ -20,7 +20,7 @@ public class Shotgun : Gun
             player.GetComponent<Player>().updatePlayerUI();
 
             // Fire the bullets
-            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 1f);
+            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.3f);
             var bullets = Enumerable.Range(1, bulletsPerShot).Select(
                 _ => Instantiate(bulletPrefab, GetBulletStartPosition(), GetBulletAngle())
             ).ToArray();
