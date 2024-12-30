@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Car : MonoBehaviour
 {
@@ -113,6 +115,7 @@ public class Car : MonoBehaviour
         }
         this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
+        this.gameObject.GetComponent<CarNPC>().enabled = false;
         if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");
@@ -161,5 +164,56 @@ public class Car : MonoBehaviour
     {
         var cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
         Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+    }
+
+    public void AddHealth()
+    {
+        if (currentHealth < maxHealth)
+        {
+            currentHealth++;
+            if (player != null)
+            {
+                player.GetComponent<Player>().updatePlayerUI();
+            }
+        }
+    }
+
+    public void MaximizeAmmo()
+    {
+        currentAmmoCount = maxAmmoCount;
+        if (player != null)
+        {
+            player.GetComponent<Player>().updatePlayerUI();
+        }
+    }
+
+    public IEnumerator BoostSpeed()
+    {
+        drivingSpeed += 2;
+        yield return new WaitForSeconds(1.5f);
+        drivingSpeed -= 2;
+    }
+
+    public void SpawnNPCs()
+    {
+        if(player != null)
+        {
+            List<GameObject> Spawners = npcs.GetSpawners();
+            List<GameObject> NPCPrefabs = npcs.GetPrefabs();
+            List<int> spawnpoints = new List<int>();
+
+            int randInt = Random.Range(0, Spawners.Count);
+            spawnpoints.Add(randInt);
+            while (spawnpoints.Contains(randInt))
+            {
+                randInt = Random.Range(0, Spawners.Count);
+            }
+            spawnpoints.Add(randInt);
+
+            foreach(int i in spawnpoints)
+            {
+                npcs.StartCoroutine(npcs.SpawnNPC(Spawners[i], NPCPrefabs[Random.Range(0, NPCPrefabs.Count)]));
+            }
+        }
     }
 }
