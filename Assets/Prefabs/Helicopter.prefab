@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3859183774528901233}
   - component: {fileID: 7807008883861622904}
   - component: {fileID: 3580936018100332682}
+  - component: {fileID: 6633330384817637964}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Enemy
@@ -182,6 +183,28 @@ MonoBehaviour:
   hoverPeriod: 3
   health: 50
   healthBar: {fileID: 5117884554967343515}
+--- !u!95 &6633330384817637964
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093439155252046095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f79ab87a54c7e384493dd32439e2b804, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2868282814742711694
 PrefabInstance:
   m_ObjectHideFlags: 0
