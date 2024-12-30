@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7962104751668441664}
   - component: {fileID: 6719457568332709112}
   - component: {fileID: 3859183774528901233}
-  - component: {fileID: 7807008883861622904}
+  - component: {fileID: 4296641899935189170}
   - component: {fileID: 3580936018100332682}
+  - component: {fileID: 6633330384817637964}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Enemy
@@ -118,8 +119,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &7807008883861622904
-BoxCollider2D:
+--- !u!60 &4296641899935189170
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -162,8 +163,74 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.32, y: 0.32}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.18692374, y: 0.31436074}
+      - {x: 0.12242985, y: 0.31422967}
+      - {x: 0.13078761, y: 0.6234534}
+      - {x: 0.37979698, y: 0.6240877}
+      - {x: 0.3752029, y: 0.8143662}
+      - {x: 0.31406736, y: 0.8133615}
+      - {x: 0.31321287, y: 0.87963986}
+      - {x: 0.062171936, y: 0.88089347}
+      - {x: 0.062055826, y: 1.0031533}
+      - {x: -0.06512499, y: 1}
+      - {x: -0.06548333, y: 0.87826}
+      - {x: -0.31407642, y: 0.87685144}
+      - {x: -0.31485248, y: 0.81429154}
+      - {x: -0.37800717, y: 0.8114018}
+      - {x: -0.37713838, y: 0.6254098}
+      - {x: -0.12867904, y: 0.6181176}
+      - {x: -0.131006, y: 0.31416023}
+      - {x: -0.1894474, y: 0.31406242}
+      - {x: -0.19169593, y: 0.12566292}
+      - {x: -0.25229192, y: 0.12491858}
+      - {x: -0.25614405, y: 0.06334615}
+      - {x: -0.31472063, y: 0.068026304}
+      - {x: -0.31972528, y: 0.0036245584}
+      - {x: -0.377424, y: 0.006100416}
+      - {x: -0.37795734, y: -0.1255486}
+      - {x: -0.6266632, y: -0.12560976}
+      - {x: -0.62805367, y: -0.3179816}
+      - {x: -0.5676327, y: -0.31492877}
+      - {x: -0.57146573, y: -0.49607217}
+      - {x: -0.37547207, y: -0.49756682}
+      - {x: -0.3741138, y: -0.4393741}
+      - {x: -0.25488377, y: -0.43873942}
+      - {x: -0.25282168, y: -0.49577904}
+      - {x: -0.31650186, y: -0.50130653}
+      - {x: -0.3140278, y: -0.81305313}
+      - {x: -0.25119185, y: -0.81337273}
+      - {x: -0.25182056, y: -0.8747827}
+      - {x: -0.18880701, y: -0.8772124}
+      - {x: -0.18805623, y: -0.9372386}
+      - {x: -0.12477183, y: -0.9384805}
+      - {x: -0.12574887, y: -1}
+      - {x: 0.12625527, y: -1.0016712}
+      - {x: 0.12666225, y: -0.9403008}
+      - {x: 0.18891191, y: -0.938146}
+      - {x: 0.18814373, y: -0.8773724}
+      - {x: 0.2516272, y: -0.87786496}
+      - {x: 0.2510512, y: -0.8144003}
+      - {x: 0.3130281, y: -0.81535184}
+      - {x: 0.3160026, y: -0.49751246}
+      - {x: 0.25266266, y: -0.4965464}
+      - {x: 0.2491858, y: -0.43690157}
+      - {x: 0.37325048, y: -0.4409275}
+      - {x: 0.37187457, y: -0.49907804}
+      - {x: 0.5016296, y: -0.4986694}
+      - {x: 0.56085706, y: -0.49848688}
+      - {x: 0.5652735, y: -0.31822598}
+      - {x: 0.62288284, y: -0.31072617}
+      - {x: 0.62066793, y: -0.12544107}
+      - {x: 0.3764317, y: -0.12296307}
+      - {x: 0.3746333, y: 0.001632452}
+      - {x: 0.31521773, y: 0.0005053282}
+      - {x: 0.3149302, y: 0.063422084}
+      - {x: 0.2521367, y: 0.06416178}
+      - {x: 0.24997687, y: 0.12399149}
+      - {x: 0.18849492, y: 0.12432814}
+  m_UseDelaunayMesh: 0
 --- !u!114 &3580936018100332682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +250,28 @@ MonoBehaviour:
   hoverPeriod: 3
   health: 30
   healthBar: {fileID: 5117884554967343515}
+--- !u!95 &6633330384817637964
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093439155252046095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f79ab87a54c7e384493dd32439e2b804, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2868282814742711694
 PrefabInstance:
   m_ObjectHideFlags: 0
