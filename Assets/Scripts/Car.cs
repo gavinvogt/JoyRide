@@ -115,6 +115,7 @@ public class Car : MonoBehaviour
         }
         this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
+        this.gameObject.GetComponent<CarNPC>().enabled = false;
         if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");

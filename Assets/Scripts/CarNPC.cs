@@ -25,13 +25,13 @@ public class CarNPC : MonoBehaviour
     public void Spawn()
     {
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        rb.linearVelocity = new Vector2(0, 5f);
+        rb.linearVelocity = new Vector2(0, .5f);
         StartCoroutine(ZeroVelocity());
     }
 
     IEnumerator ZeroVelocity()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         rb.linearVelocity = Vector2.zero;
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         StartCoroutine(Move(3f));
