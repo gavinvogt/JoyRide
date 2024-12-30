@@ -93,7 +93,7 @@ public class Car : MonoBehaviour
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
             currentHealth--;
-            Destroy(collision.gameObject);
+            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag)) Destroy(collision.gameObject);
             if (player != null)
             {
                 player.GetComponent<Player>().updatePlayerUI();

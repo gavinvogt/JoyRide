@@ -13,4 +13,9 @@ public class ObjectTags
     {
         return tag == OBSTACLE_BLOCKING || tag == INDESTRUCTABLE_OBSTACLE;
     }
+
+    public static bool IsDestructableObstacle(string tag)
+    {
+        return tag == OBSTACLE_BLOCKING || tag == OBSTACLE_NON_BLOCKING;
+    }
 }
