@@ -16,6 +16,7 @@ public class PoliceCar : Obstacle, BaseEnemy
 
     private int health;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private GameObject damageInidcator;
 
     protected override void Awake()
     {
@@ -108,6 +109,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         {
             health -= damage;
             healthBar.SetHealth(health);
+            StartCoroutine(DamageMarker());
         }
         if (health <= 0)
         {
@@ -132,5 +134,14 @@ public class PoliceCar : Obstacle, BaseEnemy
         Destroy(movePoint);
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         os.DecreasePoliceCount();
+    }
+
+    private IEnumerator DamageMarker()
+    {
+        float xOffset = Random.Range(-0.45f, 0.45f);
+        float yOffset = Random.Range(-0.75f, 0.8f);
+        GameObject marker = Instantiate(damageInidcator, new Vector3(this.transform.position.x + xOffset, this.transform.position.y + yOffset, -1), this.transform.rotation, this.transform);
+        yield return new WaitForSeconds(0.25f);
+        Destroy(marker);
     }
 }

@@ -250,6 +250,7 @@ MonoBehaviour:
   hoverPeriod: 3
   health: 30
   healthBar: {fileID: 5117884554967343515}
+  damageInidcator: {fileID: 5408450655392742861, guid: ba45f5ec8f179ba40845fc3b17b985a7, type: 3}
 --- !u!95 &6633330384817637964
 Animator:
   serializedVersion: 7

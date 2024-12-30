@@ -18,6 +18,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     // track helicopter health
     [SerializeField] private int health;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private GameObject damageInidcator;
 
     // track the spawner
     private HelicopterSpawner spawner;
@@ -62,6 +63,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         {
             health -= damage;
             healthBar.SetHealth(health);
+            StartCoroutine(DamageMarker());
         }
         if (health <= 0)
         {
@@ -96,5 +98,14 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         yield return new WaitForSeconds(0.5f);
         rb.linearVelocity = crashSpeed * -transform.up;
         spawner.RemoveHelicopter(helicopterSide);
+    }
+
+    private IEnumerator DamageMarker()
+    {
+        float xOffset = UnityEngine.Random.Range(-0.2f, 0.2f);
+        float yOffset = UnityEngine.Random.Range(-0.9f, 0.85f);
+        GameObject marker = Instantiate(damageInidcator, new Vector3(this.transform.position.x + xOffset, this.transform.position.y + yOffset, -1), this.transform.rotation, this.transform);
+        yield return new WaitForSeconds(0.25f);
+        Destroy(marker);
     }
 }
