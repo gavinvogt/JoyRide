@@ -98,6 +98,7 @@ public class Car : MonoBehaviour
             if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag)) Destroy(collision.gameObject);
             if (player != null)
             {
+                StartCoroutine(FlashColor());
                 player.GetComponent<Player>().updatePlayerUI();
             }
         }
@@ -215,5 +216,14 @@ public class Car : MonoBehaviour
                 npcs.StartCoroutine(npcs.SpawnNPC(Spawners[i], NPCPrefabs[Random.Range(0, NPCPrefabs.Count)]));
             }
         }
+    }
+
+    IEnumerator FlashColor()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        this.gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        yield return new WaitForSeconds(0.1f);
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        this.gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
 }
