@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class Helicopter : MonoBehaviour
+public class Helicopter : MonoBehaviour, BaseEnemy
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float crashAngle;
@@ -14,9 +14,14 @@ public class Helicopter : MonoBehaviour
     private Vector3 initialPosition;
     private bool isRotating = false;
 
+    // track helicopter health
+    [SerializeField] private int health;
+    [SerializeField] private HealthBar healthBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        healthBar.SetMaxHealth(health);
         StartHovering();
     }
 
@@ -37,17 +42,24 @@ public class Helicopter : MonoBehaviour
         initialPosition = new Vector3(transform.position.x, transform.position.y);
     }
 
-    private float GetNormalizedPosY()
+    public void DecreaseHealth(int damage)
     {
-        // Delta from initial position should be -0.5*max to 0.5*max
-        Vector3 deltaPos = transform.position - initialPosition;
-
-        // add 0.5 to get value from 0 to 1
-        return deltaPos.y / hoverRangeY + 0.5f;
+        if (health > 0)
+        {
+            health -= damage;
+            healthBar.SetHealth(health);
+        }
+        if (health <= 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(Crash());
+        }
     }
 
     private IEnumerator Crash()
     {
+        // remove health bar
+        Destroy(healthBar.gameObject);
         gameObject.tag = "Obstacle";
 
         // rotate the helicopter

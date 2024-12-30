@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PoliceCar : Obstacle
+public class PoliceCar : Obstacle, BaseEnemy
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject bulletPrefab;
