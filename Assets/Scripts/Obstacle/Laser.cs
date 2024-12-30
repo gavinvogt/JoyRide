@@ -6,8 +6,9 @@ public class Laser : MonoBehaviour
 {
     private int health;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] protected AudioClip laserSound;
+    private AudioSource laserAudioSource = null;
     private LaserSpawner laserSpawner;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = 10;
@@ -15,19 +16,14 @@ public class Laser : MonoBehaviour
         laserSpawner = GameObject.Find("Laser Spawners").GetComponent<LaserSpawner>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public IEnumerator Spawn()
     {
+        laserAudioSource = SoundFXManager.instance.LoopSoundFXClip(laserSound, transform, 1f);
         yield return new WaitForSeconds(1f);
         GameObject laser = gameObject.transform.GetChild(2).gameObject;
         laser.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(1f);
-        laser.transform.localScale = new Vector3(11.5f, .5f, 1f);
+        this.gameObject.GetComponent<Animator>().SetBool("Active", true);
         laser.GetComponent<BoxCollider2D>().enabled = true;
     }
 
@@ -44,5 +40,10 @@ public class Laser : MonoBehaviour
             laserSpawner.DecreaseLaser();
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(laserAudioSource.gameObject);
     }
 }
