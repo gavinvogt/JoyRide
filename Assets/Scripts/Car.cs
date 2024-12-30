@@ -25,6 +25,7 @@ public class Car : MonoBehaviour
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
 
+    private NPCSpawner npcs;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +38,7 @@ public class Car : MonoBehaviour
         currentAmmoCount = maxAmmoCount;
 
         rotateTarget = new GameObject();
+        npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
     }
 
     // Update is called once per frame
@@ -126,6 +128,7 @@ public class Car : MonoBehaviour
         {
             SceneManager.LoadScene(sceneName: "EndScreen");
         }
+        npcs.DecreaseNPC();
         Destroy(rotateTarget);
         Destroy(this.gameObject);
     }

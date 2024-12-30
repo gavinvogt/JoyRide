@@ -54,4 +54,9 @@ public class NPCSpawner : MonoBehaviour
         GameObject tempNPC = Instantiate(NPC, spawner.transform);
         tempNPC.GetComponent<CarNPC>().Spawn();
     }
+
+    public void DecreaseNPC()
+    {
+        numCars--;
+    }
 }
