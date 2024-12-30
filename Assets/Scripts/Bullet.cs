@@ -30,6 +30,6 @@ public class Bullet : MonoBehaviour
 
     void PlaySound()
     {
-        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.5f);
+        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.4f);
     }
 }
