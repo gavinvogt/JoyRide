@@ -12,12 +12,6 @@ public class StartButton : MonoBehaviour
         startButton.onClick.AddListener(StartGame);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void StartGame()
     {
         SceneManager.LoadScene(sceneName: "SakanScene");
