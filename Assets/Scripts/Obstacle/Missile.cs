@@ -14,8 +14,8 @@ public class Missile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if((this.transform.position.x > targetPos.position.x - .5f && this.transform.position.x < targetPos.position.x + .5f) &&
-            this.transform.position.y > targetPos.position.y - .5f && this.transform.position.y < targetPos.position.y + .5f)
+        Debug.Log(Vector2.Distance(this.transform.position, targetPos.position));
+        if (Vector2.Distance(this.transform.position, targetPos.position) < 1f)
         {
             StartCoroutine(Explode());
         }
@@ -30,7 +30,7 @@ public class Missile : MonoBehaviour
     IEnumerator Explode()
     {
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         spotlight.StartCoroutine(spotlight.Move());
         Destroy(gameObject);
     }

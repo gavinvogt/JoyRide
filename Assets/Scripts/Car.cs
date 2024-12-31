@@ -199,10 +199,16 @@ public class Car : MonoBehaviour
     public IEnumerator BoostSpeed()
     {
         drivingSpeed += 4;
-        UIScript.EnableBoostUI();
+        if (player != null)
+        {
+            UIScript.EnableBoostUI();
+        }
         yield return new WaitForSeconds(1.5f);
         drivingSpeed -= 4;
-        UIScript.DisableBoostUI();
+        if (player != null)
+        {
+            UIScript.DisableBoostUI();
+        }
     }
 
     public void SpawnNPCs()
