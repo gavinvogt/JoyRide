@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject car;
     private Rigidbody2D rb;
 
-    [SerializeField] private int maxSpeed;
-    [SerializeField] private int speed;
+    private int maxSpeed;
+    private int speed;
 
     private ObstacleSpawner os;
     private RoadDotSpawner rds;
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         rds = GameObject.Find("Highway").GetComponent<RoadDotSpawner>();
         ls = GameObject.Find("Highway").GetComponentInChildren<LaserSpawner>();
         hs = GameObject.Find("Highway").GetComponentInChildren<HelicopterSpawner>();
+        maxSpeed = 35;
         speed = 5;
         os.SetSpeed(speed);
         rds.SetSpeed(speed);
@@ -94,7 +95,7 @@ public class Player : MonoBehaviour
 
     public float GetSpeedPercentage()
     {
-        return (float)speed / (float)maxSpeed;
+        return (float)(speed) / (float)maxSpeed;
     }
 
     IEnumerator IncreaseSpeed()

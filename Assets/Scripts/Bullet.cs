@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         }
         else if (target.CompareTag("Enemy"))
         {
-            target.gameObject.SendMessage("DecreaseHealth", damage);
+            if (target.gameObject) target.gameObject.SendMessage("DecreaseHealth", damage);
             PlaySound();
             Destroy(gameObject);
         }

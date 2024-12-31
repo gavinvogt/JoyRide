@@ -2,25 +2,29 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject healthGauge;
     [SerializeField] private GameObject ammoGauge;
     [SerializeField] private GameObject speedGauge;
     [SerializeField] private GameObject boost;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         healthGauge.transform.rotation = Quaternion.Euler(0, 0, 0);
         ammoGauge.transform.rotation = Quaternion.Euler(0, 0, 0);
         speedGauge.transform.rotation = Quaternion.Euler(0, 0, 90);
         DisableBoostUI();
+        updateUI(player);
     }
 
     public void updateUI(GameObject player)
     {
         Player playerScript = player.GetComponent<Player>();
-        updateHealth(playerScript.GetCar().GetComponent<Car>().getHealthPercentage());
-        updateAmmo(playerScript.GetCar().GetComponent<Car>().getAmmoPercentage());
+        if (playerScript.GetCar())
+        {
+            updateHealth(playerScript.GetCar().GetComponent<Car>().getHealthPercentage());
+            updateAmmo(playerScript.GetCar().GetComponent<Car>().getAmmoPercentage());
+        }
         updateSpeed(playerScript.GetSpeedPercentage());
     }
 
