@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 4926254863127210314}
   m_Layer: 0
   m_Name: laser
-  m_TagString: IndestructableObstacle
+  m_TagString: IndestructableObstacleNonBlocking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
