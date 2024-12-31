@@ -7,6 +7,7 @@ public class PoliceCar : Obstacle, BaseEnemy
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int bulletSpeed;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private float firePointXRange;
     private bool isMoving;
     private GameObject movePoint;
     private int moveSpeed;
@@ -66,7 +67,12 @@ public class PoliceCar : Obstacle, BaseEnemy
     IEnumerator Shoot(int numShot)
     {
         yield return new WaitForSeconds(.5f);
-        GameObject tempOb = Instantiate(bulletPrefab, firePoint);
+        float xOffset = Random.Range(-firePointXRange / 2, firePointXRange / 2);
+        GameObject tempOb = Instantiate(
+            bulletPrefab,
+            new Vector3(firePoint.position.x + xOffset, firePoint.position.y),
+            firePoint.rotation
+        );
         tempOb.transform.parent = null;
         tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * bulletSpeed);
         numShot++;
