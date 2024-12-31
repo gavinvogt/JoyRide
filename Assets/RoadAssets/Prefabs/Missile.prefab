@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSoundClip: {fileID: 8300000, guid: 8734e3d292963004a8fc2fdb1330faf6, type: 3}
+  explosion: {fileID: 7331275860865657846, guid: 6b28ec1bdbcdd5945adab7fe6c201f79, type: 3}
 --- !u!58 &3130258434004256262
 CircleCollider2D:
   m_ObjectHideFlags: 0
