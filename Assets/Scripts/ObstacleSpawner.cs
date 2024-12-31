@@ -78,8 +78,20 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator SpawnObstacle(GameObject spawner, GameObject obstacle)
     {
+        // Create the obstacle
         yield return new WaitForSeconds(3f);
         GameObject tempOb = Instantiate(obstacle, spawner.transform);
+        if (ShouldRenderObstacleSlightlyLower(tempOb.name))
+        {
+            // Render lower so police cars don't show up below the boosters
+            tempOb.transform.position = new Vector3(
+                tempOb.transform.position.x,
+                tempOb.transform.position.y,
+                tempOb.transform.position.z - 0.1f
+            );
+        }
+
+        // Spawn the obstacle
         if (tempOb.name.Contains("Road Blockade"))
         {
             tempOb.GetComponent<Mine>().Spawn();
@@ -93,6 +105,11 @@ public class ObstacleSpawner : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0f, 1f));
             tempOb.GetComponent<PoliceCar>().Spawn();
         }
+    }
+
+    private bool ShouldRenderObstacleSlightlyLower(string objectName)
+    {
+        return objectName.Contains("Booster");
     }
 
     public int GetSpeed()
