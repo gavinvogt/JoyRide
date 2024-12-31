@@ -14,7 +14,6 @@ public class Booster : Obstacle
     public override void Spawn()
     {
         base.Spawn();
-        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
         switch (boosterType)
         {
             case BoosterType.HEALTH:
@@ -34,7 +33,7 @@ public class Booster : Obstacle
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Car")
+        if (collision.gameObject.tag == "Car")
         {
             Car tempCar = collision.gameObject.GetComponent<Car>();
             switch (boosterType)
