@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 441f7bdb19d251843ab6587142cfeca0
+guid: 716c50ea2e849074ea68137d76720526
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -510674113207188978
-    second: ammoPad_0
+      213: -4526143384452233674
+    second: goonsPad_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ammoPad_0
+      name: goonsPad_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e024c468998b9e8f0800000000000000
-      internalID: -510674113207188978
+      spriteID: 6368d378298ef21c0800000000000000
+      internalID: -4526143384452233674
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ammoPad_0: -510674113207188978
+      goonsPad_0: -4526143384452233674
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
