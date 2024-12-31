@@ -1016,6 +1016,7 @@ MonoBehaviour:
   minSpawnWaitTime: 10
   spawnMaxTime: 20
   spawnRangeY: 4
+  helicopterEnterAudioClip: {fileID: 8300000, guid: ecd38245f2054344fa2dae45ff9c3238, type: 3}
 --- !u!1 &746921620
 GameObject:
   m_ObjectHideFlags: 0

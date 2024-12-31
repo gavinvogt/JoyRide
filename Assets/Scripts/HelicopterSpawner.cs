@@ -10,6 +10,7 @@ public class HelicopterSpawner : MonoBehaviour
     [SerializeField] private float spawnMaxTime;
     [SerializeField] private float spawnRangeY;
     private float timeBeforeNextSpawn;
+    [SerializeField] private AudioClip helicopterEnterAudioClip;
 
     // Track how many helicopters exist
     private bool[] helicopterExists = { false, false };
@@ -34,6 +35,7 @@ public class HelicopterSpawner : MonoBehaviour
 
     private void SpawnHelicopter()
     {
+        // Create the helicopter with sound effect
         int helicopterSide = ChooseHelicopterSide();
         Transform spawnTransform = spawners[helicopterSide];
         GameObject helicopter = Instantiate(
@@ -41,6 +43,9 @@ public class HelicopterSpawner : MonoBehaviour
             new Vector3(spawnTransform.position.x, spawnTransform.position.y + Random.Range(-spawnRangeY / 2, spawnRangeY / 2)),
             spawnTransform.rotation
         );
+        SoundFXManager.instance.PlaySoundFXClip(helicopterEnterAudioClip, helicopter.transform, 1f);
+
+        // Helicopter housekeeping
         helicopterExists[helicopterSide] = true;
         helicopter.SendMessage("SetSpawner", this, SendMessageOptions.RequireReceiver);
         helicopter.SendMessage(
