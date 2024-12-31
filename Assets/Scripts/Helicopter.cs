@@ -85,7 +85,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         this.spawner = spawner;
     }
 
-    public void SetSpawner(string helicopterSide)
+    public void SetHelicopterSide(string helicopterSide)
     {
         this.helicopterSide = helicopterSide;
     }
