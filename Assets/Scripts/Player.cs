@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(10f);
         speed++;
         os.SetSpeed(speed);
-        if(speed % 10 == 0)
+        if (speed % 10 == 0)
         {
             os.IncreaseMaxPoliceCars();
         }

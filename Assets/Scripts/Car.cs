@@ -10,7 +10,7 @@ public class Car : MonoBehaviour
     // player jumping out of car to control a new one
     [SerializeField] private GameObject playerProjectilePrefab;
     [SerializeField] private Transform leftJumpPoint;
-    [SerializeField] private Transform rightJumpPoint;
+    [SerializeField] private Transform rightJumpPoint;  
     // moving the gun
     [SerializeField] private GameObject gun;
     // gun cursor
@@ -27,7 +27,11 @@ public class Car : MonoBehaviour
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
 
+    [SerializeField] private AudioClip playerLoseClip;
+
     private NPCSpawner npcs;
+    private UI UIScript;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +45,7 @@ public class Car : MonoBehaviour
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
+        UIScript = GameObject.Find("PlayerUI").GetComponent<UI>();
     }
 
     // Update is called once per frame
@@ -112,9 +117,11 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
+            // Actions specifically for if a player was in this car (losing game)
             player.SendMessage("NullCar");
+            SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
+            gun.SendMessage("StopShotSound");
         }
-        gun.SendMessage("StopShotSound");
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         gameObject.GetComponent<CarNPC>().enabled = false;
@@ -192,8 +199,10 @@ public class Car : MonoBehaviour
     public IEnumerator BoostSpeed()
     {
         drivingSpeed += 4;
+        UIScript.EnableBoostUI();
         yield return new WaitForSeconds(1.5f);
         drivingSpeed -= 4;
+        UIScript.DisableBoostUI();
     }
 
     public void SpawnNPCs()
@@ -221,10 +230,10 @@ public class Car : MonoBehaviour
 
     IEnumerator FlashColor()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
-        this.gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.black;
         yield return new WaitForSeconds(0.1f);
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        this.gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
 }

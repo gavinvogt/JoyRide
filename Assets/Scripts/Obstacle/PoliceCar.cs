@@ -18,6 +18,7 @@ public class PoliceCar : Obstacle, BaseEnemy
     private int health;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject damageInidcator;
+    [SerializeField] private AudioClip carDestroyedClip;
 
     protected override void Awake()
     {
@@ -130,6 +131,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         Destroy(healthBar.gameObject);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
         GameScore.instance.IncrementPoliceCarsDestroyed();
+        SoundFXManager.instance.PlaySoundFXClip(carDestroyedClip, transform, 1f);
 
         // rotate the police car
         isRotating = true;

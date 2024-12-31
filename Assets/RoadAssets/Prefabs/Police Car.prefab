@@ -183,6 +183,7 @@ MonoBehaviour:
   firePointXRange: 1
   healthBar: {fileID: 3922810898311204406}
   damageInidcator: {fileID: 5408450655392742861, guid: ba45f5ec8f179ba40845fc3b17b985a7, type: 3}
+  carDestroyedClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
 --- !u!1 &2030322975103354996
 GameObject:
   m_ObjectHideFlags: 0

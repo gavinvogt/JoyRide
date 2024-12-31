@@ -5,6 +5,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject healthGauge;
     [SerializeField] private GameObject ammoGauge;
     [SerializeField] private GameObject speedGauge;
+    [SerializeField] private GameObject boost;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,6 +13,7 @@ public class UI : MonoBehaviour
         healthGauge.transform.rotation = Quaternion.Euler(0, 0, 0);
         ammoGauge.transform.rotation = Quaternion.Euler(0, 0, 0);
         speedGauge.transform.rotation = Quaternion.Euler(0, 0, 90);
+        DisableBoostUI();
     }
 
     public void updateUI(GameObject player)
@@ -36,5 +38,15 @@ public class UI : MonoBehaviour
     {
         float angleOfGauge = 90f + (180 * speedPercentage);
         speedGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
+    }
+
+    public void EnableBoostUI()
+    {
+        boost.SetActive(true);
+    }
+
+    public void DisableBoostUI()
+    {
+        boost.SetActive(false);
     }
 }
