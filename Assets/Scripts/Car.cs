@@ -27,6 +27,8 @@ public class Car : MonoBehaviour
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
 
+    [SerializeField] private AudioClip playerLoseClip;
+
     private NPCSpawner npcs;
     private UI UIScript;
 
@@ -115,9 +117,11 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
+            // Actions specifically for if a player was in this car (losing game)
             player.SendMessage("NullCar");
+            SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
+            gun.SendMessage("StopShotSound");
         }
-        gun.SendMessage("StopShotSound");
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         gameObject.GetComponent<CarNPC>().enabled = false;
@@ -226,10 +230,10 @@ public class Car : MonoBehaviour
 
     IEnumerator FlashColor()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
-        this.gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.black;
         yield return new WaitForSeconds(0.1f);
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        this.gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
 }

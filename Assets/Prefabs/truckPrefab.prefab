@@ -202,6 +202,7 @@ MonoBehaviour:
   drivingSpeed: 8
   maxHealth: 3
   maxAmmoCount: 30
+  playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
 --- !u!114 &421762710008633274
 MonoBehaviour:
   m_ObjectHideFlags: 0
