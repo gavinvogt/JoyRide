@@ -155,8 +155,8 @@ Transform:
   - {fileID: 1566092501}
   - {fileID: 1648016559}
   - {fileID: 1815046589}
-  - {fileID: 282216638}
-  - {fileID: 655288912}
+  - {fileID: 696773234}
+  - {fileID: 1523270816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &10153912
@@ -197,6 +197,12 @@ MonoBehaviour:
   - {fileID: 1843626665}
   obstaclePrefabs:
   - {fileID: 2345255607838637255, guid: 4fb79a1291134894c8cb025db835043c, type: 3}
+  - {fileID: 2345255607838637255, guid: 8a708e1e62669f54d8fb7c47c30c7fea, type: 3}
+  - {fileID: 2345255607838637255, guid: 758fb0b96ec17764983593d20d4f2ebe, type: 3}
+  - {fileID: 2345255607838637255, guid: e77c5069fbab0874f93542e2e68368ea, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
   - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
   PolicePrefab: {fileID: 403856411473894058, guid: 49212f010f4dd934ba26987485eeb0ac, type: 3}
 --- !u!1 &153268391
@@ -290,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2568398ae4b07e48bb1f98c582d9cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &169693960
+--- !u!1 &191927574
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,28 +304,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 169693961}
+  - component: {fileID: 191927575}
   m_Layer: 0
-  m_Name: Laser Spawner 1
+  m_Name: Laser Spawner 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &169693961
+--- !u!4 &191927575
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169693960}
+  m_GameObject: {fileID: 191927574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 655288912}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &196211329
 PrefabInstance:
@@ -418,7 +424,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
---- !u!1 &235701243
+--- !u!1 &196666285
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -426,28 +432,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 235701244}
+  - component: {fileID: 196666286}
   m_Layer: 0
-  m_Name: Laser Spawner 3
+  m_Name: Laser Spawner 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &235701244
+--- !u!4 &196666286
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235701243}
+  m_GameObject: {fileID: 196666285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 655288912}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &253886691
 GameObject:
@@ -501,90 +507,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &282216637
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 282216638}
-  - component: {fileID: 282216639}
-  m_Layer: 0
-  m_Name: Helicopter Spawners
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &282216638
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282216637}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1014805702}
-  - {fileID: 2146559777}
-  m_Father: {fileID: 10153911}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &282216639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282216637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07af7bb3c16dd204b89a112daed97b66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 1014805702}
-  - {fileID: 2146559777}
-  helicopterPrefab: {fileID: 2093439155252046095, guid: ec09db91c1f5dfb48ac31ba1ae0697d3, type: 3}
-  minSpawnWaitTime: 15
-  spawnMaxTime: 20
-  spawnRangeY: 4
---- !u!1 &290211639
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 290211640}
-  m_Layer: 0
-  m_Name: Laser Spawner 7
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &290211640
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290211639}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 655288912}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &328811784
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +551,7 @@ GameObject:
   - component: {fileID: 369390959}
   m_Layer: 0
   m_Name: TopWall
-  m_TagString: Obstacle
+  m_TagString: ObstacleBlocking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -914,10 +836,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: sportsCarPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 249512639550302531, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5098356085566452521, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1047,7 +965,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &655288911
+--- !u!1 &653800482
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1055,63 +973,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 655288912}
-  - component: {fileID: 655288913}
+  - component: {fileID: 653800483}
   m_Layer: 0
-  m_Name: Laser Spawners
+  m_Name: Helicopter Spawner 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &655288912
+--- !u!4 &653800483
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655288911}
+  m_GameObject: {fileID: 653800482}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 169693961}
-  - {fileID: 889018365}
-  - {fileID: 235701244}
-  - {fileID: 2097809043}
-  - {fileID: 1635513512}
-  - {fileID: 1891196505}
-  - {fileID: 290211640}
-  - {fileID: 850774810}
-  - {fileID: 1227558688}
-  m_Father: {fileID: 10153911}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &655288913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655288911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52887f80fd4acae41aa3eb29a3289204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserSpawners:
-  - {fileID: 169693960}
-  - {fileID: 889018364}
-  - {fileID: 235701243}
-  - {fileID: 2097809042}
-  - {fileID: 1635513511}
-  - {fileID: 1891196504}
-  - {fileID: 290211639}
-  - {fileID: 850774809}
-  - {fileID: 1227558687}
-  laserPrefab: {fileID: 2453079552380971735, guid: 03c6a0479f3c6224d9246a3be032ab02, type: 3}
-  maxSpawnTimer: 3
+  m_Children: []
+  m_Father: {fileID: 696773234}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &664296164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1031,59 @@ Transform:
   - {fileID: 1730208848}
   m_Father: {fileID: 10153911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &696773233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696773234}
+  - component: {fileID: 696773235}
+  m_Layer: 0
+  m_Name: Helicopter Spawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &696773234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696773233}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1809172299}
+  - {fileID: 653800483}
+  m_Father: {fileID: 10153911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696773235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696773233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07af7bb3c16dd204b89a112daed97b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawners:
+  - {fileID: 1809172299}
+  - {fileID: 653800483}
+  helicopterPrefab: {fileID: 2093439155252046095, guid: ec09db91c1f5dfb48ac31ba1ae0697d3, type: 3}
+  minSpawnWaitTime: 10
+  spawnMaxTime: 20
+  spawnRangeY: 4
 --- !u!1 &746921620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,7 +1115,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1680463755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &850774809
+--- !u!1 &875390826
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1186,30 +1123,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 850774810}
+  - component: {fileID: 875390827}
   m_Layer: 0
-  m_Name: Laser Spawner 8
+  m_Name: Laser Spawner 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &850774810
+--- !u!4 &875390827
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850774809}
+  m_GameObject: {fileID: 875390826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 655288912}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &889018364
+--- !u!1 &892875416
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1217,28 +1154,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 889018365}
+  - component: {fileID: 892875417}
   m_Layer: 0
-  m_Name: Laser Spawner 2
+  m_Name: Laser Spawner 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &889018365
+--- !u!4 &892875417
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889018364}
+  m_GameObject: {fileID: 892875416}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 655288912}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &917014222
 GameObject:
@@ -1272,7 +1209,7 @@ Transform:
   - {fileID: 429507361}
   m_Father: {fileID: 1815046589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1014805701
+--- !u!1 &1006279900
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1280,28 +1217,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1014805702}
+  - component: {fileID: 1006279901}
   m_Layer: 0
-  m_Name: Helicopter Spawner 1
+  m_Name: Laser Spawner 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1014805702
+--- !u!4 &1006279901
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014805701}
+  m_GameObject: {fileID: 1006279900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 282216638}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071642234
 GameObject:
@@ -1315,7 +1252,7 @@ GameObject:
   - component: {fileID: 1071642236}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: Obstacle
+  m_TagString: ObstacleBlocking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1493,7 +1430,12 @@ Transform:
   - {fileID: 369390958}
   m_Father: {fileID: 10153911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1227558687
+--- !u!1 &1271896830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 249512639550302531, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
+  m_PrefabInstance: {fileID: 612932684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1319791270
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1501,34 +1443,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1227558688}
+  - component: {fileID: 1319791271}
   m_Layer: 0
-  m_Name: Laser Spawner 9
+  m_Name: Laser Spawner 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1227558688
+--- !u!4 &1319791271
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227558687}
+  m_GameObject: {fileID: 1319791270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 655288912}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1271896830 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 249512639550302531, guid: 5b659f0f01dc9eb44b1e7137fa9f3639, type: 3}
-  m_PrefabInstance: {fileID: 612932684}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489898617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1497,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1648016559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1523270815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1523270816}
+  - component: {fileID: 1523270817}
+  m_Layer: 0
+  m_Name: Laser Spawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1523270816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523270815}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 892875417}
+  - {fileID: 1785794188}
+  - {fileID: 2006168966}
+  - {fileID: 1006279901}
+  - {fileID: 875390827}
+  - {fileID: 1319791271}
+  - {fileID: 196666286}
+  - {fileID: 191927575}
+  - {fileID: 1832057313}
+  m_Father: {fileID: 10153911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1523270817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523270815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52887f80fd4acae41aa3eb29a3289204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserSpawners:
+  - {fileID: 892875416}
+  - {fileID: 1785794187}
+  - {fileID: 2006168965}
+  - {fileID: 1006279900}
+  - {fileID: 875390826}
+  - {fileID: 1319791270}
+  - {fileID: 196666285}
+  - {fileID: 191927574}
+  - {fileID: 1832057312}
+  laserPrefab: {fileID: 2453079552380971735, guid: 03c6a0479f3c6224d9246a3be032ab02, type: 3}
+  maxSpawnTimer: 3
 --- !u!1 &1566092500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,37 +1793,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6047190823241830284, guid: 0b4271660af8fd24a9469c2cb25a6199, type: 3}
   m_PrefabInstance: {fileID: 1598596124}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1635513511
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1635513512}
-  m_Layer: 0
-  m_Name: Laser Spawner 5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1635513512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635513511}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 655288912}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648016558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2089,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1680463755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1785794187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1785794188}
+  m_Layer: 0
+  m_Name: Laser Spawner 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1785794188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785794187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1523270816}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1809172298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809172299}
+  m_Layer: 0
+  m_Name: Helicopter Spawner 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809172299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809172298}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 696773234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815046588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2184,37 @@ Transform:
   - {fileID: 328811785}
   - {fileID: 1843626666}
   m_Father: {fileID: 10153911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1832057312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1832057313}
+  m_Layer: 0
+  m_Name: Laser Spawner 9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1832057313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832057312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1838620055 stripped
 GameObject:
@@ -2189,37 +2253,6 @@ Transform:
   - {fileID: 1648647498}
   m_Father: {fileID: 1815046589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1891196504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1891196505}
-  m_Layer: 0
-  m_Name: Laser Spawner 6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1891196505
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891196504}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 655288912}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1972503226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,7 +2284,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1680463755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2097809042
+--- !u!1 &2006168965
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2259,28 +2292,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2097809043}
+  - component: {fileID: 2006168966}
   m_Layer: 0
-  m_Name: Laser Spawner 4
+  m_Name: Laser Spawner 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2097809043
+--- !u!4 &2006168966
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097809042}
+  m_GameObject: {fileID: 2006168965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 655288912}
+  m_Father: {fileID: 1523270816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099018143
 GameObject:
@@ -2372,7 +2405,7 @@ GameObject:
   - component: {fileID: 2131887572}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: Obstacle
+  m_TagString: ObstacleBlocking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2483,37 +2516,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2146559776
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2146559777}
-  m_Layer: 0
-  m_Name: Helicopter Spawner 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2146559777
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146559776}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 282216638}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2521,8 +2523,8 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 2134969016}
-  - {fileID: 10153911}
   - {fileID: 153268392}
+  - {fileID: 10153911}
   - {fileID: 253886693}
   - {fileID: 1680463755}
   - {fileID: 612932684}
