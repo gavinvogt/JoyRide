@@ -125,7 +125,7 @@ public class Car : MonoBehaviour
             SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
             gun.SendMessage("StopShotSound");
         }
-        Destroy(healthBar.gameObject);
+        if (healthBar != null) Destroy(healthBar.gameObject);
         healthBar = null;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
