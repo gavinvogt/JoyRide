@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerProjectile : MonoBehaviour
 {
@@ -26,9 +27,10 @@ public class PlayerProjectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
+        else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
             Destroy(gameObject);
+            SceneManager.LoadScene(sceneName: "EndScreen");
         }
     }
 
