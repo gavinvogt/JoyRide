@@ -1,18 +1,19 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
 
 public class Laser : MonoBehaviour
 {
     private int health;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private HealthBar healthBar1;
+    [SerializeField] private HealthBar healthBar2;
     [SerializeField] protected AudioClip laserSound;
     private AudioSource laserAudioSource = null;
     private LaserSpawner laserSpawner;
     void Start()
     {
         health = 10;
-        healthBar.SetMaxHealth(health);
+        healthBar1.SetMaxHealth(health);
+        healthBar2.SetMaxHealth(health);
         laserSpawner = GameObject.Find("Laser Spawners").GetComponent<LaserSpawner>();
     }
 
@@ -32,7 +33,8 @@ public class Laser : MonoBehaviour
         if (health > 0)
         {
             health -= damage;
-            healthBar.SetHealth(health);
+            healthBar1.SetHealth(health);
+            healthBar2.SetHealth(health);
         }
         if (health <= 0)
         {
