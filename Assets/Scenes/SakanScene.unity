@@ -1078,7 +1078,7 @@ MonoBehaviour:
   - {fileID: 1809172299}
   - {fileID: 653800483}
   helicopterPrefab: {fileID: 2093439155252046095, guid: ec09db91c1f5dfb48ac31ba1ae0697d3, type: 3}
-  minSpawnWaitTime: 15
+  minSpawnWaitTime: 10
   spawnMaxTime: 20
   spawnRangeY: 4
 --- !u!1 &746921620

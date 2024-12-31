@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1208730085225566940}
   - component: {fileID: 4051135032921534919}
   - component: {fileID: 2028239467565417510}
-  - component: {fileID: 8261058752633100092}
   - component: {fileID: -4354662666121831337}
+  - component: {fileID: 3130258434004256262}
   m_Layer: 0
   m_Name: Missile
   m_TagString: ObstacleNonBlocking
@@ -117,8 +117,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &8261058752633100092
-PolygonCollider2D:
+--- !u!114 &-4354662666121831337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504903687239416041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccf3c541ceeb34ab390031f12c83bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &3130258434004256262
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,53 +164,4 @@ PolygonCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.030001163, y: 0.50801265}
-      - {x: -0.066198826, y: 0.46875}
-      - {x: -0.06907606, y: 0.3752476}
-      - {x: -0.09533167, y: 0.37603438}
-      - {x: -0.10153055, y: 0.22267652}
-      - {x: -0.13292551, y: 0.21626204}
-      - {x: -0.13033342, y: -0.124765515}
-      - {x: -0.16136742, y: -0.12415999}
-      - {x: -0.1588397, y: -0.25202277}
-      - {x: -0.13167429, y: -0.25307387}
-      - {x: -0.12862206, y: -0.31273115}
-      - {x: -0.09630728, y: -0.3174339}
-      - {x: -0.095917225, y: -0.34443164}
-      - {x: 0.0974102, y: -0.3439426}
-      - {x: 0.094088554, y: -0.31699714}
-      - {x: 0.12627459, y: -0.31505856}
-      - {x: 0.1277833, y: -0.249946}
-      - {x: 0.15823174, y: -0.24851665}
-      - {x: 0.15531445, y: -0.12430173}
-      - {x: 0.12899828, y: -0.11823714}
-      - {x: 0.12515402, y: 0.22221792}
-      - {x: 0.09557533, y: 0.2177791}
-      - {x: 0.09128904, y: 0.3794303}
-      - {x: 0.06626177, y: 0.37778276}
-      - {x: 0.06303167, y: 0.47062093}
-      - {x: 0.027348518, y: 0.50454473}
-  m_UseDelaunayMesh: 0
---- !u!114 &-4354662666121831337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504903687239416041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ccf3c541ceeb34ab390031f12c83bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 1
