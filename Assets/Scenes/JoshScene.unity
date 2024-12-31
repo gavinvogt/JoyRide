@@ -415,6 +415,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4271464898062456717, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 253886691}
     - target: {fileID: 7233858749201975585, guid: 746c15ca48ca1134f8c35ae61f02c8e7, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -485,8 +489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 1271896830}
-  maxSpeed: 35
-  speed: 0
   UI: {fileID: 1838620055}
   jumpAudioClips:
   - {fileID: 8300000, guid: ae5fcd17e7cca63478bc377548852195, type: 3}
@@ -1084,6 +1086,7 @@ MonoBehaviour:
   minSpawnWaitTime: 10
   spawnMaxTime: 20
   spawnRangeY: 4
+  helicopterEnterAudioClip: {fileID: 0}
 --- !u!1 &746921620
 GameObject:
   m_ObjectHideFlags: 0

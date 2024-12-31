@@ -10,9 +10,6 @@ public class UI : MonoBehaviour
 
     void Awake()
     {
-        healthGauge.transform.rotation = Quaternion.Euler(0, 0, 0);
-        ammoGauge.transform.rotation = Quaternion.Euler(0, 0, 0);
-        speedGauge.transform.rotation = Quaternion.Euler(0, 0, 90);
         DisableBoostUI();
         updateUI(player);
     }

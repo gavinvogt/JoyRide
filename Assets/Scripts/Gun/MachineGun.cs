@@ -13,7 +13,7 @@ public class MachineGun : Gun
         if (car.getCurrentAmmo() > 0)
         {
             car.useAmmo();
-            player.GetComponent<Player>().updatePlayerUI();
+            if(player) player.GetComponent<Player>().updatePlayerUI();
             if (blastAudioSource == null)
             {
                 // Start machine gun sound

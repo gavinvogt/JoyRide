@@ -254,7 +254,7 @@ MonoBehaviour:
   leftJumpPoint: {fileID: 1108212976764705719}
   rightJumpPoint: {fileID: 1300199227220953563}
   gun: {fileID: 207697967664101632}
-  cursorTexture: {fileID: 2800000, guid: 864b2112f4f18b34d931aaa0a9f856b1, type: 3}
+  cursorTexture: {fileID: 2800000, guid: fbc707803e86cf8479f830040b811eeb, type: 3}
   drivingSpeed: 10
   maxHealth: 2
   healthBar: {fileID: 3666060780350223519}
