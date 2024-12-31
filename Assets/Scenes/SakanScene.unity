@@ -1561,7 +1561,7 @@ MonoBehaviour:
   - {fileID: 191927574}
   - {fileID: 1832057312}
   laserPrefab: {fileID: 2453079552380971735, guid: 03c6a0479f3c6224d9246a3be032ab02, type: 3}
-  maxSpawnTimer: 3
+  maxSpawnTimer: 5
 --- !u!1 &1566092500
 GameObject:
   m_ObjectHideFlags: 0
