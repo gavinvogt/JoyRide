@@ -28,6 +28,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private GameObject spotlight;
 
     [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private AudioClip helicopterDestroyedClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -85,7 +86,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         this.spawner = spawner;
     }
 
-    public void SetSpawner(string helicopterSide)
+    public void SetHelicopterSide(string helicopterSide)
     {
         this.helicopterSide = helicopterSide;
     }
@@ -94,6 +95,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     {
         // remove health bar
         Destroy(healthBar.gameObject);
+        SoundFXManager.instance.PlaySoundFXClip(helicopterDestroyedClip, transform, 1f);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
         isHovering = false;
 

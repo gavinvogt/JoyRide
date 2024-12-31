@@ -203,7 +203,8 @@ public class Car : MonoBehaviour
         {
             UIScript.EnableBoostUI();
         }
-        yield return new WaitForSeconds(1.5f);
+        UIScript.EnableBoostUI();
+        yield return new WaitForSeconds(2.5f);
         drivingSpeed -= 4;
         if (player != null)
         {
