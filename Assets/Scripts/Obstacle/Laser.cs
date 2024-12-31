@@ -38,7 +38,8 @@ public class Laser : MonoBehaviour
         {
             StopAllCoroutines();
             laserSpawner.DecreaseLaser();
-            Destroy(this.gameObject);
+            GameScore.instance.IncrementLasersDestroyed();
+            Destroy(gameObject);
         }
     }
 
