@@ -48,8 +48,6 @@ public class GameScore : MonoBehaviour
 
     public int GetScore()
     {
-        Debug.Log("Game time: " + GameTimer.instance.TimerValue);
-        Debug.Log("Value is " + (int)Math.Floor(timeMultiplier * GameTimer.instance.TimerValue));
         return (int)Math.Floor(timeMultiplier * GameTimer.instance.TimerValue)
             + pointsPerPoliceCar * instance.policeCarsDestroyed
             + pointsPerHelicopter * instance.helicoptersDestroyed
