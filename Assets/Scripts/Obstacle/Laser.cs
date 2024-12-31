@@ -45,6 +45,9 @@ public class Laser : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(laserAudioSource.gameObject);
+        if (laserAudioSource != null)
+        {
+            Destroy(laserAudioSource.gameObject);
+        }
     }
 }
