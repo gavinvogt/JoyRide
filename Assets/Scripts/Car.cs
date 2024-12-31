@@ -102,7 +102,7 @@ public class Car : MonoBehaviour
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
             currentHealth--;
-            healthBar.SetHealth(currentHealth);
+            if (healthBar != null) healthBar.SetHealth(currentHealth);
             if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag)) Destroy(collision.gameObject);
             if (player != null)
             {
@@ -126,6 +126,7 @@ public class Car : MonoBehaviour
             gun.SendMessage("StopShotSound");
         }
         Destroy(healthBar.gameObject);
+        healthBar = null;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         gameObject.GetComponent<CarNPC>().enabled = false;
