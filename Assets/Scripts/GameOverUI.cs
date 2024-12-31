@@ -10,6 +10,6 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         timeTextElement.text = GameTimer.instance.GetTimeString();
-        scoreTextElement.text = GameScore.instance.GetScoreString();
+        scoreTextElement.text = "Score: " + GameScore.instance.GetScoreString();
     }
 }
