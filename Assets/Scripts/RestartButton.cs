@@ -14,6 +14,6 @@ public class RestartButton : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene(sceneName: "SakanScene");
+        SceneManager.LoadScene(sceneName: "BuildScene");
     }
 }
