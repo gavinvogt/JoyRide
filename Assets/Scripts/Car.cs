@@ -10,7 +10,7 @@ public class Car : MonoBehaviour
     // player jumping out of car to control a new one
     [SerializeField] private GameObject playerProjectilePrefab;
     [SerializeField] private Transform leftJumpPoint;
-    [SerializeField] private Transform rightJumpPoint;  
+    [SerializeField] private Transform rightJumpPoint;
     // moving the gun
     [SerializeField] private GameObject gun;
     // gun cursor
@@ -24,6 +24,7 @@ public class Car : MonoBehaviour
 
     [SerializeField] private int maxHealth;
     private int currentHealth;
+    [SerializeField] private HealthBar healthBar;
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
 
@@ -42,6 +43,7 @@ public class Car : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentAmmoCount = maxAmmoCount;
+        healthBar.SetMaxHealth(maxHealth);
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
@@ -100,6 +102,7 @@ public class Car : MonoBehaviour
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
             currentHealth--;
+            healthBar.SetHealth(currentHealth);
             if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag)) Destroy(collision.gameObject);
             if (player != null)
             {
@@ -122,6 +125,7 @@ public class Car : MonoBehaviour
             SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
             gun.SendMessage("StopShotSound");
         }
+        Destroy(healthBar.gameObject);
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         gameObject.GetComponent<CarNPC>().enabled = false;
