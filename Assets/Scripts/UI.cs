@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
 
 public class UI : MonoBehaviour
 {
@@ -29,7 +27,7 @@ public class UI : MonoBehaviour
         float angleOfGauge = -90f * (1 - healthPercentage);
         healthGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
     }
-    public void updateAmmo(float ammoPercentage)    
+    public void updateAmmo(float ammoPercentage)
     {
         float angleOfGauge = 90f * (1 - ammoPercentage);
         ammoGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
