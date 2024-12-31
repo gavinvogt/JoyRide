@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private ObstacleSpawner os;
     private RoadDotSpawner rds;
+    private HelicopterSpawner hs;
+    private LaserSpawner ls;
 
     [SerializeField] private GameObject UI;
     private UI UIScript;
@@ -98,7 +100,13 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(10f);
         speed++;
         os.SetSpeed(speed);
+        if(speed % 10 == 0)
+        {
+            os.IncreaseMaxPoliceCars();
+        }
         rds.SetSpeed(speed);
+        ls.SetMaxSpawn(GetSpeedPercentage());
+        hs.SetMinSpawnTime(GetSpeedPercentage());
         updatePlayerUI();
         if (speed < maxSpeed)
         {

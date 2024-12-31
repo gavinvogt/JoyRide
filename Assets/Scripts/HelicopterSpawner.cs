@@ -6,6 +6,7 @@ public class HelicopterSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawners;
     [SerializeField] private GameObject helicopterPrefab;
     [SerializeField] private float minSpawnWaitTime;
+    private float currentMinSpawnTime;
     [SerializeField] private float spawnMaxTime;
     [SerializeField] private float spawnRangeY;
     private float timeBeforeNextSpawn;
@@ -16,6 +17,7 @@ public class HelicopterSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentMinSpawnTime = minSpawnWaitTime;
         ResetSpawnTimer();
     }
 
@@ -50,7 +52,12 @@ public class HelicopterSpawner : MonoBehaviour
 
     private void ResetSpawnTimer()
     {
-        timeBeforeNextSpawn = minSpawnWaitTime + Random.Range(0, spawnMaxTime);
+        timeBeforeNextSpawn = currentMinSpawnTime + Random.Range(0, spawnMaxTime);
+    }
+
+    public void SetMinSpawnTime(float percentage)
+    {
+        currentMinSpawnTime = minSpawnWaitTime * (1 - percentage);
     }
 
     public int ChooseHelicopterSide()

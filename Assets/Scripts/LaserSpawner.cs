@@ -9,6 +9,7 @@ public class LaserSpawner : MonoBehaviour
     private int laserCount = 0;
 
     [SerializeField] private float maxSpawnTimer;
+    private float currentMaxTimer;
     private float spawnTimer;
 
     private Player player;
@@ -16,6 +17,7 @@ public class LaserSpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        currentMaxTimer = maxSpawnTimer;
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class LaserSpawner : MonoBehaviour
                     spawned = true;
                 }
             }
-            spawnTimer = maxSpawnTimer;
+            spawnTimer = currentMaxTimer;
         }
         else
         {
@@ -50,5 +52,10 @@ public class LaserSpawner : MonoBehaviour
     public void DecreaseLaser()
     {
         laserCount--;
+    }
+
+    public void SetMaxSpawn(float percentage)
+    {
+        currentMaxTimer = maxSpawnTimer * (1f - percentage);
     }
 }
