@@ -109,4 +109,9 @@ public class Player : MonoBehaviour
     {
         UIScript.updateUI(this.gameObject);
     }
+
+    public int GetSpeed()
+    {
+        return speed;
+    }
 }
