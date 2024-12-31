@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5702500132364301535}
   speed: 35
-  damage: 1
+  damage: 2
   hitSounds:
   - {fileID: 8300000, guid: f70b5d1e24902004799e835abe1221bb, type: 3}
   - {fileID: 8300000, guid: 8d31b3e543e21fe4fadadd697d168864, type: 3}
