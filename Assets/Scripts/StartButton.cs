@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class StartButton : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class StartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void StartGame()
