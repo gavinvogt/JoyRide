@@ -18,6 +18,7 @@ public class LaserSpawner : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         currentMaxTimer = maxSpawnTimer;
+        spawnTimer = currentMaxTimer;
     }
 
     // Update is called once per frame
