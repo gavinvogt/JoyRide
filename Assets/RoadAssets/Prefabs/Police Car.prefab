@@ -180,6 +180,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3010426862311063243, guid: 87ebfaaaaf44da74aa2edb33fafaa10c, type: 3}
   bulletSpeed: 10
   firePoint: {fileID: 7318890375569947764}
+  firePointXRange: 1
   healthBar: {fileID: 3922810898311204406}
   damageInidcator: {fileID: 5408450655392742861, guid: ba45f5ec8f179ba40845fc3b17b985a7, type: 3}
 --- !u!1 &2030322975103354996
