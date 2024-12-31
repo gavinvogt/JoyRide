@@ -190,9 +190,9 @@ public class Car : MonoBehaviour
 
     public IEnumerator BoostSpeed()
     {
-        drivingSpeed += 2;
+        drivingSpeed += 4;
         yield return new WaitForSeconds(1.5f);
-        drivingSpeed -= 2;
+        drivingSpeed -= 4;
     }
 
     public void SpawnNPCs()

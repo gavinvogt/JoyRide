@@ -197,10 +197,13 @@ MonoBehaviour:
   - {fileID: 1843626665}
   obstaclePrefabs:
   - {fileID: 2345255607838637255, guid: 4fb79a1291134894c8cb025db835043c, type: 3}
-  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  - {fileID: 2345255607838637255, guid: 8a708e1e62669f54d8fb7c47c30c7fea, type: 3}
   - {fileID: 2345255607838637255, guid: 758fb0b96ec17764983593d20d4f2ebe, type: 3}
   - {fileID: 2345255607838637255, guid: e77c5069fbab0874f93542e2e68368ea, type: 3}
-  - {fileID: 2345255607838637255, guid: 8a708e1e62669f54d8fb7c47c30c7fea, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
+  - {fileID: 8584236702905037002, guid: 51d13ed637a41a740ab3977f8cf8b47e, type: 3}
   PolicePrefab: {fileID: 403856411473894058, guid: 49212f010f4dd934ba26987485eeb0ac, type: 3}
 --- !u!1 &153268391
 GameObject:
