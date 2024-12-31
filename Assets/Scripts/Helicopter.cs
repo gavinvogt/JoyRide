@@ -28,6 +28,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private GameObject spotlight;
 
     [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private AudioClip helicopterDestroyedClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -94,6 +95,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     {
         // remove health bar
         Destroy(healthBar.gameObject);
+        SoundFXManager.instance.PlaySoundFXClip(helicopterDestroyedClip, transform, 1f);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
         isHovering = false;
 
@@ -122,13 +124,14 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         yield return new WaitForSeconds(1f);
         spotlight = Instantiate(spotlightPrefab, gameObject.transform);
         spotlight.GetComponent<Spotlight>().Spawn(this);
+        spotlight.transform.parent = null;
     }
 
     public void ShootMissile()
     {
         GameObject missile = Instantiate(missilePrefab, gameObject.transform);
         missile.transform.parent = null;
-        missile.GetComponent<Missile>().SetReferences(spotlight.transform, spotlight.GetComponent<Spotlight>());
+        missile.GetComponent<Missile>().SetReferences(this.spotlight.transform, spotlight.GetComponent<Spotlight>());
         missile.GetComponent<CircleCollider2D>().enabled = false;
         Vector3 targ = spotlight.transform.position;
         targ.z = 0f;
