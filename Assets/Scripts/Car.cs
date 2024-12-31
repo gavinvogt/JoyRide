@@ -10,7 +10,7 @@ public class Car : MonoBehaviour
     // player jumping out of car to control a new one
     [SerializeField] private GameObject playerProjectilePrefab;
     [SerializeField] private Transform leftJumpPoint;
-    [SerializeField] private Transform rightJumpPoint;
+    [SerializeField] private Transform rightJumpPoint;  
     // moving the gun
     [SerializeField] private GameObject gun;
     // gun cursor
@@ -28,6 +28,8 @@ public class Car : MonoBehaviour
     private int currentAmmoCount;
 
     private NPCSpawner npcs;
+    private UI UIScript;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +43,7 @@ public class Car : MonoBehaviour
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
+        UIScript = GameObject.Find("PlayerUI").GetComponent<UI>();
     }
 
     // Update is called once per frame
@@ -191,8 +194,10 @@ public class Car : MonoBehaviour
     public IEnumerator BoostSpeed()
     {
         drivingSpeed += 2;
+        UIScript.EnableBoostUI();
         yield return new WaitForSeconds(1.5f);
         drivingSpeed -= 2;
+        UIScript.DisableBoostUI();
     }
 
     public void SpawnNPCs()
