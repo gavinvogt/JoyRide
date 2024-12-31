@@ -200,7 +200,7 @@ public class Car : MonoBehaviour
     {
         drivingSpeed += 4;
         UIScript.EnableBoostUI();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         drivingSpeed -= 4;
         UIScript.DisableBoostUI();
     }
