@@ -129,6 +129,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         // remove health bar
         Destroy(healthBar.gameObject);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
+        GameScore.instance.IncrementPoliceCarsDestroyed();
 
         // rotate the police car
         isRotating = true;

@@ -20,11 +20,16 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timerValue += Time.deltaTime;
-        textElement.text = GetTime();
+        instance.timerValue += Time.deltaTime;
+        textElement.text = GetTimeString();
     }
 
-    public string GetTime()
+    public float TimerValue
+    {
+        get { return instance.timerValue; }
+    }
+
+    public string GetTimeString()
     {
         return TimeSpan.FromSeconds(timerValue).ToString(@"mm\:ss\.f");
     }
