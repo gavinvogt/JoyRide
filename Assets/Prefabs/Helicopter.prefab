@@ -254,6 +254,7 @@ MonoBehaviour:
   spotlightPrefab: {fileID: 2780942923195851262, guid: 19eddc3ab0fcf3f409bbb3873c69cf2c, type: 3}
   spotlight: {fileID: 0}
   missilePrefab: {fileID: 1504903687239416041, guid: 1c8fbf58ea5991a4d90d3c426fc3b4e2, type: 3}
+  helicopterDestroyedClip: {fileID: 8300000, guid: 17b57edb448f34046835654d20211ea0, type: 3}
 --- !u!95 &6633330384817637964
 Animator:
   serializedVersion: 7

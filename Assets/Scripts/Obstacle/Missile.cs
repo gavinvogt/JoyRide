@@ -10,8 +10,7 @@ public class Missile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position.x > targetPos.position.x - .5f && transform.position.x < targetPos.position.x + .5f &&
-            transform.position.y > targetPos.position.y - .5f && transform.position.y < targetPos.position.y + .5f)
+        if ((transform.position - targetPos.position).magnitude < 1f)
         {
             StartCoroutine(Explode());
         }
