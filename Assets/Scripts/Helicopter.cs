@@ -119,13 +119,14 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     private IEnumerator SpawnSpotlight()
     {
         yield return new WaitForSeconds(1f);
-        spotlight = Instantiate(spotlightPrefab, this.gameObject.transform);
+        spotlight = Instantiate(spotlightPrefab, gameObject.transform);
         spotlight.GetComponent<Spotlight>().Spawn(this);
     }
 
     public void ShootMissile()
     {
-        GameObject missile = Instantiate(missilePrefab, this.gameObject.transform);
+        GameObject missile = Instantiate(missilePrefab, gameObject.transform);
+        missile.transform.parent = null;
         missile.GetComponent<Missile>().SetReferences(spotlight.transform, spotlight.GetComponent<Spotlight>());
         missile.GetComponent<CircleCollider2D>().enabled = false;
         Vector3 targ = spotlight.transform.position;
