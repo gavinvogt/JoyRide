@@ -37,8 +37,10 @@ public class UI : MonoBehaviour
     }
     public void updateSpeed(float speedPercentage)
     {
-        float angleOfGauge = 90f + (180 * speedPercentage);
-        speedGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
+        if (!float.IsNaN(speedPercentage)) {
+            float angleOfGauge = 90f + (180 * speedPercentage);
+            speedGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
+        }
     }
 
     public void EnableBoostUI()

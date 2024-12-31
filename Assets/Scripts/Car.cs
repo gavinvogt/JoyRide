@@ -185,6 +185,7 @@ public class Car : MonoBehaviour
         if (currentHealth < maxHealth)
         {
             currentHealth++;
+            if (healthBar != null) healthBar.SetHealth(currentHealth);
             if (player != null)
             {
                 player.GetComponent<Player>().updatePlayerUI();
