@@ -13,9 +13,10 @@ public class ObstacleSpawner : MonoBehaviour
     private int currentRandomFlag = 3;
     private int policeRandomFlag = 3;
     private int numPoliceCars;
-
+    private int maxPoliceCars;
     private void Awake()
     {
+        maxPoliceCars = 2;
         numPoliceCars = 0;
     }
     // Update is called once per frame
@@ -36,7 +37,7 @@ public class ObstacleSpawner : MonoBehaviour
                     obsCounter++;
                     currentRandomFlag = 3;
                 }
-                if (Random.Range(0, 10) < policeRandomFlag && numPoliceCars < 2)
+                if (Random.Range(0, 10) < policeRandomFlag && numPoliceCars < maxPoliceCars)
                 {
                     //StartCoroutine(BlinkWarning(spawner, 0));
                     StartCoroutine(SpawnObstacle(spawner, PolicePrefab));
@@ -107,5 +108,10 @@ public class ObstacleSpawner : MonoBehaviour
     public void SetSpeed(int newSpeed)
     {
         speed = newSpeed;
+    }
+
+    public void IncreaseMaxPoliceCars()
+    {
+        maxPoliceCars++;
     }
 }

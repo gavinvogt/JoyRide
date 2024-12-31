@@ -135,7 +135,7 @@ public class Car : MonoBehaviour
         }
         npcs.DecreaseNPC();
         Destroy(rotateTarget);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     public float getHealthPercentage()
@@ -197,7 +197,7 @@ public class Car : MonoBehaviour
 
     public void SpawnNPCs()
     {
-        if(player != null)
+        if (player != null)
         {
             List<GameObject> Spawners = npcs.GetSpawners();
             List<GameObject> NPCPrefabs = npcs.GetPrefabs();
@@ -211,7 +211,7 @@ public class Car : MonoBehaviour
             }
             spawnpoints.Add(randInt);
 
-            foreach(int i in spawnpoints)
+            foreach (int i in spawnpoints)
             {
                 npcs.StartCoroutine(npcs.SpawnNPC(Spawners[i], NPCPrefabs[Random.Range(0, NPCPrefabs.Count)]));
             }
