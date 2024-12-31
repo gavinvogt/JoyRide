@@ -5,17 +5,13 @@ public class Missile : MonoBehaviour
 {
     private Transform targetPos;
     private Spotlight spotlight;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private AudioClip hitSoundClip;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if((this.transform.position.x > targetPos.position.x - .5f && this.transform.position.x < targetPos.position.x + .5f) &&
-            this.transform.position.y > targetPos.position.y - .5f && this.transform.position.y < targetPos.position.y + .5f)
+        if (transform.position.x > targetPos.position.x - .5f && transform.position.x < targetPos.position.x + .5f &&
+            transform.position.y > targetPos.position.y - .5f && transform.position.y < targetPos.position.y + .5f)
         {
             StartCoroutine(Explode());
         }
@@ -30,6 +26,7 @@ public class Missile : MonoBehaviour
     IEnumerator Explode()
     {
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 1f);
         yield return new WaitForSeconds(1f);
         spotlight.StartCoroutine(spotlight.Move());
         Destroy(gameObject);
