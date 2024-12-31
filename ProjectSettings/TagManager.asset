@@ -10,6 +10,8 @@ TagManager:
   - ObstacleBlocking
   - ObstacleNonBlocking
   - IndestructableObstacle
+  - Obstacle
+  - IndestructableObstacleNonBlocking
   layers:
   - Default
   - TransparentFX
