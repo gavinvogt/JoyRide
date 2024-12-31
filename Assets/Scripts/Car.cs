@@ -117,9 +117,10 @@ public class Car : MonoBehaviour
         {
             player.SendMessage("NullCar");
         }
-        this.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
-        this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
-        this.gameObject.GetComponent<CarNPC>().enabled = false;
+        gun.SendMessage("StopShotSound");
+        gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
+        gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
+        gameObject.GetComponent<CarNPC>().enabled = false;
         if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");
@@ -193,10 +194,10 @@ public class Car : MonoBehaviour
 
     public IEnumerator BoostSpeed()
     {
-        drivingSpeed += 2;
+        drivingSpeed += 4;
         UIScript.EnableBoostUI();
         yield return new WaitForSeconds(1.5f);
-        drivingSpeed -= 2;
+        drivingSpeed -= 4;
         UIScript.DisableBoostUI();
     }
 

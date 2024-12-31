@@ -27,7 +27,7 @@ public class MachineGun : Gun
                 // Continue firing
                 StartCoroutine(Fire());
             }
-            else if (blastAudioSource != null)
+            else
             {
                 // Stop sound effect
                 StopShotSound();
