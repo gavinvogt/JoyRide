@@ -5,7 +5,6 @@ public class PoliceCar : Obstacle, BaseEnemy
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private int bulletSpeed;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float firePointXRange;
     private bool isMoving;
@@ -35,6 +34,8 @@ public class PoliceCar : Obstacle, BaseEnemy
 
         health = 40;
         healthBar.SetMaxHealth(health);
+
+        os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
     }
 
     // Update is called once per frame
@@ -75,7 +76,7 @@ public class PoliceCar : Obstacle, BaseEnemy
             firePoint.rotation
         );
         tempOb.transform.parent = null;
-        tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * bulletSpeed);
+        tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         numShot++;
         if (numShot < 3)
         {

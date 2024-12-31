@@ -58,5 +58,7 @@ public class LaserSpawner : MonoBehaviour
     public void SetMaxSpawn(float percentage)
     {
         currentMaxTimer = maxSpawnTimer * (1f - percentage);
+        if (currentMaxTimer < 1f)
+            currentMaxTimer = 1f;
     }
 }

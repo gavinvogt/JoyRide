@@ -113,5 +113,6 @@ public class ObstacleSpawner : MonoBehaviour
     public void IncreaseMaxPoliceCars()
     {
         maxPoliceCars++;
+        Debug.Log("Increasing max Police Cars. New max police cars is: " + maxPoliceCars);
     }
 }

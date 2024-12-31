@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
         car.SendMessage("SetPlayer", this);
         os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
         rds = GameObject.Find("Highway").GetComponent<RoadDotSpawner>();
+        ls = GameObject.Find("Highway").GetComponentInChildren<LaserSpawner>();
+        hs = GameObject.Find("Highway").GetComponentInChildren<HelicopterSpawner>();
         speed = 5;
         os.SetSpeed(speed);
         rds.SetSpeed(speed);

@@ -58,6 +58,8 @@ public class HelicopterSpawner : MonoBehaviour
     public void SetMinSpawnTime(float percentage)
     {
         currentMinSpawnTime = minSpawnWaitTime * (1 - percentage);
+        if (currentMinSpawnTime < 5f)
+            currentMinSpawnTime = 5f;
     }
 
     public int ChooseHelicopterSide()

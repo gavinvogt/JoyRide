@@ -23,7 +23,7 @@ public class RoadDotSpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        maxSpawnTimer = (40 - speed) / 80f;
+        maxSpawnTimer = (40f - speed) / 80f;
         if(spawnTimer < 0)
         {
             foreach(GameObject spawner in dotSpawners)
