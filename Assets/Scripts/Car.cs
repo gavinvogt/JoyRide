@@ -236,6 +236,7 @@ public class Car : MonoBehaviour
             foreach (int i in spawnpoints)
             {
                 npcs.StartCoroutine(npcs.SpawnNPC(Spawners[i], NPCPrefabs[Random.Range(0, NPCPrefabs.Count)]));
+                npcs.IncreaseNPC();
             }
         }
     }

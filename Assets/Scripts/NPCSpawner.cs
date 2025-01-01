@@ -55,6 +55,11 @@ public class NPCSpawner : MonoBehaviour
         tempNPC.GetComponent<CarNPC>().Spawn();
     }
 
+    public void IncreaseNPC()
+    {
+        numCars++;
+    }
+
     public void DecreaseNPC()
     {
         numCars--;
