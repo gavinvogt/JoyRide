@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     [SerializeField] private int damage;
     [SerializeField] private AudioClip[] hitSounds;
+    private bool hasHit = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,21 +16,23 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
+        if (hasHit) return; // ignore collision if a hit has already triggered
+
         if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
         {
-            Destroy(gameObject);
-            PlaySound();
+            HandleCollision();
         }
         else if (target.CompareTag("Enemy"))
         {
             if (target.gameObject) target.gameObject.SendMessage("DecreaseHealth", damage);
-            PlaySound();
-            Destroy(gameObject);
+            HandleCollision();
         }
     }
 
-    void PlaySound()
+    private void HandleCollision()
     {
+        hasHit = true;
         SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.4f);
+        Destroy(gameObject);
     }
 }
