@@ -87,7 +87,7 @@ public class ObstacleSpawner : MonoBehaviour
             tempOb.transform.position = new Vector3(
                 tempOb.transform.position.x,
                 tempOb.transform.position.y,
-                tempOb.transform.position.z - 0.1f
+                tempOb.transform.position.z + 0.1f
             );
         }
 
