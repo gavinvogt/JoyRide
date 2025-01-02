@@ -9,6 +9,9 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private float crashSpeed;
     [SerializeField] private float hoverRangeY;
 
+    private float attackCD = 0.75f;
+    private bool attackOnCD = false;
+
     // track how the helicopter is moving
     private bool isHovering = false;
     [SerializeField] private float hoverPeriod;
@@ -127,21 +130,32 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         spotlight.transform.parent = null;
     }
 
+    private IEnumerator startAttackCD()
+    {
+        attackOnCD = true;
+        yield return new WaitForSeconds(attackCD);
+        attackOnCD = false;
+    }
+
     public void ShootMissile()
     {
-        GameObject missile = Instantiate(missilePrefab, gameObject.transform);
-        missile.transform.parent = null;
-        missile.GetComponent<Missile>().SetReferences(this.spotlight.transform, spotlight.GetComponent<Spotlight>());
-        missile.GetComponent<CircleCollider2D>().enabled = false;
-        Vector3 targ = spotlight.transform.position;
-        targ.z = 0f;
+        if (!attackOnCD)
+        {
+            StartCoroutine(startAttackCD());
+            GameObject missile = Instantiate(missilePrefab, gameObject.transform);
+            missile.transform.parent = null;
+            missile.GetComponent<Missile>().SetReferences(this.spotlight.transform, spotlight.GetComponent<Spotlight>());
+            missile.GetComponent<CircleCollider2D>().enabled = false;
+            Vector3 targ = spotlight.transform.position;
+            targ.z = 0f;
 
-        Vector3 objectPos = transform.position;
-        targ.x -= objectPos.x;
-        targ.y -= objectPos.y;
+            Vector3 objectPos = transform.position;
+            targ.x -= objectPos.x;
+            targ.y -= objectPos.y;
 
-        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
-        missile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-        missile.GetComponent<Rigidbody2D>().linearVelocity = missile.transform.up * 7.5f;
+            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+            missile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+            missile.GetComponent<Rigidbody2D>().linearVelocity = missile.transform.up * 7.5f;
+        }
     }
 }
