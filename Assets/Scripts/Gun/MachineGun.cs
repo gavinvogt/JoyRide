@@ -10,10 +10,10 @@ public class MachineGun : Gun
 
     override public IEnumerator Fire()
     {
-        if (car.getCurrentAmmo() > 0)
+        if (player != null && car.getCurrentAmmo() > 0)
         {
             car.useAmmo();
-            if(player) player.GetComponent<Player>().updatePlayerUI();
+            if (player) player.GetComponent<Player>().updatePlayerUI();
             if (blastAudioSource == null)
             {
                 // Start machine gun sound
@@ -35,7 +35,7 @@ public class MachineGun : Gun
         }
         else
         {
-            // out of ammo, stop shooting
+            // Player left car or out of ammo, stop shooting
             StopShotSound();
         }
     }

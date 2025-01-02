@@ -15,7 +15,7 @@ public abstract class Gun : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        car = this.transform.parent.GetComponent<Car>();
+        car = transform.parent.GetComponent<Car>();
         mainCamera = Camera.main;
     }
 

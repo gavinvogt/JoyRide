@@ -23,7 +23,20 @@ public class Car : MonoBehaviour
     [SerializeField] private int drivingSpeed;
 
     [SerializeField] private int maxHealth;
-    private int currentHealth;
+    private int _currentHealth;
+    private int currentHealth
+    {
+        get { return _currentHealth; }
+        set
+        {
+            if (healthBar != null) healthBar.SetHealth(value);
+            if (player != null)
+            {
+                player.GetComponent<Player>().updatePlayerUI();
+            }
+            _currentHealth = value;
+        }
+    }
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
@@ -91,6 +104,11 @@ public class Car : MonoBehaviour
         if (player != null) OverrideCursor();
     }
 
+    /// <summary>
+    /// Resets the Car and any attached components (e.g. Gun) when the player leaves it.
+    /// DO NOT call this method when the player dies, or the game will not know that the player
+    /// was in the car that is being destroyed, failing to recognize game over.
+    /// </summary>
     void Reset()
     {
         player = null;
@@ -102,13 +120,11 @@ public class Car : MonoBehaviour
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
             currentHealth--;
-            if (healthBar != null) healthBar.SetHealth(currentHealth);
-            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !(collision.gameObject.name.Contains("Missile"))) Destroy(collision.gameObject);
+            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile")) Destroy(collision.gameObject);
             if (collision.gameObject.name.Contains("Missile")) collision.gameObject.GetComponent<Missile>().disableCollider();
             if (player != null)
             {
                 StartCoroutine(FlashColor());
-                player.GetComponent<Player>().updatePlayerUI();
             }
         }
         if (currentHealth <= 0)
@@ -123,8 +139,8 @@ public class Car : MonoBehaviour
         {
             // Actions specifically for if a player was in this car (losing game)
             player.SendMessage("NullCar");
+            gun.SendMessage("Reset");
             SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
-            gun.SendMessage("StopShotSound");
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
         healthBar = null;
@@ -186,11 +202,6 @@ public class Car : MonoBehaviour
         if (currentHealth < maxHealth)
         {
             currentHealth++;
-            if (healthBar != null) healthBar.SetHealth(currentHealth);
-            if (player != null)
-            {
-                player.GetComponent<Player>().updatePlayerUI();
-            }
         }
     }
 

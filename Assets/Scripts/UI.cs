@@ -19,8 +19,9 @@ public class UI : MonoBehaviour
         Player playerScript = player.GetComponent<Player>();
         if (playerScript.GetCar())
         {
-            updateHealth(playerScript.GetCar().GetComponent<Car>().getHealthPercentage());
-            updateAmmo(playerScript.GetCar().GetComponent<Car>().getAmmoPercentage());
+            Car car = playerScript.GetCar().GetComponent<Car>();
+            updateHealth(car.getHealthPercentage());
+            updateAmmo(car.GetComponent<Car>().getAmmoPercentage());
         }
         updateSpeed(playerScript.GetSpeedPercentage());
     }

@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     }
     public void updatePlayerUI()
     {
-        UIScript.updateUI(this.gameObject);
+        UIScript.updateUI(gameObject);
     }
 
     public int GetSpeed()
