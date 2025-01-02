@@ -107,7 +107,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         }
         else
         {
-            StartCoroutine(Die());
+            StartCoroutine(Die(false));
         }
     }
 
@@ -122,16 +122,17 @@ public class PoliceCar : Obstacle, BaseEnemy
         if (health <= 0)
         {
             StopAllCoroutines();
-            StartCoroutine(Die());
+            StartCoroutine(Die(true));
         }
     }
 
-    IEnumerator Die()
+    IEnumerator Die(bool givePoints)
     {
         // remove health bar
         Destroy(healthBar.gameObject);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
-        GameScore.instance.IncrementPoliceCarsDestroyed();
+        if (givePoints) 
+            GameScore.instance.IncrementPoliceCarsDestroyed();
         SoundFXManager.instance.PlaySoundFXClip(carDestroyedClip, transform, 1f);
 
         // rotate the police car
