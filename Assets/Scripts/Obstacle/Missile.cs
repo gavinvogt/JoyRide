@@ -28,17 +28,23 @@ public class Missile : MonoBehaviour
 
     IEnumerator Explode()
     {
-        hasCollided = false;
+        hasCollided = true;
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
         SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 1f);
         GameObject hitExplosion = Instantiate(explosion, new Vector3(this.transform.position.x, this.transform.position.y, -1.5f), this.transform.rotation, this.transform);
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        disableCollider();
+        yield return new WaitForSeconds(0.3f);
         Destroy(hitExplosion);
         yield return new WaitForSeconds(0.5f);
         if (spotlight) spotlight.StartCoroutine(spotlight.Move());
         Destroy(gameObject);
+    }
+
+    public void disableCollider()
+    {
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 }
