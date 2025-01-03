@@ -70,13 +70,15 @@ public class PoliceCar : Obstacle, BaseEnemy
     {
         yield return new WaitForSeconds(.5f);
         float xOffset = Random.Range(-firePointXRange / 2, firePointXRange / 2);
-        GameObject tempOb = Instantiate(
+        GameObject policeBulletObject = Instantiate(
             bulletPrefab,
             new Vector3(firePoint.position.x + xOffset, firePoint.position.y),
             firePoint.rotation
         );
-        tempOb.transform.parent = null;
-        tempOb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+        float bulletScale = Random.Range(1f, 1.6f);
+        policeBulletObject.transform.localScale = new Vector3(bulletScale, bulletScale, 1);
+        policeBulletObject.transform.parent = null;
+        policeBulletObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         numShot++;
         if (numShot < 3)
         {
@@ -131,7 +133,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         // remove health bar
         Destroy(healthBar.gameObject);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
-        if (givePoints) 
+        if (givePoints)
             GameScore.instance.IncrementPoliceCarsDestroyed();
         SoundFXManager.instance.PlaySoundFXClip(carDestroyedClip, transform, 1f);
 
