@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5560488066036457466}
   - component: {fileID: 4731677596366315895}
   m_Layer: 0
-  m_Name: Police Bullet
+  m_Name: Road Spike
   m_TagString: ObstacleNonBlocking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

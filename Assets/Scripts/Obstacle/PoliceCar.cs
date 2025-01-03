@@ -4,7 +4,7 @@ using System.Collections;
 public class PoliceCar : Obstacle, BaseEnemy
 {
     private Rigidbody2D rb;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject roadSpikePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float firePointXRange;
     private bool isMoving;
@@ -63,26 +63,26 @@ public class PoliceCar : Obstacle, BaseEnemy
     {
         yield return new WaitForSeconds(.5f);
         rb.linearVelocity = Vector2.zero;
-        StartCoroutine(Shoot(0));
+        StartCoroutine(DeployRoadSpikes(0));
     }
 
-    IEnumerator Shoot(int numShot)
+    IEnumerator DeployRoadSpikes(int numShot)
     {
         yield return new WaitForSeconds(.5f);
         float xOffset = Random.Range(-firePointXRange / 2, firePointXRange / 2);
-        GameObject policeBulletObject = Instantiate(
-            bulletPrefab,
+        GameObject roadSpikesObject = Instantiate(
+            roadSpikePrefab,
             new Vector3(firePoint.position.x + xOffset, firePoint.position.y),
             firePoint.rotation
         );
-        float bulletScale = Random.Range(1f, 1.6f);
-        policeBulletObject.transform.localScale = new Vector3(bulletScale, bulletScale, 1);
-        policeBulletObject.transform.parent = null;
-        policeBulletObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
+        float roadSpikeScale = Random.Range(1f, 1.6f);
+        roadSpikesObject.transform.localScale = new Vector3(roadSpikeScale, roadSpikeScale, 1);
+        roadSpikesObject.transform.parent = null;
+        roadSpikesObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * os.GetSpeed());
         numShot++;
         if (numShot < 3)
         {
-            StartCoroutine(Shoot(numShot));
+            StartCoroutine(DeployRoadSpikes(numShot));
         }
         else
         {
@@ -105,7 +105,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         isMoving = false;
         if (timesMoved < 3)
         {
-            StartCoroutine(Shoot(0));
+            StartCoroutine(DeployRoadSpikes(0));
         }
         else
         {
