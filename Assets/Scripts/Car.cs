@@ -21,6 +21,7 @@ public class Car : MonoBehaviour
     private GameObject rotateTarget;
 
     [SerializeField] private int drivingSpeed;
+    private bool hasSpeedBoost = false;
 
     [SerializeField] private int maxHealth;
     private int _currentHealth;
@@ -91,6 +92,8 @@ public class Car : MonoBehaviour
         Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
         GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
 
+        UIScript.DisableBoostUI();
+
         // transfer player to the projectile
         projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
         projectile.SendMessage("SetParent", gameObject);
@@ -101,6 +104,8 @@ public class Car : MonoBehaviour
     {
         this.player = player;
         gun.SendMessage("SetPlayer", player);
+        if (hasSpeedBoost)
+            UIScript.EnableBoostUI();
         if (player != null) OverrideCursor();
     }
 
@@ -217,12 +222,14 @@ public class Car : MonoBehaviour
     public IEnumerator BoostSpeed()
     {
         drivingSpeed += 4;
+        hasSpeedBoost = true;
         if (player != null)
         {
             UIScript.EnableBoostUI();
         }
         yield return new WaitForSeconds(2.5f);
         drivingSpeed -= 4;
+        hasSpeedBoost = false;
         if (player != null)
         {
             UIScript.DisableBoostUI();
