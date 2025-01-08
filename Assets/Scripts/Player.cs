@@ -78,7 +78,6 @@ public class Player : MonoBehaviour
             previousTimeScale = Time.timeScale;
             Time.timeScale = 0;
             inGameMenuUI.SetActive(true);
-            Debug.Log("Esc to game menu");
         }
     }
 
