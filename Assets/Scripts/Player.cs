@@ -57,6 +57,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) CloseInGameMenu();
+
+            // Return if paused to prevent any key press handling
+            return;
+        }
+
         if (car != null)
         {
             // actions that require player to have a car
