@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject UI;
     private UI UIScript;
     [SerializeField] private GameObject inGameMenuUI;
+    private float previousTimeScale;
 
     [SerializeField] AudioClip[] jumpAudioClips;
 
@@ -74,8 +75,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // escape to in-game menu
-            // TODO: pause the game while in menu
-            // Time.timeScale = 0;
+            previousTimeScale = Time.timeScale;
+            Time.timeScale = 0;
             inGameMenuUI.SetActive(true);
             Debug.Log("Esc to game menu");
         }
@@ -133,5 +134,12 @@ public class Player : MonoBehaviour
     public int GetSpeed()
     {
         return speed;
+    }
+
+    public void CloseInGameMenu()
+    {
+        // Close in-game menu and un-pause game
+        inGameMenuUI.SetActive(false);
+        Time.timeScale = previousTimeScale;
     }
 }
