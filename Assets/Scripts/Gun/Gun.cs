@@ -29,7 +29,7 @@ public abstract class Gun : MonoBehaviour
             float rot = Mathf.Atan2(targetAngle.y, targetAngle.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(rot - 90, Vector3.forward);
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && Time.timeScale != 0)
             {
                 // Start firing gun
                 StartCoroutine(Fire());

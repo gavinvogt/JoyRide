@@ -21,8 +21,8 @@ public class MachineGun : Gun
             }
 
             Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
-            yield return new WaitForSeconds(fireCooldown);
-            if (Input.GetButton("Fire1"))
+            yield return new WaitForSecondsRealtime(fireCooldown);
+            if (Input.GetButton("Fire1") && Time.timeScale != 0)
             {
                 // Continue firing
                 StartCoroutine(Fire());
