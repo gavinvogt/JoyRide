@@ -22,14 +22,14 @@ public abstract class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (player != null && Time.timeScale != 0)
         {
             // Adjust angle of gun by mouse
             var targetAngle = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rot = Mathf.Atan2(targetAngle.y, targetAngle.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(rot - 90, Vector3.forward);
 
-            if (Input.GetButtonDown("Fire1") && Time.timeScale != 0)
+            if (Input.GetButtonDown("Fire1"))
             {
                 // Start firing gun
                 StartCoroutine(Fire());
