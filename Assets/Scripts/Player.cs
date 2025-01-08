@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject UI;
     private UI UIScript;
+    [SerializeField] private GameObject inGameMenuUI;
 
     [SerializeField] AudioClip[] jumpAudioClips;
 
@@ -69,6 +70,14 @@ public class Player : MonoBehaviour
                 car = null;
                 rb = null;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // escape to in-game menu
+            // TODO: pause the game while in menu
+            // Time.timeScale = 0;
+            inGameMenuUI.SetActive(true);
+            Debug.Log("Esc to game menu");
         }
     }
 
