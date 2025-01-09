@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -23,7 +22,7 @@ public class MusicManager : MonoBehaviour
         {
             // Created music manager for the first time
             instance = this;
-            currentClipIndex = UnityEngine.Random.Range(0, musicClips.Length);
+            currentClipIndex = Random.Range(0, musicClips.Length);
             DontDestroyOnLoad(gameObject);
 
             // Start playing the first clip in 0.5 seconds
@@ -50,6 +49,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    // Strategy for music clips based on https://www.youtube.com/watch?v=3yKcrig3bU0
     private void ScheduleNextClip()
     {
         // schedule next clip start time based on currently playing clip
