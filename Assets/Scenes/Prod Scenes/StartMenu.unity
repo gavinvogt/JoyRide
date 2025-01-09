@@ -667,18 +667,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2418151010702536322, guid: dbe4fe0cad49c3b47a21b55077a1e0c5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989100986240788865, guid: dbe4fe0cad49c3b47a21b55077a1e0c5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5190773175492339319, guid: dbe4fe0cad49c3b47a21b55077a1e0c5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 6093198995342526925, guid: dbe4fe0cad49c3b47a21b55077a1e0c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

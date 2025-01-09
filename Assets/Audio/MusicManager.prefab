@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6093198995342526925
 Transform:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicClips:
-  - {fileID: 8300000, guid: 35e0b3a1bfcacbf48803201c9bee7aea, type: 3}
+  - {fileID: 8300000, guid: 3c277b8d26850494e8d68804bac67221, type: 3}
   - {fileID: 8300000, guid: 43d95c72e9c05004ead194e207352d9c, type: 3}
   - {fileID: 8300000, guid: 8cbef214da920574aaf721d188245e00, type: 3}
   audioSources:
@@ -68,7 +68,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6465212385418840165
 Transform:
@@ -95,8 +95,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2728909226425616579, guid: de45e5c89398d0447b50f166ca3f8fbb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 35e0b3a1bfcacbf48803201c9bee7aea, type: 3}
-  m_Resource: {fileID: 8300000, guid: 35e0b3a1bfcacbf48803201c9bee7aea, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -197,7 +197,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1183809081353011276
 Transform:
@@ -224,8 +224,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2728909226425616579, guid: de45e5c89398d0447b50f166ca3f8fbb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 35e0b3a1bfcacbf48803201c9bee7aea, type: 3}
-  m_Resource: {fileID: 8300000, guid: 35e0b3a1bfcacbf48803201c9bee7aea, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
