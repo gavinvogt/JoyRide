@@ -5,7 +5,6 @@ public class SoundFXManager : MonoBehaviour
     public static SoundFXManager instance;
     [SerializeField] private AudioSource soundFXObject;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         if (instance == null)
