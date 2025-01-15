@@ -771,6 +771,7 @@ MonoBehaviour:
   car: {fileID: 1271896830}
   UI: {fileID: 1838620055}
   inGameMenuUI: {fileID: 12956490}
+  soundManagerObject: {fileID: 839104547}
   jumpAudioClips:
   - {fileID: 8300000, guid: ae5fcd17e7cca63478bc377548852195, type: 3}
   - {fileID: 8300000, guid: 6d0b97f1a34843346be0a41bedc407ad, type: 3}
@@ -2519,6 +2520,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &839104547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3804152370617314096, guid: 84762fda79d4459498457f946e022670, type: 3}
+  m_PrefabInstance: {fileID: 2519236788247380654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &857838835
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,7 +4432,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4004865075960749368, guid: 84762fda79d4459498457f946e022670, type: 3}
   m_PrefabInstance: {fileID: 2519236788247380654}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 839104547}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a744f94508a2f844a3c9f2fc5d040b0, type: 3}

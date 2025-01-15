@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class Player : MonoBehaviour
     private UI UIScript;
     [SerializeField] private GameObject inGameMenuUI;
     private float previousTimeScale;
+    [SerializeField] private GameObject soundManagerObject;
+    private SoundMixerManager soundManager;
 
     [SerializeField] AudioClip[] jumpAudioClips;
 
@@ -26,6 +30,9 @@ public class Player : MonoBehaviour
     {
         UIScript = UI.GetComponent<UI>();
         updatePlayerUI();
+
+        soundManager = soundManagerObject.GetComponent<SoundMixerManager>();
+        soundManager.soundStartUp();
     }
 
     private void Awake()
@@ -86,6 +93,10 @@ public class Player : MonoBehaviour
             previousTimeScale = Time.timeScale;
             Time.timeScale = 0;
             inGameMenuUI.SetActive(true);
+            //Setting sliders to show what the previous saved audio levels were
+            inGameMenuUI.transform.GetChild(0).GetChild(1).GetComponent<Slider>().value = SoundMixerManager.GetMasterVolumeLevel();
+            inGameMenuUI.transform.GetChild(0).GetChild(3).GetComponent<Slider>().value = SoundMixerManager.GetSoundFXVolumeLevel();
+            inGameMenuUI.transform.GetChild(0).GetChild(5).GetComponent<Slider>().value = SoundMixerManager.GetMusicVolumeLevel();
         }
     }
 
@@ -148,5 +159,7 @@ public class Player : MonoBehaviour
         // Close in-game menu and un-pause game
         inGameMenuUI.SetActive(false);
         Time.timeScale = previousTimeScale;
+        //Save the sound changes to file
+        Save.SaveFile(SoundMixerManager.GetSoundVolumeInSaveFormat());
     }
 }
