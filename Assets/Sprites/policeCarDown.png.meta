@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4d47816725cd4c24a99796be4749a407
+guid: 3072b9b51858fe343950b60dbaf607ae
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -162722054985296677
-    second: policeCar_0
+      213: 3252136830705145447
+    second: policeCarDown_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: policeCar_0
+      name: policeCarDown_0
       rect:
         serializedVersion: 2
         x: 6
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd4da733725edbdf0800000000000000
-      internalID: -162722054985296677
+      spriteID: 766152b8739e12d20800000000000000
+      internalID: 3252136830705145447
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      policeCar_0: -162722054985296677
+      policeCarDown_0: 3252136830705145447
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

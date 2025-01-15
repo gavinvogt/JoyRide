@@ -145,7 +145,6 @@ public class Helicopter : MonoBehaviour, BaseEnemy
             GameObject missile = Instantiate(missilePrefab, gameObject.transform);
             missile.transform.parent = null;
             missile.GetComponent<Missile>().SetReferences(this.spotlight.transform, spotlight.GetComponent<Spotlight>());
-            missile.GetComponent<CircleCollider2D>().enabled = false;
             Vector3 targ = spotlight.transform.position;
             targ.z = 0f;
 

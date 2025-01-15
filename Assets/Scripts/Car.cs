@@ -125,8 +125,8 @@ public class Car : MonoBehaviour
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
             currentHealth--;
-            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile")) Destroy(collision.gameObject);
-            if (collision.gameObject.name.Contains("Missile")) collision.gameObject.GetComponent<Missile>().disableCollider();
+            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("explosion")) Destroy(collision.gameObject);
+            if (collision.gameObject.name.Contains("explosion")) collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
             if (player != null)
             {
                 StartCoroutine(FlashColor());
