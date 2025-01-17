@@ -10,11 +10,11 @@ public class SoundMixerManager : MonoBehaviour
     static float soundFXVolumeLevel;
     static float musicVolumeLevel;
 
-    public void soundStartUp()
+    public void SoundStartUp()
     {
-        if (Save.LoadFile() != null)
+        if (Save.globalSaveData.GetVolumeValues() != null)
         {
-            Dictionary<string, float> volumes = Save.LoadFile().volumeValues;
+            Dictionary<string, float> volumes = Save.globalSaveData.GetVolumeValues();
             if (!volumes.TryGetValue("Master_Volume", out masterVolumeLevel))
                 masterVolumeLevel = 1;
             if (!volumes.TryGetValue("SoundFX_Volume", out soundFXVolumeLevel))
@@ -57,15 +57,14 @@ public class SoundMixerManager : MonoBehaviour
         audioMixer.SetFloat("musicVolume", NormalizeVolume(musicVolumeLevel));
     }
 
-    public static SaveData GetSoundVolumeInSaveFormat()
+    public static Dictionary<string, float> GetSoundVolumeInSaveFormat()
     {
-        Dictionary<string, float> volumes = new Dictionary<string, float>{
+        Dictionary<string, float> volumes = new() {
             { "Master_Volume" , masterVolumeLevel },
             { "SoundFX_Volume" , soundFXVolumeLevel },
             { "Music_Volume" , musicVolumeLevel },
         };
-        SaveData volumeSaveData = new SaveData(volumes);
-        return volumeSaveData;
+        return volumes;
     }
 
     public static float GetMasterVolumeLevel()

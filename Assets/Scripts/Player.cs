@@ -32,11 +32,12 @@ public class Player : MonoBehaviour
         updatePlayerUI();
 
         soundManager = soundManagerObject.GetComponent<SoundMixerManager>();
-        soundManager.soundStartUp();
+        soundManager.SoundStartUp();
     }
 
     private void Awake()
     {
+        Save.LoadFile();
         rb = car.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
         os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
@@ -160,6 +161,6 @@ public class Player : MonoBehaviour
         inGameMenuUI.SetActive(false);
         Time.timeScale = previousTimeScale;
         //Save the sound changes to file
-        Save.SaveFile(SoundMixerManager.GetSoundVolumeInSaveFormat());
+        Save.globalSaveData.SetVolumeValues(SoundMixerManager.GetSoundVolumeInSaveFormat());
     }
 }
