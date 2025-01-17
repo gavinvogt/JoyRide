@@ -17,10 +17,10 @@ public class Shotgun : Gun
         {
             canFire = false;
             car.useAmmo();
-            player.GetComponent<Player>().updatePlayerUI();
+            player.GetComponent<Player>().UpdatePlayerUI();
 
             // Fire the bullets
-            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.3f);
+            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.6f);
             var bullets = Enumerable.Range(1, bulletsPerShot).Select(
                 _ => Instantiate(bulletPrefab, GetBulletStartPosition(), GetBulletAngle())
             ).ToArray();

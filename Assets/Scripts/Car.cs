@@ -33,7 +33,7 @@ public class Car : MonoBehaviour
             if (healthBar != null) healthBar.SetHealth(value);
             if (player != null)
             {
-                player.GetComponent<Player>().updatePlayerUI();
+                player.GetComponent<Player>().UpdatePlayerUI();
             }
             _currentHealth = value;
         }
@@ -215,7 +215,7 @@ public class Car : MonoBehaviour
         currentAmmoCount = maxAmmoCount;
         if (player != null)
         {
-            player.GetComponent<Player>().updatePlayerUI();
+            player.GetComponent<Player>().UpdatePlayerUI();
         }
     }
 

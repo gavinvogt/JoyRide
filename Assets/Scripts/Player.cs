@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         UIScript = UI.GetComponent<UI>();
-        updatePlayerUI();
+        UpdatePlayerUI();
 
         soundManager = soundManagerObject.GetComponent<SoundMixerManager>();
         soundManager.SoundStartUp();
@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         rb = newCar.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
         car.GetComponent<CarNPC>().enabled = false;
-        updatePlayerUI();
+        UpdatePlayerUI();
     }
 
     public GameObject GetCar()
@@ -139,13 +139,13 @@ public class Player : MonoBehaviour
         rds.SetSpeed(speed);
         ls.SetMaxSpawn(GetSpeedPercentage());
         hs.SetMinSpawnTime(GetSpeedPercentage());
-        updatePlayerUI();
+        UpdatePlayerUI();
         if (speed < maxSpeed)
         {
             StartCoroutine(IncreaseSpeed());
         }
     }
-    public void updatePlayerUI()
+    public void UpdatePlayerUI()
     {
         if (UIScript) UIScript.updateUI(gameObject);
     }

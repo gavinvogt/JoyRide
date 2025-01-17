@@ -13,10 +13,10 @@ public class RocketGun : Gun
         {
             canFire = false;
             car.useAmmo();
-            player.GetComponent<Player>().updatePlayerUI();
+            player.GetComponent<Player>().UpdatePlayerUI();
 
             // Fire the rocket
-            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 1f);
+            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.55f);
             Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
 
             // Allow firing after cooldown

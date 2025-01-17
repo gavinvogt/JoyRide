@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using UnityEngine;
+
 [System.Serializable]
 public class SaveData
 {
@@ -17,13 +19,24 @@ public class SaveData
         return volumeValues;
     }
 
-    public void AttemptSetHighScore(float score)
+    public float AttemptSetHighScore(float score)
     {
-        highScore = score;
+        if(score > highScore)
+        {
+            highScore = score;
+            Save.SaveFile();
+        }
+        return highScore;
     }
 
-    public void AttemptSetLongestTimeAlive(string timeAlive)
+    public string AttemptSetLongestTimeAlive(string timeAlive)
     {
-        longestTimeAlive = timeAlive;
+        Debug.Log(timeAlive);
+        if (string.Compare(longestTimeAlive, timeAlive) < 0)
+        {
+            longestTimeAlive = timeAlive;
+            Save.SaveFile();
+        }
+        return longestTimeAlive;
     }
 }
