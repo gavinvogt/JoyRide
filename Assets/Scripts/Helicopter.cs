@@ -98,7 +98,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     {
         // remove health bar
         Destroy(healthBar.gameObject);
-        SoundFXManager.instance.PlaySoundFXClip(helicopterDestroyedClip, transform, 1f);
+        SoundFXManager.instance.PlaySoundFXClip(helicopterDestroyedClip, transform, 0.4f);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
         isHovering = false;
 
