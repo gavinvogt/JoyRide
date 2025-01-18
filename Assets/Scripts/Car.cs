@@ -129,10 +129,6 @@ public class Car : MonoBehaviour
         {
             if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("explosion")) Destroy(collision.gameObject);
             if (collision.gameObject.name.Contains("explosion")) collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
-            if (player != null)
-            {
-                StartCoroutine(FlashColor());
-            }
             TakeDamage();
         }
     }
@@ -212,6 +208,10 @@ public class Car : MonoBehaviour
     public void TakeDamage()
     {
         currentHealth--;
+        if (player != null)
+        {
+            StartCoroutine(FlashColor());
+        }
         if (currentHealth <= 0)
         {
             Die();
