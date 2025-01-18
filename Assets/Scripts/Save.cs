@@ -26,7 +26,10 @@ public class Save : MonoBehaviour
 
         if (File.Exists(saveFilePath)) file = File.OpenRead(saveFilePath);
         else
+        {
+            globalSaveData = new SaveData();
             return;
+        }
 
         BinaryFormatter bf = new BinaryFormatter();
         globalSaveData = (SaveData)bf.Deserialize(file);
