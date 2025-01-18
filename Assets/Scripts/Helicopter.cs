@@ -98,7 +98,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     {
         // remove health bar
         Destroy(healthBar.gameObject);
-        SoundFXManager.instance.PlaySoundFXClip(helicopterDestroyedClip, transform, 0.4f);
+        SoundFXManager.instance.PlaySoundFXClip(helicopterDestroyedClip, transform, 0.6f);
         gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
         isHovering = false;
 
@@ -107,7 +107,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         yield return new WaitForSeconds(1f);
         isRotating = false;
 
-        // send the police car down the screen as an obstacle
+        // send the helicopter down the screen as an obstacle
         yield return new WaitForSeconds(0.5f);
         rb.linearVelocity = crashSpeed * -transform.up;
         spawner.RemoveHelicopter(helicopterSide);
