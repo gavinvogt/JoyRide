@@ -15,6 +15,7 @@ public class Car : MonoBehaviour
     [SerializeField] private GameObject gun;
     // gun cursor
     [SerializeField] private Texture2D cursorTexture;
+    [SerializeField] private GameObject currentCarIndicator;
 
     private bool isRotating;
     private int rotationSpeed = 60;
@@ -93,6 +94,7 @@ public class Car : MonoBehaviour
         GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
 
         UIScript.DisableBoostUI();
+        currentCarIndicator.SetActive(false);
 
         // transfer player to the projectile
         projectile.SendMessage("SetPlayer", player, SendMessageOptions.RequireReceiver);
@@ -104,6 +106,7 @@ public class Car : MonoBehaviour
     {
         this.player = player;
         gun.SendMessage("SetPlayer", player);
+        currentCarIndicator.SetActive(true);
         if (hasSpeedBoost)
             UIScript.EnableBoostUI();
         if (player != null) OverrideCursor();
@@ -124,17 +127,13 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
-            currentHealth--;
             if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("explosion")) Destroy(collision.gameObject);
             if (collision.gameObject.name.Contains("explosion")) collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
             if (player != null)
             {
                 StartCoroutine(FlashColor());
             }
-        }
-        if (currentHealth <= 0)
-        {
-            Die();
+            TakeDamage();
         }
     }
 
@@ -210,6 +209,15 @@ public class Car : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        currentHealth--;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     public void MaximizeAmmo()
     {
         currentAmmoCount = maxAmmoCount;
@@ -263,9 +271,9 @@ public class Car : MonoBehaviour
     IEnumerator FlashColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.black;
-        gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        gameObject.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.black;
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        gameObject.transform.GetChild(2).GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        gameObject.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
 }

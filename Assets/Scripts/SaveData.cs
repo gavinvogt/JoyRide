@@ -31,7 +31,6 @@ public class SaveData
 
     public string AttemptSetLongestTimeAlive(string timeAlive)
     {
-        Debug.Log(timeAlive);
         if (string.Compare(longestTimeAlive, timeAlive) < 0)
         {
             longestTimeAlive = timeAlive;
