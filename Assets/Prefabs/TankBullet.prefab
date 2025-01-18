@@ -196,4 +196,4 @@ MonoBehaviour:
   speed: 35
   damage: 15
   hitSounds:
-  - {fileID: 8300000, guid: 8734e3d292963004a8fc2fdb1330faf6, type: 3}
+  - {fileID: 8300000, guid: caf66502079da584cafcab1ef3f6a15f, type: 3}

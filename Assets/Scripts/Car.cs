@@ -127,7 +127,7 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
-            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("explosion")) Destroy(collision.gameObject);
+            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !(collision.gameObject.name.Contains("explosion") || collision.gameObject.name.Contains("Missile"))) Destroy(collision.gameObject);
             if (collision.gameObject.name.Contains("explosion")) collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
             TakeDamage();
         }

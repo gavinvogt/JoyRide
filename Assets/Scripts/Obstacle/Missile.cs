@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Reflection;
+using UnityEditor;
 
 public class Missile : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class Missile : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Car" && !hasCollided)
+        {
+            StartCoroutine(Explode());
+        }
+    }
+
     public void SetReferences(Transform target, Spotlight parentSpotlight)
     {
         targetPos = target;
@@ -30,6 +39,7 @@ public class Missile : MonoBehaviour
     {
         hasCollided = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
         SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 1f);
         GameObject hitExplosion = Instantiate(explosion, new Vector3(this.transform.position.x, this.transform.position.y, -1.5f), this.transform.rotation, this.transform);
