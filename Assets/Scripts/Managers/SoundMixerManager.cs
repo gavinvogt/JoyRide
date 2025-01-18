@@ -81,5 +81,5 @@ public class SoundMixerManager : MonoBehaviour
     }
 
     // Normalize volume from decibels so slider level changes volume linearly
-    private float NormalizeVolume(float level) => Mathf.Log10(level) * 20f;
+    public static float NormalizeVolume(float level) => Mathf.Log10(level) * 20f;
 }

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
@@ -8,12 +10,15 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource[] audioSources;
     private int audioToggle = 0; // toggle 0/1
 
+    [SerializeField] private AudioMixer audioMixer;
+
     public static MusicManager instance;
     private int currentClipIndex = 0;
     private double nextClipStartTime = 0;
 
     private void Awake()
     {
+        SetInitialMusicVolume();
         /*
          * The basic idea of this music manager is to start music clip 1 on initial start and
          * queue music clip 2 to play right when clip 1 ends.
@@ -74,5 +79,14 @@ public class MusicManager : MonoBehaviour
     {
         // Updates the time to start the next clip at
         instance.nextClipStartTime += GetMusicDuration(currentClip);
+    }
+
+    private void SetInitialMusicVolume()
+    {
+        Save.LoadFile();
+        Dictionary<string, float> volumes = Save.globalSaveData.GetVolumeValues();
+        if (!volumes.TryGetValue("Music_Volume", out float musicVolumeLevel))
+            musicVolumeLevel = 1;
+        audioMixer.SetFloat("musicVolume", SoundMixerManager.NormalizeVolume(musicVolumeLevel));
     }
 }
