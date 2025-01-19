@@ -41,6 +41,10 @@ public class RoadDotSpawner : MonoBehaviour
     public void SetSpeed(int newSpeed)
     {
         speed = newSpeed;
+        foreach(GameObject currentRoadLine in GameObject.FindGameObjectsWithTag("Road Line"))
+        {
+            currentRoadLine.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
+        }
     }
 
 }
