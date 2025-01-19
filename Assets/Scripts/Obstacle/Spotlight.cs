@@ -26,12 +26,13 @@ public class Spotlight : MonoBehaviour
     void FixedUpdate()
     {
         float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
+        if(!heli.AnyMissilesActive())
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
     }
 
     public void Spawn(Helicopter parentHeli)
     {
-        gameObject.transform.position = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
+        gameObject.transform.position = new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 4f), -6f);
         heli = parentHeli;
         StartCoroutine(Move());
     }
@@ -49,7 +50,7 @@ public class Spotlight : MonoBehaviour
         {
             yOffset = Random.Range(-1.5f, 1.5f);
         }
-        movePoint.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f));
+        movePoint.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f), -6f);
 
         yield return new WaitForSeconds(3f);
         StartCoroutine(Move());
@@ -61,11 +62,10 @@ public class Spotlight : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Car")
+        if(collision.gameObject.tag == "Car" )
         {
-            StopAllCoroutines();
             heli.ShootMissile();
         }
     }

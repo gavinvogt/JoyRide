@@ -9,7 +9,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private float crashSpeed;
     [SerializeField] private float hoverRangeY;
 
-    private float attackCD = 0.75f;
+    private float attackCD = 0.85f;
     private bool attackOnCD = false;
 
     // track how the helicopter is moving
@@ -28,15 +28,17 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     private string helicopterSide;
 
     [SerializeField] private GameObject spotlightPrefab;
-    [SerializeField] private GameObject spotlight;
+    private GameObject spotlight;
 
     [SerializeField] private GameObject missilePrefab;
+    private ArrayList missilesInAir;
     [SerializeField] private AudioClip helicopterDestroyedClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthBar.SetMaxHealth(health);
+        missilesInAir = new ArrayList();
         StartHovering();
         StartCoroutine(SpawnSpotlight());
     }
@@ -130,7 +132,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         spotlight.transform.parent = null;
     }
 
-    private IEnumerator startAttackCD()
+    private IEnumerator StartAttackCD()
     {
         attackOnCD = true;
         yield return new WaitForSeconds(attackCD);
@@ -141,10 +143,11 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     {
         if (!attackOnCD)
         {
-            StartCoroutine(startAttackCD());
+            StartCoroutine(StartAttackCD());
             GameObject missile = Instantiate(missilePrefab, gameObject.transform);
+            missilesInAir.Add(missile);
             missile.transform.parent = null;
-            missile.GetComponent<Missile>().SetReferences(this.spotlight.transform, spotlight.GetComponent<Spotlight>());
+            missile.GetComponent<Missile>().SetReferences(this.spotlight.transform, spotlight.GetComponent<Spotlight>(), this);
             Vector3 targ = spotlight.transform.position;
             targ.z = 0f;
 
@@ -156,5 +159,17 @@ public class Helicopter : MonoBehaviour, BaseEnemy
             missile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
             missile.GetComponent<Rigidbody2D>().linearVelocity = missile.transform.up * 7.5f;
         }
+    }
+
+    public bool AnyMissilesActive()
+    {
+        if (missilesInAir.Count > 0)
+            return true;
+        return false;
+    }
+
+    public void RemoveMissileFromList(GameObject missile)
+    {
+        missilesInAir.Remove(missile);
     }
 }
