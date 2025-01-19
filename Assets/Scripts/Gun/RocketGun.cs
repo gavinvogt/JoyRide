@@ -9,10 +9,10 @@ public class RocketGun : Gun
 
     override public IEnumerator Fire()
     {
-        if (canFire && car.getCurrentAmmo() > 0)
+        if (canFire && car.GetCurrentAmmo() > 0)
         {
             canFire = false;
-            car.useAmmo();
+            car.UseAmmo();
             player.GetComponent<Player>().UpdatePlayerUI();
 
             // Fire the rocket

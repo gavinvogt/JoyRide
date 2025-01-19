@@ -127,9 +127,23 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
-            if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !(collision.gameObject.name.Contains("explosion") || collision.gameObject.name.Contains("Missile"))) Destroy(collision.gameObject);
-            if (collision.gameObject.name.Contains("explosion")) collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
-            TakeDamage();
+            if (collision.gameObject.name.Contains("Explosion"))
+            {
+                collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
+                TakeDamage();
+            }
+            else if (collision.gameObject.name.Contains("Police Car"))
+            {
+                if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                {
+                    TakeDamage();
+                }
+            }
+            else if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile"))
+            {
+                Destroy(collision.gameObject);
+                TakeDamage();
+            }
         }
     }
 
@@ -168,25 +182,25 @@ public class Car : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public float getHealthPercentage()
+    public float GetHealthPercentage()
     {
         return (float)currentHealth / (float)maxHealth;
     }
 
-    public float getAmmoPercentage()
+    public float GetAmmoPercentage()
     {
         return (float)currentAmmoCount / (float)maxAmmoCount;
     }
-    public int getCurrentAmmo()
+    public int GetCurrentAmmo()
     {
         return currentAmmoCount;
     }
-    public void useAmmo()
+    public void UseAmmo()
     {
         currentAmmoCount--;
     }
 
-    public int getDrivingSpeed()
+    public int GetDrivingSpeed()
     {
         return drivingSpeed;
     }

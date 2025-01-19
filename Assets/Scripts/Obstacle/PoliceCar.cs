@@ -14,6 +14,8 @@ public class PoliceCar : Obstacle, BaseEnemy
 
     private int timesMoved;
 
+    ArrayList damagedCars;
+
     private int health;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject damageInidcator;
@@ -31,6 +33,8 @@ public class PoliceCar : Obstacle, BaseEnemy
         movePoint.transform.parent = transform.parent;
 
         timesMoved = 0;
+
+        damagedCars = new ArrayList();
 
         health = 40;
         healthBar.SetMaxHealth(health);
@@ -156,5 +160,22 @@ public class PoliceCar : Obstacle, BaseEnemy
         GameObject marker = Instantiate(damageInidcator, new Vector3(this.transform.position.x + xOffset, this.transform.position.y + yOffset, -1), this.transform.rotation, this.transform);
         yield return new WaitForSeconds(0.25f);
         Destroy(marker);
+    }
+
+    public bool CarAlreadyDamaged (Car car)
+    {
+        if(!damagedCars.Contains(car)) 
+        {
+            damagedCars.Add(car);
+            StartCoroutine(RemoveDamagedCar(car));
+            return false;
+        }
+        return true;
+    }
+
+    private IEnumerator RemoveDamagedCar(Car car)
+    {
+        yield return new WaitForSeconds(1f);
+        damagedCars.Remove(car);
     }
 }

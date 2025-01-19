@@ -10,9 +10,9 @@ public class MachineGun : Gun
 
     override public IEnumerator Fire()
     {
-        if (player != null && car.getCurrentAmmo() > 0)
+        if (player != null && car.GetCurrentAmmo() > 0)
         {
-            car.useAmmo();
+            car.UseAmmo();
             if (player) player.GetComponent<Player>().UpdatePlayerUI();
             if (blastAudioSource == null)
             {

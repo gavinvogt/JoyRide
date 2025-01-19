@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
             rb.linearVelocity = new Vector2(
                 (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0), // left/right
                 (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0)  // up/down
-            ).normalized * car.GetComponent<Car>().getDrivingSpeed();
+            ).normalized * car.GetComponent<Car>().GetDrivingSpeed();
         }
     }
 

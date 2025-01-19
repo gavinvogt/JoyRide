@@ -22,7 +22,7 @@ public class LaserDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Car")
         {
-            StartCoroutine(addToRecentlyDamaged(collision));
+            StartCoroutine(AddToRecentlyDamaged(collision));
             collision.gameObject.GetComponent<Car>().TakeDamage();
         }
     }
@@ -33,17 +33,17 @@ public class LaserDamage : MonoBehaviour
         {
             if (!recentlyDamagedCars.Contains(collision))
             {
-                StartCoroutine(addToRecentlyDamaged(collision));
+                StartCoroutine(AddToRecentlyDamaged(collision));
                 collision.gameObject.GetComponent<Car>().TakeDamage();
             }
         }
     }
 
-    IEnumerator addToRecentlyDamaged(Collider2D collision)
+    IEnumerator AddToRecentlyDamaged(Collider2D collision)
     {
         recentlyDamagedCars.Add(collision);
         float randomWaitingRange = Random.Range(3.0f, 4.5f);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(randomWaitingRange);
         recentlyDamagedCars.Remove(collision);
     }
 }
