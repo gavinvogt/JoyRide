@@ -132,9 +132,13 @@ public class Car : MonoBehaviour
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
                 TakeDamage();
             }
-            else if (collision.gameObject.name.Contains("Police Car"))
+            else if (ObjectTags.IsBlockingObstacle(collision.gameObject.tag))
             {
-                if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                if (collision.gameObject.name.Contains("Police Car") && !collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                {
+                    TakeDamage();
+                }
+                else if (collision.gameObject.name.Contains("Helicopter"))
                 {
                     TakeDamage();
                 }

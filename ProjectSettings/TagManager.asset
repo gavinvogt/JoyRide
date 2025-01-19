@@ -12,6 +12,7 @@ TagManager:
   - IndestructableObstacle
   - Obstacle
   - IndestructableObstacleNonBlocking
+  - Road Line
   layers:
   - Default
   - TransparentFX

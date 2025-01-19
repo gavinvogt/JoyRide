@@ -23,6 +23,8 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject damageInidcator;
 
+    ArrayList damagedCars;
+
     // track the spawner
     private HelicopterSpawner spawner;
     private string helicopterSide;
@@ -38,6 +40,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     void Start()
     {
         healthBar.SetMaxHealth(health);
+        damagedCars = new ArrayList();
         missilesInAir = new ArrayList();
         StartHovering();
         StartCoroutine(SpawnSpotlight());
@@ -55,6 +58,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         }
         else
         {
+            gameObject.tag = ObjectTags.INDESTRUCTABLE_OBSTACLE;
             float wobbleFactor = 12.5f;
             float xOffset = UnityEngine.Random.Range(-wobbleFactor, wobbleFactor) * Time.deltaTime;
             float yOffset = UnityEngine.Random.Range(-wobbleFactor, wobbleFactor) * Time.deltaTime;
@@ -124,11 +128,21 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         spawner.RemoveHelicopter(helicopterSide);
     }
 
+    public bool CarAlreadyDamaged(Car car)
+    {
+        if (!damagedCars.Contains(car))
+        {
+            damagedCars.Add(car);
+            return false;
+        }
+        return true;
+    }
+
     private IEnumerator DamageMarker()
     {
         float xOffset = UnityEngine.Random.Range(-0.2f, 0.2f);
         float yOffset = UnityEngine.Random.Range(-0.9f, 0.85f);
-        GameObject marker = Instantiate(damageInidcator, new Vector3(this.transform.position.x + xOffset, this.transform.position.y + yOffset, -1), this.transform.rotation, this.transform);
+        GameObject marker = Instantiate(damageInidcator, new Vector3(this.transform.position.x + xOffset, this.transform.position.y + yOffset, this.transform.position.z - 0.1f), this.transform.rotation, this.transform);
         yield return new WaitForSeconds(0.25f);
         Destroy(marker);
     }
