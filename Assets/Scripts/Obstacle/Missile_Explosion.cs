@@ -17,8 +17,6 @@ public class Missile_Explosion : MonoBehaviour
 
     public void disableCollider()
     {
-        Debug.Log("Calling disable collider");
         this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        Debug.Log(this.gameObject.GetComponent<CircleCollider2D>().enabled);
     }
 }

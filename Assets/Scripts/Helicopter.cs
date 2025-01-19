@@ -49,9 +49,18 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         {
             transform.position = new Vector3(
                 transform.position.x,
-                initialPosition.y + Mathf.Sin(2 * (float)Math.PI * Time.time / hoverPeriod) * hoverRangeY / 2
+                initialPosition.y + Mathf.Sin(2 * (float)Math.PI * Time.time / hoverPeriod) * hoverRangeY / 2,
+                -1
             );
         }
+        else
+        {
+            float wobbleFactor = 12.5f;
+            float xOffset = UnityEngine.Random.Range(-wobbleFactor, wobbleFactor) * Time.deltaTime;
+            float yOffset = UnityEngine.Random.Range(-wobbleFactor, wobbleFactor) * Time.deltaTime;
+            transform.position = new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, -1);
+        }
+
         if (isRotating)
         {
             float step = crashAngle * Time.deltaTime; // will complete rotation over 1 second

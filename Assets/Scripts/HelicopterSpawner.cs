@@ -40,7 +40,7 @@ public class HelicopterSpawner : MonoBehaviour
         Transform spawnTransform = spawners[helicopterSide];
         GameObject helicopter = Instantiate(
             helicopterPrefab,
-            new Vector3(spawnTransform.position.x, spawnTransform.position.y + Random.Range(-spawnRangeY / 2, spawnRangeY / 2)),
+            new Vector3(spawnTransform.position.x, spawnTransform.position.y + Random.Range(-spawnRangeY / 2, spawnRangeY / 2), -1),
             spawnTransform.rotation
         );
         SoundFXManager.instance.PlaySoundFXClip(helicopterEnterAudioClip, helicopter.transform, 1f);
