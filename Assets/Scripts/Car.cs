@@ -127,7 +127,7 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag))
         {
-            if (collision.gameObject.name.Contains("Explosion"))
+            if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
                 TakeDamage();
