@@ -94,6 +94,10 @@ public class ObstacleSpawner : MonoBehaviour
         // Spawn the obstacle
         if (tempOb.name.Contains("Road Blockade"))
         {
+            float randomPositionOffset = Random.Range(-0.9f, 0.9f);
+            float randomRotationOffset = Random.Range(-5f, 5f);
+            tempOb.transform.position = new Vector3(tempOb.transform.position.x + randomPositionOffset, tempOb.transform.position.y, tempOb.transform.position.z);
+            tempOb.transform.eulerAngles = new Vector3(tempOb.transform.eulerAngles.x, tempOb.transform.eulerAngles.y, tempOb.transform.eulerAngles.z + randomRotationOffset);
             tempOb.GetComponent<Mine>().Spawn();
         }
         else if (tempOb.name.Contains("Booster"))
