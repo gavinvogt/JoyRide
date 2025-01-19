@@ -1,6 +1,5 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Save : MonoBehaviour
@@ -35,5 +34,4 @@ public class Save : MonoBehaviour
         globalSaveData = (SaveData)bf.Deserialize(file);
         file.Close();
     }
-
 }

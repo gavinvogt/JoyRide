@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class SaveData
 {
-    public Dictionary<string, float> volumeValues;
-    public float highScore;
-    public string longestTimeAlive;
+    public Dictionary<string, float> volumeValues = new();
+    public float highScore = 0.0f;
+    public string longestTimeAlive = "00:00.0";
 
     public void SetVolumeValues(Dictionary<string, float> volumes)
     {
@@ -21,7 +20,7 @@ public class SaveData
 
     public float AttemptSetHighScore(float score)
     {
-        if(score > highScore)
+        if (score > highScore)
         {
             highScore = score;
             Save.SaveFile();
