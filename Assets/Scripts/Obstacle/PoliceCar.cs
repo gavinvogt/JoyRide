@@ -132,6 +132,20 @@ public class PoliceCar : Obstacle, BaseEnemy
         }
     }
 
+    public void DecreaseHealthNoDamageMarker(int damage)
+    {
+        if (health > 0)
+        {
+            health -= damage;
+            healthBar.SetHealth(health);
+        }
+        if (health <= 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(Die(true));
+        }
+    }
+
     IEnumerator Die(bool givePoints)
     {
         // remove health bar

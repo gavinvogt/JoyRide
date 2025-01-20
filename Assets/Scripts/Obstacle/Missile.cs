@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Reflection;
-using UnityEditor;
 
 public class Missile : MonoBehaviour
 {

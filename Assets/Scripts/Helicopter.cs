@@ -99,6 +99,22 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         }
     }
 
+    public void DecreaseHealthNoDamageMarker(int damage)
+    {
+        if (health > 0)
+        {
+            health -= damage;
+            healthBar.SetHealth(health);
+        }
+        if (health <= 0)
+        {
+            StopAllCoroutines();
+            GameScore.instance.IncrementHelicoptersDestroyed();
+            spotlight.GetComponent<Spotlight>().Despawn();
+            StartCoroutine(Crash());
+        }
+    }
+
     public void SetSpawner(HelicopterSpawner spawner)
     {
         this.spawner = spawner;
