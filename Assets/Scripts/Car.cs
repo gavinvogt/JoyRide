@@ -157,10 +157,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
-            // Actions specifically for if a player was in this car (losing game)
-            player.SendMessage("NullCar");
-            gun.SendMessage("Reset");
-            SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
+            PlayerLoseControl();
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
         healthBar = null;
@@ -175,6 +172,15 @@ public class Car : MonoBehaviour
         {
             RotateCar("Right");
         }
+    }
+
+
+    // Actions specifically for if a player was in this car (losing game)
+    public void PlayerLoseControl()
+    {
+        player.SendMessage("NullCar");
+        gun.SendMessage("Reset");
+        SoundFXManager.instance.PlaySoundFXClip(playerLoseClip, transform, 1f);
     }
 
     public void DestroyPivot()
