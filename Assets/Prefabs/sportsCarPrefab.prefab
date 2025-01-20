@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 916415067041337753}
   - component: {fileID: 3969541985665354660}
   - component: {fileID: -3541015740689095205}
+  - component: {fileID: 7814835546478320887}
   m_Layer: 0
   m_Name: sportsCarPrefab
   m_TagString: Car
@@ -262,6 +263,7 @@ MonoBehaviour:
   healthBar: {fileID: 3666060780350223519}
   maxAmmoCount: 150
   playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
+  specialMoveScript: {fileID: 7814835546478320887}
 --- !u!114 &-3541015740689095205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +276,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc945fc74895d140bcc647f5702491d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7814835546478320887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249512639550302531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3395d89c9a0b0ac428d729bc59246942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSlowFactor: 0.5
+  timeSlowDuration: 5
 --- !u!1 &4481793660760228137
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7242424230411387212}
   - component: {fileID: 359862626537380825}
+  - component: {fileID: 3487138605500454428}
   m_Layer: 0
   m_Name: GunSprite
   m_TagString: Untagged
@@ -361,6 +378,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3487138605500454428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481793660760228137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3395d89c9a0b0ac428d729bc59246942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSlowFactor: 0
+  timeSlowDuration: 0
 --- !u!1 &7908672285071018119
 GameObject:
   m_ObjectHideFlags: 0

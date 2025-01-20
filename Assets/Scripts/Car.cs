@@ -48,6 +48,10 @@ public class Car : MonoBehaviour
     private NPCSpawner npcs;
     private UI UIScript;
 
+    // Special attack
+    [SerializeField] private SpecialMoveBase specialMoveScript;
+    private int RIGHT_CLICK = 1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -65,8 +69,15 @@ public class Car : MonoBehaviour
         UIScript = GameObject.Find("PlayerUI").GetComponent<UI>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
+    {
+        if (player != null && Input.GetMouseButtonUp(RIGHT_CLICK))
+        {
+            ActivateSpecial();
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (isRotating == true)
         {
@@ -136,7 +147,8 @@ public class Car : MonoBehaviour
             {
                 if (collision.gameObject.name.Contains("Police Car"))
                 {
-                    if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this)) { 
+                    if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                    {
                         TakeDamage();
                     }
                 }
@@ -298,5 +310,12 @@ public class Car : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         gameObject.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.white;
+    }
+
+    private void ActivateSpecial()
+    {
+        Debug.Log("Prototype: Activating user's special");
+        specialMoveScript.enabled = true;
+        specialMoveScript.ActivateSpecialMove();
     }
 }
