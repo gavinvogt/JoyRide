@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class CarNPC : MonoBehaviour
 {
@@ -25,17 +26,15 @@ public class CarNPC : MonoBehaviour
     public void Spawn()
     {
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        rb.linearVelocity = new Vector2(0, .5f);
-        StartCoroutine(ZeroVelocity());
+        movePoint.transform.position = new Vector3(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y + 4.5f, this.transform.position.z);
+        StartCoroutine(FinishSpawn());
     }
 
-    IEnumerator ZeroVelocity()
+    IEnumerator FinishSpawn()
     {
-        yield return new WaitForSeconds(1f);
-        rb.linearVelocity = Vector2.zero;
+        yield return new WaitForSeconds(0.75f);
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         StartCoroutine(Move(3f));
-        
     }
 
     IEnumerator Move(float seconds)
@@ -51,7 +50,7 @@ public class CarNPC : MonoBehaviour
         {
             yOffset = Random.Range(-1.5f, 1.5f);
         }
-        movePoint.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f));
+        movePoint.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f), this.transform.position.z);
 
         yield return new WaitForSeconds(seconds);
         StartCoroutine(Move(3f));

@@ -134,11 +134,13 @@ public class Car : MonoBehaviour
             }
             else if (ObjectTags.IsBlockingObstacle(collision.gameObject.tag))
             {
-                if (collision.gameObject.name.Contains("Police Car") && !collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                if (collision.gameObject.name.Contains("Police Car"))
                 {
-                    TakeDamage();
+                    if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this)) { 
+                        TakeDamage();
+                    }
                 }
-                else if (collision.gameObject.name.Contains("Helicopter"))
+                else
                 {
                     TakeDamage();
                 }

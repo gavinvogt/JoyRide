@@ -51,7 +51,8 @@ public class NPCSpawner : MonoBehaviour
     public IEnumerator SpawnNPC(GameObject spawner, GameObject NPC)
     {
         yield return new WaitForSeconds(Random.Range(0f, 2f));
-        GameObject tempNPC = Instantiate(NPC, spawner.transform);
+        Debug.Log("Spawner: " + spawner + " | Position: " + spawner.transform.position);
+        GameObject tempNPC = Instantiate(NPC, spawner.transform.position, spawner.transform.rotation, spawner.transform);
         tempNPC.GetComponent<CarNPC>().Spawn();
     }
 
