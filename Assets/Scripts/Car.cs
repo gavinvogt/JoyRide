@@ -228,10 +228,7 @@ public class Car : MonoBehaviour
     public void TakeDamage()
     {
         currentHealth--;
-        if (player != null)
-        {
-            StartCoroutine(FlashColor());
-        }
+        StartCoroutine(FlashColor());
         if (currentHealth <= 0)
         {
             Die();
