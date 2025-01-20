@@ -20,7 +20,12 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (target.CompareTag("Car") && target.gameObject != parentCar)
         {
-            if (!hasSwitched)
+            if (target.gameObject.GetComponent<Car>().GetHealthPercentage() <= 0f)
+            {
+                Destroy(gameObject);
+                SceneManager.LoadScene(sceneName: "EndScreen");
+            }
+            else if (!hasSwitched)
             {
                 player.UpdateCar(target.gameObject);
                 hasSwitched = true;
