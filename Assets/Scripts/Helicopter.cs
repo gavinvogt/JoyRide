@@ -9,7 +9,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     [SerializeField] private float crashSpeed;
     [SerializeField] private float hoverRangeY;
 
-    private float attackCD = 0.85f;
+    private float attackCD = 1.25f;
     private bool attackOnCD = false;
 
     // track how the helicopter is moving

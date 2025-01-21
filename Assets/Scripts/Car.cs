@@ -140,6 +140,13 @@ public class Car : MonoBehaviour
                         TakeDamage();
                     }
                 }
+                else if (collision.gameObject.name.Contains("Helicopter"))
+                {
+                    if (!collision.gameObject.GetComponent<Helicopter>().CarAlreadyDamaged(this))
+                    {
+                        TakeDamage();
+                    }
+                }
                 else
                 {
                     TakeDamage();
