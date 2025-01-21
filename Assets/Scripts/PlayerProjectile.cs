@@ -34,7 +34,7 @@ public class PlayerProjectile : MonoBehaviour
         else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
             Destroy(gameObject);
-            SceneManager.LoadScene(sceneName: "EndScreen");
+            SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
     }
 

@@ -136,7 +136,8 @@ public class Car : MonoBehaviour
             {
                 if (collision.gameObject.name.Contains("Police Car"))
                 {
-                    if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this)) { 
+                    if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                    {
                         TakeDamage();
                     }
                 }
@@ -187,7 +188,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
-            SceneManager.LoadScene(sceneName: "EndScreen");
+            SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
         npcs.DecreaseNPC();
         Destroy(rotateTarget);
