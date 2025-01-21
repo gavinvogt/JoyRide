@@ -1,17 +1,22 @@
+using System.Collections;
 using UnityEngine;
 
 public class Mine : Obstacle
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    ArrayList damagedCars;
+
     void Start()
     {
-        
+        damagedCars = new ArrayList();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool CarAlreadyDamaged(Car car)
     {
-        
+        if (!damagedCars.Contains(car))
+        {
+            damagedCars.Add(car);
+            return false;
+        }
+        return true;
     }
-
 }

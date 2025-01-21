@@ -18,7 +18,6 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
-        SetInitialMusicVolume();
         /*
          * The basic idea of this music manager is to start music clip 1 on initial start and
          * queue music clip 2 to play right when clip 1 ends.
@@ -41,6 +40,11 @@ public class MusicManager : MonoBehaviour
             // UpdateNextClipStartTime(firstClip); // TODO: delete?
             ScheduleNextClip();
         }
+    }
+
+    private void Start()
+    {
+        SetInitialMusicVolume();
     }
 
     private void Update()
