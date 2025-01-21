@@ -147,6 +147,13 @@ public class Car : MonoBehaviour
                         TakeDamage();
                     }
                 }
+                else if (collision.gameObject.name.Contains("Road Blockade"))
+                {
+                    if (!collision.gameObject.GetComponent<Mine>().CarAlreadyDamaged(this))
+                    {
+                        TakeDamage();
+                    }
+                }
                 else
                 {
                     TakeDamage();
