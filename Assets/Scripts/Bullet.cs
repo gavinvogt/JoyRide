@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     private void HandleCollision()
     {
         hasHit = true;
-        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.4f);
+        SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.6f);
         Destroy(gameObject);
     }
 }
