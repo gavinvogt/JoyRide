@@ -93,7 +93,10 @@ public class MusicManager : MonoBehaviour
             Dictionary<string, float> volumes = Save.globalSaveData.GetVolumeValues();
             if (!volumes.TryGetValue("Music_Volume", out float musicVolumeLevel))
                 musicVolumeLevel = 1;
+            if (!volumes.TryGetValue("Master_Volume", out float masterVolumeLevel))
+                musicVolumeLevel = 1;
             audioMixer.SetFloat("musicVolume", SoundMixerManager.NormalizeVolume(musicVolumeLevel));
+            audioMixer.SetFloat("masterVolume", SoundMixerManager.NormalizeVolume(masterVolumeLevel));
         }
     }
 }
