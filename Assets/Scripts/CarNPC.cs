@@ -10,6 +10,7 @@ public class CarNPC : MonoBehaviour
     private Vector3 spawnDestinationLocation;
     private GameObject bottomBoundary;
     private GameObject flagCollider;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class CarNPC : MonoBehaviour
 
         bottomBoundary = GameObject.Find("BottomBoundary");
         flagCollider = GameObject.Find("FlagColliderForNPCs");
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class CarNPC : MonoBehaviour
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, spawnDestinationLocation, step);
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -57,7 +60,7 @@ public class CarNPC : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == flagCollider)
+        if(collision.gameObject == flagCollider && !finishedSpawning)
         {
             FinishSpawn();
         }
