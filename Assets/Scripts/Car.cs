@@ -47,6 +47,7 @@ public class Car : MonoBehaviour
 
     private NPCSpawner npcs;
     private UI UIScript;
+    private bool immuneToDamage;
 
     // Special attack
     [SerializeField] private SpecialMoveBase specialMoveScript;
@@ -136,7 +137,7 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ObjectTags.IsObstacle(collision.gameObject.tag))
+        if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage)
         {
             if (collision.gameObject.name.Contains("explosion"))
             {
@@ -148,6 +149,20 @@ public class Car : MonoBehaviour
                 if (collision.gameObject.name.Contains("Police Car"))
                 {
                     if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
+                    {
+                        TakeDamage();
+                    }
+                }
+                else if (collision.gameObject.name.Contains("Helicopter"))
+                {
+                    if (!collision.gameObject.GetComponent<Helicopter>().CarAlreadyDamaged(this))
+                    {
+                        TakeDamage();
+                    }
+                }
+                else if (collision.gameObject.name.Contains("Road Blockade"))
+                {
+                    if (!collision.gameObject.GetComponent<Mine>().CarAlreadyDamaged(this))
                     {
                         TakeDamage();
                     }
@@ -199,7 +214,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
-            SceneManager.LoadScene(sceneName: "EndScreen");
+            SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
         npcs.DecreaseNPC();
         Destroy(rotateTarget);
@@ -260,6 +275,16 @@ public class Car : MonoBehaviour
         {
             player.GetComponent<Player>().UpdatePlayerUI();
         }
+    }
+
+    public bool GetImmuneToDamage()
+    {
+        return immuneToDamage;
+    }
+
+    public void SetImmuneToDamage(bool immune)
+    {
+        immuneToDamage = immune;
     }
 
     public IEnumerator BoostSpeed()

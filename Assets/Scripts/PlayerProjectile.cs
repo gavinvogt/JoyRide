@@ -5,6 +5,7 @@ public class PlayerProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private AudioClip dieAudioClip;
 
     public Player player;
     private GameObject parentCar;
@@ -33,8 +34,9 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
+            SoundFXManager.instance.PlaySoundFXClip(dieAudioClip, transform, 1f);
             Destroy(gameObject);
-            SceneManager.LoadScene(sceneName: "EndScreen");
+            SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
     }
 

@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
         car = newCar;
         rb = newCar.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
+        car.GetComponent<CarNPC>().ActivateCar();
         car.GetComponent<CarNPC>().enabled = false;
         UpdatePlayerUI();
     }

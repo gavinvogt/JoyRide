@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   rb: {fileID: 4101167835218968166}
+  dieAudioClip: {fileID: 8300000, guid: 622d34f280e19b24ea60fef5b49c8cbd, type: 3}
   player: {fileID: 0}
 --- !u!1 &7208832812946259707
 GameObject:
