@@ -1,40 +1,66 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Rendering;
+using Unity.VisualScripting;
 
 public class CarNPC : MonoBehaviour
 {
-    private Rigidbody2D rb;
     private GameObject movePoint;
     private int moveSpeed;
+    private bool finishedSpawning = false;
+    private Vector3 spawnDestinationLocation;
+    private GameObject bottomBoundary;
+    private GameObject flagCollider;
 
     private void Awake()
     {
-        rb = this.gameObject.GetComponent<Rigidbody2D>();
         movePoint = new GameObject();
         movePoint.transform.parent = transform.parent;
-        moveSpeed = 4;        
+        moveSpeed = 4;
+
+        bottomBoundary = GameObject.Find("BottomBoundary");
+        flagCollider = GameObject.Find("FlagColliderForNPCs");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
+        if (finishedSpawning) 
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, spawnDestinationLocation, step);
+        }
     }
 
     public void Spawn()
     {
-        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        movePoint.transform.position = new Vector3(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y + 4.5f, this.transform.position.z);
-        StartCoroutine(FinishSpawn());
+        Physics2D.IgnoreCollision(gameObject.GetComponent<PolygonCollider2D>(), bottomBoundary.GetComponent<BoxCollider2D>(), true);
+        spawnDestinationLocation = new Vector3(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y + 3.5f, this.transform.position.z);
+        this.gameObject.GetComponent<Car>().SetImmuneToDamage(true);
     }
 
-    IEnumerator FinishSpawn()
+    private void FinishSpawn()
     {
-        yield return new WaitForSeconds(0.75f);
-        this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+        finishedSpawning = true;
+        ActivateCar();
         StartCoroutine(Move(3f));
+    }
+
+    public void ActivateCar()
+    {
+        Physics2D.IgnoreCollision(gameObject.GetComponent<PolygonCollider2D>(), bottomBoundary.GetComponent<BoxCollider2D>(), false);
+        this.gameObject.GetComponent<Car>().SetImmuneToDamage(false);
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject == flagCollider)
+        {
+            FinishSpawn();
+        }
     }
 
     IEnumerator Move(float seconds)

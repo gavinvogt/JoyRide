@@ -48,6 +48,8 @@ public class Car : MonoBehaviour
     private NPCSpawner npcs;
     private UI UIScript;
 
+    private bool immuneToDamage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -125,7 +127,7 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ObjectTags.IsObstacle(collision.gameObject.tag))
+        if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage)
         {
             if (collision.gameObject.name.Contains("explosion"))
             {
@@ -263,6 +265,16 @@ public class Car : MonoBehaviour
         {
             player.GetComponent<Player>().UpdatePlayerUI();
         }
+    }
+
+    public bool GetImmuneToDamage()
+    {
+        return immuneToDamage;
+    }
+
+    public void SetImmuneToDamage(bool immune)
+    {
+        immuneToDamage = immune;
     }
 
     public IEnumerator BoostSpeed()
