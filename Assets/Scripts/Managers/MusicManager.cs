@@ -40,6 +40,10 @@ public class MusicManager : MonoBehaviour
             // UpdateNextClipStartTime(firstClip); // TODO: delete?
             ScheduleNextClip();
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
