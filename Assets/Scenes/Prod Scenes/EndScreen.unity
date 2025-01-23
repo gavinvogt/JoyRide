@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 927575185}
   - component: {fileID: 927575184}
   - component: {fileID: 927575183}
-  - component: {fileID: 927575182}
+  - component: {fileID: 927575186}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -965,18 +965,6 @@ RectTransform:
   m_AnchoredPosition: {x: 137, y: -44}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &927575182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927575180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4562be7019d303643ae4eaaa755b05bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &927575183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,7 +1008,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 927575184}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &927575184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,6 +1059,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927575180}
   m_CullTransparentMesh: 1
+--- !u!114 &927575186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927575180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62038a7105c756648af300bb33fba27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitButton: {fileID: 927575183}
 --- !u!1 &947794616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,9 +1282,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089375193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e47184504413684bb1aa663a3112a66, type: 3}
+  m_Script: {fileID: 11500000, guid: 78e56e4c1b29d4e488b8985391a009d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 1089375195}
 --- !u!1 &1103310028
 GameObject:
   m_ObjectHideFlags: 0
