@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] private AudioMixer audioMixer;
 
-    public static MusicManager instance;
+    public static MusicManager instance { get; private set; }
     private int currentClipIndex = 0;
     private double nextClipStartTime = 0;
 
