@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 2952964060533177312}
   - component: {fileID: 3710015099001281250}
   - component: {fileID: 543949810403575890}
+  - component: {fileID: 6781110812079644884}
   - component: {fileID: 3453280500606993092}
   m_Layer: 0
   m_Name: tankPrefab
@@ -471,6 +472,26 @@ MonoBehaviour:
   healthBar: {fileID: 8402344139133845233}
   maxAmmoCount: 20
   playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
+  specialMoveScript: {fileID: 6781110812079644884}
+--- !u!114 &6781110812079644884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620070784164583429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758e731e128d11942a90ae595ad0b9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRange: 2.25
+  secondsBetweenBursts: 0.15
+  numOfExplosionsPerBurst: 3
+  numOfExplosionBursts: 4
+  explosionDamage: 10
+  explosion: {fileID: 7331275860865657846, guid: 817648680b1d0d94e86b93e2cdb7e154, type: 3}
+  hitSound: {fileID: 8300000, guid: caf66502079da584cafcab1ef3f6a15f, type: 3}
 --- !u!114 &3453280500606993092
 MonoBehaviour:
   m_ObjectHideFlags: 0

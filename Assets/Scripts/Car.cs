@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
     private int rotationSpeed = 60;
     private GameObject rotateTarget;
 
-    [SerializeField] private int drivingSpeed;
+    [SerializeField] private float drivingSpeed;
     private bool hasSpeedBoost = false;
 
     [SerializeField] private int maxHealth;
@@ -239,9 +239,14 @@ public class Car : MonoBehaviour
         currentAmmoCount--;
     }
 
-    public int GetDrivingSpeed()
+    public float GetDrivingSpeed()
     {
         return drivingSpeed;
+    }
+
+    public void SetDrivingSpeed(float speed)
+    {
+        drivingSpeed = speed;
     }
 
     private void OverrideCursor()

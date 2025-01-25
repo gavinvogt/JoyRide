@@ -6,4 +6,9 @@ public abstract class SpecialMoveBase : MonoBehaviour
     /// Activates the car's special move
     /// </summary>
     public abstract void ActivateSpecialMove();
+
+    /// <summary>
+    /// Ends the car's special move
+    /// </summary>
+    public abstract void EndSpecialMove();
 }
