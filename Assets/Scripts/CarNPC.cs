@@ -10,6 +10,7 @@ public class CarNPC : MonoBehaviour
     private Vector3 spawnDestinationLocation;
     private GameObject bottomBoundary;
     private GameObject flagCollider;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class CarNPC : MonoBehaviour
 
         bottomBoundary = GameObject.Find("BottomBoundary");
         flagCollider = GameObject.Find("FlagColliderForNPCs");
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class CarNPC : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, spawnDestinationLocation, step);
         }
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void Spawn()
@@ -57,24 +60,57 @@ public class CarNPC : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == flagCollider)
+        if(collision.gameObject == flagCollider && !finishedSpawning)
         {
             FinishSpawn();
         }
     }
 
-    IEnumerator Move(float seconds)
+    public void OnCollisionStay2D(Collision2D collision)
     {
-        float xOffset = Random.Range(-2f, 2f);
-        while (xOffset > -1f && xOffset < 1f)
+        if (collision.gameObject.tag == "Car" && finishedSpawning)
         {
-            xOffset = Random.Range(-2f, 2f);
+            MoveAwayFromCollision(collision.transform.position);
+        }
+    }
+
+    private void MoveAwayFromCollision(Vector3 collisionLocation)
+    {
+        float xOffset;
+        float yOffset;
+
+        if (collisionLocation.x < gameObject.transform.position.x)
+        {
+            xOffset = Random.Range(1.5f, 3f);
+        }
+        else
+        {
+            xOffset = Random.Range(-3f, -1.5f);
+        }
+        if (collisionLocation.y < gameObject.transform.position.y)
+        {
+            yOffset = Random.Range(1f, 2f);
+        }
+        else
+        {
+            yOffset = Random.Range(-2f, -1f);
         }
 
-        float yOffset = Random.Range(-1.5f, 1.5f);
-        while (yOffset > -.5f && yOffset < .5f)
+        movePoint.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f), this.transform.position.z);
+    }
+
+    IEnumerator Move(float seconds)
+    {
+        float xOffset = Random.Range(-3f, 3f);
+        while (xOffset > -1.5f && xOffset < 1.5f)
         {
-            yOffset = Random.Range(-1.5f, 1.5f);
+            xOffset = Random.Range(-3f, 3f);
+        }
+
+        float yOffset = Random.Range(-2f, 2f);
+        while (yOffset > -1f && yOffset < 1f)
+        {
+            yOffset = Random.Range(-2f, 2f);
         }
         movePoint.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f), this.transform.position.z);
 

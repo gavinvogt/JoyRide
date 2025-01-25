@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] private AudioMixer audioMixer;
 
-    public static MusicManager instance;
+    public static MusicManager instance { get; private set; }
     private int currentClipIndex = 0;
     private double nextClipStartTime = 0;
 
@@ -39,6 +39,10 @@ public class MusicManager : MonoBehaviour
             audioToggle = 1 - audioToggle;
             // UpdateNextClipStartTime(firstClip); // TODO: delete?
             ScheduleNextClip();
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -93,7 +97,10 @@ public class MusicManager : MonoBehaviour
             Dictionary<string, float> volumes = Save.globalSaveData.GetVolumeValues();
             if (!volumes.TryGetValue("Music_Volume", out float musicVolumeLevel))
                 musicVolumeLevel = 1;
+            if (!volumes.TryGetValue("Master_Volume", out float masterVolumeLevel))
+                masterVolumeLevel = 1;
             audioMixer.SetFloat("musicVolume", SoundMixerManager.NormalizeVolume(musicVolumeLevel));
+            audioMixer.SetFloat("masterVolume", SoundMixerManager.NormalizeVolume(masterVolumeLevel));
         }
     }
 }
