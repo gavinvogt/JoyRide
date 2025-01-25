@@ -39,7 +39,7 @@ public class Laser : MonoBehaviour
         if (health <= 0)
         {
             StopAllCoroutines();
-            laserSpawner.DecreaseLaser();
+            if (laserSpawner) laserSpawner.DecreaseLaser();
             GameScore.instance.IncrementLasersDestroyed();
             Destroy(gameObject);
         }

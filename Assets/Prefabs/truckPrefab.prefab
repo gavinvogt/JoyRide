@@ -207,6 +207,7 @@ MonoBehaviour:
   healthBar: {fileID: 737265214500778529}
   maxAmmoCount: 30
   playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
+  specialMoveScript: {fileID: 0}
 --- !u!114 &421762710008633274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc945fc74895d140bcc647f5702491d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carScript: {fileID: 3969541985665354660}
 --- !u!1 &579526641817025786
 GameObject:
   m_ObjectHideFlags: 0

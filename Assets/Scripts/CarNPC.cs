@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class CarNPC : MonoBehaviour
 {
+    [SerializeField] Car carScript;
     private GameObject movePoint;
     private int moveSpeed;
     private bool finishedSpawning = false;
@@ -42,7 +42,7 @@ public class CarNPC : MonoBehaviour
     {
         Physics2D.IgnoreCollision(gameObject.GetComponent<PolygonCollider2D>(), bottomBoundary.GetComponent<BoxCollider2D>(), true);
         spawnDestinationLocation = new Vector3(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y + 3.5f, this.transform.position.z);
-        this.gameObject.GetComponent<Car>().SetImmuneToDamage(true);
+        carScript.SetImmuneToDamage(true);
     }
 
     private void FinishSpawn()
@@ -55,7 +55,8 @@ public class CarNPC : MonoBehaviour
     public void ActivateCar()
     {
         Physics2D.IgnoreCollision(gameObject.GetComponent<PolygonCollider2D>(), bottomBoundary.GetComponent<BoxCollider2D>(), false);
-        this.gameObject.GetComponent<Car>().SetImmuneToDamage(false);
+        carScript.SetImmuneToDamage(false);
+        carScript.SetAbilityCD();
     }
 
     public void OnTriggerExit2D(Collider2D collision)

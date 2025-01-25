@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 
@@ -15,7 +14,6 @@ public class AirStrikeSpecial : SpecialMoveBase
     protected Camera mainCamera;
     private Vector3 mousePos;
 
-    private bool isActive = false;
     private ArrayList explosions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,7 +31,7 @@ public class AirStrikeSpecial : SpecialMoveBase
 
     public override void ActivateSpecialMove()
     {
-        if (isActive) return; // ignore extra special activations
+        if (isActive || isAbilityOnCD) return; // ignore extra special activations
         // TODO: add some special cooldown, with indicator in game UI
 
         isActive = true;
@@ -93,6 +91,7 @@ public class AirStrikeSpecial : SpecialMoveBase
     public override void EndSpecialMove()
     {
         isActive = false;
+        StartAbilityCD();
     }
 
     public void OnDestroy()

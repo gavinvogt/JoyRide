@@ -342,10 +342,14 @@ public class Car : MonoBehaviour
         gameObject.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
 
+    public void SetAbilityCD()
+    {
+        specialMoveScript.SetTimeLeftOnAbilityCD(specialMoveScript.GetAbilityCDOnEntrance());
+    }
+
     private void ActivateSpecial()
     {
-        Debug.Log("Prototype: Activating user's special");
-        specialMoveScript.enabled = true;
+        Debug.Log("Prototype: Attempting to activate user's special, remaining cooldown is: " + specialMoveScript.GetTimeLeftOnAbilityCD() + " seconds.");
         specialMoveScript.ActivateSpecialMove();
     }
 }

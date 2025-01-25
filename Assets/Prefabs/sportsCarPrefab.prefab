@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc945fc74895d140bcc647f5702491d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carScript: {fileID: 3969541985665354660}
 --- !u!114 &7814835546478320887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3395d89c9a0b0ac428d729bc59246942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCooldown: 10
+  abilityCooldownOnEntrance: 1.75
   timeSlowFactor: 0.5
   timeSlowDuration: 5
 --- !u!1 &4481793660760228137
@@ -390,6 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3395d89c9a0b0ac428d729bc59246942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCooldown: 0
+  abilityCooldownOnEntrance: 0
   timeSlowFactor: 0
   timeSlowDuration: 0
 --- !u!1 &7908672285071018119
