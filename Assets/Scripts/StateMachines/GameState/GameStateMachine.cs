@@ -7,7 +7,6 @@ namespace StateMachines.GameState
         public IState CurrentState { get; private set; }
 
         // state objects
-        public StartGameState startGameState;
         public InGameState inGameState;
         public InGameMenuState inGameMenuState;
         public DeathStillFrameState deathStillFrameState;
@@ -19,7 +18,6 @@ namespace StateMachines.GameState
 
         public GameStateMachine(GameStateManager game)
         {
-            startGameState = new(game);
             inGameState = new(game);
             inGameMenuState = new(game);
             deathStillFrameState = new(game);

@@ -24,7 +24,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        gameStateMachine.Initialize(gameStateMachine.startGameState);
+        gameStateMachine.Initialize(gameStateMachine.inGameState);
     }
 
     private void Update()
