@@ -8,11 +8,11 @@
         </ui:VisualElement>
         <ui:VisualElement name="ControlsContainer" class="controls-container">
             <ui:VisualElement name="MasterContainer" class="volumes-container" style="flex-grow: 1;">
-                <ui:Slider label="Master" value="42" high-value="100" name="MasterVolumeSlider" class="common-text" />
+                <ui:Slider label="Master" value="42" high-value="1" name="MasterVolumeSlider" low-value="0.0001" class="common-text" />
             </ui:VisualElement>
             <ui:VisualElement name="IndividualVolumeContainer" class="volumes-container" style="flex-grow: 1;">
-                <ui:Slider label="Sound FX" value="42" high-value="100" name="SoundFXVolumeSlider" class="common-text" />
-                <ui:Slider label="Music" value="42" high-value="100" name="MusicVolumeSlider" class="common-text" />
+                <ui:Slider label="Sound FX" value="42" high-value="1" name="SoundFXVolumeSlider" low-value="0.0001" class="common-text" />
+                <ui:Slider label="Music" value="42" high-value="1" name="MusicVolumeSlider" low-value="0.0001" class="common-text" />
             </ui:VisualElement>
             <ui:VisualElement name="Footer" class="footer">
                 <ui:Button text="Home" name="HomeButton" class="action-button common-text common-button" />

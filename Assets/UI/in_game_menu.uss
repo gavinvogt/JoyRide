@@ -6,8 +6,9 @@
     --border-black: rgb(40, 40, 40);
     --border-width: 1.5px;
     --help-button-size: 24px;
-    --slider-primary: #00ac7b;
+    --slider-primary: #09dd9f;
     --slider-secondary: #4ff8c8;
+    --slider-tertiary: #00ac7b;
 }
 
 .menu-title {
@@ -129,4 +130,10 @@
     background-color: var(--slider-primary);
     border-color: #d9fff6;
     border-width: 1.2px;
+    transition: 0.15s all;
+}
+
+.unity-base-slider__dragger:hover {
+    background-color: var(--slider-tertiary);
+    scale: 1.2;
 }
