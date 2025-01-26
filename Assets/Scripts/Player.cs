@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject UI;
     private UI UIScript;
-    [SerializeField] private GameObject inGameMenuUI;
+    [SerializeField] private UIDocument inGameMenuDocument;
     private float previousTimeScale;
     [SerializeField] private GameObject soundManagerObject;
     private SoundMixerManager soundManager;
@@ -93,11 +94,19 @@ public class Player : MonoBehaviour
             // escape to in-game menu
             previousTimeScale = Time.timeScale;
             Time.timeScale = 0;
-            inGameMenuUI.SetActive(true);
-            //Setting sliders to show what the previous saved audio levels were
-            inGameMenuUI.transform.GetChild(0).GetChild(1).GetComponent<Slider>().value = SoundMixerManager.GetMasterVolumeLevel();
-            inGameMenuUI.transform.GetChild(0).GetChild(3).GetComponent<Slider>().value = SoundMixerManager.GetSoundFXVolumeLevel();
-            inGameMenuUI.transform.GetChild(0).GetChild(5).GetComponent<Slider>().value = SoundMixerManager.GetMusicVolumeLevel();
+            inGameMenuDocument.gameObject.SetActive(true);
+
+            // Setting sliders to show what the previous saved audio levels were
+            var volumeKeyValues = new Tuple<string, float>[] {
+                new(UIElementIds.MASTER_VOLUME_SLIDER, SoundMixerManager.GetMasterVolumeLevel()),
+                new(UIElementIds.SOUND_FX_VOLUME_SLIDER, SoundMixerManager.GetSoundFXVolumeLevel()),
+                new(UIElementIds.MUSIC_VOLUME_SLIDER, SoundMixerManager.GetMusicVolumeLevel())
+            };
+            foreach (var (sliderId, val) in volumeKeyValues)
+            {
+                // TODO: verify that this is not triggering events; might just want SetValueWithoutNotify
+                inGameMenuDocument.rootVisualElement.Q<Slider>(sliderId).value = val;
+            }
         }
     }
 
@@ -159,7 +168,7 @@ public class Player : MonoBehaviour
     public void CloseInGameMenu()
     {
         // Close in-game menu and un-pause game
-        inGameMenuUI.SetActive(false);
+        inGameMenuDocument.gameObject.SetActive(false);
         Time.timeScale = previousTimeScale;
         //Save the sound changes to file
         Save.globalSaveData.SetVolumeValues(SoundMixerManager.GetSoundVolumeInSaveFormat());
