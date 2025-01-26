@@ -104,8 +104,7 @@ public class Player : MonoBehaviour
             };
             foreach (var (sliderId, val) in volumeKeyValues)
             {
-                // TODO: verify that this is not triggering events; might just want SetValueWithoutNotify
-                inGameMenuDocument.rootVisualElement.Q<Slider>(sliderId).value = val;
+                inGameMenuDocument.rootVisualElement.Q<Slider>(sliderId).SetValueWithoutNotify(val);
             }
         }
     }
