@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UIElements;
-using System.Collections.Generic;
-using System;
 
 public class Player : MonoBehaviour
 {
@@ -66,10 +64,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // TODO: ideally remove logic like this throughout the code and encapsulate the Player logic in
+        // the InGameMenuState Execute function
         if (Time.timeScale == 0)
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) CloseInGameMenu();
-
             // Return if paused to prevent any key press handling
             return;
         }
@@ -87,24 +85,6 @@ public class Player : MonoBehaviour
                 car.SendMessage("Die");
                 car = null;
                 rb = null;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // escape to in-game menu
-            previousTimeScale = Time.timeScale;
-            Time.timeScale = 0;
-            inGameMenuDocument.gameObject.SetActive(true);
-
-            // Setting sliders to show what the previous saved audio levels were
-            var volumeKeyValues = new Tuple<string, float>[] {
-                new(UIElementIds.MASTER_VOLUME_SLIDER, SoundMixerManager.GetMasterVolumeLevel()),
-                new(UIElementIds.SOUND_FX_VOLUME_SLIDER, SoundMixerManager.GetSoundFXVolumeLevel()),
-                new(UIElementIds.MUSIC_VOLUME_SLIDER, SoundMixerManager.GetMusicVolumeLevel())
-            };
-            foreach (var (sliderId, val) in volumeKeyValues)
-            {
-                inGameMenuDocument.rootVisualElement.Q<Slider>(sliderId).SetValueWithoutNotify(val);
             }
         }
     }
@@ -162,14 +142,5 @@ public class Player : MonoBehaviour
     public int GetSpeed()
     {
         return speed;
-    }
-
-    public void CloseInGameMenu()
-    {
-        // Close in-game menu and un-pause game
-        inGameMenuDocument.gameObject.SetActive(false);
-        Time.timeScale = previousTimeScale;
-        //Save the sound changes to file
-        Save.globalSaveData.SetVolumeValues(SoundMixerManager.GetSoundVolumeInSaveFormat());
     }
 }

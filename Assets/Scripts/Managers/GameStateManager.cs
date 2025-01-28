@@ -1,25 +1,27 @@
 using StateMachines.GameState;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameStateManager : MonoBehaviour
 {
-    public static GameStateManager instance { get; private set; }
     [DoNotSerialize] public GameStateMachine gameStateMachine;
-    public SoundMixerManager soundMixerManager;
+
+    // Serialized fields on the game manager to be used as context
+    [SerializeField] private SoundMixerManager _soundMixerManager; // TODO: can likely remove this context since the class has static members
+    public SoundMixerManager SoundMixerManager
+    {
+        get { return _soundMixerManager; }
+    }
+    [SerializeField] private UIDocument _inGameMenuDocument;
+    public UIDocument InGameMenuDocument
+    {
+        get { return _inGameMenuDocument; }
+    }
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            gameStateMachine = new(this);
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        gameStateMachine = new(this);
     }
 
     private void Start()

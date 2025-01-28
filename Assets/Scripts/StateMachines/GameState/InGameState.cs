@@ -18,6 +18,12 @@ namespace StateMachines.GameState
 
         public void Execute()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                // Pause game
+                Debug.Log("[InGameState] Pausing game");
+                _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameMenuState);
+            }
         }
 
         public void Exit()

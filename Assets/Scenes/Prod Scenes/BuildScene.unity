@@ -540,7 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a344993eec9c964d9add382df700d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundMixerManager: {fileID: 2046344379}
+  _soundMixerManager: {fileID: 2046344379}
+  _inGameMenuDocument: {fileID: 903177749}
 --- !u!4 &311253781
 Transform:
   m_ObjectHideFlags: 0
