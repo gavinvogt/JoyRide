@@ -34,15 +34,14 @@ namespace StateMachines.GameState
             InGameMenu.MusicVolumeChanged += HandleMusicVolumeChanged;
 
             // Listen to button click events
-            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.HOME_BUTTON).RegisterCallbackOnce<ClickEvent>(HandleHomeButtonClick);
-            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.CONTINUE_BUTTON).RegisterCallbackOnce<ClickEvent>(HandleContinueButtonClick);
+            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.HOME_BUTTON).clicked += HandleHomeButtonClick;
+            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.CONTINUE_BUTTON).clicked += UnpauseGame;
         }
 
         public void Execute()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                // Unpause game
                 UnpauseGame();
             }
         }
@@ -95,14 +94,9 @@ namespace StateMachines.GameState
             }
         }
 
-        private void HandleHomeButtonClick(ClickEvent _)
+        private void HandleHomeButtonClick()
         {
             _game.gameStateMachine.TransitionTo(_game.gameStateMachine.confirmExitState);
-        }
-
-        private void HandleContinueButtonClick(ClickEvent _)
-        {
-            UnpauseGame();
         }
 
         private void UnpauseGame()
