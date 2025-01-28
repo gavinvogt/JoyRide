@@ -1,0 +1,56 @@
+:root {
+    --text-color-1: rgb(230, 230, 230);
+    --bg-md-gray: rgba(100, 100, 100, 0.6);
+    --bg-light-gray: rgba(150, 150, 150, 0.6);
+    --border-black: rgb(40, 40, 40);
+    --border-width: 1.5px;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.modal {
+    align-self: center;
+    align-content: flex-start;
+    justify-content: space-around;
+    padding: 10px;
+    margin: auto;
+    align-items: flex-end;
+    background-color: var(--bg-md-gray);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 6px;
+    max-width: 400px;
+}
+
+.modal-footer {
+    align-items: flex-start;
+    align-self: stretch;
+    align-content: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.common-button {
+    background-color: var(--bg-light-gray);
+    border-color: var(--border-black);
+    border-width: var(--border-width);
+    -unity-font-style: bold;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 5px;
+    transition: 0.15s all;
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+.common-button:hover {
+    background-color: var(--bg-md-gray);
+    scale: 1.1;
+    color: lightyellow;
+}
+
+.common-text {
+    color: var(--text-color-1);
+}
