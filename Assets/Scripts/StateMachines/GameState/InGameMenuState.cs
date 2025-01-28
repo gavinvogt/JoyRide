@@ -32,6 +32,10 @@ namespace StateMachines.GameState
             InGameMenu.MasterVolumeChanged += HandleMasterVolumeChanged;
             InGameMenu.SoundFXVolumeChanged += HandleSoundFXVolumeChanged;
             InGameMenu.MusicVolumeChanged += HandleMusicVolumeChanged;
+
+            // Listen to button click events
+            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.HOME_BUTTON).RegisterCallbackOnce<ClickEvent>(HandleHomeButtonClick);
+            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.CONTINUE_BUTTON).RegisterCallbackOnce<ClickEvent>(HandleContinueButtonClick);
         }
 
         public void Execute()
@@ -39,10 +43,7 @@ namespace StateMachines.GameState
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // Unpause game
-                Debug.Log("[InGameMenuState] Unpausing game");
-                SetMenuDisplayOn(false);
-                _timeScaleFlipper.RevertTimeScale();
-                _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameState);
+                UnpauseGame();
             }
         }
 
@@ -92,6 +93,23 @@ namespace StateMachines.GameState
             {
                 _game.InGameMenuDocument.rootVisualElement.Q<Slider>(sliderId).SetValueWithoutNotify(val);
             }
+        }
+
+        private void HandleHomeButtonClick(ClickEvent _)
+        {
+            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.confirmExitState);
+        }
+
+        private void HandleContinueButtonClick(ClickEvent _)
+        {
+            UnpauseGame();
+        }
+
+        private void UnpauseGame()
+        {
+            SetMenuDisplayOn(false);
+            _timeScaleFlipper.RevertTimeScale();
+            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameState);
         }
     }
 }
