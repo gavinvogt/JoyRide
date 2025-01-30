@@ -34,8 +34,8 @@ namespace StateMachines.GameState
             InGameMenu.MusicVolumeChanged += HandleMusicVolumeChanged;
 
             // Listen to button click events
-            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.HOME_BUTTON).clicked += HandleHomeButtonClick;
-            _game.InGameMenuDocument.rootVisualElement.Q<Button>(UIElementIds.CONTINUE_BUTTON).clicked += UnpauseGame;
+            InGameMenu.HomeButton.clicked += HandleHomeButtonClick;
+            InGameMenu.ContinueButton.clicked += UnpauseGame;
         }
 
         public void Execute()
@@ -49,6 +49,9 @@ namespace StateMachines.GameState
         public void Exit()
         {
             Debug.Log("[GameState] Exited InGameMenuState");
+            InGameMenu.HomeButton.clicked -= HandleHomeButtonClick;
+            InGameMenu.ContinueButton.clicked -= UnpauseGame;
+
             InGameMenu.MasterVolumeChanged -= HandleMasterVolumeChanged;
             InGameMenu.SoundFXVolumeChanged -= HandleSoundFXVolumeChanged;
             InGameMenu.MusicVolumeChanged -= HandleMusicVolumeChanged;
@@ -59,25 +62,22 @@ namespace StateMachines.GameState
 
         private void HandleMasterVolumeChanged(float newValue)
         {
-            Debug.Log("New master volume " + newValue);
             _game.SoundMixerManager.SetMasterVolume(newValue);
         }
 
         private void HandleSoundFXVolumeChanged(float newValue)
         {
-            Debug.Log("New SoundFX volume " + newValue);
             _game.SoundMixerManager.SetSoundFXVolume(newValue);
         }
 
         private void HandleMusicVolumeChanged(float newValue)
         {
-            Debug.Log("New Music volume " + newValue);
             _game.SoundMixerManager.SetMusicVolume(newValue);
         }
 
         private void SetMenuDisplayOn(bool toDisplay)
         {
-            _game.InGameMenuDocument.gameObject.SetActive(toDisplay);
+            _game.InGameMenuDocument.rootVisualElement.visible = toDisplay;
             isMenuActive = toDisplay;
         }
 

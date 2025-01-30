@@ -19,8 +19,8 @@ namespace StateMachines.GameState
             if (!isMenuActive)
             {
                 SetMenuDisplayOn(true);
-                _game.ConfirmExitModalDocument.rootVisualElement.Q<Button>(UIElementIds.CANCEL_BUTTON).RegisterCallbackOnce<ClickEvent>(CancelExit);
-                _game.ConfirmExitModalDocument.rootVisualElement.Q<Button>(UIElementIds.CONFIRM_BUTTON).RegisterCallbackOnce<ClickEvent>(ConfirmExit);
+                ConfirmExitModal.CancelButton.clicked += CancelExit;
+                ConfirmExitModal.ConfirmButton.clicked += ConfirmExit;
             }
         }
 
@@ -33,11 +33,13 @@ namespace StateMachines.GameState
         {
             Debug.Log("[GameState] Exited ConfirmExitState");
             SetMenuDisplayOn(false);
+            ConfirmExitModal.CancelButton.clicked -= CancelExit;
+            ConfirmExitModal.ConfirmButton.clicked -= ConfirmExit;
         }
 
         private void SetMenuDisplayOn(bool toDisplay)
         {
-            _game.ConfirmExitModalDocument.gameObject.SetActive(toDisplay);
+            _game.ConfirmExitModalDocument.rootVisualElement.visible = toDisplay;
             isMenuActive = toDisplay;
         }
 
@@ -46,12 +48,7 @@ namespace StateMachines.GameState
             _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameMenuState);
         }
 
-        private void CancelExit(ClickEvent _)
-        {
-            CancelExit();
-        }
-
-        private void ConfirmExit(ClickEvent _)
+        private void ConfirmExit()
         {
             Application.Quit();
         }
