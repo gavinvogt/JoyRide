@@ -40,7 +40,7 @@ namespace StateMachines.GameState
 
         private void CloseMenu()
         {
-            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameMenuState);
+            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.PreviousState);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace StateMachines.GameState
     public class GameStateMachine
     {
         public IState CurrentState { get; private set; }
+        public IState PreviousState { get; private set; }
 
         // state objects
         public InGameState inGameState;
@@ -41,6 +42,7 @@ namespace StateMachines.GameState
 
         public void TransitionTo(IState nextState)
         {
+            PreviousState = CurrentState;
             CurrentState.Exit();
             CurrentState = nextState;
             nextState.Enter();

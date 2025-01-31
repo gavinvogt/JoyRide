@@ -42,7 +42,7 @@ namespace StateMachines.GameState
 
         private void CancelExit()
         {
-            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameMenuState);
+            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.PreviousState);
         }
 
         private void ConfirmExit()
