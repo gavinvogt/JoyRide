@@ -18,7 +18,6 @@ namespace StateMachines.GameState
 
         public void Enter()
         {
-            Debug.Log("[GameState] Entered InGameMenuState");
             // Pause game (if not paused)
             if (!_timeScaleFlipper.IsFlipped) _timeScaleFlipper.UpdateTimeScale(0);
             // Display menu (if not yet shown)
@@ -49,7 +48,6 @@ namespace StateMachines.GameState
 
         public void Exit()
         {
-            Debug.Log("[GameState] Exited InGameMenuState");
             InGameMenu.HomeButton.clicked -= HandleHomeButtonClick;
             InGameMenu.ContinueButton.clicked -= UnpauseGame;
             InGameMenu.HelpButton.clicked -= HandleHelpButtonClick;

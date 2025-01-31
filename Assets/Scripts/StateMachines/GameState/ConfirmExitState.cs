@@ -14,7 +14,6 @@ namespace StateMachines.GameState
 
         public void Enter()
         {
-            Debug.Log("[GameState] Entered ConfirmExitState");
             if (!isMenuActive)
             {
                 SetMenuDisplayOn(true);
@@ -30,7 +29,6 @@ namespace StateMachines.GameState
 
         public void Exit()
         {
-            Debug.Log("[GameState] Exited ConfirmExitState");
             SetMenuDisplayOn(false);
             ConfirmExitModal.CancelButton.clicked -= CancelExit;
             ConfirmExitModal.ConfirmButton.clicked -= ConfirmExit;

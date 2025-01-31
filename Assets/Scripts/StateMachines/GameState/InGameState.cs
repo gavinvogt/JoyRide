@@ -13,7 +13,6 @@ namespace StateMachines.GameState
 
         public void Enter()
         {
-            Debug.Log("[GameState] Entered InGameState");
         }
 
         public void Execute()
@@ -21,14 +20,12 @@ namespace StateMachines.GameState
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // Pause game
-                Debug.Log("[InGameState] Pausing game");
                 _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameMenuState);
             }
         }
 
         public void Exit()
         {
-            Debug.Log("[GameState] Exited InGameState");
         }
     }
 }

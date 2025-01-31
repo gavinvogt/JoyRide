@@ -14,7 +14,6 @@ namespace StateMachines.GameState
 
         public void Enter()
         {
-            Debug.Log("[GameState] Entered EndScreenState");
             SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
 
@@ -24,7 +23,6 @@ namespace StateMachines.GameState
 
         public void Exit()
         {
-            Debug.Log("[GameState] Exited EndScreenState");
         }
     }
 }
