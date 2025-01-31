@@ -8,9 +8,11 @@ namespace StateMachines.GameState
 
         // state objects
         public InGameState inGameState;
-        public InGameMenuState inGameMenuState;
         public DeathStillFrameState deathStillFrameState;
         public EndScreenState endScreenState;
+        // menu-related states
+        public InGameMenuState inGameMenuState;
+        public ShowControlsState showControlsState;
         public ConfirmExitState confirmExitState;
 
         // event to notify other objects when the state changes
@@ -18,10 +20,13 @@ namespace StateMachines.GameState
 
         public GameStateMachine(GameStateManager game)
         {
+            // game-related states
             inGameState = new(game);
-            inGameMenuState = new(game);
             deathStillFrameState = new(game);
             endScreenState = new(game);
+            // menu-related states
+            showControlsState = new(game);
+            inGameMenuState = new(game);
             confirmExitState = new(game);
         }
 

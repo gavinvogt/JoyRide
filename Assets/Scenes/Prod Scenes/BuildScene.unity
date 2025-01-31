@@ -542,6 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soundMixerManager: {fileID: 2046344379}
   _inGameMenuDocument: {fileID: 903177749}
+  _controlsDocument: {fileID: 336892312}
   _confirmExitModalDocument: {fileID: 1131485460}
 --- !u!4 &311253781
 Transform:

@@ -18,6 +18,11 @@ public class GameStateManager : MonoBehaviour
     {
         get { return _inGameMenuDocument; }
     }
+    [SerializeField] private UIDocument _controlsDocument;
+    public UIDocument ControlsDocument
+    {
+        get { return _controlsDocument; }
+    }
     [SerializeField] private UIDocument _confirmExitModalDocument;
     public UIDocument ConfirmExitModalDocument
     {

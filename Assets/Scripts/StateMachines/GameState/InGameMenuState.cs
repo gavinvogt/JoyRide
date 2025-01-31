@@ -36,6 +36,7 @@ namespace StateMachines.GameState
             // Listen to button click events
             InGameMenu.HomeButton.clicked += HandleHomeButtonClick;
             InGameMenu.ContinueButton.clicked += UnpauseGame;
+            InGameMenu.HelpButton.clicked += HandleHelpButtonClick;
         }
 
         public void Execute()
@@ -51,6 +52,7 @@ namespace StateMachines.GameState
             Debug.Log("[GameState] Exited InGameMenuState");
             InGameMenu.HomeButton.clicked -= HandleHomeButtonClick;
             InGameMenu.ContinueButton.clicked -= UnpauseGame;
+            InGameMenu.HelpButton.clicked -= HandleHelpButtonClick;
 
             InGameMenu.MasterVolumeChanged -= HandleMasterVolumeChanged;
             InGameMenu.SoundFXVolumeChanged -= HandleSoundFXVolumeChanged;
@@ -104,6 +106,11 @@ namespace StateMachines.GameState
             SetMenuDisplayOn(false);
             _timeScaleFlipper.RevertTimeScale();
             _game.gameStateMachine.TransitionTo(_game.gameStateMachine.inGameState);
+        }
+
+        private void HandleHelpButtonClick()
+        {
+            _game.gameStateMachine.TransitionTo(_game.gameStateMachine.showControlsState);
         }
     }
 }
