@@ -7,7 +7,7 @@ public class Booster : Obstacle
 
     ArrayList carsAlreadyBoosted;
 
-    private enum BoosterType
+    public enum BoosterType
     {
         HEALTH,
         AMMO,

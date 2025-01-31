@@ -95,7 +95,7 @@ public class Car : MonoBehaviour
         Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
         GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
 
-        UIScript.DisableBoostUI();
+        UIScript.DisableSpeedBoostUI();
         currentCarIndicator.SetActive(false);
 
         // transfer player to the projectile
@@ -110,7 +110,7 @@ public class Car : MonoBehaviour
         gun.SendMessage("SetPlayer", player);
         currentCarIndicator.SetActive(true);
         if (hasSpeedBoost)
-            UIScript.EnableBoostUI();
+            UIScript.EnableSpeedBoostUI();
         if (player != null) OverrideCursor();
     }
 
@@ -246,6 +246,10 @@ public class Car : MonoBehaviour
         {
             currentHealth++;
         }
+        if (player != null)
+        {
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HEALTH));
+        }
     }
 
     public void TakeDamage()
@@ -263,6 +267,7 @@ public class Car : MonoBehaviour
         currentAmmoCount = maxAmmoCount;
         if (player != null)
         {
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.AMMO));
             player.GetComponent<Player>().UpdatePlayerUI();
         }
     }
@@ -283,14 +288,15 @@ public class Car : MonoBehaviour
         hasSpeedBoost = true;
         if (player != null)
         {
-            UIScript.EnableBoostUI();
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HANDLING));
+            UIScript.EnableSpeedBoostUI();
         }
         yield return new WaitForSeconds(2.5f);
         drivingSpeed -= 4;
         hasSpeedBoost = false;
         if (player != null)
         {
-            UIScript.DisableBoostUI();
+            UIScript.DisableSpeedBoostUI();
         }
     }
 
@@ -298,6 +304,8 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.GOONS));
+
             List<GameObject> Spawners = npcs.GetSpawners();
             List<GameObject> NPCPrefabs = npcs.GetPrefabs();
             List<int> spawnpoints = new List<int>();
