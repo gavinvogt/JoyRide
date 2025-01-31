@@ -11,42 +11,40 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject speedGauge;
     [SerializeField] private GameObject boost;
 
-    [SerializeField] private GameObject healthPadIndicator;
-    [SerializeField] private GameObject ammoPadIndicator;
-    [SerializeField] private GameObject speedPadIndicator;
-    [SerializeField] private GameObject goonPadIndicator;
-
-    private static bool isBoostIndicatorShowing = false;
+    [SerializeField] private BoostIndicator healthPadIndicator;
+    [SerializeField] private BoostIndicator ammoPadIndicator;
+    [SerializeField] private BoostIndicator speedPadIndicator;
+    [SerializeField] private BoostIndicator goonPadIndicator;
 
     void Awake()
     {
         DisableSpeedBoostUI();
-        updateUI(player);
+        UpdateUI(player);
     }
 
-    public void updateUI(GameObject player)
+    public void UpdateUI(GameObject player)
     {
         Player playerScript = player.GetComponent<Player>();
         if (playerScript.GetCar())
         {
             Car car = playerScript.GetCar().GetComponent<Car>();
-            updateHealth(car.GetHealthPercentage());
-            updateAmmo(car.GetComponent<Car>().GetAmmoPercentage());
+            UpdateHealth(car.GetHealthPercentage());
+            UpdateAmmo(car.GetComponent<Car>().GetAmmoPercentage());
         }
-        updateSpeed(playerScript.GetSpeedPercentage());
+        UpdateSpeed(playerScript.GetSpeedPercentage());
     }
 
-    public void updateHealth(float healthPercentage)
+    public void UpdateHealth(float healthPercentage)
     {
         float angleOfGauge = -90f * (1 - healthPercentage);
         healthGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
     }
-    public void updateAmmo(float ammoPercentage)
+    public void UpdateAmmo(float ammoPercentage)
     {
         float angleOfGauge = 90f * (1 - ammoPercentage);
         ammoGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
     }
-    public void updateSpeed(float speedPercentage)
+    public void UpdateSpeed(float speedPercentage)
     {
         if (!float.IsNaN(speedPercentage)) {
             float angleOfGauge = 90f + (180 * speedPercentage);
@@ -64,32 +62,30 @@ public class UI : MonoBehaviour
         boost.SetActive(false);
     }
 
-    public IEnumerator ActivateBoostPadIndicator(BoosterType type)
+    public IEnumerator ActivateBoostPadIndicator(BoosterType type, Vector2 carPos)
     {
-        yield return new WaitUntil(() => !isBoostIndicatorShowing); //Blocking loop to only allow one thing to go at a time, hopefully this kinda queues them up but we will see
-        isBoostIndicatorShowing = true;
-        BoostIndicator statPadActive = null;
+        BoostIndicator statPadActive;
         switch (type)
         {
             case BoosterType.HEALTH:
-                statPadActive = healthPadIndicator.GetComponent<BoostIndicator>();
+                statPadActive = healthPadIndicator;
                 break;
             case BoosterType.AMMO:
-                statPadActive = ammoPadIndicator.GetComponent<BoostIndicator>();
+                statPadActive = ammoPadIndicator;
                 break;
             case BoosterType.HANDLING:;
-                statPadActive = speedPadIndicator.GetComponent<BoostIndicator>();
+                statPadActive = speedPadIndicator;
                 break;
             case BoosterType.GOONS:
-                statPadActive = goonPadIndicator.GetComponent<BoostIndicator>();
+                statPadActive = goonPadIndicator;
                 break;
             default:
-                statPadActive = new BoostIndicator();
+                //Should never hit this case
+                statPadActive = null;
                 break;
         }
-        statPadActive.Activate();
+        statPadActive.Activate(carPos);
         yield return new WaitForSeconds(0.5f);
         statPadActive.Deactivate();
-        isBoostIndicatorShowing = false;
     }
 }

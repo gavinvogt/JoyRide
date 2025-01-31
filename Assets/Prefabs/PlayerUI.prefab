@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7e1ff692d8cb148a83f8f7fb4f3f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 2828738569392000746}
+  canvasRectTransform: {fileID: 557510333386809407}
 --- !u!1 &1575519655288586313
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7e1ff692d8cb148a83f8f7fb4f3f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 2988661577389314291}
+  canvasRectTransform: {fileID: 557510333386809407}
 --- !u!1 &3147286487924766806
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,14 +690,14 @@ RectTransform:
   m_GameObject: {fileID: 3470989785981232462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 557510333386809407}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.1, y: 0.1}
-  m_AnchoredPosition: {x: -17.5, y: 100}
+  m_AnchoredPosition: {x: -17.5, y: 110}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &850745454104600985
@@ -1239,6 +1243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7e1ff692d8cb148a83f8f7fb4f3f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 4200702353760819300}
+  canvasRectTransform: {fileID: 557510333386809407}
 --- !u!1 &6641539157540463412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7e1ff692d8cb148a83f8f7fb4f3f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 7454829048015990265}
+  canvasRectTransform: {fileID: 557510333386809407}
 --- !u!1 &7123870273548439240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,10 +1498,10 @@ MonoBehaviour:
   ammoGauge: {fileID: 307381569381206620}
   speedGauge: {fileID: 2357615285169762156}
   boost: {fileID: 3470989785981232462}
-  healthPadIndicator: {fileID: 6483270360428805502}
-  ammoPadIndicator: {fileID: 6641539157540463412}
-  speedPadIndicator: {fileID: 1479715315745223545}
-  goonPadIndicator: {fileID: 2587898388897126899}
+  healthPadIndicator: {fileID: 388952578751799030}
+  ammoPadIndicator: {fileID: 4869414337296671494}
+  speedPadIndicator: {fileID: 548402636019992401}
+  goonPadIndicator: {fileID: 2818206100627433536}
 --- !u!1 &7450511189865502405
 GameObject:
   m_ObjectHideFlags: 0

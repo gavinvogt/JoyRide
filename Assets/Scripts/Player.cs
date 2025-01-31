@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
     }
     public void UpdatePlayerUI()
     {
-        if (UIScript) UIScript.updateUI(gameObject);
+        if (UIScript) UIScript.UpdateUI(gameObject);
     }
 
     public int GetSpeed()

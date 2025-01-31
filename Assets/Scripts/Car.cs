@@ -248,7 +248,7 @@ public class Car : MonoBehaviour
         }
         if (player != null)
         {
-            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HEALTH));
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HEALTH, this.transform.position));
         }
     }
 
@@ -267,7 +267,7 @@ public class Car : MonoBehaviour
         currentAmmoCount = maxAmmoCount;
         if (player != null)
         {
-            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.AMMO));
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.AMMO, this.transform.position));
             player.GetComponent<Player>().UpdatePlayerUI();
         }
     }
@@ -288,7 +288,7 @@ public class Car : MonoBehaviour
         hasSpeedBoost = true;
         if (player != null)
         {
-            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HANDLING));
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HANDLING, this.transform.position));
             UIScript.EnableSpeedBoostUI();
         }
         yield return new WaitForSeconds(2.5f);
@@ -304,7 +304,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
-            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.GOONS));
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.GOONS, this.transform.position));
 
             List<GameObject> Spawners = npcs.GetSpawners();
             List<GameObject> NPCPrefabs = npcs.GetPrefabs();

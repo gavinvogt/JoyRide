@@ -1,9 +1,12 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class BoostIndicator : MonoBehaviour
 {
     bool isActive = false;
-
+    Vector2 carPosition = Vector2.zero;
+    [SerializeField] RectTransform rectTransform;
+    [SerializeField] RectTransform canvasRectTransform;
 
     void FixedUpdate()
     {
@@ -15,8 +18,12 @@ public class BoostIndicator : MonoBehaviour
         }
     }
 
-    public void Activate()
+    public void Activate(Vector2 carPos)
     {
+        carPosition = Camera.main.WorldToViewportPoint(carPos);
+        rectTransform.anchoredPosition = new Vector2(
+            ((carPosition.x * canvasRectTransform.sizeDelta.x) - (canvasRectTransform.sizeDelta.x * 0.5f)),
+            ((carPosition.y * canvasRectTransform.sizeDelta.y) - (canvasRectTransform.sizeDelta.y * 0.5f)));
         isActive = true;
         this.gameObject.SetActive(true);
     }
@@ -27,7 +34,7 @@ public class BoostIndicator : MonoBehaviour
 
         //Reset rotation and size
         transform.rotation = Quaternion.identity;
-        transform.localScale = Vector3.one;
+        transform.localScale = Vector2.one;
 
         this.gameObject.SetActive(false);
     }
