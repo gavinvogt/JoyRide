@@ -3,13 +3,13 @@
     <engine:VisualElement name="ControlsBox" class="controls-box">
         <engine:VisualElement name="ControlGroup" class="control-group">
             <engine:VisualElement name="AttackControl" class="common-control-container key-group">
-                <engine:VisualElement name="ImageLeftClick" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/mouse.png?fileID=2800000&amp;guid=d2f0f7e566663e0488bbacb73da05e5a&amp;type=3#mouse&quot;);" />
+                <engine:VisualElement name="ImageLeftClick" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/mouseLeft.png?fileID=2800000&amp;guid=0a53decff34d56f4d9cd705f4419ed80&amp;type=3#mouseLeft&quot;);" />
             </engine:VisualElement>
             <engine:Label text="Attack" name="LabelAttack" class="common-text control-label" />
         </engine:VisualElement>
         <engine:VisualElement name="ControlGroup" class="control-group">
             <engine:VisualElement name="SpecialControl" class="common-control-container key-group">
-                <engine:VisualElement name="ImageRightClick" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/mouse.png?fileID=2800000&amp;guid=d2f0f7e566663e0488bbacb73da05e5a&amp;type=3#mouse&quot;);" />
+                <engine:VisualElement name="ImageRightClick" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/mouseRight.png?fileID=2800000&amp;guid=54371d70d2fcf5e449746f12d5cc7dbb&amp;type=3#mouseRight&quot;);" />
             </engine:VisualElement>
             <engine:Label text="Special ability" name="LabelSpecial" class="common-text control-label" />
         </engine:VisualElement>
@@ -18,7 +18,7 @@
                 <engine:VisualElement name="ImageKeyW" class="letter-key top-letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/key_W.png?fileID=2800000&amp;guid=e58942d66ab9c5e4c920d161e2756b06&amp;type=3#key_W&quot;);" />
                 <engine:VisualElement name="BottomKeys" class="key-group">
                     <engine:VisualElement name="ImageKeyA" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/key_A.png?fileID=2800000&amp;guid=454075a807388a34cae655cd1d71102b&amp;type=3#key_A&quot;);" />
-                    <engine:VisualElement name="ImageKeyS" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/key_S.png?fileID=21300000&amp;guid=f4cbe65e521fc764a8883be68a65c994&amp;type=3#key_S&quot;);" />
+                    <engine:VisualElement name="ImageKeyS" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/key_S.png?fileID=2800000&amp;guid=f4cbe65e521fc764a8883be68a65c994&amp;type=3#key_S&quot;);" />
                     <engine:VisualElement name="ImageKeyD" class="letter-key" style="background-image: url(&quot;project://database/Assets/UI/Controls/key_D.png?fileID=2800000&amp;guid=0d08a8b4ce953e844b57e663d6798df7&amp;type=3#key_D&quot;);" />
                 </engine:VisualElement>
             </engine:VisualElement>
