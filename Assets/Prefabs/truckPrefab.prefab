@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2559179425986368818}
   - component: {fileID: 3969541985665354660}
   - component: {fileID: 421762710008633274}
+  - component: {fileID: -1164150021005484933}
   m_Layer: 0
   m_Name: truckPrefab
   m_TagString: Car
@@ -207,7 +208,7 @@ MonoBehaviour:
   healthBar: {fileID: 737265214500778529}
   maxAmmoCount: 30
   playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
-  specialMoveScript: {fileID: 0}
+  specialMoveScript: {fileID: -1164150021005484933}
 --- !u!114 &421762710008633274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +222,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carScript: {fileID: 3969541985665354660}
+--- !u!114 &-1164150021005484933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249512639550302531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2050cdd099893da45b063fb8e44353d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCooldown: 15
+  abilityCooldownOnEntrance: 3
+  timeSlowFactor: 0
+  timeSlowDuration: 0
 --- !u!1 &579526641817025786
 GameObject:
   m_ObjectHideFlags: 0
