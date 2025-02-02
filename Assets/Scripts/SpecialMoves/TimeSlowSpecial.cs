@@ -4,15 +4,9 @@ public class TimeSlowSpecial : SpecialMoveBase
 {
     [SerializeField] private float timeSlowFactor;
     [SerializeField] private float timeSlowDuration;
+    [SerializeField] private Car car;
     private float previousTimeScale;
     private float timeSinceActivated;
-    Car car;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        car = this.gameObject.GetComponent<Car>();
-    }
 
     // Update is called once per frame
     void Update()

@@ -22,8 +22,7 @@ public class LaserDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Car")
         {
-            StartCoroutine(AddToRecentlyDamaged(collision));
-            collision.gameObject.GetComponent<Car>().TakeDamage();
+            DoDamageToCar(collision);
         }
     }
 
@@ -33,9 +32,22 @@ public class LaserDamage : MonoBehaviour
         {
             if (!recentlyDamagedCars.Contains(collision))
             {
-                StartCoroutine(AddToRecentlyDamaged(collision));
-                collision.gameObject.GetComponent<Car>().TakeDamage();
+                DoDamageToCar(collision);
             }
+        }
+    }
+
+    private void DoDamageToCar(Collider2D car)
+    {
+        StartCoroutine(AddToRecentlyDamaged(car));
+        Car carScript = car.gameObject.GetComponent<Car>();
+        if (carScript.GetIsShielded())
+        {
+            carScript.EndAbility();
+        }
+        else
+        {
+            carScript.TakeDamage();
         }
     }
 

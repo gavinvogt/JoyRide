@@ -293,6 +293,7 @@ MonoBehaviour:
   abilityCooldownOnEntrance: 1.75
   timeSlowFactor: 0.5
   timeSlowDuration: 5
+  car: {fileID: 3969541985665354660}
 --- !u!1 &4481793660760228137
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +398,7 @@ MonoBehaviour:
   abilityCooldownOnEntrance: 0
   timeSlowFactor: 0
   timeSlowDuration: 0
+  car: {fileID: 0}
 --- !u!1 &7908672285071018119
 GameObject:
   m_ObjectHideFlags: 0

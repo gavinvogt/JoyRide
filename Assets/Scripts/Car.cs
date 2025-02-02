@@ -48,6 +48,8 @@ public class Car : MonoBehaviour
     private NPCSpawner npcs;
     private UI UIScript;
     private bool immuneToDamage;
+    private bool isShielded = false;
+    private bool isCarDead = false;
 
     // Special attack
     [SerializeField] private SpecialMoveBase specialMoveScript;
@@ -72,7 +74,7 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        if (player != null && Input.GetMouseButtonUp(RIGHT_CLICK))
+        if (player != null && !isCarDead && Input.GetMouseButtonUp(RIGHT_CLICK))
         {
             ActivateSpecial();
         }
@@ -139,6 +141,11 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage)
         {
+            if (isShielded)
+            {
+                EndAbility();
+                return;
+            }
             if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
@@ -182,6 +189,7 @@ public class Car : MonoBehaviour
 
     private void Die()
     {
+        isCarDead = true;
         if (player != null)
         {
             PlayerLoseControl();
@@ -219,6 +227,11 @@ public class Car : MonoBehaviour
         npcs.DecreaseNPC();
         Destroy(rotateTarget);
         Destroy(gameObject);
+    }
+
+    public bool IsCarDead()
+    {
+        return isCarDead;
     }
 
     public float GetHealthPercentage()
@@ -290,6 +303,21 @@ public class Car : MonoBehaviour
     public void SetImmuneToDamage(bool immune)
     {
         immuneToDamage = immune;
+    }
+
+    public bool GetIsShielded()
+    {
+        return isShielded;
+    }
+
+    public void SetIsShielded(bool shielded)
+    {
+        isShielded = shielded;
+    }
+
+    public void EndAbility()
+    {
+        specialMoveScript.EndSpecialMove();
     }
 
     public IEnumerator BoostSpeed()
