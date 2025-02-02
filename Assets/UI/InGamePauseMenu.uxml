@@ -2,9 +2,9 @@
     <Style src="project://database/Assets/UI/in_game_menu.uss?fileID=7433441132597879392&amp;guid=799e625a54a5d9a458d691b17953f687&amp;type=3#in_game_menu" />
     <ui:Label text="Pause" name="MenuTitle" double-click-selects-word="false" triple-click-selects-line="false" display-tooltip-when-elided="false" class="menu-title common-text" />
     <ui:VisualElement name="InGameMenuContainer" class="menu-box">
-        <ui:VisualElement name="HelpButtonGroup" style="flex-grow: initial; justify-content: flex-start; align-self: auto; align-content: flex-start; right: auto; flex-direction: column; flex-wrap: wrap;">
+        <ui:VisualElement name="HelpButtonGroup" class="help-button-container">
             <ui:Button text="?" name="HelpButton" class="help-button common-text common-button" style="padding-top: 0; padding-left: 0; padding-right: 0; padding-bottom: 0;" />
-            <ui:Label text="Help" name="HelpButtonLabel" class="common-text" style="font-size: 10px; margin-top: -6px; margin-right: 0; margin-left: 0; padding-right: 1px; -unity-text-align: upper-center;" />
+            <ui:Label text="Help" name="HelpButtonLabel" class="common-text help-button-label" />
         </ui:VisualElement>
         <ui:VisualElement name="ControlsContainer" class="controls-container">
             <ui:VisualElement name="MasterContainer" class="volumes-container" style="flex-grow: 1;">

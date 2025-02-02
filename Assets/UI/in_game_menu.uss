@@ -6,9 +6,9 @@
     --border-black: rgb(40, 40, 40);
     --border-width: 1.5px;
     --help-button-size: 24px;
-    --slider-primary: #09dd9f;
-    --slider-secondary: #4ff8c8;
-    --slider-tertiary: #00ac7b;
+    --slider-primary: rgb(9, 221, 159);
+    --slider-secondary: rgb(79, 248, 200);
+    --slider-tertiary: rgb(0, 172, 123);
 }
 
 .menu-title {
@@ -69,7 +69,6 @@
 }
 
 .controls-container {
-    /* flex-grow: 1; */
 }
 
 .volumes-container {
@@ -122,7 +121,7 @@
     border-radius: 12px;
     margin-top: -6.5px;
     background-color: var(--slider-primary);
-    border-color: #d9fff6;
+    border-color: rgb(217, 255, 246);
     border-width: 1.2px;
     transition: 0.15s all;
 }
@@ -130,4 +129,23 @@
 .unity-base-slider__dragger:hover {
     background-color: var(--slider-tertiary);
     scale: 1.2;
+}
+
+.help-button-container {
+    flex-grow: initial;
+    justify-content: flex-start;
+    align-self: auto;
+    align-content: flex-start;
+    right: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.help-button-label {
+    font-size: 10px;
+    margin-top: -6px;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 1px;
+    -unity-text-align: upper-center;
 }
