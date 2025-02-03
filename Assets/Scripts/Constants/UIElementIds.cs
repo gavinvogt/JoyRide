@@ -14,4 +14,9 @@ public class UIElementIds
     public readonly static string CONTROLS_BUTTON = "ControlsButton";
     public readonly static string STATS_BUTTON = "StatsButton";
     public readonly static string QUIT_BUTTON = "QuitButton";
+
+    public readonly static string BEST_TIME_LABEL = "BestTimeLabel";
+    public readonly static string BEST_SCORE_LABEL = "BestScoreLabel";
+    public readonly static string RUN_TIME_LABEL = "RunTimeLabel";
+    public readonly static string RUN_SCORE_LABEL = "RunScoreLabel";
 }

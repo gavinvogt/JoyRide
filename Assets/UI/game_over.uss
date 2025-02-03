@@ -1,0 +1,66 @@
+:root {
+    --text-color-1: rgb(230, 230, 230);
+}
+
+.common-text {
+    color: var(--text-color-1);
+}
+
+
+.backdrop {
+    flex-grow: 1;
+    justify-content: space-between;
+    background-color: rgb(80, 80, 80);
+}
+
+.best-container {
+    align-self: auto;
+    align-items: flex-end;
+    font-size: 18px;
+}
+
+.current-container {
+    flex-grow: 1;
+    align-items: flex-start;
+    align-self: center;
+    font-size: 24px;
+}
+
+.actions-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.action-button {
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 16px;
+    margin-left: 15px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 8px;
+    transition-duration: 0.3s;
+}
+
+.action-button:hover {
+    background-color: rgb(64, 64, 64);
+    scale: 1.1;
+}
+
+.restart-button:hover {
+    color: lightyellow;
+}
+
+.quit-button:hover {
+    color: rgb(200, 50, 0);
+}
+
+.joever {
+    padding-bottom: 20px;
+    padding-left: 20px;
+    font-size: 36px;
+    color: rgb(27, 245, 238);
+    -unity-font-style: normal;
+}
