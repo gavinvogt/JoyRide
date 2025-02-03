@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument _document;
+    [SerializeField] private UIDocument _controlsDocument;
     private Button _startButton;
     private Button _controlsButton;
     private Button _statsButton;
@@ -53,7 +54,11 @@ public class StartMenu : MonoBehaviour
 
     private void HandleControls()
     {
-        Debug.Log("TODO: display controls menu");
+        _controlsDocument.rootVisualElement.visible = true;
+        ControlsMenu.ConfirmButton.RegisterCallbackOnce<ClickEvent>(_ =>
+        {
+            _controlsDocument.rootVisualElement.visible = false;
+        });
     }
 
     private void HandleStats()
