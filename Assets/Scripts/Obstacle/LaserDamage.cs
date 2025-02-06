@@ -23,7 +23,7 @@ public class LaserDamage : MonoBehaviour
         if (collision.gameObject.tag == "Car")
         {
             StartCoroutine(AddToRecentlyDamaged(collision));
-            collision.gameObject.GetComponent<Car>().TakeDamage();
+            collision.gameObject.GetComponent<Car>().TakeDamage(collision.GetComponent<Collider2D>().ClosestPoint(transform.position));
         }
     }
 
@@ -34,7 +34,7 @@ public class LaserDamage : MonoBehaviour
             if (!recentlyDamagedCars.Contains(collision))
             {
                 StartCoroutine(AddToRecentlyDamaged(collision));
-                collision.gameObject.GetComponent<Car>().TakeDamage();
+                collision.gameObject.GetComponent<Car>().TakeDamage(collision.GetComponent<Collider2D>().ClosestPoint(transform.position));
             }
         }
     }

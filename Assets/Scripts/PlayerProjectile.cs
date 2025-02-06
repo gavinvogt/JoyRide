@@ -36,7 +36,7 @@ public class PlayerProjectile : MonoBehaviour
         {
             // Play death sound and end the game
             SoundFXManager.instance.PlaySoundFXClip(dieAudioClip, transform, 1f);
-            player.InitiateGameOverSequence();
+            player.InitiateGameOverSequence(target.GetComponent<Collider2D>().ClosestPoint(transform.position));
             // TODO: highlight the game object
             // Destroy(gameObject);
         }

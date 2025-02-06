@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class Car : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class Car : MonoBehaviour
     private UI UIScript;
 
     private bool immuneToDamage;
+    private bool isCarDead = false;
+    private Vector3 deathPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -129,10 +132,12 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage)
         {
+            Vector3 contactLocation = collision.GetComponent<Collider2D>().ClosestPoint(transform.position);
+            Debug.Log(contactLocation);
             if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
-                TakeDamage();
+                TakeDamage(contactLocation);
             }
             else if (ObjectTags.IsBlockingObstacle(collision.gameObject.tag))
             {
@@ -140,42 +145,46 @@ public class Car : MonoBehaviour
                 {
                     if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage();
+                        TakeDamage(contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Helicopter"))
                 {
                     if (!collision.gameObject.GetComponent<Helicopter>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage();
+                        TakeDamage(contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Road Blockade"))
                 {
                     if (!collision.gameObject.GetComponent<Mine>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage();
+                        TakeDamage(contactLocation);
                     }
                 }
                 else
                 {
-                    TakeDamage();
+                    TakeDamage(contactLocation);
                 }
             }
             else if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile"))
             {
-                Destroy(collision.gameObject);
-                TakeDamage();
+                TakeDamage(contactLocation);
+                if (!isCarDead || player == null)
+                {
+                    Destroy(collision.gameObject);
+                }
             }
         }
     }
 
     private void Die()
     {
+        isCarDead = true;
         if (player != null)
         {
             PlayerLoseControl();
-            player.InitiateGameOverSequence();
+            player.InitiateGameOverSequence(deathPoint);
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
         healthBar = null;
@@ -254,12 +263,13 @@ public class Car : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(Vector3 damagePoint)
     {
         currentHealth--;
         StartCoroutine(FlashColor());
         if (currentHealth <= 0)
         {
+            deathPoint = damagePoint;
             Die();
         }
     }

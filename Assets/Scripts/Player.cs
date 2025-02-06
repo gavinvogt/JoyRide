@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private SoundMixerManager soundManager;
     [SerializeField] private GameStateManager gameStateManager;
 
+    [SerializeField] GameObject deathIndicator;
+
     [SerializeField] AudioClip[] jumpAudioClips;
 
     private void Start()
@@ -144,8 +146,14 @@ public class Player : MonoBehaviour
         return speed;
     }
 
-    public void InitiateGameOverSequence()
+    public void InitiateGameOverSequence(Vector3 deathPoint)
     {
+        SpawnDeathIndicatorCircle(deathPoint);
         gameStateManager.gameStateMachine.TransitionTo(gameStateManager.gameStateMachine.deathStillFrameState);
+    }
+
+    private void SpawnDeathIndicatorCircle(Vector3 deathPoint)
+    {
+        Instantiate(deathIndicator, new Vector3(deathPoint.x, deathPoint.y, -9), Quaternion.identity);
     }
 }
