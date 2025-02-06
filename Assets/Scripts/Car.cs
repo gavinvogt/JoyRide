@@ -175,6 +175,7 @@ public class Car : MonoBehaviour
         if (player != null)
         {
             PlayerLoseControl();
+            player.InitiateGameOverSequence();
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
         healthBar = null;
@@ -204,6 +205,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
+            // Should not reach this anymore, but leaving it to end game if else fails
             SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
         npcs.DecreaseNPC();

@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject UI;
     private UI UIScript;
     [SerializeField] private UIDocument inGameMenuDocument;
-    private float previousTimeScale;
     [SerializeField] private GameObject soundManagerObject;
     private SoundMixerManager soundManager;
+    [SerializeField] private GameStateManager gameStateManager;
 
     [SerializeField] AudioClip[] jumpAudioClips;
 
@@ -142,5 +142,10 @@ public class Player : MonoBehaviour
     public int GetSpeed()
     {
         return speed;
+    }
+
+    public void InitiateGameOverSequence()
+    {
+        gameStateManager.gameStateMachine.TransitionTo(gameStateManager.gameStateMachine.deathStillFrameState);
     }
 }

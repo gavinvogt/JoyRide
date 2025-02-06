@@ -492,6 +492,7 @@ MonoBehaviour:
   UI: {fileID: 1838620055}
   inGameMenuDocument: {fileID: 903177749}
   soundManagerObject: {fileID: 839104547}
+  gameStateManager: {fileID: 311253780}
   jumpAudioClips:
   - {fileID: 8300000, guid: ae5fcd17e7cca63478bc377548852195, type: 3}
   - {fileID: 8300000, guid: 6d0b97f1a34843346be0a41bedc407ad, type: 3}

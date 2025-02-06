@@ -34,9 +34,11 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
+            // Play death sound and end the game
             SoundFXManager.instance.PlaySoundFXClip(dieAudioClip, transform, 1f);
-            Destroy(gameObject);
-            SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
+            player.InitiateGameOverSequence();
+            // TODO: highlight the game object
+            // Destroy(gameObject);
         }
     }
 

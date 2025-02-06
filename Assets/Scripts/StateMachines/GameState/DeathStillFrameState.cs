@@ -1,10 +1,14 @@
 using UnityEngine;
+using Utils;
 
 namespace StateMachines.GameState
 {
     public class DeathStillFrameState : IState
     {
         private GameStateManager _game;
+        private TimeScaleFlipper _timeScaleFlipper = new();
+        private float _timeWaited = 0;
+        private static float STILL_TIME = 1.2f;
 
         public DeathStillFrameState(GameStateManager game)
         {
@@ -13,16 +17,21 @@ namespace StateMachines.GameState
 
         public void Enter()
         {
-            Debug.Log("[GameState] Entered DeathStillFrameState");
+            _timeScaleFlipper.UpdateTimeScale(0);
         }
 
         public void Execute()
         {
+            _timeWaited += Time.unscaledDeltaTime;
+            if (_timeWaited >= STILL_TIME)
+            {
+                _game.gameStateMachine.TransitionTo(_game.gameStateMachine.endScreenState);
+            }
         }
 
         public void Exit()
         {
-            Debug.Log("[GameState] Exited DeathStillFrameState");
+            _timeScaleFlipper.RevertTimeScale();
         }
     }
 }
