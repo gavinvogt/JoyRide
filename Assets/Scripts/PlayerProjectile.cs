@@ -34,7 +34,7 @@ public class PlayerProjectile : MonoBehaviour
         else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
             // Play death sound and end the game
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = new Vector2(0, -1f * GameObject.Find("Highway").GetComponent<ObstacleSpawner>().GetSpeed());
             SoundFXManager.instance.PlaySoundFXClip(dieAudioClip, transform, 1f);
             player.InitiateGameOverSequence(
                 target.GetComponent<Collider2D>().ClosestPoint(transform.position),

@@ -8,6 +8,7 @@ public class DeathIndicator : MonoBehaviour
     {
         transform.localScale *= 0.2f;
         StartCoroutine(IndicatorSizeIncrease());
+        gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * GameObject.Find("Highway").GetComponent<ObstacleSpawner>().GetSpeed());
     }
 
     private IEnumerator IndicatorSizeIncrease()
