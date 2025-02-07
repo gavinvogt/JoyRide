@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
-using System.Runtime.InteropServices;
 
 public class Car : MonoBehaviour
 {
@@ -320,7 +319,7 @@ public class Car : MonoBehaviour
 
             List<GameObject> Spawners = npcs.GetSpawners();
             List<GameObject> NPCPrefabs = npcs.GetPrefabs();
-            List<int> spawnpoints = new List<int>();
+            List<int> spawnpoints = new ();
 
             int randInt = Random.Range(0, Spawners.Count);
             spawnpoints.Add(randInt);
