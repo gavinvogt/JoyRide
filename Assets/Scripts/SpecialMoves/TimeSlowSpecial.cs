@@ -25,7 +25,6 @@ public class TimeSlowSpecial : SpecialMoveBase
     public override void ActivateSpecialMove()
     {
         if (isActive || isAbilityOnCD) return; // ignore extra special activations
-        // TODO: add some special cooldown, with indicator in game UI
 
         previousTimeScale = Time.timeScale;
 

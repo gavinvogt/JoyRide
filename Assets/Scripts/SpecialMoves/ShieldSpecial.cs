@@ -23,6 +23,7 @@ public class SheildSpecial : SpecialMoveBase
     public override void ActivateSpecialMove()
     {
         if (isActive || isAbilityOnCD) return;
+
         isActive = true;
         timeSinceActivated = 0.0f;
         car.SetIsShielded(true);

@@ -32,7 +32,6 @@ public class AirStrikeSpecial : SpecialMoveBase
     public override void ActivateSpecialMove()
     {
         if (isActive || isAbilityOnCD) return; // ignore extra special activations
-        // TODO: add some special cooldown, with indicator in game UI
 
         isActive = true;
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);

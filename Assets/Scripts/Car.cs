@@ -40,6 +40,7 @@ public class Car : MonoBehaviour
         }
     }
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private AbilityBar abilityBar;
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
 
@@ -58,7 +59,11 @@ public class Car : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (player != null) OverrideCursor();
+        if (player != null)
+        {
+            OverrideCursor();
+            SetAbilityCD();
+        }
     }
 
     private void Awake()
@@ -66,6 +71,7 @@ public class Car : MonoBehaviour
         currentHealth = maxHealth;
         currentAmmoCount = maxAmmoCount;
         healthBar.SetMaxHealth(maxHealth);
+        abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
@@ -86,6 +92,10 @@ public class Car : MonoBehaviour
         {
             float step = rotationSpeed * (rotateTarget.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotateTarget.transform.rotation, step);
+        }
+        if (player != null)
+        {
+            abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
         }
     }
 
@@ -195,7 +205,9 @@ public class Car : MonoBehaviour
             PlayerLoseControl();
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
+        if (abilityBar != null) Destroy(abilityBar.gameObject);
         healthBar = null;
+        abilityBar = null;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         gameObject.GetComponent<CarNPC>().enabled = false;
@@ -377,7 +389,6 @@ public class Car : MonoBehaviour
 
     private void ActivateSpecial()
     {
-        Debug.Log("Prototype: Attempting to activate user's special, remaining cooldown is: " + specialMoveScript.GetTimeLeftOnAbilityCD() + " seconds.");
         specialMoveScript.ActivateSpecialMove();
     }
 }

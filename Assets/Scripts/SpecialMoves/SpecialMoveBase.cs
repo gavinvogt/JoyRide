@@ -56,4 +56,9 @@ public abstract class SpecialMoveBase : MonoBehaviour
     {
         return abilityCooldownOnEntrance;
     }
+
+    public float GetTotalAbilityCD()
+    {
+        return abilityCooldown;
+    }
 }
