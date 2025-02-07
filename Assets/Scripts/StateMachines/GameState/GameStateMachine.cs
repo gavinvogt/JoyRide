@@ -9,7 +9,8 @@ namespace StateMachines.GameState
 
         // state objects
         public InGameState inGameState;
-        public DeathStillFrameState deathStillFrameState;
+        public DeathOutsideCarState deathOutsideCarState;
+        public DeathWithinCarState deathWithinCarState;
         public EndScreenState endScreenState;
         // menu-related states
         public InGameMenuState inGameMenuState;
@@ -23,7 +24,8 @@ namespace StateMachines.GameState
         {
             // game-related states
             inGameState = new(game);
-            deathStillFrameState = new(game);
+            deathOutsideCarState = new(game);
+            deathWithinCarState = new(game);
             endScreenState = new(game);
             // menu-related states
             showControlsState = new(game);

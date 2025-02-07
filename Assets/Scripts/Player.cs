@@ -146,10 +146,13 @@ public class Player : MonoBehaviour
         return speed;
     }
 
-    public void InitiateGameOverSequence(Vector3 deathPoint)
+    public void InitiateGameOverSequence(Vector3 deathPoint, bool diedWithinCar)
     {
         SpawnDeathIndicatorCircle(deathPoint);
-        gameStateManager.gameStateMachine.TransitionTo(gameStateManager.gameStateMachine.deathStillFrameState);
+        gameStateManager.gameStateMachine.TransitionTo(
+            diedWithinCar ? gameStateManager.gameStateMachine.deathWithinCarState
+            : gameStateManager.gameStateMachine.deathOutsideCarState
+        );
     }
 
     private void SpawnDeathIndicatorCircle(Vector3 deathPoint)

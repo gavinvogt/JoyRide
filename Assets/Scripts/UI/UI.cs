@@ -45,7 +45,8 @@ public class UI : MonoBehaviour
     }
     public void UpdateSpeed(float speedPercentage)
     {
-        if (!float.IsNaN(speedPercentage)) {
+        if (!float.IsNaN(speedPercentage))
+        {
             float angleOfGauge = 90f + (180 * speedPercentage);
             speedGauge.transform.rotation = Quaternion.Euler(0, 0, angleOfGauge);
         }
@@ -72,7 +73,8 @@ public class UI : MonoBehaviour
             case BoosterType.AMMO:
                 statPadActive = ammoPadIndicator;
                 break;
-            case BoosterType.HANDLING:;
+            case BoosterType.HANDLING:
+                ;
                 statPadActive = speedPadIndicator;
                 break;
             case BoosterType.GOONS:

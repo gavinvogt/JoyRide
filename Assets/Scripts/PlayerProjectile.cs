@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerProjectile : MonoBehaviour
 {
@@ -35,10 +34,12 @@ public class PlayerProjectile : MonoBehaviour
         else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
             // Play death sound and end the game
+            rb.linearVelocity = Vector2.zero;
             SoundFXManager.instance.PlaySoundFXClip(dieAudioClip, transform, 1f);
-            player.InitiateGameOverSequence(target.GetComponent<Collider2D>().ClosestPoint(transform.position));
-            // TODO: highlight the game object
-            // Destroy(gameObject);
+            player.InitiateGameOverSequence(
+                target.GetComponent<Collider2D>().ClosestPoint(transform.position),
+                diedWithinCar: false
+            );
         }
     }
 

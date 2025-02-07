@@ -129,7 +129,7 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage)
+        if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage && !isCarDead)
         {
             Vector3 contactLocation = collision.GetComponent<Collider2D>().ClosestPoint(transform.position);
             Debug.Log(contactLocation);
@@ -183,7 +183,7 @@ public class Car : MonoBehaviour
         if (player != null)
         {
             PlayerLoseControl();
-            player.InitiateGameOverSequence(deathPoint);
+            player.InitiateGameOverSequence(deathPoint, diedWithinCar: true);
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
         healthBar = null;
@@ -213,7 +213,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
-            // Should not reach this anymore, but leaving it to end game if else fails
+            // TODO: should make this use gameStateManager.gameStateMachine.TransitionTo(... endGameState);
             SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
         npcs.DecreaseNPC();
@@ -264,6 +264,7 @@ public class Car : MonoBehaviour
 
     public void TakeDamage(Vector3 damagePoint)
     {
+        if (isCarDead || immuneToDamage) return;
         currentHealth--;
         StartCoroutine(FlashColor());
         if (currentHealth <= 0)
@@ -319,7 +320,7 @@ public class Car : MonoBehaviour
 
             List<GameObject> Spawners = npcs.GetSpawners();
             List<GameObject> NPCPrefabs = npcs.GetPrefabs();
-            List<int> spawnpoints = new ();
+            List<int> spawnpoints = new();
 
             int randInt = Random.Range(0, Spawners.Count);
             spawnpoints.Add(randInt);
