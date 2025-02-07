@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class Laser : MonoBehaviour
 {
@@ -43,7 +42,6 @@ public class Laser : MonoBehaviour
         {
             isDead = true;
             StopAllCoroutines();
-            Debug.Log("Laser Died, messaging laser spawner: " + laserSpawner);
             laserSpawner.DecreaseLaser();
             GameScore.instance.IncrementLasersDestroyed();
             Destroy(gameObject);
