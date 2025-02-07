@@ -48,7 +48,7 @@ public class CarNPC : MonoBehaviour
     {
         finishedSpawning = true;
         ActivateCar();
-        StartCoroutine(Move(3f));
+        if(gameObject.activeSelf) StartCoroutine(Move(3f));
     }
 
     public void ActivateCar()

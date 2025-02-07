@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Laser : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Laser : MonoBehaviour
     [SerializeField] protected AudioClip laserSound;
     private AudioSource laserAudioSource = null;
     private LaserSpawner laserSpawner;
+    private bool isDead = false;
+
     void Start()
     {
         health = 10;
@@ -36,9 +39,11 @@ public class Laser : MonoBehaviour
             healthBar1.SetHealth(health);
             healthBar2.SetHealth(health);
         }
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
+            isDead = true;
             StopAllCoroutines();
+            Debug.Log("Laser Died, messaging laser spawner: " + laserSpawner);
             laserSpawner.DecreaseLaser();
             GameScore.instance.IncrementLasersDestroyed();
             Destroy(gameObject);
