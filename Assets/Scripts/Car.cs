@@ -95,7 +95,7 @@ public class Car : MonoBehaviour
         }
         if (player != null)
         {
-            abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
+            if (abilityBar) abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
         }
     }
 

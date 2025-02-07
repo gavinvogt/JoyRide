@@ -13,23 +13,44 @@ public class Shotgun : Gun
 
     override public IEnumerator Fire()
     {
-        if (canFire && car.GetCurrentAmmo() > 0)
+        if (canFire)
         {
-            canFire = false;
-            car.UseAmmo();
-            player.GetComponent<Player>().UpdatePlayerUI();
-
-            // Fire the bullets
-            SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.6f);
-            var bullets = Enumerable.Range(1, bulletsPerShot).Select(
-                _ => Instantiate(bulletPrefab, GetBulletStartPosition(), GetBulletAngle())
-            ).ToArray();
-            StartCoroutine(DestroyBullets(bullets));
-
-            // Allow firing after cooldown
-            yield return new WaitForSeconds(fireCooldown);
-            canFire = true;
+            if (car.GetIsShielded() && car.GetCurrentAmmo() > 1)
+            {
+                int numBulletsToShoot = Mathf.RoundToInt(bulletsPerShot * 0.75f);
+                Shoot(numBulletsToShoot);
+                StartCoroutine(StartShootCooldown());
+                yield return new WaitForSeconds(fireCooldown / 5.0f);
+                Shoot(numBulletsToShoot);
+            }
+            else if (car.GetCurrentAmmo() > 0)
+            {
+                Shoot(bulletsPerShot);
+                StartCoroutine(StartShootCooldown());
+            }
+            yield return null;
         }
+    }
+
+    private void Shoot(int numBullets)
+    {
+        canFire = false;
+        car.UseAmmo();
+        player.GetComponent<Player>().UpdatePlayerUI();
+
+        // Fire the bullets
+        SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.6f);
+        var bullets = Enumerable.Range(1, numBullets).Select(
+            _ => Instantiate(bulletPrefab, GetBulletStartPosition(), GetBulletAngle())
+        ).ToArray();
+        StartCoroutine(DestroyBullets(bullets));
+    }
+
+    private IEnumerator StartShootCooldown()
+    {
+        // Allow firing after cooldown
+        yield return new WaitForSeconds(fireCooldown);
+        canFire = true;
     }
 
     private Vector2 GetBulletStartPosition()
