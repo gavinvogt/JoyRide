@@ -9,6 +9,7 @@ public class PlayerProjectile : MonoBehaviour
     public Player player;
     private GameObject parentCar;
     private bool hasSwitched = false;
+    private bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,6 +19,7 @@ public class PlayerProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
+        if (isDead) return;
         if (target.CompareTag("Car") && target.gameObject != parentCar)
         {
             if (!hasSwitched)
@@ -34,6 +36,7 @@ public class PlayerProjectile : MonoBehaviour
         else if (ObjectTags.ShouldKillPlayer(target.gameObject.tag))
         {
             // Play death sound and end the game
+            isDead = true;
             rb.linearVelocity = new Vector2(0, -1f * GameObject.Find("Highway").GetComponent<ObstacleSpawner>().GetSpeed());
             SoundFXManager.instance.PlaySoundFXClip(dieAudioClip, transform, 1f);
             player.InitiateGameOverSequence(
