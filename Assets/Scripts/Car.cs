@@ -131,8 +131,7 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage && !isCarDead)
         {
-            Vector3 contactLocation = collision.GetComponent<Collider2D>().ClosestPoint(transform.position);
-            Debug.Log(contactLocation);
+            Vector3 contactLocation = collision.ClosestPoint(transform.position);
             if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();

@@ -49,7 +49,7 @@ public class LaserDamage : MonoBehaviour
 
     private Vector3 GetDamageLocation(Collider2D collision)
     {
-        Vector3 closestCollisionPoint = collision.GetComponent<Collider2D>().ClosestPoint(transform.position);
+        Vector3 closestCollisionPoint = collision.ClosestPoint(transform.position);
         return new Vector3(collision.gameObject.transform.position.x, closestCollisionPoint.y);
     }
 }

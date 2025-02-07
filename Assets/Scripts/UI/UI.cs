@@ -74,7 +74,6 @@ public class UI : MonoBehaviour
                 statPadActive = ammoPadIndicator;
                 break;
             case BoosterType.HANDLING:
-                ;
                 statPadActive = speedPadIndicator;
                 break;
             case BoosterType.GOONS:
