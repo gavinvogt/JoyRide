@@ -49,6 +49,8 @@ public class Car : MonoBehaviour
     private NPCSpawner npcs;
     private UI UIScript;
     private bool immuneToDamage;
+    private Vector3 deathPoint;
+
     private bool isShielded = false;
     private bool isCarDead = false;
 
@@ -117,7 +119,7 @@ public class Car : MonoBehaviour
         Transform jumpPoint = direction == "left" ? leftJumpPoint : rightJumpPoint;
         GameObject projectile = Instantiate(playerProjectilePrefab, jumpPoint.position, jumpPoint.rotation);
 
-        UIScript.DisableBoostUI();
+        UIScript.DisableSpeedBoostUI();
         currentCarIndicator.SetActive(false);
 
         // transfer player to the projectile
@@ -132,7 +134,7 @@ public class Car : MonoBehaviour
         gun.SendMessage("SetPlayer", player);
         currentCarIndicator.SetActive(true);
         if (hasSpeedBoost)
-            UIScript.EnableBoostUI();
+            UIScript.EnableSpeedBoostUI();
         if (player != null) OverrideCursor();
     }
 
@@ -149,17 +151,18 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage)
+        if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage && !isCarDead)
         {
             if (isShielded)
             {
                 EndAbility();
                 return;
             }
+            Vector3 contactLocation = collision.ClosestPoint(transform.position);
             if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
-                TakeDamage();
+                TakeDamage(contactLocation);
             }
             else if (ObjectTags.IsBlockingObstacle(collision.gameObject.tag))
             {
@@ -167,32 +170,35 @@ public class Car : MonoBehaviour
                 {
                     if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage();
+                        TakeDamage(contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Helicopter"))
                 {
                     if (!collision.gameObject.GetComponent<Helicopter>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage();
+                        TakeDamage(contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Road Blockade"))
                 {
                     if (!collision.gameObject.GetComponent<Mine>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage();
+                        TakeDamage(contactLocation);
                     }
                 }
                 else
                 {
-                    TakeDamage();
+                    TakeDamage(contactLocation);
                 }
             }
             else if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile"))
             {
-                Destroy(collision.gameObject);
-                TakeDamage();
+                TakeDamage(contactLocation);
+                if (!isCarDead || player == null)
+                {
+                    Destroy(collision.gameObject);
+                }
             }
         }
     }
@@ -203,6 +209,7 @@ public class Car : MonoBehaviour
         if (player != null)
         {
             PlayerLoseControl();
+            player.InitiateGameOverSequence(deathPoint, diedWithinCar: true);
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
         if (abilityBar != null) Destroy(abilityBar.gameObject);
@@ -234,6 +241,7 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
+            // TODO: should make this use gameStateManager.gameStateMachine.TransitionTo(... endGameState);
             SceneManager.LoadScene(sceneName: GameScenes.EndScreen);
         }
         npcs.DecreaseNPC();
@@ -286,14 +294,20 @@ public class Car : MonoBehaviour
         {
             currentHealth++;
         }
+        if (player != null)
+        {
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HEALTH, this.transform.position));
+        }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(Vector3 damagePoint)
     {
+        if (isCarDead || immuneToDamage) return;
         currentHealth--;
         StartCoroutine(FlashColor());
         if (currentHealth <= 0)
         {
+            deathPoint = damagePoint;
             Die();
         }
     }
@@ -303,6 +317,7 @@ public class Car : MonoBehaviour
         currentAmmoCount = maxAmmoCount;
         if (player != null)
         {
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.AMMO, this.transform.position));
             player.GetComponent<Player>().UpdatePlayerUI();
         }
     }
@@ -338,14 +353,15 @@ public class Car : MonoBehaviour
         hasSpeedBoost = true;
         if (player != null)
         {
-            UIScript.EnableBoostUI();
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.HANDLING, this.transform.position));
+            UIScript.EnableSpeedBoostUI();
         }
         yield return new WaitForSeconds(2.5f);
         drivingSpeed -= 4;
         hasSpeedBoost = false;
         if (player != null)
         {
-            UIScript.DisableBoostUI();
+            UIScript.DisableSpeedBoostUI();
         }
     }
 
@@ -353,9 +369,11 @@ public class Car : MonoBehaviour
     {
         if (player != null)
         {
+            StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.GOONS, this.transform.position));
+
             List<GameObject> Spawners = npcs.GetSpawners();
             List<GameObject> NPCPrefabs = npcs.GetPrefabs();
-            List<int> spawnpoints = new List<int>();
+            List<int> spawnpoints = new();
 
             int randInt = Random.Range(0, Spawners.Count);
             spawnpoints.Add(randInt);

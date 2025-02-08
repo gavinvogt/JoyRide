@@ -1,0 +1,19 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/start_menu.uss?fileID=7433441132597879392&amp;guid=7ee29fce59d0ae3458d2b1f97ba4038a&amp;type=3#start_menu" />
+    <engine:VisualElement name="Backdrop" class="backdrop">
+        <engine:VisualElement name="MenuContainer" class="menu-container">
+            <engine:VisualElement name="LeftColumn">
+                <engine:Label text="JoyRide" name="GameTitle" triple-click-selects-line="false" double-click-selects-word="false" class="title" />
+                <engine:VisualElement name="ButtonContainer" style="flex-grow: 1; margin-top: 0; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; justify-content: flex-end;">
+                    <engine:Button text="Start" name="StartButton" class="menu-button" />
+                    <engine:Button text="Controls" name="ControlsButton" class="menu-button" />
+                    <engine:Button text="Stats" name="StatsButton" class="menu-button" />
+                    <engine:Button text="Quit" name="QuitButton" class="menu-button" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="RightColumn" class="right-column">
+                <engine:VisualElement name="GameImage" class="game-image" style="background-image: url(&quot;project://database/Assets/Sprites/manJumpingCar.png?fileID=2800000&amp;guid=2899fbd2af02cc44aa733bd879b5eeb7&amp;type=3#manJumpingCar&quot;); flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

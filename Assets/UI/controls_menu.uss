@@ -1,0 +1,102 @@
+:root {
+    --text-color-1: rgb(230, 230, 230);
+    --bg-dark-gray: rgb(55, 55, 55);
+    --bg-md-gray: rgb(100, 100, 100);
+    --bg-light-gray: rgb(150, 150, 150);
+    --border-black: rgb(40, 40, 40);
+    --border-width: 1.5px;
+}
+
+.controls-box {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    align-self: flex-start;
+    padding: 15px;
+    margin: auto;
+    align-items: flex-end;
+    background-color: var(--bg-md-gray);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 6px;
+}
+
+.control-group {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: flex-start;
+    align-content: center;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.common-control-container {
+    min-width: 165px;
+}
+
+.movement-buttons-container {
+}
+
+.jump-buttons-container {
+    flex-direction: row;
+}
+
+.letter-key {
+    width: 40px;
+    height: 40px;
+}
+
+.top-letter-key {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.common-text {
+    color: var(--text-color-1);
+}
+
+.control-label {
+    white-space: normal;
+}
+
+.key-group {
+    flex-grow: 1;
+    flex-direction: row;
+    align-self: center;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.footer {
+    flex-grow: 1;
+    border-top-color: var(--border-black);
+    border-top-width: var(--border-width);
+    padding-top: 8px;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.common-button {
+    background-color: var(--bg-light-gray);
+    border-color: var(--border-black);
+    border-width: var(--border-width);
+    -unity-font-style: bold;
+    font-size: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 5px;
+    transition: 0.15s all;
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+.common-button:hover {
+    background-color: var(--bg-md-gray);
+    scale: 1.1;
+    color: lightyellow;
+}

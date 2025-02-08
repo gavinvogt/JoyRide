@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 public class LaserDamage : MonoBehaviour
 {
@@ -54,8 +53,17 @@ public class LaserDamage : MonoBehaviour
     IEnumerator AddToRecentlyDamaged(Collider2D collision)
     {
         recentlyDamagedCars.Add(collision);
+        collision.gameObject.GetComponent<Car>().TakeDamage(GetDamageLocation(collision));
+
         float randomWaitingRange = Random.Range(3.0f, 4.5f);
         yield return new WaitForSeconds(randomWaitingRange);
+
         recentlyDamagedCars.Remove(collision);
+    }
+
+    private Vector3 GetDamageLocation(Collider2D collision)
+    {
+        Vector3 closestCollisionPoint = collision.ClosestPoint(transform.position);
+        return new Vector3(collision.gameObject.transform.position.x, closestCollisionPoint.y);
     }
 }

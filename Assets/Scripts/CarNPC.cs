@@ -27,7 +27,7 @@ public class CarNPC : MonoBehaviour
     void FixedUpdate()
     {
         float step = moveSpeed * Time.deltaTime;
-        if (finishedSpawning) 
+        if (finishedSpawning)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePoint.transform.position, step);
         }
@@ -49,7 +49,7 @@ public class CarNPC : MonoBehaviour
     {
         finishedSpawning = true;
         ActivateCar();
-        StartCoroutine(Move(3f));
+        if(gameObject.activeSelf) StartCoroutine(Move(3f));
     }
 
     public void ActivateCar()
@@ -61,7 +61,7 @@ public class CarNPC : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == flagCollider && !finishedSpawning)
+        if (collision.gameObject == flagCollider && !finishedSpawning)
         {
             FinishSpawn();
         }
@@ -117,6 +117,6 @@ public class CarNPC : MonoBehaviour
 
         yield return new WaitForSeconds(seconds);
         StartCoroutine(Move(3f));
-        
+
     }
 }

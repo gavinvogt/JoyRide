@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/in_game_menu.uss?fileID=7433441132597879392&amp;guid=799e625a54a5d9a458d691b17953f687&amp;type=3#in_game_menu" />
+    <ui:Label text="Pause" name="MenuTitle" double-click-selects-word="false" triple-click-selects-line="false" display-tooltip-when-elided="false" class="menu-title common-text" />
+    <ui:VisualElement name="InGameMenuContainer" class="menu-box">
+        <ui:VisualElement name="HelpButtonGroup" class="help-button-container">
+            <ui:Button text="?" name="HelpButton" class="help-button common-text common-button" style="padding-top: 0; padding-left: 0; padding-right: 0; padding-bottom: 0;" />
+            <ui:Label text="Help" name="HelpButtonLabel" class="common-text help-button-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ControlsContainer" class="controls-container">
+            <ui:VisualElement name="MasterContainer" class="volumes-container" style="flex-grow: 1;">
+                <ui:Slider label="Master" value="42" high-value="1" name="MasterVolumeSlider" low-value="0.0001" class="common-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="IndividualVolumeContainer" class="volumes-container" style="flex-grow: 1;">
+                <ui:Slider label="Sound FX" value="42" high-value="1" name="SoundFXVolumeSlider" low-value="0.0001" class="common-text" />
+                <ui:Slider label="Music" value="42" high-value="1" name="MusicVolumeSlider" low-value="0.0001" class="common-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Footer" class="footer">
+                <ui:Button text="Home" name="HomeButton" class="action-button common-text common-button" />
+                <ui:Button text="Continue" name="ContinueButton" class="action-button common-text common-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

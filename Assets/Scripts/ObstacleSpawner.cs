@@ -129,6 +129,12 @@ public class ObstacleSpawner : MonoBehaviour
     public void SetSpeed(int newSpeed)
     {
         speed = newSpeed;
+        foreach (GameObject obstacleSpawner in obstacleSpawners)
+        {
+            foreach (Transform currentObstacle in obstacleSpawner.transform)
+                if(ObjectTags.ShouldSpeedUp(currentObstacle.tag))
+                    currentObstacle.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -1f * speed);
+        }
     }
 
     public void IncreaseMaxPoliceCars()

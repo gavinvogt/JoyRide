@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -19,10 +18,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject UI;
     private UI UIScript;
-    [SerializeField] private GameObject inGameMenuUI;
-    private float previousTimeScale;
+    [SerializeField] private UIDocument inGameMenuDocument;
     [SerializeField] private GameObject soundManagerObject;
     private SoundMixerManager soundManager;
+    [SerializeField] private GameStateManager gameStateManager;
+
+    [SerializeField] GameObject deathIndicator;
 
     [SerializeField] AudioClip[] jumpAudioClips;
 
@@ -65,10 +66,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // TODO: ideally remove logic like this throughout the code and encapsulate the Player logic in
+        // the InGameMenuState Execute function
         if (Time.timeScale == 0)
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) CloseInGameMenu();
-
             // Return if paused to prevent any key press handling
             return;
         }
@@ -87,17 +88,6 @@ public class Player : MonoBehaviour
                 car = null;
                 rb = null;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // escape to in-game menu
-            previousTimeScale = Time.timeScale;
-            Time.timeScale = 0;
-            inGameMenuUI.SetActive(true);
-            //Setting sliders to show what the previous saved audio levels were
-            inGameMenuUI.transform.GetChild(0).GetChild(1).GetComponent<Slider>().value = SoundMixerManager.GetMasterVolumeLevel();
-            inGameMenuUI.transform.GetChild(0).GetChild(3).GetComponent<Slider>().value = SoundMixerManager.GetSoundFXVolumeLevel();
-            inGameMenuUI.transform.GetChild(0).GetChild(5).GetComponent<Slider>().value = SoundMixerManager.GetMusicVolumeLevel();
         }
     }
 
@@ -148,7 +138,7 @@ public class Player : MonoBehaviour
     }
     public void UpdatePlayerUI()
     {
-        if (UIScript) UIScript.updateUI(gameObject);
+        if (UIScript) UIScript.UpdateUI(gameObject);
     }
 
     public int GetSpeed()
@@ -156,12 +146,17 @@ public class Player : MonoBehaviour
         return speed;
     }
 
-    public void CloseInGameMenu()
+    public void InitiateGameOverSequence(Vector3 deathPoint, bool diedWithinCar)
     {
-        // Close in-game menu and un-pause game
-        inGameMenuUI.SetActive(false);
-        Time.timeScale = previousTimeScale;
-        //Save the sound changes to file
-        Save.globalSaveData.SetVolumeValues(SoundMixerManager.GetSoundVolumeInSaveFormat());
+        SpawnDeathIndicatorCircle(deathPoint);
+        gameStateManager.gameStateMachine.TransitionTo(
+            diedWithinCar ? gameStateManager.gameStateMachine.deathWithinCarState
+            : gameStateManager.gameStateMachine.deathOutsideCarState
+        );
+    }
+
+    private void SpawnDeathIndicatorCircle(Vector3 deathPoint)
+    {
+        Instantiate(deathIndicator, new Vector3(deathPoint.x, deathPoint.y, -9), Quaternion.identity);
     }
 }

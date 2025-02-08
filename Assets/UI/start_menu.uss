@@ -1,0 +1,46 @@
+.backdrop {
+    flex-grow: 1;
+    background-color: rgb(100, 100, 100);
+}
+
+.menu-container {
+    flex-grow: 1;
+    margin-top: 60px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    margin-left: 60px;
+    flex-direction: row;
+}
+
+.right-column {
+    flex-grow: 1;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-size: 60px;
+}
+
+.menu-button {
+    -unity-font-style: bold;
+    margin-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 22px;
+    border-radius: 6px;
+    background-color: rgb(80, 80, 80);
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    border-width: 1.5px;
+    transition-duration: 0.3s;
+    transition-delay: 0.02s;
+}
+
+.menu-button:hover {
+    background-color: rgb(95, 95, 95);
+    border-color: rgb(200, 255, 255);
+    color: rgb(81, 251, 251);
+    scale: 1.1;
+}

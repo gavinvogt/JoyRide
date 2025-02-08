@@ -5,6 +5,7 @@ public class ObjectTags
     public readonly static string INDESTRUCTABLE_OBSTACLE = "IndestructableObstacle";
     public readonly static string INDESTRUCTABLE_OBSTACLE_NON_BLOCKING = "IndestructableObstacleNonBlocking";
     public readonly static string BOUNDARY = "Boundary";
+    public readonly static string BOOSTER = "Booster";
 
     public static bool IsObstacle(string tag)
     {
@@ -24,5 +25,10 @@ public class ObjectTags
     public static bool ShouldKillPlayer(string tag)
     {
         return tag == OBSTACLE_BLOCKING || tag == BOUNDARY || tag == INDESTRUCTABLE_OBSTACLE;
+    }
+
+    public static bool ShouldSpeedUp(string tag)
+    {
+        return tag == OBSTACLE_BLOCKING || tag == BOOSTER || tag == OBSTACLE_NON_BLOCKING;
     }
 }

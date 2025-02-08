@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/confirm_exit_modal.uss?fileID=7433441132597879392&amp;guid=59b60c6ab3b1c1145ac002dd4bb8d8e2&amp;type=3#confirm_exit_modal" />
+    <engine:VisualElement name="ModalBackdrop" class="modal-backdrop" style="flex-grow: 1;">
+        <engine:VisualElement name="ModalContainer" class="modal test">
+            <engine:Label text="Are you sure you want to abandon this run? Your progress will be lost." class="common-text" style="white-space: normal;" />
+            <engine:VisualElement name="ModalFooter" class="modal-footer" style="flex-grow: 1;">
+                <engine:Button text="Cancel" name="CancelButton" class="common-button common-text" />
+                <engine:Button text="Confirm" name="ConfirmButton" class="common-button common-text" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

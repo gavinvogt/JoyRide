@@ -1,0 +1,20 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/game_over.uss?fileID=7433441132597879392&amp;guid=9e785f8cf18d1844cba36b603e9186b3&amp;type=3#game_over" />
+    <engine:VisualElement name="Backdrop" class="backdrop">
+        <engine:VisualElement name="HighScoresContainer" class="best-container">
+            <engine:Label text="Best time: 00:69.1" name="BestTimeLabel" class="common-text" />
+            <engine:Label text="Highest score: 9001" name="BestScoreLabel" class="common-text" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ContentContainer">
+            <engine:VisualElement name="CurrentContainer" class="current-container curr">
+                <engine:Label text="Time: 00:00.0" name="RunTimeLabel" class="common-text" />
+                <engine:Label text="Score: 0" name="RunScoreLabel" class="common-text" />
+            </engine:VisualElement>
+            <engine:VisualElement name="ActionsContainer" class="actions-container">
+                <engine:Button text="Restart" name="StartButton" class="action-button restart-button" />
+                <engine:Button text="Quit" name="QuitButton" class="action-button quit-button" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:Label text="It&apos;s Joever" name="JoeverLabel" double-click-selects-word="false" triple-click-selects-line="false" class="common-text joever" />
+    </engine:VisualElement>
+</engine:UXML>
