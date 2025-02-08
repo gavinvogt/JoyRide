@@ -53,7 +53,6 @@ public class LaserDamage : MonoBehaviour
     IEnumerator AddToRecentlyDamaged(Collider2D collision)
     {
         recentlyDamagedCars.Add(collision);
-        collision.gameObject.GetComponent<Car>().TakeDamage(GetDamageLocation(collision));
 
         float randomWaitingRange = Random.Range(3.0f, 4.5f);
         yield return new WaitForSeconds(randomWaitingRange);
