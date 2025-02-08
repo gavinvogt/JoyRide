@@ -42,7 +42,7 @@ public class Laser : MonoBehaviour
         {
             isDead = true;
             StopAllCoroutines();
-            laserSpawner.DecreaseLaser();
+            if (laserSpawner) laserSpawner.DecreaseLaser();
             GameScore.instance.IncrementLasersDestroyed();
             Destroy(gameObject);
         }

@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
     private int rotationSpeed = 60;
     private GameObject rotateTarget;
 
-    [SerializeField] private int drivingSpeed;
+    [SerializeField] private float drivingSpeed;
     private bool hasSpeedBoost = false;
 
     [SerializeField] private int maxHealth;
@@ -40,6 +40,7 @@ public class Car : MonoBehaviour
         }
     }
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private AbilityBar abilityBar;
     [SerializeField] private int maxAmmoCount;
     private int currentAmmoCount;
 
@@ -47,15 +48,24 @@ public class Car : MonoBehaviour
 
     private NPCSpawner npcs;
     private UI UIScript;
-
     private bool immuneToDamage;
-    private bool isCarDead = false;
     private Vector3 deathPoint;
+
+    private bool isShielded = false;
+    private bool isCarDead = false;
+
+    // Special attack
+    [SerializeField] private SpecialMoveBase specialMoveScript;
+    private int RIGHT_CLICK = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (player != null) OverrideCursor();
+        if (player != null)
+        {
+            OverrideCursor();
+            SetAbilityCD();
+        }
     }
 
     private void Awake()
@@ -63,19 +73,31 @@ public class Car : MonoBehaviour
         currentHealth = maxHealth;
         currentAmmoCount = maxAmmoCount;
         healthBar.SetMaxHealth(maxHealth);
+        abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
         UIScript = GameObject.Find("PlayerUI").GetComponent<UI>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
+    {
+        if (player != null && !isCarDead && Input.GetMouseButtonUp(RIGHT_CLICK))
+        {
+            ActivateSpecial();
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (isRotating == true)
         {
             float step = rotationSpeed * (rotateTarget.transform.eulerAngles.z / rotationSpeed) * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotateTarget.transform.rotation, step);
+        }
+        if (player != null)
+        {
+            if (abilityBar) abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
         }
     }
 
@@ -131,6 +153,11 @@ public class Car : MonoBehaviour
     {
         if (ObjectTags.IsObstacle(collision.gameObject.tag) && !immuneToDamage && !isCarDead)
         {
+            if (isShielded)
+            {
+                EndAbility();
+                return;
+            }
             Vector3 contactLocation = collision.ClosestPoint(transform.position);
             if (collision.gameObject.name.Contains("explosion"))
             {
@@ -185,7 +212,9 @@ public class Car : MonoBehaviour
             player.InitiateGameOverSequence(deathPoint, diedWithinCar: true);
         }
         if (healthBar != null) Destroy(healthBar.gameObject);
+        if (abilityBar != null) Destroy(abilityBar.gameObject);
         healthBar = null;
+        abilityBar = null;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         gameObject.GetComponent<CarNPC>().enabled = false;
@@ -220,6 +249,11 @@ public class Car : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public bool IsCarDead()
+    {
+        return isCarDead;
+    }
+
     public float GetHealthPercentage()
     {
         return (float)currentHealth / (float)maxHealth;
@@ -238,9 +272,14 @@ public class Car : MonoBehaviour
         currentAmmoCount--;
     }
 
-    public int GetDrivingSpeed()
+    public float GetDrivingSpeed()
     {
         return drivingSpeed;
+    }
+
+    public void SetDrivingSpeed(float speed)
+    {
+        drivingSpeed = speed;
     }
 
     private void OverrideCursor()
@@ -291,6 +330,21 @@ public class Car : MonoBehaviour
     public void SetImmuneToDamage(bool immune)
     {
         immuneToDamage = immune;
+    }
+
+    public bool GetIsShielded()
+    {
+        return isShielded;
+    }
+
+    public void SetIsShielded(bool shielded)
+    {
+        isShielded = shielded;
+    }
+
+    public void EndAbility()
+    {
+        specialMoveScript.EndSpecialMove();
     }
 
     public IEnumerator BoostSpeed()
@@ -344,5 +398,15 @@ public class Car : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         gameObject.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.white;
+    }
+
+    public void SetAbilityCD()
+    {
+        specialMoveScript.SetTimeLeftOnAbilityCD(specialMoveScript.GetAbilityCDOnEntrance());
+    }
+
+    private void ActivateSpecial()
+    {
+        specialMoveScript.ActivateSpecialMove();
     }
 }

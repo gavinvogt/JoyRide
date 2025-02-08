@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
             {
                 player.UpdateCar(target.gameObject);
                 hasSwitched = true;
-                if (target.gameObject.GetComponent<Car>().GetHealthPercentage() <= 0f)
+                if (target.gameObject.GetComponent<Car>().IsCarDead())
                 {
                     target.GetComponent<Car>().PlayerLoseControl();
                 }

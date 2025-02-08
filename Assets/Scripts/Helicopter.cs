@@ -104,13 +104,13 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         if (health > 0)
         {
             health -= damage;
-            healthBar.SetHealth(health);
+            if (healthBar) healthBar.SetHealth(health);
         }
         if (health <= 0)
         {
             StopAllCoroutines();
             GameScore.instance.IncrementHelicoptersDestroyed();
-            spotlight.GetComponent<Spotlight>().Despawn();
+            if (spotlight) spotlight.GetComponent<Spotlight>().Despawn();
             StartCoroutine(Crash());
         }
     }
