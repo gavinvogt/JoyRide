@@ -75,7 +75,7 @@ public class AirStrikeSpecial : SpecialMoveBase
         explosion.transform.localScale *= 0.5f;
         for (int i = 0; i < (int)(secondsBetweenBursts * 100f); i++)
         {
-            explosion.transform.localScale *= 1.07f;
+            if(explosion.gameObject) explosion.transform.localScale *= 1.07f;
             yield return new WaitForSeconds(0.01f);
         }
     }
