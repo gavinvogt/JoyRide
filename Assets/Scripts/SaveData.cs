@@ -3,9 +3,21 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
-    public Dictionary<string, float> volumeValues = new();
-    public float highScore = 0.0f;
-    public string longestTimeAlive = "00:00.0";
+    public Dictionary<string, float> volumeValues;
+    public float highScore;
+    public string longestTimeAlive;
+
+    //Default constructor, this is what will load if the user does not have any save data
+    public SaveData()
+    {
+        volumeValues = new(){
+            { "Master_Volume" , 1.0f },
+            { "SoundFX_Volume" , 1.0f },
+            { "Music_Volume" , 1.0f },
+        };
+         highScore = 0.0f;
+         longestTimeAlive = "00:00.0";
+    }
 
     public void SetVolumeValues(Dictionary<string, float> volumes)
     {

@@ -12,31 +12,10 @@ public class SoundMixerManager : MonoBehaviour
 
     public void SoundStartUp()
     {
-        if (Save.globalSaveData.GetVolumeValues() != null)
-        {
-            Dictionary<string, float> volumes = Save.globalSaveData.GetVolumeValues();
-            if (!volumes.TryGetValue("Master_Volume", out masterVolumeLevel))
-                masterVolumeLevel = 1;
-            if (!volumes.TryGetValue("SoundFX_Volume", out soundFXVolumeLevel))
-                soundFXVolumeLevel = 1;
-            if (!volumes.TryGetValue("Music_Volume", out musicVolumeLevel))
-                musicVolumeLevel = 1;
-        }
-        else
-        {
-            masterVolumeLevel = 1;
-            soundFXVolumeLevel = 1;
-            musicVolumeLevel = 1;
-        }
-
-        SetAllVolumeLevels();
-    }
-
-    public void SetAllVolumeLevels()
-    {
-        SetMasterVolume(masterVolumeLevel);
-        SetSoundFXVolume(soundFXVolumeLevel);
-        SetMusicVolume(musicVolumeLevel);
+        Dictionary<string, float> volumes = Save.globalSaveData.GetVolumeValues();
+        SetMasterVolume(volumes.GetValueOrDefault("Master_Volume"));
+        SetSoundFXVolume(volumes.GetValueOrDefault("SoundFX_Volume"));
+        SetMusicVolume(volumes.GetValueOrDefault("Music_Volume"));
     }
 
     public void SetMasterVolume(float level)
