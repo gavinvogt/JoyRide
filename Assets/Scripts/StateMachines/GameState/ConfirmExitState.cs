@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace StateMachines.GameState
 {
@@ -47,7 +48,7 @@ namespace StateMachines.GameState
 
         private void ConfirmExit()
         {
-            Application.Quit();
+            SceneManager.LoadScene(sceneName: GameScenes.StartMenu);
         }
     }
 }
