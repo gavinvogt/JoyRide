@@ -12,7 +12,7 @@
             </engine:VisualElement>
             <engine:VisualElement name="ActionsContainer" class="actions-container">
                 <engine:Button text="Restart" name="StartButton" class="action-button restart-button" />
-                <engine:Button text="Quit" name="QuitButton" class="action-button quit-button" />
+                <engine:Button text="Home" name="QuitButton" class="action-button quit-button" />
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:Label text="It&apos;s Joever" name="JoeverLabel" double-click-selects-word="false" triple-click-selects-line="false" class="common-text joever" />
