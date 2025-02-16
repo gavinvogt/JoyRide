@@ -37,6 +37,8 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         gameStateMachine.Initialize(gameStateMachine.inGameState);
+        _soundMixerManager.SoundStartUp();
+        Time.timeScale = 1;
     }
 
     private void Update()

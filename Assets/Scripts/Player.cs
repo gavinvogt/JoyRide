@@ -19,8 +19,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject UI;
     private UI UIScript;
     [SerializeField] private UIDocument inGameMenuDocument;
-    [SerializeField] private GameObject soundManagerObject;
-    private SoundMixerManager soundManager;
     [SerializeField] private GameStateManager gameStateManager;
 
     [SerializeField] GameObject deathIndicator;
@@ -31,9 +29,6 @@ public class Player : MonoBehaviour
     {
         UIScript = UI.GetComponent<UI>();
         UpdatePlayerUI();
-
-        soundManager = soundManagerObject.GetComponent<SoundMixerManager>();
-        soundManager.SoundStartUp();
     }
 
     private void Awake()
