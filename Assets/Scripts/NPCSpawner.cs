@@ -8,6 +8,7 @@ public class NPCSpawner : MonoBehaviour
     private float spawnTimer;
     [SerializeField] private List<GameObject> NPCSpawners;
     [SerializeField] private List<GameObject> NPCPrefabs;
+    List<GameObject> spawnableCars;
 
     private int currentRandomFlag;
     private int numCars;
@@ -19,6 +20,19 @@ public class NPCSpawner : MonoBehaviour
         currentRandomFlag = 3;
         numCars = 0;
         spawnTimer = maxSpawnTimer;
+
+        spawnableCars = new List<GameObject>();
+        foreach (GameObject prefab in NPCPrefabs)
+        {
+            foreach(SaveData.CarSaveData unlockedCar in Save.globalSaveData.carsUnlocked)
+            {
+                if (prefab.gameObject.name.Contains(unlockedCar.GetName()))
+                {
+                    Debug.Log(prefab + " | " + unlockedCar.GetName());
+                    spawnableCars.Add(prefab);
+                }
+            }
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -31,7 +45,7 @@ public class NPCSpawner : MonoBehaviour
                 if (Random.Range(0, 10) < currentRandomFlag && numCars < maxNumCars)
                 {
                     numCars++;
-                    StartCoroutine(SpawnNPC(spawner, NPCPrefabs[Random.Range(0, NPCPrefabs.Count)]));
+                    StartCoroutine(SpawnNPC(spawner, spawnableCars[Random.Range(0, spawnableCars.Count)]));
                     carSpawned = true;
                     currentRandomFlag = 3;
                 }
@@ -70,8 +84,8 @@ public class NPCSpawner : MonoBehaviour
         return NPCSpawners;
     }
 
-    public List<GameObject> GetPrefabs()
+    public List<GameObject> GetSpawnablePrefabs()
     {
-        return NPCPrefabs;
+        return spawnableCars;
     }
 }

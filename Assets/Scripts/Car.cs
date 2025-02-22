@@ -372,7 +372,7 @@ public class Car : MonoBehaviour
             StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.GOONS, this.transform.position));
 
             List<GameObject> Spawners = npcs.GetSpawners();
-            List<GameObject> NPCPrefabs = npcs.GetPrefabs();
+            List<GameObject> NPCPrefabs = npcs.GetSpawnablePrefabs();
             List<int> spawnpoints = new();
 
             int randInt = Random.Range(0, Spawners.Count);

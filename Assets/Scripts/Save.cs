@@ -32,6 +32,21 @@ public class Save : MonoBehaviour
 
         BinaryFormatter bf = new BinaryFormatter();
         globalSaveData = (SaveData)bf.Deserialize(file);
+        ValidateGlobalSaveData();
         file.Close();
+    }
+
+    private static void ValidateGlobalSaveData()
+    {
+        SaveData defaultData = new SaveData();
+
+        if(globalSaveData.volumeValues == null)
+            globalSaveData.volumeValues = defaultData.volumeValues;
+        if (globalSaveData.carsUnlocked == null)
+        {
+            Debug.Log("true");
+            globalSaveData.carsUnlocked = defaultData.carsUnlocked;
+            Debug.Log(globalSaveData.carsUnlocked.ToString());
+        }
     }
 }

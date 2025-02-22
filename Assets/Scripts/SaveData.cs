@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class SaveData
 {
     public Dictionary<string, float> volumeValues;
+    public List<CarSaveData> carsUnlocked;
     public float highScore;
     public string longestTimeAlive;
 
@@ -15,8 +16,13 @@ public class SaveData
             { "SoundFX_Volume" , 1.0f },
             { "Music_Volume" , 1.0f },
         };
-         highScore = 0.0f;
-         longestTimeAlive = "00:00.0";
+        carsUnlocked = new(){
+            new CarSaveData("sportsCar"),
+            new CarSaveData("truck"),
+            new CarSaveData("tank"),
+        };
+        highScore = 0.0f;
+        longestTimeAlive = "00:00.0";
     }
 
     public void SetVolumeValues(Dictionary<string, float> volumes)
@@ -48,5 +54,28 @@ public class SaveData
             Save.SaveFile();
         }
         return longestTimeAlive;
+    }
+
+    public class CarSaveData
+    {
+        private string carName;
+        private bool unlocked;
+        private bool abilityUnlocked;
+        private int speedUpgradeLevel;
+        private int healthUpgradeLevel;
+
+        public CarSaveData(string carType)
+        {
+            carName = carType;
+            unlocked = true;
+            abilityUnlocked = false;
+            speedUpgradeLevel = 0;
+            healthUpgradeLevel = 0;
+        }
+
+        public string GetName()
+        {
+            return carName;
+        }
     }
 }
