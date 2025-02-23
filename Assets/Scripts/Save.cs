@@ -32,10 +32,17 @@ public class Save : MonoBehaviour
 
         BinaryFormatter bf = new BinaryFormatter();
         globalSaveData = (SaveData)bf.Deserialize(file);
+
         ValidateGlobalSaveData();
         file.Close();
+
+        //Uncomment this line when we want to add the default data to the save file
+        //SaveFile();
     }
 
+
+    //Updates the save file with default values if certain values aren't present
+    //This is useful if we add fields to the save file later and people have existing save files without those fields
     private static void ValidateGlobalSaveData()
     {
         SaveData defaultData = new SaveData();
@@ -44,9 +51,8 @@ public class Save : MonoBehaviour
             globalSaveData.volumeValues = defaultData.volumeValues;
         if (globalSaveData.carsUnlocked == null)
         {
-            Debug.Log("true");
             globalSaveData.carsUnlocked = defaultData.carsUnlocked;
-            Debug.Log(globalSaveData.carsUnlocked.ToString());
+            Debug.Log("Loading in default cars");
         }
     }
 }

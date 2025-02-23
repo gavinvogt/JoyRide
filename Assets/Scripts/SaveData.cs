@@ -56,6 +56,8 @@ public class SaveData
         return longestTimeAlive;
     }
 
+
+    [System.Serializable]
     public class CarSaveData
     {
         private string carName;
