@@ -87,7 +87,6 @@ public class SaveData
         public CarSaveData(CarType carType)
         {
             this.carType = carType;
-            unlocked = true;
             abilityUnlocked = false;
             speedUpgradeLevel = 0;
             healthUpgradeLevel = 0;
