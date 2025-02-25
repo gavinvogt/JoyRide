@@ -79,7 +79,6 @@ public class SaveData
     public class CarSaveData
     {
         private CarType carType;
-        private bool unlocked;
         private bool abilityUnlocked;
         private int speedUpgradeLevel;
         private int healthUpgradeLevel;
@@ -98,6 +97,10 @@ public class SaveData
         public CarType GetCarType()
         {
             return carType;
+        }
+        public bool GetAbilityUnlocked()
+        {
+            return abilityUnlocked;
         }
         public int GetSpeedUpgradeLevel()
         {
