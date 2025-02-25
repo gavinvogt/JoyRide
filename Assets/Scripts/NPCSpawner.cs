@@ -26,9 +26,9 @@ public class NPCSpawner : MonoBehaviour
         {
             foreach(SaveData.CarSaveData unlockedCar in Save.globalSaveData.carsUnlocked)
             {
-                if (prefab.gameObject.name.Contains(unlockedCar.GetName()))
+                if (prefab.gameObject.GetComponent<Car>().GetCarType() == unlockedCar.GetCarType())
                 {
-                    Debug.Log(prefab + " | " + unlockedCar.GetName());
+                    Debug.Log(prefab + " | " + unlockedCar.GetCarType());
                     spawnableCars.Add(prefab);
                 }
             }

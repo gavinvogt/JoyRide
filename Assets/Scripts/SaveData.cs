@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using static Car;
 
 [System.Serializable]
 public class SaveData
@@ -7,6 +8,7 @@ public class SaveData
     public List<CarSaveData> carsUnlocked;
     public float highScore;
     public string longestTimeAlive;
+    public int numberOfCoins;
 
     //Default constructor, this is what will load if the user does not have any save data
     public SaveData()
@@ -17,12 +19,13 @@ public class SaveData
             { "Music_Volume" , 1.0f },
         };
         carsUnlocked = new(){
-            new CarSaveData("sportsCar"),
-            new CarSaveData("truck"),
-            new CarSaveData("tank"),
+            new CarSaveData(CarType.SPORTS_CAR),
+            new CarSaveData(CarType.SHOTGUN_TRUCK),
+            new CarSaveData(CarType.TANK),
         };
         highScore = 0.0f;
         longestTimeAlive = "00:00.0";
+        numberOfCoins = 0;
     }
 
     public void SetVolumeValues(Dictionary<string, float> volumes)
@@ -56,28 +59,57 @@ public class SaveData
         return longestTimeAlive;
     }
 
+    public int GetAmountOfCoins()
+    {
+        return numberOfCoins;
+    }
+
+    public bool AttemptToSpendCoins(int amount)
+    {
+        if(numberOfCoins >= amount)
+        {
+            numberOfCoins -= amount;
+            return true;
+        }
+        return false;
+    }
+
 
     [System.Serializable]
     public class CarSaveData
     {
-        private string carName;
+        private CarType carType;
         private bool unlocked;
         private bool abilityUnlocked;
         private int speedUpgradeLevel;
         private int healthUpgradeLevel;
+        private int ammoUpgradeLevel;
 
-        public CarSaveData(string carType)
+        public CarSaveData(CarType carType)
         {
-            carName = carType;
+            this.carType = carType;
             unlocked = true;
             abilityUnlocked = false;
             speedUpgradeLevel = 0;
             healthUpgradeLevel = 0;
+            ammoUpgradeLevel = 0;
         }
 
-        public string GetName()
+        public CarType GetCarType()
         {
-            return carName;
+            return carType;
+        }
+        public int GetSpeedUpgradeLevel()
+        {
+            return speedUpgradeLevel;
+        }
+        public int GetHealthUpgradeLevel()
+        {
+            return healthUpgradeLevel;
+        }
+        public int GetAmmoUpgradeLevel()
+        {
+            return ammoUpgradeLevel;
         }
     }
 }
