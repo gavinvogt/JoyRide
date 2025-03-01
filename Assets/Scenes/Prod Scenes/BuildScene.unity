@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 369390959}
   m_Layer: 0
   m_Name: TopWall
-  m_TagString: ObstacleBlocking
+  m_TagString: BoundaryWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 1071642236}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: ObstacleBlocking
+  m_TagString: BoundaryWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 1226898427}
   m_Layer: 0
   m_Name: Boundaries
-  m_TagString: ObstacleBlocking
+  m_TagString: BoundaryWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2817,7 +2817,7 @@ GameObject:
   - component: {fileID: 2131887572}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: ObstacleBlocking
+  m_TagString: BoundaryWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

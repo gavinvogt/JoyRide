@@ -14,6 +14,7 @@ TagManager:
   - IndestructableObstacleNonBlocking
   - Road Line
   - Booster
+  - BoundaryWall
   layers:
   - Default
   - TransparentFX

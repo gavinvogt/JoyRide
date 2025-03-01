@@ -18,7 +18,11 @@ public class Bullet : MonoBehaviour
     {
         if (hasHit) return; // ignore collision if a hit has already triggered
 
-        if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
+        if (target.CompareTag("BoundaryWall"))
+        {
+            HandleCollisionNoSound();
+        }
+        else if (ObjectTags.IsBlockingObstacle(target.gameObject.tag))
         {
             HandleCollision();
         }
@@ -33,6 +37,12 @@ public class Bullet : MonoBehaviour
     {
         hasHit = true;
         SoundFXManager.instance.PlayRandomSoundFXClip(hitSounds, transform, 0.6f);
+        Destroy(gameObject);
+    }
+
+    private void HandleCollisionNoSound()
+    {
+        hasHit = true;
         Destroy(gameObject);
     }
 }
