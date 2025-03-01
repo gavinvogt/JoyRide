@@ -22,6 +22,7 @@ public class Car : MonoBehaviour
     private GameObject rotateTarget;
 
     [SerializeField] private float drivingSpeed;
+    private float currentDrivingSpeed;
     private bool hasSpeedBoost = false;
 
     [SerializeField] private int maxHealth;
@@ -72,6 +73,7 @@ public class Car : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentAmmoCount = maxAmmoCount;
+        currentDrivingSpeed = drivingSpeed;
         healthBar.SetMaxHealth(maxHealth);
         abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
 
@@ -274,12 +276,12 @@ public class Car : MonoBehaviour
 
     public float GetDrivingSpeed()
     {
-        return drivingSpeed;
+        return currentDrivingSpeed;
     }
 
     public void SetDrivingSpeed(float speed)
     {
-        drivingSpeed = speed;
+        currentDrivingSpeed = speed;
     }
 
     private void OverrideCursor()
@@ -349,7 +351,7 @@ public class Car : MonoBehaviour
 
     public IEnumerator BoostSpeed()
     {
-        drivingSpeed += 4;
+        currentDrivingSpeed += 4;
         hasSpeedBoost = true;
         if (player != null)
         {
@@ -357,9 +359,9 @@ public class Car : MonoBehaviour
             UIScript.EnableSpeedBoostUI();
         }
         yield return new WaitForSeconds(2.5f);
-        drivingSpeed -= 4;
+        currentDrivingSpeed -= 4;
         hasSpeedBoost = false;
-        if (player != null)
+        if (player != null && currentDrivingSpeed == drivingSpeed)
         {
             UIScript.DisableSpeedBoostUI();
         }
