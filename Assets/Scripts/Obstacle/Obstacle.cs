@@ -6,7 +6,7 @@ public class Obstacle : MonoBehaviour
 
     protected virtual void Awake()
     {
-        os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
+        os = GameObject.Find("Highway").GetComponentInChildren<ObstacleSpawner>();
     }
 
     public virtual void Spawn()

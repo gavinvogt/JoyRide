@@ -36,8 +36,8 @@ public class Player : MonoBehaviour
         Save.LoadFile();
         rb = car.GetComponent<Rigidbody2D>();
         car.SendMessage("SetPlayer", this);
-        os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
-        rds = GameObject.Find("Highway").GetComponent<RoadDotSpawner>();
+        os = GameObject.Find("Highway").GetComponentInChildren<ObstacleSpawner>();
+        rds = GameObject.Find("Highway").GetComponentInChildren<RoadDotSpawner>();
         ls = GameObject.Find("Highway").GetComponentInChildren<LaserSpawner>();
         hs = GameObject.Find("Highway").GetComponentInChildren<HelicopterSpawner>();
         maxSpeed = 35;

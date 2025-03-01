@@ -39,7 +39,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         health = 40;
         healthBar.SetMaxHealth(health);
 
-        os = GameObject.Find("Highway").GetComponent<ObstacleSpawner>();
+        os = GameObject.Find("Highway").GetComponentInChildren<ObstacleSpawner>();
     }
 
     // Update is called once per frame
