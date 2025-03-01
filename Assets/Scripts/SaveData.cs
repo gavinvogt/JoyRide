@@ -80,6 +80,7 @@ public class SaveData
     {
         private CarType carType;
         private bool abilityUnlocked;
+        private bool isSelected;
         private int speedUpgradeLevel;
         private int healthUpgradeLevel;
         private int ammoUpgradeLevel;
@@ -87,6 +88,7 @@ public class SaveData
         public CarSaveData(CarType carType)
         {
             this.carType = carType;
+            isSelected = true;
             abilityUnlocked = false;
             speedUpgradeLevel = 0;
             healthUpgradeLevel = 0;
@@ -100,6 +102,14 @@ public class SaveData
         public bool GetAbilityUnlocked()
         {
             return abilityUnlocked;
+        }
+        public bool GetIsSelected()
+        {
+            return isSelected;
+        }
+        public void SetIsSelected(bool selected)
+        {
+            isSelected = selected;
         }
         public int GetSpeedUpgradeLevel()
         {
