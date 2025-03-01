@@ -47,6 +47,7 @@ public class Car : MonoBehaviour
 
     [SerializeField] private AudioClip playerLoseClip;
 
+    [SerializeField] private CarNPC npcScript;
     private NPCSpawner npcs;
     private UI UIScript;
     private bool immuneToDamage;
@@ -219,7 +220,7 @@ public class Car : MonoBehaviour
         abilityBar = null;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
-        gameObject.GetComponent<CarNPC>().enabled = false;
+        npcScript.enabled = false;
         if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");
@@ -307,6 +308,10 @@ public class Car : MonoBehaviour
         if (isCarDead || immuneToDamage) return;
         currentHealth--;
         StartCoroutine(FlashColor());
+        if(player == null)
+        {
+            npcScript.Move();
+        }
         if (currentHealth <= 0)
         {
             deathPoint = damagePoint;

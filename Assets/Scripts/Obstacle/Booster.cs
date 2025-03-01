@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Booster : Obstacle
 {
@@ -38,7 +39,7 @@ public class Booster : Obstacle
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Car")
+        if (collision.CompareTag("Car"))
         {
             Car tempCar = collision.gameObject.GetComponent<Car>();
             if (!CarAlreadyBoosted(tempCar)) {

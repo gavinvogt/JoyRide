@@ -5,7 +5,7 @@ public class CarNPC : MonoBehaviour
 {
     [SerializeField] Car carScript;
     private GameObject movePoint;
-    private int moveSpeed;
+    private float moveSpeed;
     private bool finishedSpawning = false;
     private Vector3 spawnDestinationLocation;
     private GameObject bottomBoundary;
@@ -16,7 +16,7 @@ public class CarNPC : MonoBehaviour
     {
         movePoint = new GameObject();
         movePoint.transform.parent = transform.parent;
-        moveSpeed = 4;
+        moveSpeed = 4f;
 
         bottomBoundary = GameObject.Find("BottomBoundary");
         flagCollider = GameObject.Find("FlagColliderForNPCs");
@@ -48,6 +48,7 @@ public class CarNPC : MonoBehaviour
     private void FinishSpawn()
     {
         finishedSpawning = true;
+        moveSpeed = 0.5f * carScript.GetDrivingSpeed();
         ActivateCar();
         if(gameObject.activeSelf) StartCoroutine(Move(3f));
     }
@@ -69,7 +70,7 @@ public class CarNPC : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Car" && finishedSpawning)
+        if (collision.gameObject.CompareTag("Car") && finishedSpawning)
         {
             MoveAwayFromCollision(collision.transform.position);
         }
@@ -100,6 +101,12 @@ public class CarNPC : MonoBehaviour
         movePoint.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x + xOffset, -4f, 4f), Mathf.Clamp(this.transform.position.y + yOffset, -4f, 4f), this.transform.position.z);
     }
 
+    public void Move()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Move(3f));
+    }
+
     IEnumerator Move(float seconds)
     {
         float xOffset = Random.Range(-3f, 3f);
@@ -117,6 +124,5 @@ public class CarNPC : MonoBehaviour
 
         yield return new WaitForSeconds(seconds);
         StartCoroutine(Move(3f));
-
     }
 }
