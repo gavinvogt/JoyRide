@@ -20,7 +20,12 @@ public class Tank_Bullet : MonoBehaviour
     {
         if (hasHit) return; // ignore collision if a hit has already triggered
 
-        if (ObjectTags.IsBlockingObstacle(target.gameObject.tag) || target.CompareTag("Enemy"))
+        if (target.CompareTag("BoundaryWall"))
+        {
+            hasHit = true;
+            Destroy(gameObject);
+        }
+        else if (ObjectTags.IsBlockingObstacle(target.gameObject.tag) || target.CompareTag("Enemy"))
         {
             StartCoroutine(CreateExplosion());
         }

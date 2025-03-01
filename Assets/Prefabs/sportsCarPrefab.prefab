@@ -265,6 +265,7 @@ MonoBehaviour:
   abilityBar: {fileID: 4000315645798680420}
   maxAmmoCount: 150
   playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
+  npcScript: {fileID: -3541015740689095205}
   specialMoveScript: {fileID: 7814835546478320887}
 --- !u!114 &-3541015740689095205
 MonoBehaviour:

@@ -30,7 +30,8 @@ public class Car : MonoBehaviour
     }
     [SerializeField] CarType carType;
 
-    private float drivingSpeed;
+    [SerializeField] private float drivingSpeed;
+    private float currentDrivingSpeed;
     private bool hasSpeedBoost = false;
 
     private float maxHealth;
@@ -55,6 +56,7 @@ public class Car : MonoBehaviour
 
     [SerializeField] private AudioClip playerLoseClip;
 
+    [SerializeField] private CarNPC npcScript;
     private NPCSpawner npcs;
     private UI UIScript;
     private bool immuneToDamage;
@@ -83,6 +85,7 @@ public class Car : MonoBehaviour
 
         currentHealth = maxHealth;
         currentAmmoCount = maxAmmoCount;
+        currentDrivingSpeed = drivingSpeed;
         healthBar.SetMaxHealth(maxHealth);
         abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
 
@@ -228,7 +231,7 @@ public class Car : MonoBehaviour
         abilityBar = null;
         gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -5f);
         gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
-        gameObject.GetComponent<CarNPC>().enabled = false;
+        npcScript.enabled = false;
         if (Random.Range(0, 2) < 1)
         {
             RotateCar("left");
@@ -285,12 +288,12 @@ public class Car : MonoBehaviour
 
     public float GetDrivingSpeed()
     {
-        return drivingSpeed;
+        return currentDrivingSpeed;
     }
 
     public void SetDrivingSpeed(float speed)
     {
-        drivingSpeed = speed;
+        currentDrivingSpeed = speed;
     }
 
     private void OverrideCursor()
@@ -316,6 +319,10 @@ public class Car : MonoBehaviour
         if (isCarDead || immuneToDamage) return;
         currentHealth--;
         StartCoroutine(FlashColor());
+        if(player == null)
+        {
+            npcScript.Move();
+        }
         if (currentHealth <= 0)
         {
             deathPoint = damagePoint;
@@ -360,7 +367,7 @@ public class Car : MonoBehaviour
 
     public IEnumerator BoostSpeed()
     {
-        drivingSpeed += 4;
+        currentDrivingSpeed += 4;
         hasSpeedBoost = true;
         if (player != null)
         {
@@ -368,9 +375,9 @@ public class Car : MonoBehaviour
             UIScript.EnableSpeedBoostUI();
         }
         yield return new WaitForSeconds(2.5f);
-        drivingSpeed -= 4;
+        currentDrivingSpeed -= 4;
         hasSpeedBoost = false;
-        if (player != null)
+        if (player != null && currentDrivingSpeed == drivingSpeed)
         {
             UIScript.DisableSpeedBoostUI();
         }
