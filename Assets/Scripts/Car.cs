@@ -176,7 +176,7 @@ public class Car : MonoBehaviour
             if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
-                TakeDamage(contactLocation);
+                TakeDamage(10, contactLocation);
             }
             else if (ObjectTags.IsBlockingObstacle(collision.gameObject.tag))
             {
@@ -184,31 +184,31 @@ public class Car : MonoBehaviour
                 {
                     if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage(contactLocation);
+                        TakeDamage(10, contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Helicopter"))
                 {
                     if (!collision.gameObject.GetComponent<Helicopter>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage(contactLocation);
+                        TakeDamage(10, contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Road Blockade"))
                 {
                     if (!collision.gameObject.GetComponent<Mine>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage(contactLocation);
+                        TakeDamage(10, contactLocation);
                     }
                 }
                 else
                 {
-                    TakeDamage(contactLocation);
+                    TakeDamage(10, contactLocation);
                 }
             }
             else if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile"))
             {
-                TakeDamage(contactLocation);
+                TakeDamage(10, contactLocation);
                 if (!isCarDead || player == null)
                 {
                     Destroy(collision.gameObject);
@@ -306,7 +306,7 @@ public class Car : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth++;
+            currentHealth += 10;
         }
         if (player != null)
         {
@@ -314,10 +314,10 @@ public class Car : MonoBehaviour
         }
     }
 
-    public void TakeDamage(Vector3 damagePoint)
+    public void TakeDamage(float damage, Vector3 damagePoint)
     {
         if (isCarDead || immuneToDamage) return;
-        currentHealth--;
+        currentHealth -= damage;
         StartCoroutine(FlashColor());
         if(player == null)
         {
@@ -448,17 +448,17 @@ public class Car : MonoBehaviour
         {
             case CarType.SPORTS_CAR:
                 drivingSpeed = 10 + (0.5f * saveData.GetSpeedUpgradeLevel());
-                maxHealth = 2 + (0.5f * saveData.GetHealthUpgradeLevel());
-                maxAmmoCount = 150 + (10 * saveData.GetAmmoUpgradeLevel());
+                maxHealth = 20 + (2f * saveData.GetHealthUpgradeLevel());
+                maxAmmoCount = 150 + (15 * saveData.GetAmmoUpgradeLevel());
                 break;
             case CarType.SHOTGUN_TRUCK:
                 drivingSpeed = 8 + (0.5f * saveData.GetSpeedUpgradeLevel());
-                maxHealth = 3 + (0.5f * saveData.GetHealthUpgradeLevel());
+                maxHealth = 30 + (3f * saveData.GetHealthUpgradeLevel());
                 maxAmmoCount = 30 + (3 * saveData.GetAmmoUpgradeLevel());
                 break;
             case CarType.TANK:
                 drivingSpeed = 4 + (0.5f * saveData.GetSpeedUpgradeLevel());
-                maxHealth = 4 + (0.5f * saveData.GetSpeedUpgradeLevel());
+                maxHealth = 40 + (4f * saveData.GetSpeedUpgradeLevel());
                 maxAmmoCount = 20 + (2 * saveData.GetAmmoUpgradeLevel());
                 break;
         }
