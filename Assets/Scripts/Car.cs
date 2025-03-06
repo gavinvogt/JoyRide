@@ -41,12 +41,12 @@ public class Car : MonoBehaviour
         get { return _currentHealth; }
         set
         {
+            _currentHealth = value;
             if (healthBar != null) healthBar.SetHealth(value);
             if (player != null)
             {
                 player.GetComponent<Player>().UpdatePlayerUI();
             }
-            _currentHealth = value;
         }
     }
     [SerializeField] private HealthBar healthBar;
@@ -317,7 +317,7 @@ public class Car : MonoBehaviour
     public void TakeDamage(float damage, Vector3 damagePoint)
     {
         if (isCarDead || immuneToDamage) return;
-        currentHealth -= damage;
+        currentHealth = currentHealth - damage;
         StartCoroutine(FlashColor());
         if(player == null)
         {
