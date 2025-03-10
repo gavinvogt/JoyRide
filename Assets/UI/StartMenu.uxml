@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/start_menu.uss?fileID=7433441132597879392&amp;guid=7ee29fce59d0ae3458d2b1f97ba4038a&amp;type=3#start_menu" />
-    <engine:VisualElement name="Backdrop" class="backdrop">
+    <engine:VisualElement name="Backdrop" class="backdrop" style="background-color: rgb(58, 58, 58);">
         <engine:VisualElement name="MenuContainer" class="menu-container">
             <engine:VisualElement name="LeftColumn">
                 <engine:Label text="JoyRide" name="GameTitle" triple-click-selects-line="false" double-click-selects-word="false" class="title" />
