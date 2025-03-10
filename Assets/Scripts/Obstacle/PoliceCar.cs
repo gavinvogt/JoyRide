@@ -11,6 +11,7 @@ public class PoliceCar : Obstacle, BaseEnemy
     private GameObject movePoint;
     private int moveSpeed;
     private bool isRotating;
+    private bool isInvulnerable;
 
     private int timesMoved;
 
@@ -27,6 +28,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         isMoving = false;
         isRotating = false;
+        isInvulnerable = true;
 
         moveSpeed = 3;
         movePoint = new GameObject();
@@ -65,7 +67,9 @@ public class PoliceCar : Obstacle, BaseEnemy
 
     IEnumerator ZeroVelocity()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.3f);
+        isInvulnerable = false;
+        yield return new WaitForSeconds(.2f);
         rb.linearVelocity = Vector2.zero;
         StartCoroutine(DeployRoadSpikes(0));
     }
@@ -119,6 +123,8 @@ public class PoliceCar : Obstacle, BaseEnemy
 
     public void DecreaseHealth(int damage)
     {
+        if (isInvulnerable)
+            return;
         if (health > 0)
         {
             health -= damage;
