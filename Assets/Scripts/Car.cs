@@ -62,6 +62,7 @@ public class Car : MonoBehaviour
     private bool immuneToDamage;
     private Vector3 deathPoint;
 
+    private bool isAbilityUnlocked;
     private bool isShielded = false;
     private bool isCarDead = false;
 
@@ -87,7 +88,15 @@ public class Car : MonoBehaviour
         currentAmmoCount = maxAmmoCount;
         currentDrivingSpeed = drivingSpeed;
         healthBar.SetMaxHealth(maxHealth);
-        abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
+
+        if (isAbilityUnlocked)
+        {
+            abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
+        }
+        else
+        {
+            abilityBar.gameObject.SetActive(false);
+        }
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
@@ -96,7 +105,7 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        if (player != null && !isCarDead && Input.GetMouseButtonUp(RIGHT_CLICK))
+        if (player != null && !isCarDead && isAbilityUnlocked && Input.GetMouseButtonUp(RIGHT_CLICK))
         {
             ActivateSpecial();
         }
@@ -111,7 +120,7 @@ public class Car : MonoBehaviour
         }
         if (player != null)
         {
-            if (abilityBar) abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
+            if (isAbilityUnlocked && abilityBar) abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
         }
     }
 
@@ -444,6 +453,7 @@ public class Car : MonoBehaviour
             }
         }
 
+        isAbilityUnlocked = saveData.GetAbilityUnlocked();
         switch (carType)
         {
             case CarType.SPORTS_CAR:

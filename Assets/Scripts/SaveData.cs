@@ -91,7 +91,7 @@ public class SaveData
         {
             this.carType = carType;
             isSelected = true;
-            abilityUnlocked = false;
+            abilityUnlocked = true;
             speedUpgradeLevel = 0;
             healthUpgradeLevel = 0;
             ammoUpgradeLevel = 0;
@@ -106,6 +106,10 @@ public class SaveData
         public bool GetAbilityUnlocked()
         {
             return abilityUnlocked;
+        }
+        public void SetAbilityUnlocked(bool unlocked)
+        {
+            abilityUnlocked = unlocked;
         }
         public bool GetIsSelected()
         {
