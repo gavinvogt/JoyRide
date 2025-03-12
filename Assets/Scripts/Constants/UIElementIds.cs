@@ -1,4 +1,4 @@
-public class UIElementIds
+public static class UIElementIds
 {
     public readonly static string MASTER_VOLUME_SLIDER = "MasterVolumeSlider";
     public readonly static string SOUND_FX_VOLUME_SLIDER = "SoundFXVolumeSlider";

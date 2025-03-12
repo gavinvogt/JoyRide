@@ -1,4 +1,4 @@
-public class ObjectTags
+public static class ObjectTags
 {
     public readonly static string OBSTACLE_BLOCKING = "ObstacleBlocking";
     public readonly static string OBSTACLE_NON_BLOCKING = "ObstacleNonBlocking";

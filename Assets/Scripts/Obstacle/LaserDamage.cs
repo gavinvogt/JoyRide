@@ -46,7 +46,7 @@ public class LaserDamage : MonoBehaviour
         }
         else
         {
-            carScript.TakeDamage(GetDamageLocation(car));
+            carScript.TakeDamage(EnemyDamage.LASER_DAMAGE, GetDamageLocation(car));
         }
     }
 
