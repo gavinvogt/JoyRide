@@ -457,19 +457,19 @@ public class Car : MonoBehaviour
         switch (carType)
         {
             case CarType.SPORTS_CAR:
-                drivingSpeed = 10 + (0.5f * saveData.GetSpeedUpgradeLevel());
-                maxHealth = 20 + (2f * saveData.GetHealthUpgradeLevel());
-                maxAmmoCount = 150 + (15 * saveData.GetAmmoUpgradeLevel());
+                drivingSpeed = 8.5f + (0.5f * saveData.GetSpeedUpgradeLevel());
+                maxHealth = 15 + (2f * saveData.GetHealthUpgradeLevel());
+                maxAmmoCount = 125 + (15 * saveData.GetAmmoUpgradeLevel());
                 break;
             case CarType.SHOTGUN_TRUCK:
-                drivingSpeed = 8 + (0.5f * saveData.GetSpeedUpgradeLevel());
-                maxHealth = 30 + (3f * saveData.GetHealthUpgradeLevel());
-                maxAmmoCount = 30 + (3 * saveData.GetAmmoUpgradeLevel());
+                drivingSpeed = 7 + (0.4f * saveData.GetSpeedUpgradeLevel());
+                maxHealth = 25 + (3f * saveData.GetHealthUpgradeLevel());
+                maxAmmoCount = 20 + (4 * saveData.GetAmmoUpgradeLevel());
                 break;
             case CarType.TANK:
-                drivingSpeed = 4 + (0.5f * saveData.GetSpeedUpgradeLevel());
-                maxHealth = 40 + (4f * saveData.GetSpeedUpgradeLevel());
-                maxAmmoCount = 20 + (2 * saveData.GetAmmoUpgradeLevel());
+                drivingSpeed = 3.5f + (0.3f * saveData.GetSpeedUpgradeLevel());
+                maxHealth = 30 + (5f * saveData.GetSpeedUpgradeLevel());
+                maxAmmoCount = 15 + (2 * saveData.GetAmmoUpgradeLevel());
                 break;
         }
     }
