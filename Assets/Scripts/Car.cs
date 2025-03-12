@@ -185,7 +185,7 @@ public class Car : MonoBehaviour
             if (collision.gameObject.name.Contains("explosion"))
             {
                 collision.gameObject.GetComponent<Missile_Explosion>().disableCollider();
-                TakeDamage(10, contactLocation);
+                TakeDamage(EnemyDamage.HELICOPTER_MISSILE_DAMAGE, contactLocation);
             }
             else if (ObjectTags.IsBlockingObstacle(collision.gameObject.tag))
             {
@@ -193,31 +193,31 @@ public class Car : MonoBehaviour
                 {
                     if (!collision.gameObject.GetComponent<PoliceCar>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage(10, contactLocation);
+                        TakeDamage(EnemyDamage.POLICE_CAR_BONK_DAMAGE, contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Helicopter"))
                 {
                     if (!collision.gameObject.GetComponent<Helicopter>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage(10, contactLocation);
+                        TakeDamage(EnemyDamage.HELICOPTER_BONK_DAMAGE, contactLocation);
                     }
                 }
                 else if (collision.gameObject.name.Contains("Road Blockade"))
                 {
                     if (!collision.gameObject.GetComponent<Mine>().CarAlreadyDamaged(this))
                     {
-                        TakeDamage(10, contactLocation);
+                        TakeDamage(EnemyDamage.ROAD_BLOCKADE_BONK_DAMAGE, contactLocation);
                     }
                 }
                 else
                 {
-                    TakeDamage(10, contactLocation);
+                    TakeDamage(EnemyDamage.DEFAULT_BONK_DAMAGE, contactLocation);
                 }
             }
             else if (ObjectTags.IsDestructableObstacle(collision.gameObject.tag) && !collision.gameObject.name.Contains("Missile"))
             {
-                TakeDamage(10, contactLocation);
+                TakeDamage(EnemyDamage.DEFAULT_BONK_DAMAGE, contactLocation);
                 if (!isCarDead || player == null)
                 {
                     Destroy(collision.gameObject);
@@ -323,12 +323,12 @@ public class Car : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage, Vector3 damagePoint)
+    public void TakeDamage(int damage, Vector3 damagePoint)
     {
         if (isCarDead || immuneToDamage) return;
-        currentHealth = currentHealth - damage;
+        currentHealth -= damage;
         StartCoroutine(FlashColor());
-        if(player == null)
+        if (player == null)
         {
             npcScript.Move();
         }

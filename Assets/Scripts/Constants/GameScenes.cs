@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class GameScenes
+public static class GameScenes
 {
     public static readonly string StartMenu = "StartMenu";
     public static readonly string BuildScene = "BuildScene";
