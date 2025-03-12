@@ -32,12 +32,12 @@ public class Car : MonoBehaviour
         get { return _currentHealth; }
         set
         {
+            _currentHealth = value;
             if (healthBar != null) healthBar.SetHealth(value);
             if (player != null)
             {
                 player.GetComponent<Player>().UpdatePlayerUI();
             }
-            _currentHealth = value;
         }
     }
     [SerializeField] private HealthBar healthBar;
