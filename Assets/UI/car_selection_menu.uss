@@ -1,0 +1,167 @@
+:root {
+    --bg-md-gray: rgb(100, 100, 100);
+    --text-color-1: rgb(230, 230, 230);
+    --car-tile-radius: 5px;
+    --car-label-radius: 2px;
+    --stat-label-width: 16%;
+    --stat-bars-width: 45%;
+    --stat-value-width: 9%;
+    --stat-upgrade-width: 30%;
+}
+
+.car-selection-menu {
+    flex-grow: 1;
+    flex-direction: row;
+    background-color: var(--bg-md-gray);
+    color: var(--text-color-1);
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
+}
+
+.split-screen {
+    width: 50%;
+    max-width: 50%;
+    flex-direction: column;
+}
+
+.split-left {
+    border-color: black;
+    border-right-width: 4px;
+}
+
+.section-title {
+    -unity-text-align: middle-center;
+    font-size: 28px;
+    -unity-font-style: bold;
+    margin-bottom: 24px;
+}
+
+.split-left {
+    border-color: black;
+    border-right: 2px;
+}
+
+.car-tile {
+    margin: 12px;
+    border-color: black;
+    border-width: 2px;
+    border-radius: var(--car-tile-radius);
+    padding: 0;
+    background-color: rgb(71, 128, 180);
+    transition: 0.15s all;
+}
+
+.car-tile:hover {
+    scale: 1.1;
+}
+
+.car-image {
+    width: 80px;
+    height: 80px;
+    margin: 10px 10px 2px 10px;
+    rotate: 90deg;
+}
+
+.car-label {
+    -unity-font-style: bold;
+    font-size: 12px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    -unity-text-align: upper-right;
+    background-color: rgb(24, 190, 62);
+    border-color: black;
+    border-top-width: 2px;
+    padding-right: 6px;
+    border-bottom-left-radius: var(--car-label-radius);
+    border-bottom-right-radius: var(--car-label-radius);
+}
+
+.unity-scroll-view__content-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.split-right {
+    align-items: center;
+}
+
+.car-details-image {
+    width: 200px;
+    height: 200px;
+}
+
+.car-details-section {
+    width: 85%;
+    border-radius: 6px;
+    border-width: 2px;
+    border-color: black;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.car-details-section-label {
+    font-size: 20px;
+    border-color: red;
+    border-bottom-width: 1px;
+    -unity-font-style: bold;
+}
+
+.car-details-container {
+    width: 100%;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.car-details-row {
+    width: 100%;
+    flex-direction: row;
+}
+
+.car-details-text {
+    align-self: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.car-details-stat-name {
+    width: var(--stat-label-width);
+}
+
+.car-details-relative {
+    width: var(--stat-bars-width);
+    align-items: center;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.relative-stat-bar {
+    width: 11%;
+    height: 28px;
+    background-color: red;
+    border-radius: 4px;
+}
+
+.car-details-value {
+    width: var(--stat-value-width);
+    -unity-text-align: middle-center;
+}
+
+.car-details-upgrade-button {
+    width: var(--stat-upgrade-width);
+    -unity-font-style: bold;
+    border-radius: 4px;
+    margin-left: 10px;
+    background-color: blue;
+    transition: 0.15s all;
+}
+
+.car-details-upgrade-button:hover {
+    scale: 1.1;
+    color: yellow;
+}

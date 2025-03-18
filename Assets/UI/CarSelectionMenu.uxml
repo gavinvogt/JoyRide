@@ -1,0 +1,89 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/car_selection_menu.uss?fileID=7433441132597879392&amp;guid=00f9e1f957030204e9773f00256c60ee&amp;type=3#car_selection_menu" />
+    <engine:VisualElement name="Container" class="car-selection-menu">
+        <engine:VisualElement name="CarCollectionContainer" class="split-screen split-left">
+            <engine:Label text="Vehicles" name="CarCollectionTitle" class="section-title" />
+            <engine:ScrollView style="flex-direction: row;">
+                <engine:VisualElement name="CarTile" class="car-tile">
+                    <engine:VisualElement name="CarImage" class="car-image" style="background-image: url(&quot;project://database/Assets/UI/IconBig.png?fileID=2800000&amp;guid=5872c11bd91cf69479e98bca5a7333f8&amp;type=3#IconBig&quot;);" />
+                    <engine:Label text="Sports Car" name="CarLabel" double-click-selects-word="false" triple-click-selects-line="false" class="car-label" />
+                </engine:VisualElement>
+                <engine:VisualElement name="CarTile" class="car-tile">
+                    <engine:VisualElement name="CarImage" class="car-image" style="background-image: url(&quot;project://database/Assets/UI/IconBig.png?fileID=2800000&amp;guid=5872c11bd91cf69479e98bca5a7333f8&amp;type=3#IconBig&quot;);" />
+                    <engine:Label text="Truck" name="CarLabel" double-click-selects-word="false" triple-click-selects-line="false" class="car-label" />
+                </engine:VisualElement>
+                <engine:VisualElement name="CarTile" class="car-tile">
+                    <engine:VisualElement name="CarImage" class="car-image" style="background-image: url(&quot;project://database/Assets/UI/IconBig.png?fileID=2800000&amp;guid=5872c11bd91cf69479e98bca5a7333f8&amp;type=3#IconBig&quot;);" />
+                    <engine:Label text="Tank&#x9;" name="CarLabel" double-click-selects-word="false" triple-click-selects-line="false" class="car-label" />
+                </engine:VisualElement>
+            </engine:ScrollView>
+        </engine:VisualElement>
+        <engine:VisualElement name="CarDetailsContainer" class="split-screen split-right">
+            <engine:Label text="Sports Car" name="CarDetailsTitle" class="section-title" />
+            <engine:VisualElement name="CarDetailsImage" class="car-details-image" style="background-image: url(&quot;project://database/Assets/UI/IconBig.png?fileID=2800000&amp;guid=5872c11bd91cf69479e98bca5a7333f8&amp;type=3#IconBig&quot;); rotate: 60deg;" />
+            <engine:VisualElement name="CarStatsSection" class="car-details-section">
+                <engine:Label text="Stats" name="CarStatsLabel" class="car-details-section-label" />
+                <engine:VisualElement name="CarStatsContainer" class="car-details-container">
+                    <engine:VisualElement name="CarStatRow" class="car-details-row">
+                        <engine:Label text="Speed" name="CarStatName" triple-click-selects-line="false" class="car-details-stat-name car-details-text" />
+                        <engine:VisualElement name="CarStatRelative" class="car-details-relative">
+                            <engine:VisualElement name="StatBar1" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar2" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar3" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar4" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar5" class="relative-stat-bar" />
+                        </engine:VisualElement>
+                        <engine:Label text="8" name="CarStatValue" triple-click-selects-line="false" class="car-details-value car-details-text" />
+                        <engine:Button text="Upgrade" name="CarStatUpgradeButton" class="car-details-upgrade-button" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="CarStatsContainer" class="car-details-container">
+                    <engine:VisualElement name="CarStatRow" class="car-details-row">
+                        <engine:Label text="Health" name="CarStatName" triple-click-selects-line="false" class="car-details-stat-name car-details-text" />
+                        <engine:VisualElement name="CarStatRelative" class="car-details-relative">
+                            <engine:VisualElement name="StatBar1" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar2" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar3" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar4" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar5" class="relative-stat-bar" />
+                        </engine:VisualElement>
+                        <engine:Label text="6" name="CarStatValue" triple-click-selects-line="false" class="car-details-value car-details-text" />
+                        <engine:Button text="Upgrade" name="CarStatUpgradeButton" class="car-details-upgrade-button" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="CarStatsContainer" class="car-details-container">
+                    <engine:VisualElement name="CarStatRow" class="car-details-row">
+                        <engine:Label text="Damage" name="CarStatName" triple-click-selects-line="false" class="car-details-stat-name car-details-text" />
+                        <engine:VisualElement name="CarStatRelative" class="car-details-relative">
+                            <engine:VisualElement name="StatBar1" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar2" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar3" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar4" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar5" class="relative-stat-bar" />
+                        </engine:VisualElement>
+                        <engine:Label text="8 x 2" name="CarStatValue" triple-click-selects-line="false" class="car-details-value car-details-text" />
+                        <engine:Button text="Upgrade" name="CarStatUpgradeButton" class="car-details-upgrade-button" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="CarStatsContainer" class="car-details-container">
+                    <engine:VisualElement name="CarStatRow" class="car-details-row">
+                        <engine:Label text="Ammo" name="CarStatName" triple-click-selects-line="false" class="car-details-stat-name car-details-text" />
+                        <engine:VisualElement name="CarStatRelative" class="car-details-relative">
+                            <engine:VisualElement name="StatBar1" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar2" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar3" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar4" class="relative-stat-bar" />
+                            <engine:VisualElement name="StatBar5" class="relative-stat-bar" />
+                        </engine:VisualElement>
+                        <engine:Label text="50" name="CarStatValue" triple-click-selects-line="false" class="car-details-value car-details-text" />
+                        <engine:Button text="Upgrade" name="CarStatUpgradeButton" class="car-details-upgrade-button" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="CarAbilitySection" class="car-details-section">
+                <engine:Label text="Ability" name="CarAbilityLabel" class="car-details-section-label" />
+                <engine:Label text="Time slow" name="CarAbilityDescription" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
