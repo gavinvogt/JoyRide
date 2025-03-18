@@ -37,7 +37,7 @@
 
 .split-left {
     border-color: black;
-    border-right: 2px;
+    border-right-width: 2px;
 }
 
 .car-tile {
