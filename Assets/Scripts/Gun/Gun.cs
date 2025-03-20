@@ -7,6 +7,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected AudioClip shotSound;
     public float fireCooldown;
+    protected float bulletDamage;
 
     public Player player;
     protected Camera mainCamera;
@@ -42,6 +43,11 @@ public abstract class Gun : MonoBehaviour
     /// and recurse if Fire1 is still pressed.
     /// </summary>
     abstract public IEnumerator Fire();
+
+    void SetBulletDamage(float damage)
+    {
+        bulletDamage = damage;
+    }
 
     void SetPlayer(Player player)
     {

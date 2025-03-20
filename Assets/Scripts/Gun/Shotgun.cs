@@ -7,7 +7,7 @@ public class Shotgun : Gun
     // configure how the shotgun sprays bullets
     [SerializeField] private float bulletSpreadFactorHorizontal;
     [SerializeField] private float bulletSpreadFactorAngle;
-    [SerializeField] private int bulletsPerShot;
+    private int bulletsPerShot;
     [SerializeField] private float bulletLifeSpan;
     private bool canFire = true;
 
@@ -43,6 +43,10 @@ public class Shotgun : Gun
         var bullets = Enumerable.Range(1, numBullets).Select(
             _ => Instantiate(bulletPrefab, GetBulletStartPosition(), GetBulletAngle())
         ).ToArray();
+        foreach(GameObject bullet in bullets)
+        {
+            bullet.GetComponent<Bullet>().SetDamage(bulletDamage);
+        }
         StartCoroutine(DestroyBullets(bullets));
     }
 
@@ -76,5 +80,10 @@ public class Shotgun : Gun
         {
             Destroy(bullet);
         }
+    }
+
+    public void SetBulletCount(int numBullets)
+    {
+        bulletsPerShot = numBullets;
     }
 }

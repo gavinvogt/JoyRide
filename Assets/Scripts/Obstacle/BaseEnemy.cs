@@ -1,4 +1,4 @@
 interface BaseEnemy
 {
-    public void DecreaseHealth(int damage);
+    public void DecreaseHealth(float damage);
 }

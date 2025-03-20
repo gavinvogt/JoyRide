@@ -460,16 +460,20 @@ public class Car : MonoBehaviour
                 drivingSpeed = 8.5f + (0.5f * saveData.GetSpeedUpgradeLevel());
                 maxHealth = 15 + (2f * saveData.GetHealthUpgradeLevel());
                 maxAmmoCount = 125 + (15 * saveData.GetAmmoUpgradeLevel());
+                gun.SendMessage("SetBulletDamage", 1.75f + (0.25f * saveData.GetDamageUpgradeLevel()));
                 break;
             case CarType.SHOTGUN_TRUCK:
                 drivingSpeed = 7 + (0.4f * saveData.GetSpeedUpgradeLevel());
                 maxHealth = 25 + (3f * saveData.GetHealthUpgradeLevel());
                 maxAmmoCount = 20 + (4 * saveData.GetAmmoUpgradeLevel());
+                gun.SendMessage("SetBulletDamage", 2);
+                gun.SendMessage("SetBulletCount", 10 + (1 * saveData.GetDamageUpgradeLevel()));
                 break;
             case CarType.TANK:
                 drivingSpeed = 3.5f + (0.3f * saveData.GetSpeedUpgradeLevel());
                 maxHealth = 30 + (5f * saveData.GetSpeedUpgradeLevel());
                 maxAmmoCount = 15 + (2 * saveData.GetAmmoUpgradeLevel());
+                gun.SendMessage("SetBulletDamage", 15);
                 break;
         }
     }

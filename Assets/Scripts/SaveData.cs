@@ -86,6 +86,7 @@ public class SaveData
         private int ammoUpgradeLevel;
         private int damageUpgradeLevel;
         private int attackRateUpgradeLevel;
+        private int attackSpreadUpgradeLevel;
 
         public CarSaveData(CarType carType)
         {
@@ -97,6 +98,7 @@ public class SaveData
             ammoUpgradeLevel = 0;
             damageUpgradeLevel = 0;
             attackRateUpgradeLevel = 0;
+            attackSpreadUpgradeLevel = 0;
         }
 
         public CarType GetCarType()
@@ -138,6 +140,10 @@ public class SaveData
         public int GetAttackRateUpgradeLevel()
         {
             return attackRateUpgradeLevel;
+        }
+        public int GetAttackSpreadUpgradeLevel()
+        {
+            return attackSpreadUpgradeLevel;
         }
     }
 }

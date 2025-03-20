@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     public float speed;
-    [SerializeField] private int damage;
+    static private float damage;
     [SerializeField] private AudioClip[] hitSounds;
     private bool hasHit = false;
 
@@ -44,5 +44,10 @@ public class Bullet : MonoBehaviour
     {
         hasHit = true;
         Destroy(gameObject);
+    }
+
+    public void SetDamage(float dmg)
+    {
+        damage = dmg;
     }
 }

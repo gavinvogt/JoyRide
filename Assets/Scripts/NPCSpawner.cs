@@ -28,7 +28,6 @@ public class NPCSpawner : MonoBehaviour
             {
                 if (prefab.gameObject.GetComponent<Car>().GetCarType() == unlockedCar.GetCarType() && unlockedCar.GetIsSelected())
                 {
-                    Debug.Log(prefab + " | " + unlockedCar.GetCarType());
                     spawnableCars.Add(prefab);
                 }
             }

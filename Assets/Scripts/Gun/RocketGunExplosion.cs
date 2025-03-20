@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RocketGunExplosion : MonoBehaviour
 {
-    private int damage;
+    private float damage;
 
     void Awake()
     {
@@ -18,7 +18,7 @@ public class RocketGunExplosion : MonoBehaviour
         }
     }
 
-    public void SetDamage(int damageFromGun)
+    public void SetDamage(float damageFromGun)
     {
         damage = damageFromGun;
     }

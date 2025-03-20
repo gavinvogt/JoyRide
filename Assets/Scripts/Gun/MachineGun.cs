@@ -20,7 +20,8 @@ public class MachineGun : Gun
                 blastAudioSource = SoundFXManager.instance.LoopSoundFXClip(shotSound, transform, 1f);
             }
 
-            Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
+            bullet.GetComponent<Bullet>().SetDamage(bulletDamage);
             yield return new WaitForSecondsRealtime(fireCooldown);
             if (Input.GetButton("Fire1") && Time.timeScale != 0)
             {
