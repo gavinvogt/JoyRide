@@ -19,7 +19,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
     private bool isRotating = false;
 
     // track helicopter health
-    [SerializeField] private int health;
+    [SerializeField] private float health;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject damageInidcator;
 
@@ -82,7 +82,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         initialPosition = new Vector3(transform.position.x, transform.position.y);
     }
 
-    public void DecreaseHealth(int damage)
+    public void DecreaseHealth(float damage)
     {
         if (health > 0)
         {
@@ -99,7 +99,7 @@ public class Helicopter : MonoBehaviour, BaseEnemy
         }
     }
 
-    public void DecreaseHealthNoDamageMarker(int damage)
+    public void DecreaseHealthNoDamageMarker(float damage)
     {
         if (health > 0)
         {

@@ -15,11 +15,11 @@ public class LaserEmitters : MonoBehaviour
         
     }
 
-    public void DecreaseHealth(int damage)
+    public void DecreaseHealth(float damage)
     {
         if(laser.gameObject) laser.DecreaseHealth(damage);
     }
-    public void DecreaseHealthNoDamageMarker(int damage)
+    public void DecreaseHealthNoDamageMarker(float damage)
     {
         if (laser.gameObject) laser.DecreaseHealth(damage);
     }

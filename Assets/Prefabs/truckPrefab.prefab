@@ -205,11 +205,9 @@ MonoBehaviour:
   gun: {fileID: 7256193882495360041}
   cursorTexture: {fileID: 2800000, guid: fbc707803e86cf8479f830040b811eeb, type: 3}
   currentCarIndicator: {fileID: 579526641817025786}
-  drivingSpeed: 8
-  maxHealth: 3
+  carType: 1
   healthBar: {fileID: 737265214500778529}
   abilityBar: {fileID: 3267091014642945840}
-  maxAmmoCount: 30
   playerLoseClip: {fileID: 8300000, guid: 52f5b822284bfea4db3a8f258cf684ca, type: 3}
   npcScript: {fileID: 421762710008633274}
   specialMoveScript: {fileID: -1164150021005484933}

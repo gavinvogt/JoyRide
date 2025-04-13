@@ -5,7 +5,7 @@ public class Tank_Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     public float speed;
-    [SerializeField] private int damage;
+    private float damage;
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip[] hitSounds;
     private bool hasHit = false;
@@ -29,6 +29,11 @@ public class Tank_Bullet : MonoBehaviour
         {
             StartCoroutine(CreateExplosion());
         }
+    }
+
+    public void SetDamage(float dmg)
+    {
+        damage = dmg;
     }
 
     private IEnumerator CreateExplosion()

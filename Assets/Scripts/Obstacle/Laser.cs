@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Laser : MonoBehaviour
 {
-    private int health;
+    private float health;
     [SerializeField] private HealthBar healthBar1;
     [SerializeField] private HealthBar healthBar2;
     [SerializeField] protected AudioClip laserSound;
@@ -30,7 +30,7 @@ public class Laser : MonoBehaviour
         laser.GetComponent<BoxCollider2D>().enabled = true;
     }
 
-    public void DecreaseHealth(int damage)
+    public void DecreaseHealth(float damage)
     {
         if (health > 0)
         {

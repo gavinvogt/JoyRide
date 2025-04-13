@@ -17,7 +17,7 @@ public class PoliceCar : Obstacle, BaseEnemy
 
     ArrayList damagedCars;
 
-    private int health;
+    private float health;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject damageInidcator;
     [SerializeField] private AudioClip carDestroyedClip;
@@ -121,7 +121,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         }
     }
 
-    public void DecreaseHealth(int damage)
+    public void DecreaseHealth(float damage)
     {
         if (isInvulnerable)
             return;
@@ -138,7 +138,7 @@ public class PoliceCar : Obstacle, BaseEnemy
         }
     }
 
-    public void DecreaseHealthNoDamageMarker(int damage)
+    public void DecreaseHealthNoDamageMarker(float damage)
     {
         if (health > 0)
         {

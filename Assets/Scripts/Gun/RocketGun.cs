@@ -17,7 +17,8 @@ public class RocketGun : Gun
 
             // Fire the rocket
             SoundFXManager.instance.PlaySoundFXClip(shotSound, transform, 0.55f);
-            Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, GetBulletAngle());
+            bullet.GetComponent<Tank_Bullet>().SetDamage(bulletDamage);
 
             // Allow firing after cooldown
             yield return new WaitForSeconds(fireCooldown);

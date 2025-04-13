@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
+using static SaveData;
 
 public class Car : MonoBehaviour
 {
@@ -21,13 +22,21 @@ public class Car : MonoBehaviour
     private int rotationSpeed = 60;
     private GameObject rotateTarget;
 
+    public enum CarType
+    {
+        SPORTS_CAR,
+        SHOTGUN_TRUCK,
+        TANK
+    }
+    [SerializeField] CarType carType;
+
     [SerializeField] private float drivingSpeed;
     private float currentDrivingSpeed;
     private bool hasSpeedBoost = false;
 
-    [SerializeField] private int maxHealth;
-    private int _currentHealth;
-    private int currentHealth
+    private float maxHealth;
+    private float _currentHealth;
+    private float currentHealth
     {
         get { return _currentHealth; }
         set
@@ -42,7 +51,7 @@ public class Car : MonoBehaviour
     }
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private AbilityBar abilityBar;
-    [SerializeField] private int maxAmmoCount;
+    private int maxAmmoCount;
     private int currentAmmoCount;
 
     [SerializeField] private AudioClip playerLoseClip;
@@ -53,6 +62,7 @@ public class Car : MonoBehaviour
     private bool immuneToDamage;
     private Vector3 deathPoint;
 
+    private bool isAbilityUnlocked;
     private bool isShielded = false;
     private bool isCarDead = false;
 
@@ -72,11 +82,21 @@ public class Car : MonoBehaviour
 
     private void Awake()
     {
+        SetStatsFromSave();
+
         currentHealth = maxHealth;
         currentAmmoCount = maxAmmoCount;
         currentDrivingSpeed = drivingSpeed;
         healthBar.SetMaxHealth(maxHealth);
-        abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
+
+        if (isAbilityUnlocked)
+        {
+            abilityBar.SetInitialAbilityCD(specialMoveScript.GetTotalAbilityCD(), specialMoveScript.GetAbilityCDOnEntrance());
+        }
+        else
+        {
+            abilityBar.gameObject.SetActive(false);
+        }
 
         rotateTarget = new GameObject();
         npcs = GameObject.Find("NPC Spawner").GetComponent<NPCSpawner>();
@@ -85,7 +105,7 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        if (player != null && !isCarDead && Input.GetMouseButtonUp(RIGHT_CLICK))
+        if (player != null && !isCarDead && isAbilityUnlocked && Input.GetMouseButtonUp(RIGHT_CLICK))
         {
             ActivateSpecial();
         }
@@ -100,7 +120,7 @@ public class Car : MonoBehaviour
         }
         if (player != null)
         {
-            if (abilityBar) abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
+            if (isAbilityUnlocked && abilityBar) abilityBar.SetCurrentAbilityCD(specialMoveScript.GetTimeLeftOnAbilityCD());
         }
     }
 
@@ -259,7 +279,7 @@ public class Car : MonoBehaviour
 
     public float GetHealthPercentage()
     {
-        return (float)currentHealth / (float)maxHealth;
+        return currentHealth / maxHealth;
     }
 
     public float GetAmmoPercentage()
@@ -295,7 +315,7 @@ public class Car : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth++;
+            currentHealth += 10;
         }
         if (player != null)
         {
@@ -379,7 +399,7 @@ public class Car : MonoBehaviour
             StartCoroutine(UIScript.ActivateBoostPadIndicator(Booster.BoosterType.GOONS, this.transform.position));
 
             List<GameObject> Spawners = npcs.GetSpawners();
-            List<GameObject> NPCPrefabs = npcs.GetPrefabs();
+            List<GameObject> NPCPrefabs = npcs.GetSpawnablePrefabs();
             List<int> spawnpoints = new();
 
             int randInt = Random.Range(0, Spawners.Count);
@@ -415,5 +435,31 @@ public class Car : MonoBehaviour
     private void ActivateSpecial()
     {
         specialMoveScript.ActivateSpecialMove();
+    }
+
+    public CarType GetCarType()
+    {
+        return carType;
+    }
+
+    private void SetStatsFromSave()
+    {
+        CarSaveData saveData = null;
+        foreach (SaveData.CarSaveData unlockedCar in Save.globalSaveData.carsUnlocked)
+        {
+            if (carType == unlockedCar.GetCarType())
+            {
+                saveData = unlockedCar;
+            }
+        }
+
+        isAbilityUnlocked = saveData.GetAbilityUnlocked();
+
+        CarProperties carStats = CarProperties.GetPropertiesByType(carType);
+        drivingSpeed = carStats.BaseStats.Speed + (carStats.StatsPerLevel.Speed * saveData.GetSpeedUpgradeLevel());
+        maxHealth = carStats.BaseStats.Health + (carStats.StatsPerLevel.Health * saveData.GetHealthUpgradeLevel());
+        maxAmmoCount = carStats.BaseStats.Ammo + (carStats.StatsPerLevel.Ammo * saveData.GetAmmoUpgradeLevel());
+        gun.SendMessage("SetBulletDamage", carStats.BaseStats.Damage + (carStats.StatsPerLevel.Damage * saveData.GetDamageUpgradeLevel()));
+        gun.SendMessage("SetBulletCount", carStats.BaseStats.BulletsPerShot + (carStats.StatsPerLevel.BulletsPerShot * saveData.GetDamageUpgradeLevel()), SendMessageOptions.DontRequireReceiver);
     }
 }
