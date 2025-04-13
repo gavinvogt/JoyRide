@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class CarProperties
 {
     public static readonly CarProperties SPORTS_CAR = new(
@@ -73,4 +75,9 @@ public class CarProperties
         BaseStats = baseStats;
         StatsPerLevel = statsPerLevel;
     }
+}
+
+namespace System.Runtime.CompilerServices
+{
+    internal static class IsExternalInit { }
 }
