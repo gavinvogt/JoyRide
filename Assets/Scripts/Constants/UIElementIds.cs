@@ -9,8 +9,10 @@ public static class UIElementIds
     public readonly static string CONTINUE_BUTTON = "ContinueButton";
     public readonly static string CANCEL_BUTTON = "CancelButton";
     public readonly static string CONFIRM_BUTTON = "ConfirmButton";
+    public readonly static string BACK_BUTTON = "BackButton";
 
     public readonly static string START_BUTTON = "StartButton";
+    public readonly static string CARS_BUTTON = "CarsButton";
     public readonly static string CONTROLS_BUTTON = "ControlsButton";
     public readonly static string STATS_BUTTON = "StatsButton";
     public readonly static string QUIT_BUTTON = "QuitButton";

@@ -6,6 +6,7 @@
                 <engine:Label text="JoyRide" name="GameTitle" triple-click-selects-line="false" double-click-selects-word="false" class="title" />
                 <engine:VisualElement name="ButtonContainer" style="flex-grow: 1; margin-top: 0; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; justify-content: flex-end;">
                     <engine:Button text="Start" name="StartButton" class="menu-button" />
+                    <engine:Button text="Cars" name="CarsButton" class="menu-button" />
                     <engine:Button text="Controls" name="ControlsButton" class="menu-button" />
                     <engine:Button text="Stats" name="StatsButton" class="menu-button" />
                     <engine:Button text="Quit" name="QuitButton" class="menu-button" />

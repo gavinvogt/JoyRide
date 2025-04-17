@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932347ba96bd9d545bbc2d4fabe3f1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _document: {fileID: 555305012}
 --- !u!114 &555305012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _document: {fileID: 1790641075}
   _controlsDocument: {fileID: 1230969262}
+  _carCollectionDocument: {fileID: 555305012}
 --- !u!1 &1983532002
 GameObject:
   m_ObjectHideFlags: 0

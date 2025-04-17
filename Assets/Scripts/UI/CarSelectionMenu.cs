@@ -11,6 +11,7 @@ public class CarSelectionMenu : MonoBehaviour
     private VisualElement _carDetailsImage;
     private List<VisualElement> _carStatsContainers;
     private Label _carAbilityDescription;
+    public static Button BackButton { get; private set; }
 
     private static readonly string CAR_COLLECTION_SCROLL_VIEW = "ScrollView";
     private static readonly string CAR_DETAILS_TITLE = "CarDetailsTitle";
@@ -22,6 +23,7 @@ public class CarSelectionMenu : MonoBehaviour
     void Awake()
     {
         FindElements();
+        _document.rootVisualElement.visible = false;
     }
 
     private void FindElements()
@@ -32,5 +34,6 @@ public class CarSelectionMenu : MonoBehaviour
         _carDetailsImage = root.Q<VisualElement>(CAR_DETAILS_IMAGE);
         _carStatsContainers = root.Query<VisualElement>(CAR_STATS_CONTAINER).ToList();
         _carAbilityDescription = root.Q<Label>(CAR_ABILITY_DESCRIPTION);
+        BackButton = root.Q<Button>(UIElementIds.BACK_BUTTON);
     }
 }

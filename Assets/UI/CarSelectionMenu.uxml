@@ -3,7 +3,7 @@
     <engine:VisualElement name="Container" class="car-selection-menu">
         <engine:VisualElement name="CarCollectionContainer" class="split-screen split-left">
             <engine:Label text="Vehicles" name="CarCollectionTitle" class="section-title" />
-            <engine:ScrollView style="flex-direction: row;">
+            <engine:ScrollView class="cars-scroll-view">
                 <engine:VisualElement name="CarTile" class="car-tile">
                     <engine:VisualElement name="CarImage" class="car-image" style="background-image: url(&quot;project://database/Assets/UI/IconBig.png?fileID=2800000&amp;guid=5872c11bd91cf69479e98bca5a7333f8&amp;type=3#IconBig&quot;);" />
                     <engine:Label text="Sports Car" name="CarLabel" double-click-selects-word="false" triple-click-selects-line="false" class="car-label" />
@@ -17,6 +17,7 @@
                     <engine:Label text="Tank&#x9;" name="CarLabel" double-click-selects-word="false" triple-click-selects-line="false" class="car-label" />
                 </engine:VisualElement>
             </engine:ScrollView>
+            <engine:Button text="Back" name="BackButton" class="common-button" />
         </engine:VisualElement>
         <engine:VisualElement name="CarDetailsContainer" class="split-screen split-right">
             <engine:Label text="Sports Car" name="CarDetailsTitle" class="section-title" />

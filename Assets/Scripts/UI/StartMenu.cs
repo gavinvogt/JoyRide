@@ -7,7 +7,9 @@ public class StartMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument _document;
     [SerializeField] private UIDocument _controlsDocument;
+    [SerializeField] private UIDocument _carCollectionDocument;
     private Button _startButton;
+    private Button _carsButton;
     private Button _controlsButton;
     private Button _statsButton;
     private Button _quitButton;
@@ -26,6 +28,7 @@ public class StartMenu : MonoBehaviour
     private void FindElements()
     {
         _startButton = _document.rootVisualElement.Q<Button>(UIElementIds.START_BUTTON);
+        _carsButton = _document.rootVisualElement.Q<Button>(UIElementIds.CARS_BUTTON);
         _controlsButton = _document.rootVisualElement.Q<Button>(UIElementIds.CONTROLS_BUTTON);
         _statsButton = _document.rootVisualElement.Q<Button>(UIElementIds.STATS_BUTTON);
         _quitButton = _document.rootVisualElement.Q<Button>(UIElementIds.QUIT_BUTTON);
@@ -34,6 +37,7 @@ public class StartMenu : MonoBehaviour
     private void AddEventListeners()
     {
         _startButton.clicked += HandleStart;
+        _carsButton.clicked += HandleCarCollection;
         _controlsButton.clicked += HandleControls;
         _statsButton.clicked += HandleStats;
         _quitButton.clicked += HandleQuit;
@@ -42,6 +46,7 @@ public class StartMenu : MonoBehaviour
     private void RemoveEventListeners()
     {
         _startButton.clicked -= HandleStart;
+        _carsButton.clicked -= HandleCarCollection;
         _controlsButton.clicked -= HandleControls;
         _statsButton.clicked -= HandleStats;
         _quitButton.clicked -= HandleQuit;
@@ -50,6 +55,15 @@ public class StartMenu : MonoBehaviour
     private void HandleStart()
     {
         SceneManager.LoadScene(sceneName: GameScenes.BuildScene);
+    }
+
+    private void HandleCarCollection()
+    {
+        _carCollectionDocument.rootVisualElement.visible = true;
+        CarSelectionMenu.BackButton.RegisterCallbackOnce<ClickEvent>(_ =>
+        {
+            _carCollectionDocument.rootVisualElement.visible = false;
+        });
     }
 
     private void HandleControls()
