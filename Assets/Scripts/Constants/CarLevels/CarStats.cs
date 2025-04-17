@@ -9,17 +9,12 @@ public readonly struct CarStats
     public float AttackRate { get; init; }
     public float Spread { get; init; }
 
-    public CarStats(float speed, float health, int ammo, float damage, float attackRate, float spread) {
-        Speed = speed;
-        Health = health;
-        Ammo = ammo;
-        Damage = damage;
-        BulletsPerShot = 1;
-        AttackRate = attackRate;
-        Spread = spread;
-    }
+    public CarStats(float speed, float health, int ammo, float damage, float attackRate, float spread)
+        : this(speed, health, ammo, damage, 1, attackRate, spread)
+    { }
 
-    public CarStats(float speed, float health, int ammo, float damage, int bulletsPerShot, float attackRate, float spread) {
+    public CarStats(float speed, float health, int ammo, float damage, int bulletsPerShot, float attackRate, float spread)
+    {
         Speed = speed;
         Health = health;
         Ammo = ammo;
