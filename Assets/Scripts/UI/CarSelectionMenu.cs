@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +16,7 @@ public class CarSelectionMenu : MonoBehaviour
     private Label _carAbilityDescription;
     public static Button BackButton { get; private set; }
     private int _selectedCarIndex = 0;
+    private Texture2D[] cachedImages;
 
     private static readonly string CAR_COLLECTION_SCROLL_VIEW = "ScrollView";
     private static readonly string CAR_DETAILS_TITLE = "CarDetailsTitle";
@@ -25,6 +28,10 @@ public class CarSelectionMenu : MonoBehaviour
     private void Awake()
     {
         _document.rootVisualElement.visible = false;
+        cachedImages = CarProperties.Values.Select(props =>
+            AssetDatabase.LoadAssetAtPath<Texture2D>(props.SmallImage)
+        ).ToArray();
+
         FindElements();
         CreateCarTiles();
         CreateCarTileListeners();
@@ -46,25 +53,24 @@ public class CarSelectionMenu : MonoBehaviour
     {
         // Create a tile for each car in the game
         _carCollectionScrollView.Clear();
-        foreach (var carProperty in CarProperties.Values)
+        CarProperties[] properties = CarProperties.Values.ToArray();
+        for (int i = 0; i < properties.Length; ++i)
         {
-            _carCollectionScrollView.Add(CreateCarTile(carProperty));
+            _carCollectionScrollView.Add(CreateCarTile(properties[i], i));
         }
     }
 
-    private VisualElement CreateCarTile(CarProperties props)
+    private VisualElement CreateCarTile(CarProperties props, int index)
     {
         VisualElement carTile = new();
         carTile.AddToClassList("car-tile");
 
         VisualElement carImage = new();
         carImage.AddToClassList("car-image");
-        carImage.AddToClassList(ImagePathToClass(props.SmallImage));
-        // Example:
-        // background-image: url("project://database/Assets/UI/IconBig.png?fileID=2800000&guid=5872c11bd91cf69479e98bca5a7333f8&type=3#IconBig");
+        carImage.style.backgroundImage = cachedImages[index];
 
         Label carLabel = new(props.Name);
-        carImage.AddToClassList("car-label");
+        carLabel.AddToClassList("car-label");
 
         carTile.Add(carImage);
         carTile.Add(carLabel);
@@ -95,8 +101,7 @@ public class CarSelectionMenu : MonoBehaviour
     {
         CarProperties selectedCar = CarProperties.Values.ElementAt(_selectedCarIndex);
         _carDetailsTitle.text = selectedCar.Name;
-        _carDetailsImage.AddToClassList(ImagePathToClass(selectedCar.SmallImage));
-        // TODO: remove the previous bg-image class
+        _carDetailsImage.style.backgroundImage = cachedImages[_selectedCarIndex];
 
         // Update the stats shown
         UpdateStatValue(_carStatsContainers[0], selectedCar.BaseStats.Speed.ToString());
@@ -109,9 +114,6 @@ public class CarSelectionMenu : MonoBehaviour
     {
         statsContainer.Q<Label>("CarStatValue").text = value;
     }
-
-    private static string ImagePathToClass(string imagePath)
-        => $"background-image: url(\"{imagePath}\")";
 
     private static string GetDamageString(float damage, int bulletsPerShot)
     {

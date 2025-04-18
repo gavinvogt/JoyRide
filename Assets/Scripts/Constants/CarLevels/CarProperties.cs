@@ -5,7 +5,7 @@ public class CarProperties
 {
     public static readonly CarProperties SPORTS_CAR = new(
         "Sports Car",
-        "project://database/Assets/UI/IconBig.png",
+        "Assets/UI/IconBig.png",
         baseStats: new CarStats(
             speed: 8.5f,
             health: 15f,
@@ -26,7 +26,7 @@ public class CarProperties
     public static readonly CarProperties TANK = new(
         "Tank",
         // TODO: use tank image
-        "project://database/Assets/UI/IconBig.png",
+        "Assets/UI/IconBig.png",
         baseStats: new CarStats(
             speed: 3.5f,
             health: 30f,
@@ -47,7 +47,7 @@ public class CarProperties
     public static readonly CarProperties TRUCK = new(
         "Truck",
         // TODO: use truck image
-        "project://database/Assets/UI/IconBig.png",
+        "Assets/UI/IconBig.png",
         new CarStats(
             speed: 7f,
             health: 25f,
