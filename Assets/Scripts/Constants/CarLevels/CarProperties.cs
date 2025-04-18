@@ -5,6 +5,7 @@ public class CarProperties
 {
     public static readonly CarProperties SPORTS_CAR = new(
         "Sports Car",
+        CarType.SPORTS_CAR,
         "Assets/UI/IconBig.png",
         baseStats: new CarStats(
             speed: 8.5f,
@@ -25,6 +26,7 @@ public class CarProperties
     );
     public static readonly CarProperties TANK = new(
         "Tank",
+        CarType.TANK,
         // TODO: use tank image
         "Assets/UI/IconBig.png",
         baseStats: new CarStats(
@@ -46,6 +48,7 @@ public class CarProperties
     );
     public static readonly CarProperties TRUCK = new(
         "Truck",
+        CarType.SHOTGUN_TRUCK,
         // TODO: use truck image
         "Assets/UI/IconBig.png",
         new CarStats(
@@ -79,13 +82,15 @@ public class CarProperties
     }
 
     public string Name { get; init; }
+    public CarType CarType { get; init; }
     public string SmallImage { get; init; }
     public CarStats BaseStats { get; init; }
     public CarStats StatsPerLevel { get; init; }
 
-    public CarProperties(string name, string smallImage, CarStats baseStats, CarStats statsPerLevel)
+    public CarProperties(string name, CarType carType, string smallImage, CarStats baseStats, CarStats statsPerLevel)
     {
         Name = name;
+        CarType = carType;
         SmallImage = smallImage;
         BaseStats = baseStats;
         StatsPerLevel = statsPerLevel;
@@ -105,6 +110,20 @@ public class CarProperties
     public override string ToString()
     {
         return $"CarProperties(\"{Name}\")";
+    }
+
+    /** Gets this car's stats at the level from saved data */
+    public CarStats StatsFromSaveData(SaveData.CarSaveData saveData)
+    {
+        return new CarStats(
+            speed: BaseStats.GetSpeedByLevel(StatsPerLevel, saveData.GetSpeedUpgradeLevel()),
+            health: BaseStats.GetHealthByLevel(StatsPerLevel, saveData.GetHealthUpgradeLevel()),
+            ammo: BaseStats.GetAmmoByLevel(StatsPerLevel, saveData.GetAmmoUpgradeLevel()),
+            damage: BaseStats.GetDamageByLevel(StatsPerLevel, saveData.GetDamageUpgradeLevel()),
+            bulletsPerShot: BaseStats.GetBulletsPerShotByLevel(StatsPerLevel, saveData.GetDamageUpgradeLevel()),
+            attackRate: BaseStats.GetAttackRateByLevel(StatsPerLevel, saveData.GetAttackRateUpgradeLevel()),
+            spread: BaseStats.GetSpreadByLevel(StatsPerLevel, saveData.GetAttackSpreadUpgradeLevel())
+        );
     }
 }
 

@@ -26,4 +26,51 @@ public readonly struct CarStats
 
     public override string ToString() =>
         $"(Speed={Speed}, Health={Health}, Ammo={Ammo}, Damage={Damage}, BulletsPerShot={BulletsPerShot}, AttackRate={AttackRate}), Spread={Spread}";
+
+    public string GetDamageString()
+    {
+        if (BulletsPerShot == 1)
+        {
+            return Damage.ToString();
+        }
+        else
+        {
+            return $"{Damage} x {BulletsPerShot}";
+        }
+    }
+
+    public float GetSpeedByLevel(CarStats statsPerLevel, int level)
+    {
+        return Speed + (statsPerLevel.Speed * level);
+    }
+
+    public float GetHealthByLevel(CarStats statsPerLevel, int level)
+    {
+        return Health + (statsPerLevel.Health * level);
+    }
+
+    public int GetAmmoByLevel(CarStats statsPerLevel, int level)
+    {
+        return Ammo + (statsPerLevel.Ammo * level);
+    }
+
+    public float GetDamageByLevel(CarStats statsPerLevel, int level)
+    {
+        return Damage + (statsPerLevel.Damage * level);
+    }
+
+    public int GetBulletsPerShotByLevel(CarStats statsPerLevel, int level)
+    {
+        return BulletsPerShot + (statsPerLevel.BulletsPerShot * level);
+    }
+
+    public float GetAttackRateByLevel(CarStats statsPerLevel, int level)
+    {
+        return AttackRate + (statsPerLevel.AttackRate * level);
+    }
+
+    public float GetSpreadByLevel(CarStats statsPerLevel, int level)
+    {
+        return Spread + (statsPerLevel.Spread * level);
+    }
 }

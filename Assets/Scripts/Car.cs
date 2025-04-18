@@ -444,22 +444,22 @@ public class Car : MonoBehaviour
 
     private void SetStatsFromSave()
     {
-        CarSaveData saveData = null;
-        foreach (SaveData.CarSaveData unlockedCar in Save.globalSaveData.carsUnlocked)
-        {
-            if (carType == unlockedCar.GetCarType())
-            {
-                saveData = unlockedCar;
-            }
-        }
-
+        CarSaveData saveData = Save.globalSaveData.GetSaveDataByCarType(carType);
         isAbilityUnlocked = saveData.GetAbilityUnlocked();
 
-        CarProperties carStats = CarProperties.GetPropertiesByType(carType);
-        drivingSpeed = carStats.BaseStats.Speed + (carStats.StatsPerLevel.Speed * saveData.GetSpeedUpgradeLevel());
-        maxHealth = carStats.BaseStats.Health + (carStats.StatsPerLevel.Health * saveData.GetHealthUpgradeLevel());
-        maxAmmoCount = carStats.BaseStats.Ammo + (carStats.StatsPerLevel.Ammo * saveData.GetAmmoUpgradeLevel());
-        gun.SendMessage("SetBulletDamage", carStats.BaseStats.Damage + (carStats.StatsPerLevel.Damage * saveData.GetDamageUpgradeLevel()));
-        gun.SendMessage("SetBulletCount", carStats.BaseStats.BulletsPerShot + (carStats.StatsPerLevel.BulletsPerShot * saveData.GetDamageUpgradeLevel()), SendMessageOptions.DontRequireReceiver);
+        CarStats carStats = CarProperties.GetPropertiesByType(carType)
+            .StatsFromSaveData(saveData);
+        drivingSpeed = carStats.Speed;
+        maxHealth = carStats.Health;
+        maxAmmoCount = carStats.Ammo;
+        gun.SendMessage(
+            "SetBulletDamage",
+            carStats.Damage
+        );
+        gun.SendMessage(
+            "SetBulletCount",
+            carStats.BulletsPerShot,
+            SendMessageOptions.DontRequireReceiver
+        );
     }
 }

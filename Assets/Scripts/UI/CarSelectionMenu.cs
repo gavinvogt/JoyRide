@@ -16,7 +16,7 @@ public class CarSelectionMenu : MonoBehaviour
     private Label _carAbilityDescription;
     public static Button BackButton { get; private set; }
     private int _selectedCarIndex = 0;
-    private Texture2D[] cachedImages;
+    private Texture2D[] _cachedImages;
 
     private static readonly string CAR_COLLECTION_SCROLL_VIEW = "ScrollView";
     private static readonly string CAR_DETAILS_TITLE = "CarDetailsTitle";
@@ -28,7 +28,7 @@ public class CarSelectionMenu : MonoBehaviour
     private void Awake()
     {
         _document.rootVisualElement.visible = false;
-        cachedImages = CarProperties.Values.Select(props =>
+        _cachedImages = CarProperties.Values.Select(props =>
             AssetDatabase.LoadAssetAtPath<Texture2D>(props.SmallImage)
         ).ToArray();
 
@@ -67,7 +67,7 @@ public class CarSelectionMenu : MonoBehaviour
 
         VisualElement carImage = new();
         carImage.AddToClassList("car-image");
-        carImage.style.backgroundImage = cachedImages[index];
+        carImage.style.backgroundImage = _cachedImages[index];
 
         Label carLabel = new(props.Name);
         carLabel.AddToClassList("car-label");
@@ -101,29 +101,20 @@ public class CarSelectionMenu : MonoBehaviour
     {
         CarProperties selectedCar = CarProperties.Values.ElementAt(_selectedCarIndex);
         _carDetailsTitle.text = selectedCar.Name;
-        _carDetailsImage.style.backgroundImage = cachedImages[_selectedCarIndex];
+        _carDetailsImage.style.backgroundImage = _cachedImages[_selectedCarIndex];
+
+        SaveData.CarSaveData saveData = Save.globalSaveData.GetSaveDataByCarType(selectedCar.CarType);
+        CarStats stats = selectedCar.StatsFromSaveData(saveData);
 
         // Update the stats shown
-        UpdateStatValue(_carStatsContainers[0], selectedCar.BaseStats.Speed.ToString());
-        UpdateStatValue(_carStatsContainers[1], selectedCar.BaseStats.Health.ToString());
-        UpdateStatValue(_carStatsContainers[2], GetDamageString(selectedCar.BaseStats.Damage, selectedCar.BaseStats.BulletsPerShot));
-        UpdateStatValue(_carStatsContainers[3], selectedCar.BaseStats.Ammo.ToString());
+        UpdateStatValue(_carStatsContainers[0], stats.Speed.ToString());
+        UpdateStatValue(_carStatsContainers[1], stats.Health.ToString());
+        UpdateStatValue(_carStatsContainers[2], stats.GetDamageString());
+        UpdateStatValue(_carStatsContainers[3], stats.Ammo.ToString());
     }
 
     private void UpdateStatValue(VisualElement statsContainer, string value)
     {
         statsContainer.Q<Label>("CarStatValue").text = value;
-    }
-
-    private static string GetDamageString(float damage, int bulletsPerShot)
-    {
-        if (bulletsPerShot == 1)
-        {
-            return damage.ToString();
-        }
-        else
-        {
-            return $"{damage} x {bulletsPerShot}";
-        }
     }
 }

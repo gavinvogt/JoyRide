@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using static Car;
 
 [System.Serializable]
@@ -66,12 +67,17 @@ public class SaveData
 
     public bool AttemptToSpendCoins(int amount)
     {
-        if(numberOfCoins >= amount)
+        if (numberOfCoins >= amount)
         {
             numberOfCoins -= amount;
             return true;
         }
         return false;
+    }
+
+    public CarSaveData GetSaveDataByCarType(CarType carType)
+    {
+        return carsUnlocked.FirstOrDefault(save => carType == save.GetCarType());
     }
 
 
