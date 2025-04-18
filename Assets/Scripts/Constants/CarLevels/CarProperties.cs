@@ -4,6 +4,8 @@ using static Car;
 public class CarProperties
 {
     public static readonly CarProperties SPORTS_CAR = new(
+        "Sports Car",
+        "project://database/Assets/UI/IconBig.png",
         baseStats: new CarStats(
             speed: 8.5f,
             health: 15f,
@@ -22,6 +24,9 @@ public class CarProperties
         )
     );
     public static readonly CarProperties TANK = new(
+        "Tank",
+        // TODO: use tank image
+        "project://database/Assets/UI/IconBig.png",
         baseStats: new CarStats(
             speed: 3.5f,
             health: 30f,
@@ -40,6 +45,9 @@ public class CarProperties
         )
     );
     public static readonly CarProperties TRUCK = new(
+        "Truck",
+        // TODO: use truck image
+        "project://database/Assets/UI/IconBig.png",
         new CarStats(
             speed: 7f,
             health: 25f,
@@ -60,36 +68,43 @@ public class CarProperties
         )
     );
 
-    public static IEnumerable<CarProperties> Values {
-        get {
+    public static IEnumerable<CarProperties> Values
+    {
+        get
+        {
             yield return SPORTS_CAR;
             yield return TANK;
             yield return TRUCK;
         }
     }
 
+    public string Name { get; init; }
+    public string SmallImage { get; init; }
     public CarStats BaseStats { get; init; }
     public CarStats StatsPerLevel { get; init; }
 
-    public CarProperties(CarStats baseStats, CarStats statsPerLevel)
+    public CarProperties(string name, string smallImage, CarStats baseStats, CarStats statsPerLevel)
     {
+        Name = name;
+        SmallImage = smallImage;
         BaseStats = baseStats;
         StatsPerLevel = statsPerLevel;
     }
 
     public static CarProperties GetPropertiesByType(CarType type)
     {
-        switch (type)
+        return type switch
         {
-            case CarType.SPORTS_CAR:
-                return SPORTS_CAR;
-            case CarType.SHOTGUN_TRUCK:
-                return TRUCK;
-            case CarType.TANK:
-                return TANK;
-            default:
-                return null;
-        }
+            CarType.SPORTS_CAR => SPORTS_CAR,
+            CarType.SHOTGUN_TRUCK => TRUCK,
+            CarType.TANK => TANK,
+            _ => null,
+        };
+    }
+
+    public override string ToString()
+    {
+        return $"CarProperties(\"{Name}\")";
     }
 }
 
